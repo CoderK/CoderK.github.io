@@ -1,0 +1,39 @@
+# Site settings
+title:          "Huns.me"
+description:    "김코딩 님이 잘하고 싶어서 만든 블로그"
+url:            "https://coderk.github.io"
+
+# Google Analytics
+google_analytics: UA—XXXXXXXX-X
+
+# Author
+author:
+  name:         KimCoding
+  url:          https://www.facebook.com/jeokrang
+  email:        jeokrang@gmail.com
+  bio:          코딩하고, 생각하고, 정리하고, 글을 씁니다. 제 글에 담긴 생각의 유통기한이 얼마일지는 저도 모르겠습니다. 언제든 의견 주세요.
+
+# Build settings
+markdown:       kramdown
+include:
+  - _pages
+
+# Assets
+sass:
+  sass_dir:     _sass
+  style:        compressed
+
+# Gems
+remote_theme: chesterhow/tale
+
+plugins:
+  - jekyll-paginate
+  - jekyll-remote-theme
+  #- jemoji #Uncomment this to allow emoji in your post
+
+# Permalinks
+permalink:      /:year-:month-:day/:title
+paginate:       5
+
+# Excludes
+exclude: [ Gemfile, Gemfile.lock, tale.gemspec ]
