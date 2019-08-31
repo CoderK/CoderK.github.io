@@ -1,6 +1,6 @@
 * {
   @include box-sizing;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 html,
@@ -35,15 +35,20 @@ h6 {
   line-height: normal;
 }
 
+h1 {
+    margin: 2.5rem 0 1rem
+}
+
 a {
   color: $blue;
   text-decoration: none;
 }
 
 blockquote {
+  font-family: $point;
   border-left: .25rem solid $grey-2;
-  color: $grey-1;
-  margin: .8rem 0;
+  color: $blur-grey;
+  margin: 1.5rem .5rem;
   padding: .5rem 1rem;
 
   p:last-child {
