@@ -1,0 +1,45 @@
+---
+layout: post
+title: 단일 책임 객체가 많아지면 큰 그림을 이해하기 어려울까?
+date: 2015-11-09 00:24:03.000000000 +09:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- 개발 이야기
+tags:
+- book
+- short thoughts
+meta:
+  _edit_last: '1'
+  _et_post_bg_color: "#ffffff"
+  _et_post_bg_layout: dark
+  _format_video_embed: ''
+  _format_quote_source_name: ''
+  _format_quote_source_url: ''
+  sociallikes: ''
+  sociallikes_img_url: ''
+author:
+  login: jeokrang
+  email: jeokrang@gmail.com
+  display_name: 개발왕 김코딩
+  first_name: 훈민
+  last_name: 김
+permalink: "/development/1652"
+excerpt: "\n\t\t\t\t\t\t"
+---
+<p>
+				코드를 여러 개의 파일로 분리하면 객체간 관계가 복잡하게 얽혀 코드를 더 복잡하게 만든다고 주장하는 사람을 만나면 당황스럽다. 엉클 밥은 본인이 쓴 클린 코드라는 책에서 단일 책임 클래스로 분리해야하는 이유를 아래와 같이 설명한다. 매우 적절한 설명이라는 생각이 들어 블로그로 옮겼다.</p>
+<blockquote><p> 게다가 많은 개발자는 자잘한 단일 책임 클래스가 많아지면 큰 그림을 이해하기 어려워진다고 우려한다. 큰 그림을 이해하려면 이 클래스 저 클래스를 수없이 넘나들어야 한다고 걱정한다.</p>
+<p>&nbsp;</p>
+<p>하지만 작은 클래스가 많은 시스템이든 큰 클래스가 몇 개뿐인 시스템이든 돌아가는 부품은 그 수가 비슷하다. 어느 시스템이든 익힐 내용은 그 양이 비슷하다. 그러므로 고민할 질문은 다음과 같다. “도구 상자를 어떻게 관리하고 싶은가? 작은 서랍을 많이 두고 기능과 이름이 명확한 컴포넌트를 나눠 넣고 싶은가? 아니면 큰 서랍 몇 개를 두고 모두를 던져 넣고 싶은가?"</p>
+<p>&nbsp;</p>
+<p>규모가 어느 수준에 이르는 시스템은 논리가 많고도 복잡하다. 이런 복잡성을 다루려면 체계적인 정리가 필수다. 그래야 직접 영향이 미치는 컴포넌트만 이해해도 충분하다. 큼직한 다목적 클래스 몇 개로 이뤄진 시스템은 당장 알 필요가 없는 사실까지 들이밀어 독자를 방해한다.</p>
+<p>&nbsp;</p>
+<p>강조하는 차원에서 한 번 더 말하겠다. 큰 클래스 몇 개가 아니라 작은 클래스 여럿으로 이뤄진 시스템이 더 바람직하다. 작은 클래스는 각자 맡은 책임이 하나며, 변경할 이유가 하나며 다른 작은 클래스와 협력해 시스템에 필요한 동작을 수행한다.</p>
+<p>&nbsp;</p>
+<p style="text-align: left;">클린 코드, 10장 클래스 177페이지</p>
+</blockquote>
+<p>&nbsp;		</p>

@@ -1,0 +1,53 @@
+---
+layout: post
+title: Babel 6를 이용한 ES2015 클래스 상속시 IE 호환 이슈
+date: 2016-03-18 13:44:25.000000000 +09:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- 개발 이야기
+tags:
+- babel6
+- class
+- es2015
+- __proto__
+- 이슈
+meta:
+  sociallikes: '1'
+  sociallikes_img_url: ''
+  _et_post_bg_color: "#ffffff"
+  _et_post_bg_layout: dark
+  _edit_last: '1'
+  _wpcom_is_markdown: '1'
+  _format_video_embed: ''
+  _format_quote_source_name: ''
+  _format_quote_source_url: ''
+  _oembed_bec8c481001e0e3a0420f9fbff430db7: "{{unknown}}"
+author:
+  login: jeokrang
+  email: jeokrang@gmail.com
+  display_name: 개발왕 김코딩
+  first_name: 훈민
+  last_name: 김
+permalink: "/development/1839"
+excerpt: "\n\t\t\t\t\t\t"
+---
+<p>
+				&nbsp;<br />
+프로젝트에 Babel 6를 이용한 ES2015를 도입하면서, 종종 Class를 상속 관계로 정의하곤 한다. 대부분의 브라우저에서 트랜스파일한 코드가 정상적으로 동작하고 있으나, IE 하위(&lt; = 10) 버전에서 자식 인스턴스를 생성할 때 부모의 생성자를 호출하지 않는 현상이 발생하는 것을 발견했다.<br />
+&nbsp;</p>
+<h2>원인</h2>
+<p>원인을 찾아봤는데 문제는 범인은 &#95;_proto&#95;_ 였다. Babel 6는 Object의 &#95;_proto&#95;_ 프로퍼티를 이용해서 ES2015의 Classes 상속을 대체하는데, 익스플로러 10이하 버전은 &#95;_proto&#95;_ 속성을 지원하지 않는다. 따라서 super() 생성자 호출을 제대로 처리하지 못하는 현상이 발생한다. 이 내용은 <a href="https://babeljs.algolia.com/docs/advanced/caveats/">Babel 공식 사이트</a>에도 나와있다.</p>
+<blockquote><p>
+  If you're inheriting from a class then static properties are inherited from it via &#95;_proto&#95;_, this is widely supported but you may run into problems with much older browsers.<br />
+  &nbsp;
+</p></blockquote>
+<h2>해결</h2>
+<p>해결방법 역시 Babel 공식 사이트에 나와있는데, Babel 측은 loose 모드를 도입해서 이 문제를 해결한다. loose 모드는 ES2015에 본래 스펙에서 규정하고 있는 처리 메커니즘에 근접한 방식이 아니라, 하위 호환성에 초점을 맞춘 코드를 산출하는 것을 목적으로 만들어졌다. 따라서 좀 더 단순한 코드를 산출한다.</p>
+<p>아래 링크를 타고 가보면 트랜스파일한 결과물이 어떻게 다른지 확인할 수 있다.</p>
+<p><a href="http://www.2ality.com/2015/12/babel6-loose-mode.html">babel 6: loose mode</a></p>
+<p>&nbsp;<br />
+&nbsp;		</p>

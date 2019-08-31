@@ -1,0 +1,328 @@
+---
+layout: post
+title: Webpack 4의 Tree Shaking에 대한 이해
+date: 2018-11-08 19:04:40.000000000 +09:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- 개발 이야기
+tags:
+- optimization
+- sideEffects
+- tree shaking
+- webpack
+- 최적화
+meta:
+  asalah_show_share: '0'
+  asalah_show_title: '0'
+  show_author_box: '0'
+  asalah_custom_description: ''
+  asalah_sidebar_position: '0'
+  _format_gallery_shortcode: ''
+  _format_gallery_type: shortcode
+  _oembed_e2385e0a92c3a84784ddbfe6780ed380: "{{unknown}}"
+  _oembed_98a0521ea44d5c5d8abb45323e14d175: "{{unknown}}"
+  asalah_show_meta: '0'
+  sociallikes_img_url: ''
+  _format_video_embed: ''
+  _edit_last: '1'
+  sociallikes: '1'
+  _format_audio_embed: ''
+author:
+  login: jeokrang
+  email: jeokrang@gmail.com
+  display_name: 개발왕 김코딩
+  first_name: 훈민
+  last_name: 김
+permalink: "/development/2265"
+excerpt: "\n\t\t\t\t\t\t"
+---
+<p>
+				회사에서 만들고 있는 새로운 버전의 스마트에디터는 Webpack 4를 빌드 도구로 사용한다. 초기 로딩 성능을 최적화하기 위해서 Webpack 4의 Tree Shaking 지원을 검토하다가 삽질을 많이 했다. 공부 안 하고 대충하면 될 줄 알았는데 안 되더라.</p>
+<p>경험을 내 안에 썩혀두기가 아까워서 팀에 공유할 목적으로 삽질기를 작성했다. 외부의 누군가에게도 도움이 될 것 같아 원문을 조금 다듬어서 블로그로 옮긴다. 의식의 흐름을 따라 쓴 글이라 두서가 없으니, 찰떡같이 읽어주시길.</p>
+<h1>1.Tree Shaking이란?</h1>
+<p>Tree Shaking은 직역하면 <strong>나무 흔들기 </strong>정도로 표현할 수 있다. Webpack이 JS 모듈을 번들링할 때 사용하지 않는 코드를 제거하는 최적화 과정을 말한다. 나무를 흔들면 잎이 떨어지듯이 사용하지 않는 코드를 털어낸다는 뜻이다. 개념에 이름을 붙일 때 은유를 이용하는 걸 좋아한다. 메타포!<br />
+​<br />
+원래 이 용어를 처음 최적화 개념에 사용한 건 rollup.js지만 Webpack 4가 대단히 영리한 최적화 빌드를 보여주면서 주목받는 사이 rollup.js는 잊힌 느낌이다.</p>
+<p>인터넷에 떠도는 예제와 달리 현실의 설정은 매우 복잡하다. 95개의 패키지를 가지고 있는 Monorepo니 복잡할 수밖에. 그래서 그런지 아무리 설정을 바꿔봐도 최종 번들 파일의 사이즈가 좀처럼 줄어들지를 않았다. 제대로 이해하고 써야겠다는 생각에 <a href="https://github.com/CoderK/tree-shaking-with-side-effect-test">예제 코드</a>를 만들어서 테스트를 하기로 했다.</p>
+<pre class="lang:js decode:true" title="abc.js">export function a() { console.log("a"); }
+export function b() { console.log("b"); }
+export function c() { console.log("c"); }</pre>
+<pre class="lang:js decode:true" title="library.js">export { a, b, c } from "./abc";
+export { add as reexportedAdd, multiply as reexportedMultiply } from "./math";</pre>
+<pre class="lang:js decode:true" title="math.js">export function add() {
+    var sum = 0, i = 0, args = arguments, l = args.length;
+    while (i &lt; l) {
+        sum += args[i++];
+    }
+    return sum;
+}
+
+export function multiply() {
+    console.log("이것은 곱하기!");
+    var product = 1, i = 0, args = arguments, l = args.length;
+    while (i &lt; l) {
+        product *= args[i++];
+    }
+    return product;
+}
+
+export function list() {
+    console.log("이것은 리스트!");
+    return Array.from(arguments);
+}</pre>
+<pre class="lang:js decode:true " title="index.js">import { add } from './math';
+import * as library from "./library";
+
+add(1, 2);
+
+library.reexportedMultiply(1, 2);</pre>
+<p>index.js가 엔트리 포인트다. 의도적으로 math.js의 list 함수를 import 하되, 사용하지 않도록 구성했다. Tree Shaking이 정상 동작한다면, 최종 빌드 된 파일에는 list 함수가 없어야한다.</p>
+<p>추적을 쉽게 하기 위해서 콘솔에 문자열을 출력하는 코드를 함수 중간에 추가했다. production 빌드를 하면 소스가 난독화가 되어버려 list 함수를 찾기가 어렵다. 문자열은 난독화되지 않기 때문에 빌드 파일에서 저 문자열을 검색하면 Tree Shaking 수행여부를 확인할 수 있으리라.</p>
+<p>먼저 development 모드로 빌드를 했다. Webpack의 기본 옵션은 development 모드일 때 코드를 최적화하지 않도록 구성되어 있다. 따라서 최적화의 하나인 Tree Shaking을 수행하지 않아야 한다.</p>
+<pre class="lang:js decode:true " title="(development)bundle.js">…(생략)
+
+
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "add", function() { return add; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "multiply", function() { return multiply; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "list", function() { return list; });
+function add() {
+    var sum = 0, i = 0, args = arguments, l = args.length;
+    while (i &lt; l) {
+        sum += args[i++];
+    }
+    return sum;
+}
+
+function multiply() {
+    console.log("이것은 곱하기!");
+    var product = 1, i = 0, args = arguments, l = args.length;
+    while (i &lt; l) {
+        product *= args[i++];
+    }
+    return product;
+}
+
+function list() {
+    console.log("이것은 리스트!");
+    return Array.from(arguments);
+}
+
+
+…(생략)</pre>
+<p>번들 파일 안에 list 함수가 있는 게 보인다. 이번에는 production 모드로 빌드를 해서 비교를 해보자.</p>
+<p><span style="font-size: 10pt;">(가독성 향상을 위해서 beautify하였음)</span></p>
+<pre class="lang:js decode:true" title="(production)bundle.js">…(생략)
+
+
+}([function(t, e, n) {
+    "use strict";
+
+    function r() {
+        for (var t = 0, e = 0, n = arguments, r = n.length; e &lt; r;) t += n[e++];
+        return t
+    }
+
+    function o() {
+        console.log("이것은 곱하기!");
+        for (var t = 1, e = 0, n = arguments, r = n.length; e &lt; r;) t *= n[e++];
+        return t
+    }
+    n.d(e, "a", function() {
+        return r
+    }), n.d(e, "b", function() {
+        return o
+    })
+}, function(t, e, n) {
+    "use strict"
+}, function(t, e, n) {
+    "use strict";
+    n(1);
+    var r = n(0);
+    n.d(e, "a", function() {
+        return r.b
+    })
+}, function(t, e, n) {
+    "use strict";
+    n.r(e);
+    var r = n(0),
+        o = n(2);
+    Object(r.a)(1, 2), o.a(1, 2)
+}]);
+
+
+…(생략)</pre>
+<p>코드가 난독화되어 읽기 어렵지만 list 함수에 심어놓은 콘솔 출력 문자열이 보이지 않는 걸로 보아 Tree Shaking이 되었다고 유추할 수 있다.</p>
+<p>한 가지 의문이 생긴다. Webpack은 아래와 같은 import 구문도 최적화를 할 수 있는 걸까?</p>
+<pre class="lang:js decode:true">import * as library from "./library";</pre>
+<p>Webpack 4 이전까지는 이런 구문을 최적화하지 못하였다. 그래서 인터넷에 떠도는 일부 유통기한이 지난 문서에서 최적화를 위해서 이런 구문을 사용하지 말라는 내용을 가끔 볼 수 있었다. 이제는 아닌가 보네?</p>
+<p>확인을 하고 넘어가야 직성이 풀릴 듯하여 검색을 하기 시작했다.</p>
+<h1>3. import * as … from</h1>
+<p>개발을 하다 보면 특정 모듈을 가져와서 import와 동시에 export 하고 싶을 때가 있다. 주로 모듈의 인덱스 파일을 작성할 때 그렇다.</p>
+<pre class="lang:js decode:true">import * as library from "./library";</pre>
+<p>이런 구문을 뭐라고 불러야 할지 모르겠다. 이 글에서는 <code>re-export</code>라고 부를 생각이다. Tree Shaking을 스마트에디터에 적용하려고 보니, 이 패턴을 너무 많은 곳에서 쓰고 있어서 퍽 난감했다. 또, 의지의 영역으로 들어온 것인가. 한숨을 쉬고 있던 그때. 응? Tree Shaking이 되네?</p>
+<p>궁금해서 Webpack의 공식 문서를 찬찬히 읽어보다가 흥미로운 내용을 발견했다. Webpack 4에 생긴 providedExports라는 최적화 옵션.</p>
+<pre class="lang:js decode:true ">module.exports = {
+  //...
+  optimization: {
+    providedExports: true
+  }
+};</pre>
+<p>문서는 이 옵션의 용도를 이렇게 설명한다.</p>
+<blockquote><p>Tells webpack to figure out which exports are provided by modules to generate more efficient code for export * from .... By default optimization.providedExports is enabled.<br />
+<a href="https://webpack.js.org/configuration/optimization/#optimization-providedexports" rel="nofollow">https://webpack.js.org/configuration/optimization/#optimization-providedexports</a></p></blockquote>
+<p><code>export * from</code>을 위해 만들어진 옵션. 나에게 필요한 그것. Webpack 만세!</p>
+<p>Webpack 4는 optimization 프로퍼티로 최적화 설정을 전달받는다. production 빌드를 할 때, 개발자가 optimization을 별도로 설정하지 않으면 기본 값을 적용한다. providedExports는 기본값이 true다. 따로 설정을 하지 않아도 re-export 구문을 최적화한다. 당연한 이야기지만 false로 설정하면 re-export 구문은 최적화 대상에서 제외된다.</p>
+<p>누가 이걸 false로 설정할까 싶지만, 모든 최적화에는 비용이 들기 마련이다. re-export 구문을 분석하고 최적화하는 과정 역시 그렇다. re-export 구문을 사용하지 않는다면 굳이 빌드 시간을 더 소비할 이유가 없다.</p>
+<p>providedExports를 false로 설정하고 빌드를 해보면, 빌드 버전에서 list 함수를 볼 수 있다.</p>
+<pre class="lang:js decode:true" title="providedExports: false">}([function(n, t, r) {
+    "use strict";
+
+    function e() {
+        for (var n = 0, t = 0, r = arguments, e = r.length; t &lt; e;) n += r[t++];
+        return n
+    }
+
+    function o() {
+        console.log("이것은 곱하기!");
+        for (var n = 1, t = 0, r = arguments, e = r.length; t &lt; e;) n *= r[t++];
+        return n
+    }
+
+    function u() {
+        return console.log("이것은 리스트!"), Array.from(arguments)
+    }
+    r.r(t), r.d(t, "add", function() {
+        return e
+    }), r.d(t, "multiply", function() {
+        return o
+    }), r.d(t, "list", function() {
+        return u
+    })
+}, function(n, t, r) {</pre>
+<h1>4. lodash와 sideEffects</h1>
+<p>Tree Shaking을 찾아보다가, lodash가 생각이 났다. 사용하지 않는 lodash 모듈을 빌드 버전에서 제외하려고 babel-plugin-lodash를 사용해왔다. Webpack 4의 Tree Shaking이 있으니, 이제 이 플러그인과 작별해도 되겠네? 테스트를 해보자.</p>
+<p>예제에 lodash 패키지를 추가하고,</p>
+<pre class="lang:js decode:true ">npm -i lodash</pre>
+<p>index.js의 코드를 아래와 같이 수정한 다음에 development 모드로 빌드를 했다.</p>
+<pre class="lang:js decode:true " title="index.js">import { add } from './math';
+import * as library from "./library";
+import { defaults } from "lodash";
+
+defaults("최적화!");
+
+add(1, 2);
+library.reexportedMultiply(1, 2);</pre>
+<p>번들링은 끝이 났고 최종 산출물에서 아까 추가한 코드가 보인다.</p>
+<pre class="lang:js decode:true " title="(development)bundle.js">Object(lodash__WEBPACK_IMPORTED_MODULE_2__["defaults"])("최적화!");</pre>
+<p>import 하지 않은 lodash의 다른 모듈은? Webpack의 보일러 플레이트 코드와 뒤섞여 혼란한 와중에서도 찾기 쉬운 이름의 함수를 검색하는 게 좋을 것 같다. <code>differenceWith</code> 함수를 검색했다.</p>
+<pre class="lang:js decode:true" title="(development)bundle.js">var differenceWith = baseRest(function(array, values) {
+  var comparator = last(values);
+  if (isArrayLikeObject(comparator)) {
+    comparator = undefined;
+  }
+  return isArrayLikeObject(array)
+    ? baseDifference(array, baseFlatten(values, 1, isArrayLikeObject, true), undefined, comparator)
+    : [];
+});</pre>
+<p>development 모드에서는 기본적으로 optimization 옵션이 동작하지 않으니 당연한 결과다. production 빌드를 하면? 없겠지.</p>
+<pre class="lang:js decode:true " title="(production)bundle.js">}, he.debounce = ef, he.defaults = Yf, he.defaultsDeep = Qf, he.defer = uf, he.delay = of , he.difference = so, he.differenceBy = ho, he.differenceWith = po, he.drop = function(n, t, r) {
+    var e = null == n ? 0 : n.length;
+    return e ? Su(n, (t = r || t === i ? 1 : Mf(t)) &lt; 0 ? 0 : t, e) : []
+}, he.dropRight = function(n, t, r) {</pre>
+<p>그런데 있다. Tree Shaking이 동작하지 않았다. 왜?</p>
+<p>​한참 삽질을 하던 중, Webpack의 공식 문서를 읽어보고서야 범인을 알 수 있었다. 범인은 sideEffects.</p>
+<p><a href="https://webpack.js.org/configuration/optimization/#optimization-sideeffects">https://webpack.js.org/configuration/optimization/#optimization-sideeffects</a></p>
+<p><span style="font-size: 10pt;">(Webpack 최적화 옵션의 sideEffects와는 다릅니다.)</span></p>
+<p>Tree Shaking을 수행하면 사용하지 않는 코드가 탈락된다. 이로 인해 사이드 이펙트가 발생할 수 있는데, 코드를 직접 평가하고 실행해보지 않는 이상 Webpack이 사이드 이펙트 발생 여부를 알 수는 없다. 그래서 Webpack이 찾은 대안이 sideEffects다.</p>
+<p>직접 코드를 평가하고 실행하는 대신에, Webpack은 외부 패키지의 package.json에 있는 sideEffects 설정을 보고 사이드 이펙트 존재 여부를 판단하다. 사이드 발생 여부에 대한 판단 책임을 코드 작성자에게 넘긴 셈이다. 만든 사람이 제일 잘 알테니깐.<br />
+​<br />
+이 옵션을 명시하지 않으면 Tree Shaking 시에 사이드 이펙트가 발생할 수 있다고 판단하여 해당 패키지를 Tree Shaking의 대상에서 제외한다. 따라서 package.json에 sideEffects 프로퍼티를 false로 명시해야만 Three Shaking을 적용받을 수 있다.</p>
+<p>위에서 설치한 lodash의 package.json을 확인하자.</p>
+<pre class="lang:js decode:true ">{
+  "_from": "lodash",
+  "_id": "lodash@4.17.11",
+  "_inBundle": false,
+  "_integrity": "sha512-cQKh8igo5QUhZ7lg38DYWAxMvjSAKG0A8wGSVimP07SIUEK2UO+arSRKbRZWtelMtN5V0Hkwh5ryOto/SshYIg==",
+  "_location": "/lodash",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "lodash",
+    "name": "lodash",
+    "escapedName": "lodash",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/lodash/-/lodash-4.17.11.tgz",
+  "_shasum": "b39ea6229ef607ecd89e2c8df12536891cac9b8d",
+  "_spec": "lodash",
+  "_where": "/Users/Naver/Workspace/coderk/tree-shaking-test",
+  "author": {
+    "name": "John-David Dalton",
+    "email": "john.david.dalton@gmail.com",
+    "url": "http://allyoucanleet.com/"
+  },
+  "bugs": {
+    "url": "https://github.com/lodash/lodash/issues"
+  },
+  "bundleDependencies": false,
+  "contributors": [
+    {
+      "name": "John-David Dalton",
+      "email": "john.david.dalton@gmail.com",
+      "url": "http://allyoucanleet.com/"
+    },
+    {
+      "name": "Mathias Bynens",
+      "email": "mathias@qiwi.be",
+      "url": "https://mathiasbynens.be/"
+    }
+  ],
+  "deprecated": false,
+  "description": "Lodash modular utilities.",
+  "homepage": "https://lodash.com/",
+  "icon": "https://lodash.com/icon.svg",
+  "keywords": [
+    "modules",
+    "stdlib",
+    "util"
+  ],
+  "license": "MIT",
+  "main": "lodash.js",
+  "name": "lodash",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lodash/lodash.git"
+  },
+  "scripts": {
+    "test": "echo \"See https://travis-ci.org/lodash-archive/lodash-cli for testing details.\""
+  },
+  "version": "4.17.11"
+}</pre>
+<p>역시나 sideEffects 옵션이 없다. lodash의 package.json에 sideEffects:false 옵션을 주고 다시 빌드를 하면 잘 될까?</p>
+<pre class="lang:js decode:true">sideEffects: false</pre>
+<p>왠지 여전히 트리 쉐이킹이 되지 않는다.</p>
+<pre class="lang:js decode:true" title="(production)bundle.js">}, he.debounce = ef, he.defaults = Yf, he.defaultsDeep = Qf, he.defer = uf, he.delay = of , he.difference = so, he.differenceBy = ho, he.differenceWith = po, he.drop = function(n, t, r) {
+    var e = null == n ? 0 : n.length;
+    return e ? Su(n, (t = r || t === i ? 1 : Mf(t)) &lt; 0 ? 0 : t, e) : []
+}, he.dropRight = function(n, t, r) {</pre>
+<p>궁금해서 구글링을 하던 중에 Webpack이 ES Module로 의존성을 관리하는 모듈만 Tree Shaking을 한다는 사실이 갑자기 머릿속에 떠올랐다. 혹시?</p>
+<p><a href="https://github.com/lodash/lodash/blob/4.17.11-npm/padEnd.js">https://github.com/lodash/lodash/blob/4.17.11-npm/padEnd.js</a></p>
+<p>역시나. <a href="https://github.com/lodash/lodash/blob/4.17.11-npm/padEnd.js" rel="nofollow">lodash-npm</a>는 CommonJS 스펙의 require를 사용한다. 애초에 Tree Shaking 대상이 아닌 것이다. lodash 팀은 lodash-es에는 sideEffects 옵션을 false로 명시했지만, npm 버전의 lodash에는 해당 옵션을 넣지 않았다. 의미가 없으니까.</p>
+<p><span style="font-size: 10pt;">(lodash-es의 sideEffect 옵션은 <a href="https://github.com/lodash/lodash/pull/3533/commits/e9384031f6063cbcf7772650731c9984e2d29ca9" rel="nofollow">이 커밋</a>에서 추가되었다)</span></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;		</p>

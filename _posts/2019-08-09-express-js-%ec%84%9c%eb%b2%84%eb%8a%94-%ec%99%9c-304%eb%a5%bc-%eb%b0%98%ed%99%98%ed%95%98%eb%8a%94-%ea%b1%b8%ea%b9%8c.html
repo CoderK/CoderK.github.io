@@ -1,0 +1,89 @@
+---
+layout: post
+title: Express.js 서버는 왜 304를 반환하는 걸까?
+date: 2019-08-09 11:29:41.000000000 +09:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- 개발 이야기
+tags:
+- '304'
+- cache
+- etag
+- express
+- http
+- server
+- til
+meta:
+  _edit_last: '1'
+  sociallikes: '1'
+  sociallikes_img_url: https://huns.me/wp/wp-content/uploads/2019/08/image.png
+  asalah_show_meta: 'yes'
+  asalah_show_share: 'yes'
+  asalah_show_title: 'yes'
+  show_author_box: 'yes'
+  asalah_custom_description: Express.js는 요청 헤더에 if-none-match 헤더가 있으면, 응답 결과를 이용해
+    Etag를 다시 생성한다. 그리고 요청 헤더의 if-none-match 값과 Etag를 비교한다. 값이 동일하다면 304 Not Modified를
+    반환하는데, 304 응답은 HTTP Body가 없다. 물론 개발자가 헤더의 값을 확인하여 수동으로 캐시 전략을 구현할 수도 있다.
+  asalah_sidebar_position: '0'
+  _format_video_embed: ''
+  _format_gallery_shortcode: ''
+  _format_audio_embed: ''
+  _format_gallery_type: shortcode
+author:
+  login: jeokrang
+  email: jeokrang@gmail.com
+  display_name: 개발왕 김코딩
+  first_name: 훈민
+  last_name: 김
+permalink: "/development/2306"
+excerpt: "\n\t\t\t\t\t\t"
+---
+<p>
+				<!-- wp:paragraph --></p>
+<p><strong><span style="font-size: 20pt;">1.</span> <br /></strong>Express.js는 정적 리소스 요청과 동적 리소스 요청을 구분한다. 정적 리소스에 대한 설정은 <code>express.static</code>으로 지정하도록 구분해 놓은 것이 그렇다.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p><strong><span style="font-size: 20pt;">2.</span> <br /></strong>어떤 리소스 요청이든, Express.js는 모든 응답에 Etag를 자동으로 생성해서 헤더에 추가한다. 기본 설정이다.  다음은 Etag를 가진 응답의 헤더를 보여준다.</p>
+<p>__</p>
+<p>HTTP/1.1 200 OK<br />Date: Fri, 09 Aug 2019 03:39:50 GMT<br />Server: Apache<br />X-Powered-By: Express<br />Vary: Origin<br />Access-Control-Allow-Credentials: true<br />Accept-Ranges: bytes<br />Cache-Control: public, max-age=0<br />Last-Modified: Thu, 08 Aug 2019 10:39:30 GMT<br />ETag: W/"12f8d-16c70cfead0"<br />Content-Type: image/png<br />Content-Length: 77709<br />Referrer-Policy: unsafe-url<br />Connection: close</p>
+<div class="wp-block-image">
+<p class="alignleft is-resized"><strong><span style="font-size: 20pt;">3.</span> <br /></strong>ETag는 HTTP 응답의 버전을 식별하는 일종의 식별자다. Etag가 같으면 같은 응답이고 다르면 다른 응답인 셈이다. Express는 세 가지의 ETag 생성 방식을 제공한다. strong, weak, 그리고 사용자 정의 방식.</p>
+</div>
+<pre class="lang:js decode:true">app.set("etag", "strong");
+app.set("etag", "weak");
+app.set("etag", (body, encoding) =&gt; { /* return etag */ });</pre>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:preformatted --><!-- /wp:preformatted --></p>
+<p><!-- wp:paragraph --></p>
+<p>weak 방식은 <a href="https://github.com/expressjs/express/blob/3ffceff3ed356a711fce5fee6ed00a03f43affd8/lib/utils.js#L53">CRC32</a>, strong 방식은 <a href="https://github.com/expressjs/express/blob/3ffceff3ed356a711fce5fee6ed00a03f43affd8/lib/utils.js#L28">MD5</a> 알고리즘을 이용하여 HTTP Body를 인코딩한다.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p><strong><span style="font-size: 20pt;">4.</span> <br /></strong>서버로부터 넘겨받은 응답 헤더에 Etag가 있다면, 브라우저(크롬만 확인)는 Etag의 값과 응답을 받은 시간을 기록해두었다가, 다음 번에 동일한 요청을 전송할 때 아래 두 개의 필드를 헤더에 추가하여 서버로 전송한다.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:list --></p>
+<ul>
+<li>'if-none-match': 'W/"12f8d-16c6ffc26c3”'</li>
+<li>'if-modified-since': 'Thu, 08 Aug 2019 06:48:11 GMT'</li>
+</ul>
+<p><!-- /wp:list --></p>
+<p><!-- wp:paragraph --></p>
+<p><strong><span style="font-size: 20pt;">5.</span> <br /></strong>Express.js는 요청 헤더에 if-none-match 헤더가 있으면, 응답 결과를 이용해 Etag를 다시 생성한다. 그리고 요청 헤더의 if-none-match 값과 Etag를 비교한다. 값이 동일하다면 304 Not Modified를 반환하는데, 304 응답은 HTTP Body가 없다. 물론 개발자가 헤더의 값을 확인하여 수동으로 캐시 전략을 구현할 수도 있다.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p><strong><span style="font-size: 20pt;">6.</span> <br /></strong>어쨌든 브라우저는 304 응답을 받으면 이전에 저장해 둔 정보를 참조한다.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p><strong><span style="font-size: 20pt;">7.</span> <br /></strong>Express.js에서 Etag를 생성하지 않도록 설정하는 건 쉽다. 다만 동적 요청에 대한 설정과 정적 요청에 대한 설정 방식이 다르다. 둘을 구분하니까.</p>
+<pre class="lang:js decode:true ">// 동적 요청에 대한 응답을 보낼 때 etag 생성을 하지 않도록 설정
+app.set("etag", false);
+
+// 정적 요청에 대한 응답을 보낼 때 etag 생성을 하지 않도록 설정
+const options = { etag: false };
+app.use(express.static("public", options));</pre>
+<p>&nbsp;</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:preformatted --><!-- /wp:preformatted -->		</p>

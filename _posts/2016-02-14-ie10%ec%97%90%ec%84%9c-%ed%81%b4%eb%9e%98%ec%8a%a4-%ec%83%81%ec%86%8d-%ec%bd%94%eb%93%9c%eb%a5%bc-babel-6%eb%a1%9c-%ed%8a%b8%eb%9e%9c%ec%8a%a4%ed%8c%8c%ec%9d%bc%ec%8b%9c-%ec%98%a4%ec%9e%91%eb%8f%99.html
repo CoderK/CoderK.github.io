@@ -1,0 +1,51 @@
+---
+layout: post
+title: IE10에서 클래스 상속 코드를 Babel 6로 트랜스파일시 오작동하는 현상
+date: 2016-02-14 18:41:05.000000000 +09:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- 개발 이야기
+tags:
+- babel6
+- es2015
+- 삽질기
+meta:
+  _format_quote_source_url: ''
+  _format_quote_source_name: ''
+  _format_video_embed: ''
+  _et_post_bg_layout: dark
+  _edit_last: '1'
+  sociallikes_img_url: ''
+  _et_post_bg_color: "#ffffff"
+  sociallikes: '1'
+author:
+  login: jeokrang
+  email: jeokrang@gmail.com
+  display_name: 개발왕 김코딩
+  first_name: 훈민
+  last_name: 김
+permalink: "/development/1765"
+excerpt: "\n\t\t\t\t\t\t"
+---
+
+<div>
+<p class="p1"><span class="s1">지금 하고 있는 프로젝트는 ES2015스펙을 사용하기 위해서 Babel 6로 코드를 트랜스파일하고 있다. 프로젝트를 진행하던 중 IE 10 이하 버전에서 자식 인스턴스를 생성할 때 부모의 생성자를 호출하지 않는 현상을 발견했는데, </span><span class="s1">원인을 추적해보니 익스플로러 10 이하 버전이 __proto__ 속성을 지원하지 않는 게 문제였다. </span></p>
+<p class="p1"><span class="s1">Babel 6는 객체의 __proto__ 프로퍼티를 이용해서 ES2015의 Classes 상속을 구현하고 있는데,  익스플로러 10 이하 버전이 이를 지원하지 않다보니 부모 생성자를 호출하지 못한다. </span><span class="s1">찾아보니 이미 공식 사이트에 나와있는 내용이더라.</span></p>
+<p class="p1">
+<p class="p3"><span class="s2"><a href="https://babeljs.algolia.com/docs/advanced/caveats/">https://babeljs.algolia.com/docs/advanced/caveats/  </a></span></p>
+<p class="p1">
+<p class="p1"><span class="s1">해결책도 다 나와있다. Babel 측은 loose 모드를 이용하는 걸로 이 문제를 우회하라고 안내하고 있다. loose 모드는 ES2015에 본래 스펙에서 규정하고 있는 처리 메커니즘에 근접한 코드가 아닌, 하위 호환성에 초점을 둔 좀 더 단순한 코드를 산출한다.</span></p>
+<p class="p1"><span class="s1">아래 링크를 타고 들어가보면 트랜스파일한 결과물이 어떻게 다른지 확인할 수 있다.</span></p>
+<p class="p1">
+<p class="p3"><span class="s2"><a href="http://www.2ality.com/2015/12/babel6-loose-mode.html">http://www.2ality.com/2015/12/babel6-loose-mode.html</a></span></p>
+<p class="p1">
+<p class="p1"><span class="s1">이런 종류의 이슈를 만날 때마다 내 자신에게 하는 이야기를 또 해야겠다.</span></p>
+<blockquote>
+<p class="p1"><span class="s1">문서 좀 잘 읽자잉~?</span></p>
+</blockquote>
+</div>
+<p class="p1">
