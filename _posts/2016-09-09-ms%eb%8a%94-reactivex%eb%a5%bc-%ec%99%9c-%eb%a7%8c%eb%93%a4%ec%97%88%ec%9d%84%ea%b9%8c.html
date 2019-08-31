@@ -44,7 +44,7 @@ excerpt: "\n\t\t\t\t\t\t"
 ---
 <p>
 				&nbsp;</p>
-<p>[caption id="attachment_2123" align="alignleft" width="325"]<a href="http://huns.me/wp/wp-content/uploads/2016/09/ngrx.png"><img class="wp-image-2123" src="{{ site.baseurl }}/assets/images/ngrx.png" alt="컨퍼런스에서 ngrx를 주제로 발표하는 남자의 사진" width="325" height="148" /></a> angular2와 rx의 만남이라![/caption]</p>
+<p><img class="wp-image-2123" src="{{ site.baseurl }}/assets/images/ngrx.png" alt="컨퍼런스에서 ngrx를 주제로 발표하는 남자의 사진" width="325" height="148" /></p>
 <p>요즘 웹 프론트엔드 분야에서 재밌는 주제를 하나 꼽자면, RxJS가 떠오른다. 그 동안 웹 프론트엔드 쪽에서는 큰 관심을 못 받던 기술이었는데 최근에 RxJS와 관련한 이야기가 솔솔 나오는 이유는 Angular2가 RxJS를 기본으로 탑재한 덕인 것 같다.</p>
 <p>내가 RxJS를 처음 알게 된 건 React 커뮤니티를 통해서였다. 이미 Angular2 등장 이전부터 React 커뮤니티에서는 React와 Rx를 결합하려는 시도가 있었다. 그래서 Rx를 가볍게 훑어본 적이 있었는데 언뜻 보기에 옵저버 패턴으로 이벤트를 바인딩하는 API를 제공하는 라이브러리 정도로 보였다. 별로 새로울 게 없다고 그냥 넘겼더랬다. 사실 그땐 사는 게 너무 바빠서 뭘 깊게 들여다 볼 여유가 없었다. 그렇게 Rx는 내 머리에서 잊혔다. 시간이 흐르고, 내 삶에 여유가 조금 찾아왔다. 마침 Angular2도 찾아오셨다.</p>
 <p>응?</p>
@@ -118,7 +118,7 @@ excerpt: "\n\t\t\t\t\t\t"
 <li>자극이 있어야만 반응하는 수동성을 갖는다.</li>
 </ul>
 <p>정리하자면 프로그램이 외부와 상호 작용하는 방식을 거꾸로 뒤집어서 수동적 반응성을 획득하는 일, 이것이 리액티브 프로그래밍의 목적이다. 에릭 마이어가 리액티브 프레임워크를 소개하는 강연에서 보여주었던 아래 그림은 리액티브 프로그래밍의 핵심을 잘 보여준다.</p>
-<p>[caption id="attachment_2126" align="aligncenter" width="960"]<a href="http://huns.me/wp/wp-content/uploads/2016/09/reactive-eric.png"><img class="wp-image-2126 size-large" title="리액티브 환경과 인터랙티브 환경에서 제어가 흐르는 모습을 비교하는 그림" src="{{ site.baseurl }}/assets/images/reactive-eric-1024x640.png" alt="에릭 마이어가 리액티브 프로그래밍을 소개하며 강연에서 사용했던 발표 자료로 외부에서 안으로 자극이 들어오는 리액티브 프로그래밍의 본질을 잘 보여준다." width="960" height="600" /></a> 출처를 까먹어서 찾을 수가 없다... 찾는 대로 업데이트 할 예정.[/caption]</p>
+<p><img class="wp-image-2126 size-large" title="리액티브 환경과 인터랙티브 환경에서 제어가 흐르는 모습을 비교하는 그림" src="{{ site.baseurl }}/assets/images/reactive-eric-1024x640.png" alt="에릭 마이어가 리액티브 프로그래밍을 소개하며 강연에서 사용했던 발표 자료로 외부에서 안으로 자극이 들어오는 리액티브 프로그래밍의 본질을 잘 보여준다." width="960" height="600" /></a> 출처를 까먹어서 찾을 수가 없다... 찾는 대로 업데이트 할 예정.</p>
 <p>이 설명에 따르면 프로그램이 외부 환경과 커뮤니케이션을 하는 방법은 크게 두 가지가 있다. pull-scenario, 그리고 push-scenario.</p>
 <ul>
 <li><strong>pull-scenario</strong>는 우리에게 익숙한 방식으로 프로그램이 외부 환경에 명령하여 원하는 결과를 획득하는 방식이다. 이 경우 프로그램이 직접 제어의 흐름을 통제한다.</li>
@@ -157,7 +157,8 @@ excerpt: "\n\t\t\t\t\t\t"
 <h4><b>LINQ와 이벤트 결합(LINQ To Events)</b></h4>
 <p>Rx는 외부에서 들어온 데이터를 단순히 목적지까지 운반하는 데 그치지 않는다. 더 나아가 이벤트와 LINQ라는 개념을 결합한 인터페이스를 제공하는데, 이를 이용하면 Observable로 전달받은 데이터를 LINQ 스타일로 처리할 수 있다. 이를 오퍼레이터(operator)라고 한다.</p>
 <p>LINQ(Language Intergrated Query)는 에릭 마이어가 만든 통합 질의 언어다. LINQ는 C# 3.0에 처음 등장했는데, 쿼리를 언어에 통합하여 코드 상에서 데이터를 질의할 때 SQL 쿼리처럼 표현할 수 있게 도와주는 일종의 확장 문법이다. 이를 이용하면 데이터 콜렉션에 대한 복잡한 절차적 질의를, 마치 SQL로 처리하는 것처럼 간결하게 변경할 수 있다. C#에서 제공하는 LINQ는 아래와 같은 모습이다.</p>
-<pre class="lang:c# decode:true" title="linq 예제코드">using (ServiceContext svcContext = new ServiceContext(_serviceProxy))
+{% highlight c# linenos=table %}
+using (ServiceContext svcContext = new ServiceContext(_serviceProxy))
 {
  var query_where1 = from a in svcContext.AccountSet
                     where a.Name.Contains("Contoso")
@@ -166,10 +167,14 @@ excerpt: "\n\t\t\t\t\t\t"
  {
   System.Console.WriteLine(a.Name + " " + a.Address1_City);
  }
-}</pre>
+}
+{% endhighlight javascript %}
+
 <p>C#은 쿼리 구문(Query Syntax)과 메서드 구문(Method Syntax)이라는 두 가지 타입의 LINQ를 제공한다. 이 둘의 차이는 아래의 링크에서 확인할 수 있다.</p>
 <p class="title"><a href="https://msdn.microsoft.com/ko-kr/library/bb397947.aspx">Query Syntax and Method Syntax in LINQ (C#)</a></p>
-<pre class="lang:js decode:true" title="Query syntax vs Method syntax">//Query syntax:
+
+{% highlight c# %}
+//Query syntax:
 IEnumerable&lt;int&gt; numQuery1 = 
     from num in numbers
     where num % 2 == 0
@@ -179,14 +184,18 @@ IEnumerable&lt;int&gt; numQuery1 =
 //Method syntax:
 IEnumerable&lt;int&gt; numQuery2 = numbers
     .Where(num =&gt; num % 2 == 0)
-    .OrderBy(n =&gt; n);</pre>
+    .OrderBy(n =&gt; n);
+{% endhighlight javascript %}
+
 <p>JavaScript 개발자라면 underscore나 lodash 같은 함수형 유틸 라이브러리를 접하면서 LINQ에 대한 이야기를 많이 들어봤을 텐데, Rx가 제공하는 LINQ 스타일 오퍼레이터는 메서드 구문의 LINQ와 유사하다.</p>
 <h6><b>“Your Mouse Is DataBase"</b></h6>
 <p>Observable은 프로그램이 연산을 수행하는 관점을 뒤집음으로써 비동기 처리에 유리한 구조를 만들 수 있는 토대를 제공한다. LINQ는 외부에서 스트림으로 들어오는 데이터를 쉽게 처리할 수 있는 방법을 제공한다.</p>
-<p>[caption id="attachment_2068" align="aligncenter" width="374"]<a href="https://www.youtube.com/watch?v=sTSQlYX5DU0" target="_blank" rel="https://www.youtube.com/watch?v=sTSQlYX5DU0"><img class="wp-image-2068" title="에릭마이어가 리액티브 프로그래밍을 강연하는 모습" src="{{ site.baseurl }}/assets/images/maxresdefault-1024x576.jpg" alt="에릭마이어가 리액티브 프로그래밍을 강연하는 모습" width="374" height="210" /></a> 출처: https://www.youtube.com/watch?v=sTSQlYX5DU0[/caption]</p>
+<p><img class="wp-image-2068" title="에릭마이어가 리액티브 프로그래밍을 강연하는 모습" src="{{ site.baseurl }}/assets/images/maxresdefault-1024x576.jpg" alt="에릭마이어가 리액티브 프로그래밍을 강연하는 모습" width="374" height="210" /></a></p>
 <p>리액티브 프로그래밍과 LINQ의 개념을 바탕으로 Rx가 비동기 데이터를 처리하는 방식을 이해하기 위해 드래그 앤 드롭을 예로 들어보자.</p>
 <p>마우스를 움직일 때마다 변하는 현재 위치 좌표는 외부에서 안으로 들어오는 자극이자, 데이터다. 이 좌표 데이터들은 Rx의 Observable이 만들어 놓은 문을 통해 프로그램 안으로 진입한다. 프로그램 안으로 들어온 데이터는 LINQ로 미리 작성해둔 오퍼레이터 사이를 헤엄쳐 최종 목적지에 도달한다. 프로그램은 최종 목적지로 들어온 데이터를 확인하여 응답한다. 이 과정은 마우스가 이동을 멈추지 않는 한 끊임없이 계속해서 이뤄진다. 마치 강물이 흐르듯이. 이게 Rx가 제안하는, 데이터 관점의 비동기 처리 방식이다.</p>
-<pre class="lang:js decode:true ">const dragElement = document.getElementById('dragElement');
+
+{% highlight javascript linenos=table %}
+const dragElement = document.getElementById('dragElement');
 const mouseDrag$ = Rx.Observable
     .fromEvent(dragElement, 'mouseup')
     .map(md =&gt; ({
@@ -196,7 +205,9 @@ const mouseDrag$ = Rx.Observable
 
 mouseDrag$.subscribe(pos =&gt; {
     console.log(pos);
-});</pre>
+});
+{% endhighlight javascript %}
+
 <p>에릭 마이어의 말처럼, Rx 세상 속에서 <a href="http://queue.acm.org/detail.cfm?id=2169076">Your Mouse는 DataBase</a>다.</p>
 <p>(Rx는 이외에도 스케줄러나 함수형 패러다임을 지원하는 다양한 장치를 제공한다. 다만 이 글에서는 핵심만 짚었을 뿐이다)</p>
 <h2><b>끝으로...</b></h2>

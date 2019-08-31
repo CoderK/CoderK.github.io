@@ -64,7 +64,7 @@ excerpt: "\n\t\t\t\t\t\t"
 <div class="se_viewArea se_ff_nanumgothic se_fs_T3 se_align-left">
 <div class="se_editView">
 <div class="se_textView">
-<pre class="lang:js decode:true">MessageStore.dispatchToken = ChatAppDispatcher.register(function(action) { 
+{% highlight javascript linenos=table %}MessageStore.dispatchToken = ChatAppDispatcher.register(function(action) { 
     switch(action.type) { 
         case ActionTypes.CLICK_THREAD: 
             // 여기를 유심히 보자
@@ -75,7 +75,7 @@ excerpt: "\n\t\t\t\t\t\t"
         default: 
         // do nothing 
     } 
-});</pre>
+});{% endhighlight javascript %}
 </div>
 </div>
 </div>
@@ -93,7 +93,7 @@ excerpt: "\n\t\t\t\t\t\t"
 <div class="se_editView">
 <div class="se_textView">
 <div class="__se_code_view se_textarea language-javascript">
-<pre class="lang:js decode:true">import {ReduceStore} from 'flux/utils';
+{% highlight javascript linenos=table %}import {ReduceStore} from 'flux/utils';
 
 class CounterStore extends ReduceStore&lt;number&gt; {
   getInitialState(): number {
@@ -112,7 +112,7 @@ class CounterStore extends ReduceStore&lt;number&gt; {
         return state;
     }
   }
-}</pre>
+}{% endhighlight javascript %}
 </div>
 </div>
 </div>
@@ -123,7 +123,7 @@ class CounterStore extends ReduceStore&lt;number&gt; {
 <div class="se_viewArea se_ff_nanumgothic se_fs_T3 se_align-left">
 <div class="se_editView">
 <div class="se_textView">
-<pre class="lang:js decode:true">import { createStore } from 'redux'
+{% highlight javascript linenos=table %}import { createStore } from 'redux'
 
 function counter(state = 0, action) {
     switch (action.type) {
@@ -138,7 +138,7 @@ function counter(state = 0, action) {
     }
 }
 
-const store = createStore(counter);</pre>
+const store = createStore(counter);{% endhighlight javascript %}
 </div>
 </div>
 </div>
@@ -155,7 +155,7 @@ const store = createStore(counter);</pre>
 <div class="se_editView">
 <div class="se_textView">
 <div class="__se_code_view se_textarea language-javascript">
-<pre class="lang:js decode:true ">resolvers.deleteComponent = (prevState, { targetId }) =&gt; {
+{% highlight javascript linenos=table %}resolvers.deleteComponent = (prevState, { targetId }) =&gt; {
     const { order, compMap } = prevState;
     const updatedOrder = deleteComponent(order, targetId);
 
@@ -167,7 +167,7 @@ const store = createStore(counter);</pre>
         })
         .deleteIn(["compMap", targetId])
         .toJSON();
-};</pre>
+};{% endhighlight javascript %}
 </div>
 </div>
 </div>
@@ -179,7 +179,7 @@ const store = createStore(counter);</pre>
 <div class="se_editView">
 <div class="se_textView">
 <div class="__se_code_view se_textarea language-javascript">
-<pre class="lang:js decode:true ">it("컴포넌트 목록에서 원하는 컴포넌트 하나를 삭제할 수 있다.", () =&gt; {
+{% highlight javascript linenos=table %}it("컴포넌트 목록에서 원하는 컴포넌트 하나를 삭제할 수 있다.", () =&gt; {
     // given
     const deleteTarget = 'target';
     const action = compListAction.deleteComponent(deleteTarget);
@@ -190,7 +190,7 @@ const store = createStore(counter);</pre>
     // then
     order.should.not.include(deleteTarget);
     should.not.exist(compMap[deleteTarget]);
-});</pre>
+});{% endhighlight javascript %}
 </div>
 </div>
 </div>
@@ -207,7 +207,7 @@ const store = createStore(counter);</pre>
 <div class="se_editView">
 <div class="se_textView">
 <div class="__se_code_view se_textarea language-javascript">
-<pre class="lang:js decode:true ">import { combineReducers } from "redux";
+{% highlight javascript linenos=table %}import { combineReducers } from "redux";
 import { routerReducer } from "react-router-redux";
 
 import toast from "./toast/reducer.js";
@@ -225,7 +225,7 @@ export default combineReducers({
     suggest,
     metaData,
     routing: routerReducer
-});</pre>
+});{% endhighlight javascript %}
 </div>
 </div>
 </div>
@@ -238,12 +238,12 @@ export default combineReducers({
 <div class="se_editView">
 <div class="se_textView">
 <div class="__se_code_view se_textarea language-javascript">
-<pre class="lang:js decode:true">{
+{% highlight javascript linenos=table %}{
     header: {},
     navigator: {},
     contents: {},
     footer: {}
-}</pre>
+}{% endhighlight javascript %}
 </div>
 </div>
 </div>
@@ -256,7 +256,7 @@ export default combineReducers({
 <div class="se_editView">
 <div class="se_textView">
 <div class="__se_code_view se_textarea language-javascript">
-<pre class="lang:js decode:true ">{
+{% highlight javascript linenos=table %}{
     toolbar : {
         isShown: false
     },
@@ -277,7 +277,7 @@ export default combineReducers({
         document : {}
         release : {}
     }
-}</pre>
+}{% endhighlight javascript %}
 </div>
 </div>
 </div>
@@ -298,22 +298,22 @@ export default combineReducers({
 <div class="se_editView">
 <div class="se_textView">
 <div class="__se_code_view se_textarea language-javascript">
-<pre class="lang:js decode:true ">import React, { PropTypes } from 'react'
+{% highlight jsx linenos=table %}import React, { PropTypes } from 'react'
 
 const Link = ({ active, children, onClick }) = {
   if (active) {
-    return &lt;span{children}&lt;/span
+    return <span>{children}</span>
   }
 
   return (
-    &lt;a href="#"
+    <a href="#"
       onClick={e = {
         e.preventDefault()
         onClick()
-      }}
+      }}>
    
       {children}
-    &lt;/a
+    </a>
   )
 }
 
@@ -323,7 +323,7 @@ Link.propTypes = {
   onClick: PropTypes.func.isRequired
 }
 
-export default Link</pre>
+export default Link{% endhighlight jsx %}
 </div>
 </div>
 </div>
@@ -335,7 +335,7 @@ export default Link</pre>
 <div class="se_editView">
 <div class="se_textView">
 <div class="__se_code_view se_textarea language-javascript">
-<pre class="lang:js decode:true ">import { connect } from 'react-redux'
+{% highlight javascript linenos=table %}import { connect } from 'react-redux'
 import { setVisibilityFilter } from '../actions'
 import Link from '../components/Link'
 
@@ -356,7 +356,7 @@ const mapDispatchToProps = (dispatch, ownProps) = {
 const FilterLink = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Link)</pre>
+)(Link){% endhighlight javascript %}
 </div>
 </div>
 </div>
@@ -386,7 +386,7 @@ const FilterLink = connect(
 <div class="se_editView">
 <div class="se_textView">
 <div class="__se_code_view se_textarea language-javascript">
-<pre class="lang:js decode:true ">import { connect } from 'react-redux'
+{% highlight javascript linenos=table %}import { connect } from 'react-redux'
 import { setVisibilityFilter } from '../actions'
 import Link from '../components/Link'
 
@@ -409,7 +409,7 @@ const FilterLink = connect(
   mapDispatchToProps
 )(Link)
 
-export default FilterLink</pre>
+export default FilterLink{% endhighlight javascript %}
 </div>
 </div>
 </div>
@@ -421,11 +421,11 @@ export default FilterLink</pre>
 <div class="se_editView">
 <div class="se_textView">
 <div class="__se_code_view se_textarea language-javascript">
-<pre class="lang:js decode:true ">const mapStateToProps = (state, ownProps) = { 
+{% highlight javascript linenos=table %}const mapStateToProps = (state, ownProps) = { 
   return { 
     active: ownProps.filter === state.visibilityFilter 
   } 
-}</pre>
+}{% endhighlight javascript %}
 </div>
 </div>
 </div>
@@ -438,11 +438,11 @@ export default FilterLink</pre>
 <div class="se_editView">
 <div class="se_textView">
 <div class="__se_code_view se_textarea language-javascript">
-<pre class="lang:js decode:true">const mapStateToProps = (state, ownProps) = { 
+{% highlight javascript linenos=table %}const mapStateToProps = (state, ownProps) = { 
   return { 
     active: ownProps.filter === state.visibilityFilter 
   } 
-}</pre>
+}{% endhighlight javascript %}
 </div>
 </div>
 </div>
@@ -455,7 +455,7 @@ export default FilterLink</pre>
 <div class="se_editView">
 <div class="se_textView">
 <div class="__se_code_view se_textarea language-javascript">
-<pre class="lang:js decode:true ">import { createSelector } from 'reselect'
+{% highlight javascript linenos=table %}import { createSelector } from 'reselect'
 
 const getVisibilityFilter = (state, props) =&gt;
   state.todoLists[props.listId].visibilityFilter
@@ -487,7 +487,7 @@ const makeMapStateToProps = () =&gt; {
     }
   }
   return mapStateToProps
-}</pre>
+}{% endhighlight javascript %}
 </div>
 </div>
 </div>
@@ -499,13 +499,13 @@ const makeMapStateToProps = () =&gt; {
 <div class="se_editView">
 <div class="se_textView">
 <div class="__se_code_view se_textarea language-javascript">
-<pre class="lang:js decode:true">const mapDispatchToProps = (dispatch, ownProps) =&gt; { 
+{% highlight javascript linenos=table %}const mapDispatchToProps = (dispatch, ownProps) =&gt; { 
   return { 
     onClick: () =&gt; { 
       dispatch(setVisibilityFilter(ownProps.filter)); 
     } 
   } 
-}</pre>
+}{% endhighlight javascript %}
 </div>
 </div>
 </div>
@@ -522,7 +522,7 @@ const makeMapStateToProps = () =&gt; {
 <div class="se_editView">
 <div class="se_textView">
 <div class="__se_code_view se_textarea language-javascript">
-<pre class="lang:js decode:true ">const mapDispatchToProps = (dispatch, ownProps) =&gt; { 
+{% highlight javascript linenos=table %}const mapDispatchToProps = (dispatch, ownProps) =&gt; { 
   return { 
     onClickDisplay: () =&gt; { 
       dispatch(setVisibilityFilter(ownProps.filter)); 
@@ -531,7 +531,7 @@ const makeMapStateToProps = () =&gt; {
       dispatch(toggleTodo(id));
     } 
   } 
-}</pre>
+}{% endhighlight javascript %}
 </div>
 </div>
 </div>
@@ -543,7 +543,7 @@ const makeMapStateToProps = () =&gt; {
 <div class="se_editView">
 <div class="se_textView">
 <div class="__se_code_view se_textarea language-javascript">
-<pre class="lang:js decode:true ">const mapDispatchToProps = (dispatch, ownProps) =&gt; { 
+{% highlight javascript linenos=table %}const mapDispatchToProps = (dispatch, ownProps) =&gt; { 
   return { 
     setVisibilityFilter: () =&gt; { 
         dispatch(setVisibilityFilter(ownProps.filter)); 
@@ -551,7 +551,7 @@ const makeMapStateToProps = () =&gt; {
     toggleTodo: () =&gt; { 
         dispatch(toggleTodo(id)); 
     } 
-}</pre>
+}{% endhighlight javascript %}
 </div>
 </div>
 </div>
@@ -564,7 +564,7 @@ const makeMapStateToProps = () =&gt; {
 <div class="se_editView">
 <div class="se_textView">
 <div class="__se_code_view se_textarea language-javascript">
-<pre class="lang:js decode:true ">const mapDispatchToProps = (dispatch, ownProps) =&gt; { 
+{% highlight javascript linenos=table %}const mapDispatchToProps = (dispatch, ownProps) =&gt; { 
   return { 
     onClickDisplay: () =&gt; { 
       dispatch(setVisibilityFilter(ownProps.filter)); 
@@ -574,7 +574,7 @@ const makeMapStateToProps = () =&gt; {
       dispatch(setVisibilityFilter(ownProps.filter)); 
     } 
   } 
-}</pre>
+}{% endhighlight javascript %}
 </div>
 </div>
 </div>
@@ -586,7 +586,7 @@ const makeMapStateToProps = () =&gt; {
 <div class="se_editView">
 <div class="se_textView">
 <div class="__se_code_view se_textarea language-javascript">
-<pre class="lang:js decode:true ">const TodoList = ({ todos, setVisibilityFilter, toggleTodo }) =&gt; ( 
+{% highlight javascript linenos=table %}const TodoList = ({ todos, setVisibilityFilter, toggleTodo }) =&gt; ( 
   &lt;ul&gt; 
     {todos.map(todo =&gt;
       &lt;Todo
@@ -599,7 +599,7 @@ const makeMapStateToProps = () =&gt; {
       /&gt;
     )}
   &lt;/ul&gt; 
-)</pre>
+){% endhighlight javascript %}
 </div>
 </div>
 </div>
@@ -611,7 +611,7 @@ const makeMapStateToProps = () =&gt; {
 <div class="se_editView">
 <div class="se_textView">
 <div class="__se_code_view se_textarea language-javascript">
-<pre class="lang:js decode:true ">const mapDispatchToProps = (dispatch, ownProps) =&gt; { 
+{% highlight javascript linenos=table %}const mapDispatchToProps = (dispatch, ownProps) =&gt; { 
   return { 
     setVisibilityFilter: () =&gt; { 
         dispatch(setVisibilityFilter(ownProps.filter)); 
@@ -620,7 +620,7 @@ const makeMapStateToProps = () =&gt; {
         dispatch(toggleTodo(id)); 
         dispatch(setVisibilityFilter(ownProps.filter)); 
     } 
-}</pre>
+}{% endhighlight javascript %}
 </div>
 </div>
 </div>
@@ -665,7 +665,7 @@ const makeMapStateToProps = () =&gt; {
 <div class="se_editView">
 <div class="se_textView">
 <div class="__se_code_view se_textarea language-javascript">
-<pre class="lang:js decode:true">it("컴포넌트 목록에서 원하는 컴포넌트 하나를 삭제할 수 있다.", () =&gt; {
+{% highlight javascript linenos=table %}it("컴포넌트 목록에서 원하는 컴포넌트 하나를 삭제할 수 있다.", () =&gt; {
     // given
     const deleteTarget = 'target';
     const action = compListAction.deleteComponent(deleteTarget);
@@ -676,7 +676,7 @@ const makeMapStateToProps = () =&gt; {
     // then
     order.should.not.include(deleteTarget);
     should.not.exist(compMap[deleteTarget]);
-});</pre>
+});{% endhighlight javascript %}
 </div>
 </div>
 </div>
@@ -688,7 +688,7 @@ const makeMapStateToProps = () =&gt; {
 <div class="se_editView">
 <div class="se_textView">
 <div class="__se_code_view se_textarea language-javascript">
-<pre class="lang:js decode:true ">export function deleteComponent(compId) {
+{% highlight javascript linenos=table %}export function deleteComponent(compId) {
   return { type: DELETE_COMPONENT, compId: compId }
 }
 
@@ -711,7 +711,7 @@ export function routeByButtonName(name) {
         dispatch(moveDownComponent(focusCompId, UNMOVABLE_COMPONENTS));
       }
   }
-}</pre>
+}{% endhighlight javascript %}
 </div>
 </div>
 </div>
@@ -723,7 +723,7 @@ export function routeByButtonName(name) {
 <div class="se_editView">
 <div class="se_textView">
 <div class="__se_code_view se_textarea language-javascript">
-<pre class="lang:js decode:true ">it("도구막대의 삭제 버튼을 클릭해서 현재 포커스를 가지고 있는 컴포넌트를 삭제할 것을 요청할 수 있다.", function () {
+{% highlight javascript linenos=table %}it("도구막대의 삭제 버튼을 클릭해서 현재 포커스를 가지고 있는 컴포넌트를 삭제할 것을 요청할 수 있다.", function () {
   // given
   const btnName = 'remove';
   const fakeDispatcher = sandboxSinon.spy(() =&gt; {});
@@ -738,7 +738,7 @@ export function routeByButtonName(name) {
 
   // then
   fakeDispatcher.args[1][0].should.be.eql(deleteComponent());
-});</pre>
+});{% endhighlight javascript %}
 </div>
 </div>
 </div>
@@ -751,7 +751,7 @@ export function routeByButtonName(name) {
 <div class="se_editView">
 <div class="se_textView">
 <div class="__se_code_view se_textarea language-javascript">
-<pre class="lang:js decode:true ">it("도구막대의 삭제 버튼을 클릭해서 현재 포커스를 가지고 있는 컴포넌트를 삭제할 것을 요청할 수 있다.", function () {
+{% highlight javascript linenos=table %}it("도구막대의 삭제 버튼을 클릭해서 현재 포커스를 가지고 있는 컴포넌트를 삭제할 것을 요청할 수 있다.", function () {
     // given
     const fakeState = {
         components: {
@@ -768,7 +768,7 @@ export function routeByButtonName(name) {
     actualActions.should.be.eql([
         compsActions.deleteComponent(fakeState.components.focusCompId)
     ]);
-});</pre>
+});{% endhighlight javascript %}
 </div>
 </div>
 </div>

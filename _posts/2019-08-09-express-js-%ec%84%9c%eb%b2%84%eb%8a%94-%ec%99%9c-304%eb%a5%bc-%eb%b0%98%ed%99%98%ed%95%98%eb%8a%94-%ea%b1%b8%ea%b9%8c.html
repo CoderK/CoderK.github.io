@@ -78,12 +78,13 @@ app.set("etag", (body, encoding) =&gt; { /* return etag */ });</pre>
 <p><!-- /wp:paragraph --></p>
 <p><!-- wp:paragraph --></p>
 <p><strong><span style="font-size: 20pt;">7.</span> <br /></strong>Express.js에서 Etag를 생성하지 않도록 설정하는 건 쉽다. 다만 동적 요청에 대한 설정과 정적 요청에 대한 설정 방식이 다르다. 둘을 구분하니까.</p>
-<pre class="lang:js decode:true ">// 동적 요청에 대한 응답을 보낼 때 etag 생성을 하지 않도록 설정
+{% highlight javascript linenos=table %}// 동적 요청에 대한 응답을 보낼 때 etag 생성을 하지 않도록 설정
 app.set("etag", false);
 
 // 정적 요청에 대한 응답을 보낼 때 etag 생성을 하지 않도록 설정
 const options = { etag: false };
-app.use(express.static("public", options));</pre>
+app.use(express.static("public", options));
+{% endhighlight javascript %}
 <p>&nbsp;</p>
 <p><!-- /wp:paragraph --></p>
 <p><!-- wp:preformatted --><!-- /wp:preformatted -->		</p>

@@ -64,13 +64,14 @@ excerpt: "\n\t\t\t\t\t\t"
 <p>브라우저에서 서버로 HTTP 요청을 보낼 때, 우리는 XMLHttpRequest나 Fetch API를 주로 이용한다.</p>
 <p><!-- /wp:paragraph --></p>
 <p><!-- wp:code --></p>
-{% highlight javascript %} /* XHR 개체를 이용하는 과거 방식 */
+{% highlight javascript linenos=table %}/* XHR 개체를 이용하는 과거 방식 */
 const request = new XMLHttpRequest();
 request.open("GET", "http://www.example.org/example.txt");
-request.send(); {% endhighlight javascript %} 
+request.send(); 
+{% endhighlight javascript %} 
 <p><!-- /wp:code --></p>
 <p><!-- wp:code --></p>
-{% highlight javascript %}
+{% highlight javascript linenos=table %}
 /* Fetch API를 이용하는 새로운 방식 */
 const myRequest = new Request('http://localhost/flowers.jpg');
 
@@ -103,7 +104,7 @@ fetch(myRequest)
 <p><!-- wp:paragraph --></p>
 <p>이에 반해 이미지나 CSS와 같은 리소스를 가져오는 요청, 즉 클라이언트의 코드 레벨이 아닌 하부 시스템에 의해 네트워크 요청이 만들어지는 경우(link, script, img, audio 등…)에 요청 개체는 no-cors를 기본값으로 갖는다. 다만, crossorigin 속성을 부여하면 mode는 cors가 된다.</p>
 <p><!-- /wp:paragraph --></p>
-{% highlight javascript %} // 아래의 경우는 mode가 cors 
+{% highlight javascript linenos=table %}// 아래의 경우는 mode가 cors 
 <link rel="manifest" href="/app.webmanifest" crossorigin="use-credentials"> 
 {% endhighlight javascript %} 
 <p><!-- /wp:code --></p>
