@@ -37,7 +37,7 @@ excerpt: "\n\t\t\t\t\t\t"
 <p>클라이언트의 도메인과 서버의 도메인이 서로 다른 경우, 브라우저는 크로스 도메인(Cross Domain) 보안 정책에 따라 요청을 차단한다. 이 상황을 우회하는 <a href="https://huns.me/development/1291" target="_blank" rel="noreferrer noopener">몇 가지 해법</a>이 있는데, 스마트에디터 원은 주로 CORS를 이용하고 있다. 최근에 네이버 지식인에 스마트에디터 원을 적용하다가 CORS 정책을 위반하는 상황을 만났는데, 아래의 스크린은 이 상황을 보여준다.</p>
 <p><!-- /wp:paragraph --></p>
 <p><!-- wp:image {"linkDestination":"custom"} --></p>
-<figure class="wp-block-image"><img src="{{ site.baseurl }}/assets/images/SE-13e1dd27-78db-4010-ba17-c139b6350438.png?type=w773" alt="" /></figure>
+<figure class="wp-block-image"><img src="{{ site.baseurl }}/assets/images/legacy/SE-13e1dd27-78db-4010-ba17-c139b6350438.png?type=w773" alt="" /></figure>
 <p><!-- /wp:image --></p>
 <p><!-- wp:paragraph --></p>
 <p>개발하는 도중에 종종 만나는 상황이라 그리 놀랄 일은 아니다. 서버 측에서 응답 헤더의 속성 중, Access-Control-Allow-Origin에 접근을 허용하는 클라이언트의 도메인을 넣어주면 끝이다.</p>
@@ -46,13 +46,13 @@ excerpt: "\n\t\t\t\t\t\t"
 <p>그런데 네트워크 요청에 대한 응답으로 에러를 전달받은 경우에 안내 메시지를 화면에 노출하도록 처리하고 있음에도 아무런 메시지를 노출하지 않는 것이 마음에 걸렸다. 원인을 찾아서 조금 더 상황을 들여다보다가 재미있는 점을 발견했다. 분명 에러 상황인데 응답 상태 코드(Status Code)가 200이네? 물론 Response의 Header에는 Status가 없지만.</p>
 <p><!-- /wp:paragraph --></p>
 <p><!-- wp:image {"linkDestination":"custom"} --></p>
-<figure class="wp-block-image"><a href="https://blog.naver.com/PostView.nhn?blogId=jukrang&amp;Redirect=View&amp;logNo=221534914187&amp;categoryNo=11&amp;isAfterWrite=true#"><img src="{{ site.baseurl }}/assets/images/SE-c84a1804-fd68-4f1f-85fa-e5d8a529d47a.png?type=w773" alt="" /></a></figure>
+<figure class="wp-block-image"><a href="https://blog.naver.com/PostView.nhn?blogId=jukrang&amp;Redirect=View&amp;logNo=221534914187&amp;categoryNo=11&amp;isAfterWrite=true#"><img src="{{ site.baseurl }}/assets/images/legacy/SE-c84a1804-fd68-4f1f-85fa-e5d8a529d47a.png?type=w773" alt="" /></a></figure>
 <p><!-- /wp:image --></p>
 <p><!-- wp:paragraph --></p>
 <p>더군다나 응답 결과로 만들어진 Response 개체의 status 값은 0이다. 뭘까... 이 부조화한 상황은.</p>
 <p><!-- /wp:paragraph --></p>
 <p><!-- wp:image {"linkDestination":"custom"} --></p>
-<figure class="wp-block-image"><a href="https://blog.naver.com/PostView.nhn?blogId=jukrang&amp;Redirect=View&amp;logNo=221534914187&amp;categoryNo=11&amp;isAfterWrite=true#"><img src="{{ site.baseurl }}/assets/images/what-situation.png" alt="" /></a></figure>
+<figure class="wp-block-image"><a href="https://blog.naver.com/PostView.nhn?blogId=jukrang&amp;Redirect=View&amp;logNo=221534914187&amp;categoryNo=11&amp;isAfterWrite=true#"><img src="{{ site.baseurl }}/assets/images/legacy/what-situation.png" alt="" /></a></figure>
 <p><!-- /wp:image --></p>
 <p><!-- wp:paragraph --></p>
 <p>응답 개체의 status가 에러를 표현(401, 404, 500과 같은) 하는 경우에만 대응하도록 코드를 작성하였기에 status가 0인 상황은 제대로 대응하지 못한 셈이다. 조건이야 추가하면 그만인데, 이런 결과가 만들어진 이유가 궁금했고, 밀려오는 호기심을 견디지 못해 스펙을 뒤지기 시작했다.</p>

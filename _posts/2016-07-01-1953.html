@@ -49,7 +49,7 @@ excerpt: "\n\t\t\t\t\t\t"
 				이 글은 리덕스를 이용하여 애플리케이션을 개발할 때, 설계를 고민하며 했던 생각을 정리한 글입니다. 리덕스 기초를 소개하는 글이 아니니 읽기 전에 참고하세요.</p>
 <p><b>--</b></p>
 <p>&nbsp;</p>
-<p><img class="wp-image-1987" src="{{ site.baseurl }}/assets/images/photo-1416453072034-c8dbfa2856b5-1024x676.jpeg" alt="많은 사람들이 커피숍 테이블에 앉아 왁자지껄 시끄럽게 이야기를 주고 받는 모습의 사진" width="410" /></a> 타인과 생각을 공유하고 의견을 주고 받으며 부딪히는 과정은 피곤하지만, 그 속에서 더 좋은 해법을 발견한다.</p>
+<p><img class="wp-image-1987" src="{{ site.baseurl }}/assets/images/legacy/photo-1416453072034-c8dbfa2856b5-1024x676.jpeg" alt="많은 사람들이 커피숍 테이블에 앉아 왁자지껄 시끄럽게 이야기를 주고 받는 모습의 사진" width="410" /></a> 타인과 생각을 공유하고 의견을 주고 받으며 부딪히는 과정은 피곤하지만, 그 속에서 더 좋은 해법을 발견한다.</p>
 <p><span class="se_ff_nanumgothic">최근 진행하고 있는 모바일 웹 프로젝트는 리액트(React)와 리덕스(Redux) 조합을 이용하고 있다. 모든 </span><span class="se_ff_nanumgothic">프레임워크가 그렇듯이, 리덕스 역시 모든 문제를 해결하지 않는다. 남은 부분은 개발자의 몫이다. 리덕스 공식 문서의 FAQ는 개발하면서 한 번쯤은 고민해봤을 법한 문제를 리덕스로 해결하는 방법을 친절하게 안내하고 있어 참고할만하지만, 확실하게 딱 잘라서 결정해주는 맛은 없다.<br />
 </span><span class="se_ff_nanumgothic"><br />
 </span><span class="se_ff_nanumgothic">사실 가치 판단의 문제인 경우가 대부분이라, 딱 잘라서 정답을 제시한다는 것 자체가 어렵다. 선택지라도 알려주는 게 어딘가. </span><span class="se_ff_nanumgothic">무엇이 더 좋은 선택인지는 전체 상황을 고려해서 결정해야 하며 </span><span class="se_ff_nanumgothic">프로젝트 초기에 어느 정도 설계의 방향성을 팀원 간에 합의를 하는 것이 좋다. 그렇지 않으면 일관성을 잃어버린 코드가 제멋대로 자라다가 급기야는 시스템을 좀먹는다.</span></p>
@@ -82,7 +82,7 @@ excerpt: "\n\t\t\t\t\t\t"
 </div>
 <p class="__se_code_view se_textarea language-javascript">이에 반해 리덕스는 단일 스토어를 유지하되, 상태 처리에 대한 책임을 스토어의 하위에 있는 리듀서에게 넘기는 '단일 스토어, 다수의 리듀서' 전략을 택했다. 리덕스에서 스토어는 컴포넌트와 리듀서를 연결하는 아주 얇은 레이어일 뿐이다. 상태와 상태를 처리하는 행위는 스토어가 아닌 리듀서가 책임진다. 스토어는 여러 개의 리듀서를 가질 수 있다. 각각의 리듀서가 처리하는 상태는 최종적으로 최상위 리듀서가 시스템의 상태 트리로 만들어서 스토어를 구독하는 구독자에게 전달한다.</p>
 <div class="se_editArea">
-<div class="se_viewArea"><img id="SEDOC-1467376846350-892175543_image_2_img" class="se_mediaImage __se_img_el" src="{{ site.baseurl }}/assets/images/Redux_Archictecture_-_New_Page_.png" alt="" width="936" data-attachment-id="" /></div>
+<div class="se_viewArea"><img id="SEDOC-1467376846350-892175543_image_2_img" class="se_mediaImage __se_img_el" src="{{ site.baseurl }}/assets/images/legacy/Redux_Archictecture_-_New_Page_.png" alt="" width="936" data-attachment-id="" /></div>
 </div>
 <p class="se_textarea">물론 플럭스 유틸즈를 이용해도 하나의 스토어를 두고 상태 처리 책임을 분리하는 방식으로 설계할 수 있고, 리덕스 역시 여러 스토어를 구현할 수 있다. 둘 다 어떤 한 가지 정책을 강제하지는 않는다. 다만 기저에 깔린 설계 철학이 어떤 쪽에 더 가까운지를 생각해봤을 때 그렇다는 뜻이고, 이 철학에 맞춰 구현할 때 가장 자연스럽다.</p>
 <p>이 지점에서 분리해야 하는 대상의 본질이 스토어와 액션을 결합하는 인터페이스가 아니라 스토어가 관리하는 상태 데이터와 그 데이터를 처리하는 행위에 있다는 사실을 알 수 있다. 액션과 스토어를 결합하는 방식은 스토어가 어떤 상태를, 어떻게 책임지는지와는 상관없이 모두 동일하다. 이 공통 인터페이스를 플럭스 유틸즈는 상속으로 해결한다. 아래의 링크를 따라가보면 플럭스 유틸즈가 제공하는 스토어 객체를 확인할 수 있다. 플럭스 유틸즈는 모두 세 종류의 스토어 객체를 제공한다.</p>
@@ -636,7 +636,7 @@ const makeMapStateToProps = () =&gt; {
 <div class="se_viewArea se_ff_nanumgothic se_fs_T3 se_align-left">
 <div class="se_editView">
 <div class="se_textView">
-<p><a href="http://huns.me/wp/wp-content/uploads/2016/07/SE3-Mobile-Layer-Archictecture-Untitled-Page.png"><img class="aligncenter size-large wp-image-1960" src="{{ site.baseurl }}/assets/images/SE3-Mobile-Layer-Archictecture-Untitled-Page-1024x1016.png" alt="SE3-Mobile Layer Archictecture - Untitled Page" /></a>각 레이어의 정체성은 아래와 같이 정리했다.</p>
+<p><a href="http://huns.me/wp/wp-content/uploads/2016/07/SE3-Mobile-Layer-Archictecture-Untitled-Page.png"><img class="aligncenter size-large wp-image-1960" src="{{ site.baseurl }}/assets/images/legacy/SE3-Mobile-Layer-Archictecture-Untitled-Page-1024x1016.png" alt="SE3-Mobile Layer Archictecture - Untitled Page" /></a>각 레이어의 정체성은 아래와 같이 정리했다.</p>
 </div>
 </div>
 </div>
