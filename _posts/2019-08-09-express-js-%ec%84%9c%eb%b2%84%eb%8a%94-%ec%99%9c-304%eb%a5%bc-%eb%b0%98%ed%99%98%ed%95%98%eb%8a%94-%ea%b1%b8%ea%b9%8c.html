@@ -53,9 +53,11 @@ excerpt: "\n\t\t\t\t\t\t"
 <div class="wp-block-image">
 <p class="alignleft is-resized"><strong><span style="font-size: 20pt;">3.</span> <br /></strong>ETag는 HTTP 응답의 버전을 식별하는 일종의 식별자다. Etag가 같으면 같은 응답이고 다르면 다른 응답인 셈이다. Express는 세 가지의 ETag 생성 방식을 제공한다. strong, weak, 그리고 사용자 정의 방식.</p>
 </div>
-<pre class="lang:js decode:true">app.set("etag", "strong");
+{% highlight javascript linenos=table %}
+app.set("etag", "strong");
 app.set("etag", "weak");
-app.set("etag", (body, encoding) =&gt; { /* return etag */ });</pre>
+app.set("etag", (body, encoding) => { /* return etag */ });
+{% endhighlight javascript %}
 <p><!-- /wp:paragraph --></p>
 <p><!-- wp:preformatted --><!-- /wp:preformatted --></p>
 <p><!-- wp:paragraph --></p>

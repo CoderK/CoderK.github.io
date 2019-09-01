@@ -339,7 +339,7 @@ var differenceWith = baseRest(function(array, values) {
 {% endhighlight json %}
 
 <p>역시나 sideEffects 옵션이 없다. lodash의 package.json에 sideEffects:false 옵션을 주고 다시 빌드를 하면 잘 될까?</p>
-<pre class="lang:js decode:true">sideEffects: false</pre>
+{% highlight javascript %}sideEffects: false{% endhighlight javascript %}
 <p>왠지 여전히 트리 쉐이킹이 되지 않는다.</p>
 
 {% highlight javascript linenos=table %}
