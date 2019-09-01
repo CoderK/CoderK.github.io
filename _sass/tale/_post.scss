@@ -15,7 +15,7 @@
   &-title {
     color: $default-shade;
     font-family: $sans-serif;
-    font-size: 3rem;
+    font-size: 2.6rem;
     margin: 1rem 0;
     text-align: center;
     font-weight: 400;
@@ -31,6 +31,7 @@
   p {
     margin: 0 0 1rem;
     text-align: justify;
+    word-break: break-all;
   }
 
   a:hover {
@@ -39,6 +40,9 @@
 
   img {
     margin: 0 auto 0.5rem;
+    margin-left: -15%;
+    width: 130%;
+    max-width: 130%;
   }
 
   img + em {

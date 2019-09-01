@@ -44,7 +44,7 @@ excerpt: "\n\t\t\t\t\t\t"
 ---
 <p>
 				&nbsp;</p>
-<p><img class="wp-image-2123" src="{{ site.baseurl }}/assets/images/ngrx.png" alt="컨퍼런스에서 ngrx를 주제로 발표하는 남자의 사진" width="325" height="148" /></p>
+<p><img class="wp-image-2123" src="{{ site.baseurl }}/assets/images/ngrx.png" alt="컨퍼런스에서 ngrx를 주제로 발표하는 남자의 사진" /></p>
 <p>요즘 웹 프론트엔드 분야에서 재밌는 주제를 하나 꼽자면, RxJS가 떠오른다. 그 동안 웹 프론트엔드 쪽에서는 큰 관심을 못 받던 기술이었는데 최근에 RxJS와 관련한 이야기가 솔솔 나오는 이유는 Angular2가 RxJS를 기본으로 탑재한 덕인 것 같다.</p>
 <p>내가 RxJS를 처음 알게 된 건 React 커뮤니티를 통해서였다. 이미 Angular2 등장 이전부터 React 커뮤니티에서는 React와 Rx를 결합하려는 시도가 있었다. 그래서 Rx를 가볍게 훑어본 적이 있었는데 언뜻 보기에 옵저버 패턴으로 이벤트를 바인딩하는 API를 제공하는 라이브러리 정도로 보였다. 별로 새로울 게 없다고 그냥 넘겼더랬다. 사실 그땐 사는 게 너무 바빠서 뭘 깊게 들여다 볼 여유가 없었다. 그렇게 Rx는 내 머리에서 잊혔다. 시간이 흐르고, 내 삶에 여유가 조금 찾아왔다. 마침 Angular2도 찾아오셨다.</p>
 <p>응?</p>
@@ -69,7 +69,7 @@ excerpt: "\n\t\t\t\t\t\t"
 </ul>
 <p>개발자가 특정 어노테이션을 이용하여 코드를 작성하면, .NET 언어와 라이브러리/개발도구를 이용해서 MSIL로 컴파일한다. 그러면, MSIL 안에 있는 어노테이션을 Volta가 해석해서 다양한 환경에서 실행할 수 있는 보일러 플레이트 코드를 삽입한다. 이렇게 만들어진 MSIL을 브라우저에서 실행한다. 대략 이런 개념이다.</p>
 <p>한편, Rx와 Volta의 관계에 대한 비밀은 로고에 있다. 두 녀석의 로고가 똑같다.</p>
-<p><a href="http://huns.me/wp/wp-content/uploads/2016/09/voltal-and-reactivex.png"><img class="왼쪽에는 Volta의 로고, 오른쪽은 ReactiveX의 로고 사진. 둘의 로고가 같다. aligncenter wp-image-2125 size-full" src="{{ site.baseurl }}/assets/images/voltal-and-reactivex.png" alt="volta와 reactivex의 로고. 둘의 로고가 같다." width="897" height="295" /></a></p>
+<p><a href="http://huns.me/wp/wp-content/uploads/2016/09/voltal-and-reactivex.png"><img class="왼쪽에는 Volta의 로고, 오른쪽은 ReactiveX의 로고 사진. 둘의 로고가 같다. aligncenter wp-image-2125 size-full" src="{{ site.baseurl }}/assets/images/voltal-and-reactivex.png" alt="volta와 reactivex의 로고. 둘의 로고가 같다." /></a></p>
 <p>이는 Rx가 Volta에서 시작되었기 때문이다. Volta는 사라졌지만, 개발팀은 프로젝트의 일부를 Reactive Framework라는 프로젝트로 분리하여 계속 개발을 진행하였는데, 이게 훗날의 Rx다.</p>
 <p>정확히 당시에 어떤 문제를 해결하기 위해서 Reactive Framework를 만들었는지는 알 수 없다. 다만 JavaScript와 같은 이벤트 기반의 동적 언어와 C# 같은 정적 언어 간의 코드 호환성을 맞추려다보면 필연적으로 비동기 로직을 쉽게 처리할 수 있는 방법을 고민했을 것이고, 이를 해결하는 과정에서 Reactive Framework를 만들지 않았을까?</p>
 <p>그저 추측이지만 완전히 근거 없는 소리는 아니다. Rx를 주제로 에릭 마이어가 한 인터뷰에서 Rx를 만든 이유가 비동기 프로그래밍에 있다는 사실을 유추할 수 있다.</p>
@@ -118,7 +118,7 @@ excerpt: "\n\t\t\t\t\t\t"
 <li>자극이 있어야만 반응하는 수동성을 갖는다.</li>
 </ul>
 <p>정리하자면 프로그램이 외부와 상호 작용하는 방식을 거꾸로 뒤집어서 수동적 반응성을 획득하는 일, 이것이 리액티브 프로그래밍의 목적이다. 에릭 마이어가 리액티브 프레임워크를 소개하는 강연에서 보여주었던 아래 그림은 리액티브 프로그래밍의 핵심을 잘 보여준다.</p>
-<p><img class="wp-image-2126 size-large" title="리액티브 환경과 인터랙티브 환경에서 제어가 흐르는 모습을 비교하는 그림" src="{{ site.baseurl }}/assets/images/reactive-eric-1024x640.png" alt="에릭 마이어가 리액티브 프로그래밍을 소개하며 강연에서 사용했던 발표 자료로 외부에서 안으로 자극이 들어오는 리액티브 프로그래밍의 본질을 잘 보여준다." width="960" height="600" /></a> 출처를 까먹어서 찾을 수가 없다... 찾는 대로 업데이트 할 예정.</p>
+<p><img class="wp-image-2126 size-large" title="리액티브 환경과 인터랙티브 환경에서 제어가 흐르는 모습을 비교하는 그림" src="{{ site.baseurl }}/assets/images/reactive-eric-1024x640.png" alt="에릭 마이어가 리액티브 프로그래밍을 소개하며 강연에서 사용했던 발표 자료로 외부에서 안으로 자극이 들어오는 리액티브 프로그래밍의 본질을 잘 보여준다." /></a> 출처를 까먹어서 찾을 수가 없다... 찾는 대로 업데이트 할 예정.</p>
 <p>이 설명에 따르면 프로그램이 외부 환경과 커뮤니케이션을 하는 방법은 크게 두 가지가 있다. pull-scenario, 그리고 push-scenario.</p>
 <ul>
 <li><strong>pull-scenario</strong>는 우리에게 익숙한 방식으로 프로그램이 외부 환경에 명령하여 원하는 결과를 획득하는 방식이다. 이 경우 프로그램이 직접 제어의 흐름을 통제한다.</li>
