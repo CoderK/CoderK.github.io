@@ -20,6 +20,43 @@ layout: default
 
 </div>
 
+<!-- 라이브리 시티 설치 코드 -->
+<!-- <div id="lv-container" data-id="city" data-uid="MTAyMC8yNDgzMC8xNTc1">
+    <script type="text/javascript">
+        window.livereOptions = {
+            refer: 'huns.me'
+        };
+        (function(d, s) {
+            var j, e = d.getElementsByTagName(s)[0];
+    
+            if (typeof LivereTower === 'function') { return; }
+    
+            j = d.createElement(s);
+            j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+            j.async = true;
+    
+            e.parentNode.insertBefore(j, e);
+        })(document, 'script');
+    </script>
+    <noscript>라이브리 댓글 작성을 위해 JavaScript를 활성화 해주세요</noscript>
+</div> -->
+<!-- 시티 설치 코드 끝 -->
+
+<div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+        this.page.url = location.href;
+        this.page.identifier = location.href;
+    };
+(function() {
+    var d = document, s = d.createElement('script');
+        s.src = 'https://huns-me.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
 <div class="pagination">
   {% if page.next.url %}
     <a href="{{ page.next.url | prepend: site.baseurl }}" class="left arrow">&#8592;</a>
