@@ -15,7 +15,7 @@ author:
 
 # Build settings
 markdown:       kramdown
-highlighter: rouge
+highlighter:    rouge
 include:
   - _pages
 
