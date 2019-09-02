@@ -175,7 +175,7 @@ using (ServiceContext svcContext = new ServiceContext(_serviceProxy))
 
 {% highlight c# %}
 //Query syntax:
-IEnumerable&lt;int&gt; numQuery1 = 
+IEnumerable&lt;int&gt; numQuery1 =
     from num in numbers
     where num % 2 == 0
     orderby num
@@ -188,9 +188,9 @@ IEnumerable&lt;int&gt; numQuery2 = numbers
 {% endhighlight javascript %}
 
 <p>JavaScript 개발자라면 underscore나 lodash 같은 함수형 유틸 라이브러리를 접하면서 LINQ에 대한 이야기를 많이 들어봤을 텐데, Rx가 제공하는 LINQ 스타일 오퍼레이터는 메서드 구문의 LINQ와 유사하다.</p>
-<h6><b>“Your Mouse Is DataBase"</b></h6>
+<h4>“Your Mouse Is DataBase"</h4>
 <p>Observable은 프로그램이 연산을 수행하는 관점을 뒤집음으로써 비동기 처리에 유리한 구조를 만들 수 있는 토대를 제공한다. LINQ는 외부에서 스트림으로 들어오는 데이터를 쉽게 처리할 수 있는 방법을 제공한다.</p>
-<p><img class="wp-image-2068" title="에릭마이어가 리액티브 프로그래밍을 강연하는 모습" src="{{ site.baseurl }}/assets/images/legacy/maxresdefault-1024x576.jpg" alt="에릭마이어가 리액티브 프로그래밍을 강연하는 모습" width="374" height="210" /></a></p>
+<p><img class="wp-image-2068" title="에릭마이어가 리액티브 프로그래밍을 강연하는 모습" src="{{ site.baseurl }}/assets/images/legacy/maxresdefault-1024x576.jpg" alt="에릭마이어가 리액티브 프로그래밍을 강연하는 모습" /></p>
 <p>리액티브 프로그래밍과 LINQ의 개념을 바탕으로 Rx가 비동기 데이터를 처리하는 방식을 이해하기 위해 드래그 앤 드롭을 예로 들어보자.</p>
 <p>마우스를 움직일 때마다 변하는 현재 위치 좌표는 외부에서 안으로 들어오는 자극이자, 데이터다. 이 좌표 데이터들은 Rx의 Observable이 만들어 놓은 문을 통해 프로그램 안으로 진입한다. 프로그램 안으로 들어온 데이터는 LINQ로 미리 작성해둔 오퍼레이터 사이를 헤엄쳐 최종 목적지에 도달한다. 프로그램은 최종 목적지로 들어온 데이터를 확인하여 응답한다. 이 과정은 마우스가 이동을 멈추지 않는 한 끊임없이 계속해서 이뤄진다. 마치 강물이 흐르듯이. 이게 Rx가 제안하는, 데이터 관점의 비동기 처리 방식이다.</p>
 

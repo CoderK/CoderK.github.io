@@ -67,8 +67,8 @@ excerpt: "\n\t\t\t\t\t\t"
 {% highlight javascript linenos=table %}/* XHR 개체를 이용하는 과거 방식 */
 const request = new XMLHttpRequest();
 request.open("GET", "http://www.example.org/example.txt");
-request.send(); 
-{% endhighlight javascript %} 
+request.send();
+{% endhighlight javascript %}
 <p><!-- /wp:code --></p>
 <p><!-- wp:code --></p>
 {% highlight javascript linenos=table %}
@@ -79,8 +79,8 @@ fetch(myRequest)
   .then(response => response.blob())
   .then(blob => {
     myImage.src = URL.createObjectURL(blob);
-  }); 
-{% endhighlight javascript %} 
+  });
+{% endhighlight javascript %}
 <p><!-- /wp:code --></p>
 <p><!-- wp:paragraph --></p>
 <p>그 어떤 방식을 이용하든, 브라우저는 서버로 요청을 전송할 때 요청의 유형을 판단하여 요청 개체의 mode라는 프로퍼티에 담아 전달한다.  Fetch API 스펙은 총 다섯 개의 mode를 정의한다. 다양한 요청을 몇 가지로 유형화하여 이후의 처리 과정을 추상화하기 위해서 만든 설정으로 보인다.</p>
@@ -104,9 +104,9 @@ fetch(myRequest)
 <p><!-- wp:paragraph --></p>
 <p>이에 반해 이미지나 CSS와 같은 리소스를 가져오는 요청, 즉 클라이언트의 코드 레벨이 아닌 하부 시스템에 의해 네트워크 요청이 만들어지는 경우(link, script, img, audio 등…)에 요청 개체는 no-cors를 기본값으로 갖는다. 다만, crossorigin 속성을 부여하면 mode는 cors가 된다.</p>
 <p><!-- /wp:paragraph --></p>
-{% highlight javascript linenos=table %}// 아래의 경우는 mode가 cors 
-<link rel="manifest" href="/app.webmanifest" crossorigin="use-credentials"> 
-{% endhighlight javascript %} 
+{% highlight javascript linenos=table %}// 아래의 경우는 mode가 cors
+<link rel="manifest" href="/app.webmanifest" crossorigin="use-credentials">
+{% endhighlight javascript %}
 <p><!-- /wp:code --></p>
 <p><!-- wp:paragraph --></p>
 <p>이 내용은 MDN에서 확인할 수 있다.</p>
@@ -121,14 +121,14 @@ fetch(myRequest)
 <p> <a href="https://www.w3.org/TR/cors/" target="_blank" rel="noreferrer noopener">W3C의 Cross-Origin Resource Sharing 스펙</a>은 cors 모드인 요청을 처리하는 과정에서 CORS 확인에 실패하면 network error 처리 프로세스를 따를 것을 요구한다.</p>
 <p><!-- /wp:paragraph --></p>
 <p><!-- wp:quote {"align":"left"} --></p>
-<blockquote style="text-align:left" class="wp-block-quote"><p><em>Perform a resource sharing check. If it returns fail, apply the network error steps.</em></p>
+<blockquote style="text-align:left" class="wp-block-quote">Perform a resource sharing check. If it returns fail, apply the network error steps.</p>
 <p><cite>https://www.w3.org/TR/cors/#network-error-steps</cite></p></blockquote>
 <p><!-- /wp:quote --></p>
 <p><!-- wp:paragraph --></p>
 <p>network error는 또 다른 스펙인 <a href="https://fetch.spec.whatwg.org/" target="_blank" rel="noreferrer noopener">WHATWG의 Fetch Standard</a>에서 정의하고 있는데, type이 error이며, status는 0이고,  status message가 빈 문자열을 갖는 응답 개체를 의미한다.</p>
 <p><!-- /wp:paragraph --></p>
 <p><!-- wp:quote {"align":"left"} --></p>
-<blockquote style="text-align:left" class="wp-block-quote"><p><em>A network error is a response whose status is always 0, status message is always the empty byte sequence, header list is always empty, body is always null, and trailer is always empty.</em></p>
+<blockquote style="text-align:left" class="wp-block-quote"><p>A network error is a response whose status is always 0, status message is always the empty byte sequence, header list is always empty, body is always null, and trailer is always empty.</p>
 <p><cite>https://fetch.spec.whatwg.org/#concept-network-error</cite></p></blockquote>
 <p><!-- /wp:quote --></p>
 <p><!-- wp:paragraph --></p>
@@ -141,6 +141,8 @@ fetch(myRequest)
 <p><!-- wp:paragraph --></p>
 <p>이 내용을 이해하려고 3개의 스펙 문서를 어지럽게 돌아다녀야 하는 게 불만이었지만, XHR → CORS → Fetch로 스펙이 발달해온 과정과 스펙 사이의 의존관계를 생각해보니 조금은 인자해졌다.</p>
 <p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
 <p><!-- wp:paragraph --></p>
 <p><a rel="noreferrer noopener" href="https://xhr.spec.whatwg.org/" target="_blank">XMLHttpRequest</a><br /><a rel="noreferrer noopener" href="https://www.w3.org/TR/cors/" target="_blank">Cross-Origin Resources Shaaring</a><br /><a rel="noreferrer noopener" href="https://fetch.spec.whatwg.org/" target="_blank">Fetch Standard</a></p>
 <p><!-- /wp:paragraph -->		</p>

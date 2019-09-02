@@ -30,7 +30,6 @@ h3,
 h4,
 h5,
 h6 {
-  margin: 2.5rem 0;
   color: $default-shade;
   font-family: $sans-serif;
   line-height: normal;
@@ -42,19 +41,42 @@ a {
 }
 
 blockquote {
-  font-family: $point;
-  border-left: .25rem solid $grey-2;
-  color: $blur-grey;
-  margin: 1.5rem .5rem;
-  padding: .5rem 1rem;
+  font-family: $serif-secondary;
+  font-size: 16px;
+  font-style: italic;
+  position: relative;
+  margin: 2rem 1rem;
+  padding: 0 3rem;
 
   p:last-child {
     margin-bottom: 0;
   }
 
-  @media (min-width: 600px) {
-    padding: 0 5rem 0 1.25rem;
+  @media screen and (max-width: 375px) {
+    padding: 0 1.5rem;
   }
+}
+
+blockquote:before {
+  position: absolute;
+  color: #f1efe6;
+  font-size: 8rem;
+  width: 4rem;
+  height: 4rem;
+  content: '“';
+  left: -3.3rem;
+  top: -3.2rem;
+
+  @media screen and (max-width: 375px) {
+    left: -3.9rem;
+  }
+}
+
+cite {
+  font-size: .9rem;
+  font-weight: 100;
+  font-style: normal;
+  color: $grey-1
 }
 
 img {
