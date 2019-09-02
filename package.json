@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start:js": "webpack --mode=development --watch",
-    "start:jekyll": "jekyll serve",
+    "start:jekyll": "bundle exec jekyll serve",
     "start": "concurrently \"npm run start:js\" \"npm run start:jekyll\"",
     "build:js": "webpack --mode=production --progress",
-    "build:jekyll": "jekyll build",
+    "build:jekyll": "bundle exec jekyll build",
     "build": "npm run build:js && npm run build:jekyll",
     "lint": "tslint --project tsconfig.json --fix 'src/**/*.ts?(x)'",
     "test": "jest",
