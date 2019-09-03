@@ -1,6 +1,6 @@
 * {
   @include box-sizing;
-  line-height: 1.6;
+  line-height: 1.8;
 }
 
 html,
@@ -12,7 +12,7 @@ body {
 
 html {
   font-family: $serif-primary;
-  font-size: 15px;
+  font-size: 16px;
   overflow-y: scroll;
 
   @media (min-width: 600px) {
@@ -33,50 +33,12 @@ h6 {
   color: $default-shade;
   font-family: $sans-serif;
   line-height: normal;
+  margin: 2rem auto;
 }
 
 a {
   color: $blue;
   text-decoration: none;
-}
-
-blockquote {
-  font-family: $serif-secondary;
-  font-size: 16px;
-  font-style: italic;
-  position: relative;
-  margin: 2rem 1rem;
-  padding: 0 3rem;
-
-  p:last-child {
-    margin-bottom: 0;
-  }
-
-  @media screen and (max-width: 375px) {
-    padding: 0 1.5rem;
-  }
-}
-
-blockquote:before {
-  position: absolute;
-  color: #f1efe6;
-  font-size: 8rem;
-  width: 4rem;
-  height: 4rem;
-  content: '“';
-  left: -3.3rem;
-  top: -3.2rem;
-
-  @media screen and (max-width: 375px) {
-    left: -3.9rem;
-  }
-}
-
-cite {
-  font-size: .9rem;
-  font-weight: 100;
-  font-style: normal;
-  color: $grey-1
 }
 
 img {

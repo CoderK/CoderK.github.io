@@ -10,12 +10,14 @@ footer,
   display: block;
   margin: 0 auto;
   max-width: 680px;
-  width: 85%;
+  width: $container-width;
 }
 
 .nav {
   box-shadow: 0 2px 2px -2px $shadow-color;
   overflow: auto;
+  margin: 0 auto;
+  width: $contents-width;
 
   &-container {
     margin: 1rem auto;
@@ -84,9 +86,16 @@ footer {
   font-family: $serif-secondary;
   padding: 2rem 0;
   text-align: center;
+  width: $contents-width;
+  margin: 0 auto;
 
   span {
     color: $default-color;
     font-size: .8rem;
   }
+}
+
+#disqus_thread {
+  width: $contents-width;
+  margin: 0 auto;
 }

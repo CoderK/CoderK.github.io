@@ -121,8 +121,10 @@ fetch(myRequest)
 <p> <a href="https://www.w3.org/TR/cors/" target="_blank" rel="noreferrer noopener">W3C의 Cross-Origin Resource Sharing 스펙</a>은 cors 모드인 요청을 처리하는 과정에서 CORS 확인에 실패하면 network error 처리 프로세스를 따를 것을 요구한다.</p>
 <p><!-- /wp:paragraph --></p>
 <p><!-- wp:quote {"align":"left"} --></p>
-<blockquote style="text-align:left" class="wp-block-quote">Perform a resource sharing check. If it returns fail, apply the network error steps.</p>
-<p><cite>https://www.w3.org/TR/cors/#network-error-steps</cite></p></blockquote>
+<blockquote style="text-align:left" class="wp-block-quote">
+  <p>Perform a resource sharing check. If it returns fail, apply the network error steps.</p>
+  <p><cite>https://www.w3.org/TR/cors/#network-error-steps</cite></p>
+</blockquote>
 <p><!-- /wp:quote --></p>
 <p><!-- wp:paragraph --></p>
 <p>network error는 또 다른 스펙인 <a href="https://fetch.spec.whatwg.org/" target="_blank" rel="noreferrer noopener">WHATWG의 Fetch Standard</a>에서 정의하고 있는데, type이 error이며, status는 0이고,  status message가 빈 문자열을 갖는 응답 개체를 의미한다.</p>

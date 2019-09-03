@@ -102,7 +102,7 @@ excerpt: "\n\t\t\t\t\t\t"
 <p>소프트웨어를 둘러싼 요즘의 환경은 과거와 많이 달라졌다. 인터넷 환경이 발달하면서 트래픽이 전에 비해 엄청나게 증가하였고, 무어의 법칙은 한계에 도달했다. 멀티 코어 프로세서에서 대안을 찾기 시작하면서 동시성 프로그래밍이 중요해졌다. 클라우드 컴퓨팅 환경도 등장했다. 사용자 요구사항은 점점 까다로워져 더 정교하고 화려한 UI 인터랙션과 더 빠른 반응 속도를 요구한다. 전에 비해 훨씬 복잡해진 소프트웨어의 안정성은, 언제나 중요한 문제다.</p>
 <p>리액티브  매니페스토는 이 시대의 소프트웨어는 좋은 반응성(Responsive)을 가져야 하며, 좋은 반응성을 갖기 위해 회복탄력성(Resilient)과 유연성(Elastic)을 갖도록 시스템을 설계해야 한다고 주장한다. 이를 달성할 수 있는 방법으로 메시지(Message-Driven)로 시스템과 시스템, 모듈과 모듈을 연결하는 방법을 제안한다. 결국 비동기 처리를 적극 활용하는 데에서 문제의 해법을 찾는다.</p>
 <blockquote>
-<div><i>"Reactive Systems rely on asynchronous message-passing to establish a boundary between components that ensures loose coupling, isolation and location transparency."</i></div>
+<p>"Reactive Systems rely on asynchronous message-passing to establish a boundary between components that ensures loose coupling, isolation and location transparency."</p>
 <p><i><a href="http://www.reactivemanifesto.org/">The Reactive Manifesto</a></i></p></blockquote>
 <p>이런 흐름은 자연스레 리액티브 프로그래밍에 대한 개발자들의 관심으로 이어졌다. 위키에 나와있는 리액티브 프로그래밍의 정의는 이렇다.</p>
 <blockquote><p>데이터 플로우와 상태 변경을 전파한다는 생각에 근간을 둔 프로그래밍 패러다임</p>
@@ -157,6 +157,7 @@ excerpt: "\n\t\t\t\t\t\t"
 <h4><b>LINQ와 이벤트 결합(LINQ To Events)</b></h4>
 <p>Rx는 외부에서 들어온 데이터를 단순히 목적지까지 운반하는 데 그치지 않는다. 더 나아가 이벤트와 LINQ라는 개념을 결합한 인터페이스를 제공하는데, 이를 이용하면 Observable로 전달받은 데이터를 LINQ 스타일로 처리할 수 있다. 이를 오퍼레이터(operator)라고 한다.</p>
 <p>LINQ(Language Intergrated Query)는 에릭 마이어가 만든 통합 질의 언어다. LINQ는 C# 3.0에 처음 등장했는데, 쿼리를 언어에 통합하여 코드 상에서 데이터를 질의할 때 SQL 쿼리처럼 표현할 수 있게 도와주는 일종의 확장 문법이다. 이를 이용하면 데이터 콜렉션에 대한 복잡한 절차적 질의를, 마치 SQL로 처리하는 것처럼 간결하게 변경할 수 있다. C#에서 제공하는 LINQ는 아래와 같은 모습이다.</p>
+
 {% highlight c# linenos=table %}
 using (ServiceContext svcContext = new ServiceContext(_serviceProxy))
 {
@@ -173,7 +174,7 @@ using (ServiceContext svcContext = new ServiceContext(_serviceProxy))
 <p>C#은 쿼리 구문(Query Syntax)과 메서드 구문(Method Syntax)이라는 두 가지 타입의 LINQ를 제공한다. 이 둘의 차이는 아래의 링크에서 확인할 수 있다.</p>
 <p class="title"><a href="https://msdn.microsoft.com/ko-kr/library/bb397947.aspx">Query Syntax and Method Syntax in LINQ (C#)</a></p>
 
-{% highlight c# %}
+{% highlight c# linenos=table %}
 //Query syntax:
 IEnumerable&lt;int&gt; numQuery1 =
     from num in numbers

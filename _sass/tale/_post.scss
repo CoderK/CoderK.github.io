@@ -1,6 +1,68 @@
 .post {
   padding: 3rem 0;
 
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    width: $contents-width;
+  }
+
+  ul,
+  ol {
+    padding: 1rem 0 2rem 2rem;
+    display: block;
+    width: 85%;
+    margin: 0 auto;
+  }
+
+  blockquote {
+    font-family: "Nanum Myeongjo",serif;
+    font-size: 16px;
+    font-style: italic;
+    background-color: #f9f9f9;
+    position: relative;
+    width: 100%;
+    margin: 2rem auto;
+    padding: 1.5rem 0;
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  blockquote:before {
+    position: absolute;
+    color: $beige;
+    font-size: 8rem;
+    width: 4rem;
+    height: 4rem;
+    content: '“';
+    left: -22px;
+    top: -68px;
+
+    @media screen and (max-width: 375px) {
+      font-size: 5rem;
+      left: -5px;
+      top: -41px;
+    }
+  }
+
+  cite {
+    font-size: .9rem;
+    font-weight: 100;
+    font-style: normal;
+    color: $grey-1
+  }
+
+  hr {
+    width: 20%;
+    margin: 3rem auto;
+    border: 1px solid $beige;
+  }
+
   &-info {
     color: $default-tint;
     font-family: $serif-secondary;
@@ -16,7 +78,7 @@
     color: $default-shade;
     font-family: $sans-serif;
     font-size: 2.6rem;
-    margin: 1rem 0;
+    margin: 1rem auto;
     text-align: center;
     font-weight: 400;
   }
@@ -29,9 +91,23 @@
   }
 
   p {
-    margin: 0 0 1rem;
-    text-align: justify;
-    word-break: break-all;
+    margin: 0 auto 1rem;
+    word-break: break-word;
+    width: $contents-width;
+    letter-spacing: 0.01rem;
+  }
+
+  & > table {
+    margin: 2rem auto;
+    width: 85%;
+    text-align: center;
+
+    th {
+      background-color: #fbf9f3;
+    }
+    td {
+      background-color: #f9f9f9;
+    }
   }
 
   a:hover {
@@ -39,9 +115,8 @@
   }
 
   img {
-    margin-left: -12.5%;
-    width: 125%;
-    max-width: 125%;
+    margin: 0 auto;
+    width: 100%;
   }
 
   img + em {
