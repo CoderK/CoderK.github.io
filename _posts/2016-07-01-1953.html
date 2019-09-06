@@ -64,17 +64,17 @@ excerpt: "\n\t\t\t\t\t\t"
 <div class="se_viewArea se_ff_nanumgothic se_fs_T3 se_align-left">
 <div class="se_editView">
 <div class="se_textView">
-{% highlight javascript linenos=table %}MessageStore.dispatchToken = ChatAppDispatcher.register(function(action) { 
-    switch(action.type) { 
-        case ActionTypes.CLICK_THREAD: 
+{% highlight javascript linenos=table %}MessageStore.dispatchToken = ChatAppDispatcher.register(function(action) {
+    switch(action.type) {
+        case ActionTypes.CLICK_THREAD:
             // 여기를 유심히 보자
-            ChatAppDispatcher.waitFor([ThreadStore.dispatchToken]); 
-            _markAllInThreadRead(ThreadStore.getCurrentID()); 
-            MessageStore.emitChange(); 
-            break; 
-        default: 
-        // do nothing 
-    } 
+            ChatAppDispatcher.waitFor([ThreadStore.dispatchToken]);
+            _markAllInThreadRead(ThreadStore.getCurrentID());
+            MessageStore.emitChange();
+            break;
+        default:
+        // do nothing
+    }
 });{% endhighlight javascript %}
 </div>
 </div>
@@ -129,7 +129,7 @@ function counter(state = 0, action) {
     switch (action.type) {
         case 'increment':
             return state + 1;
-        
+
         case 'square':
             return state * state;
 
@@ -311,7 +311,7 @@ const Link = ({ active, children, onClick }) = {
         e.preventDefault()
         onClick()
       }}>
-   
+
       {children}
     </a>
   )
@@ -421,10 +421,10 @@ export default FilterLink{% endhighlight javascript %}
 <div class="se_editView">
 <div class="se_textView">
 <div class="__se_code_view se_textarea language-javascript">
-{% highlight javascript linenos=table %}const mapStateToProps = (state, ownProps) = { 
-  return { 
-    active: ownProps.filter === state.visibilityFilter 
-  } 
+{% highlight javascript linenos=table %}const mapStateToProps = (state, ownProps) = {
+  return {
+    active: ownProps.filter === state.visibilityFilter
+  }
 }{% endhighlight javascript %}
 </div>
 </div>
@@ -438,10 +438,10 @@ export default FilterLink{% endhighlight javascript %}
 <div class="se_editView">
 <div class="se_textView">
 <div class="__se_code_view se_textarea language-javascript">
-{% highlight javascript linenos=table %}const mapStateToProps = (state, ownProps) = { 
-  return { 
-    active: ownProps.filter === state.visibilityFilter 
-  } 
+{% highlight javascript linenos=table %}const mapStateToProps = (state, ownProps) = {
+  return {
+    active: ownProps.filter === state.visibilityFilter
+  }
 }{% endhighlight javascript %}
 </div>
 </div>
@@ -499,12 +499,12 @@ const makeMapStateToProps = () =&gt; {
 <div class="se_editView">
 <div class="se_textView">
 <div class="__se_code_view se_textarea language-javascript">
-{% highlight javascript linenos=table %}const mapDispatchToProps = (dispatch, ownProps) =&gt; { 
-  return { 
-    onClick: () =&gt; { 
-      dispatch(setVisibilityFilter(ownProps.filter)); 
-    } 
-  } 
+{% highlight javascript linenos=table %}const mapDispatchToProps = (dispatch, ownProps) =&gt; {
+  return {
+    onClick: () =&gt; {
+      dispatch(setVisibilityFilter(ownProps.filter));
+    }
+  }
 }{% endhighlight javascript %}
 </div>
 </div>
@@ -522,15 +522,15 @@ const makeMapStateToProps = () =&gt; {
 <div class="se_editView">
 <div class="se_textView">
 <div class="__se_code_view se_textarea language-javascript">
-{% highlight javascript linenos=table %}const mapDispatchToProps = (dispatch, ownProps) =&gt; { 
-  return { 
-    onClickDisplay: () =&gt; { 
-      dispatch(setVisibilityFilter(ownProps.filter)); 
-    }, 
-    onClickTodo: (id) =&gt; { 
+{% highlight javascript linenos=table %}const mapDispatchToProps = (dispatch, ownProps) =&gt; {
+  return {
+    onClickDisplay: () =&gt; {
+      dispatch(setVisibilityFilter(ownProps.filter));
+    },
+    onClickTodo: (id) =&gt; {
       dispatch(toggleTodo(id));
-    } 
-  } 
+    }
+  }
 }{% endhighlight javascript %}
 </div>
 </div>
@@ -543,14 +543,14 @@ const makeMapStateToProps = () =&gt; {
 <div class="se_editView">
 <div class="se_textView">
 <div class="__se_code_view se_textarea language-javascript">
-{% highlight javascript linenos=table %}const mapDispatchToProps = (dispatch, ownProps) =&gt; { 
-  return { 
-    setVisibilityFilter: () =&gt; { 
-        dispatch(setVisibilityFilter(ownProps.filter)); 
-    }, 
-    toggleTodo: () =&gt; { 
-        dispatch(toggleTodo(id)); 
-    } 
+{% highlight javascript linenos=table %}const mapDispatchToProps = (dispatch, ownProps) =&gt; {
+  return {
+    setVisibilityFilter: () =&gt; {
+        dispatch(setVisibilityFilter(ownProps.filter));
+    },
+    toggleTodo: () =&gt; {
+        dispatch(toggleTodo(id));
+    }
 }{% endhighlight javascript %}
 </div>
 </div>
@@ -564,16 +564,16 @@ const makeMapStateToProps = () =&gt; {
 <div class="se_editView">
 <div class="se_textView">
 <div class="__se_code_view se_textarea language-javascript">
-{% highlight javascript linenos=table %}const mapDispatchToProps = (dispatch, ownProps) =&gt; { 
-  return { 
-    onClickDisplay: () =&gt; { 
-      dispatch(setVisibilityFilter(ownProps.filter)); 
-    }, 
-    onClickTodo: (id) =&gt; { 
-      dispatch(toggleTodo(id)); 
-      dispatch(setVisibilityFilter(ownProps.filter)); 
-    } 
-  } 
+{% highlight javascript linenos=table %}const mapDispatchToProps = (dispatch, ownProps) =&gt; {
+  return {
+    onClickDisplay: () =&gt; {
+      dispatch(setVisibilityFilter(ownProps.filter));
+    },
+    onClickTodo: (id) =&gt; {
+      dispatch(toggleTodo(id));
+      dispatch(setVisibilityFilter(ownProps.filter));
+    }
+  }
 }{% endhighlight javascript %}
 </div>
 </div>
@@ -586,19 +586,19 @@ const makeMapStateToProps = () =&gt; {
 <div class="se_editView">
 <div class="se_textView">
 <div class="__se_code_view se_textarea language-javascript">
-{% highlight javascript linenos=table %}const TodoList = ({ todos, setVisibilityFilter, toggleTodo }) =&gt; ( 
-  &lt;ul&gt; 
+{% highlight javascript linenos=table %}const TodoList = ({ todos, setVisibilityFilter, toggleTodo }) =&gt; (
+  &lt;ul&gt;
     {todos.map(todo =&gt;
       &lt;Todo
         key={todo.id}
-        {...todo} 
-        onClick={() =&gt; 
-            setVisibilityFilter(); 
-            toggleTodo(); 
-        } 
+        {...todo}
+        onClick={() =&gt;
+            setVisibilityFilter();
+            toggleTodo();
+        }
       /&gt;
     )}
-  &lt;/ul&gt; 
+  &lt;/ul&gt;
 ){% endhighlight javascript %}
 </div>
 </div>
@@ -611,15 +611,15 @@ const makeMapStateToProps = () =&gt; {
 <div class="se_editView">
 <div class="se_textView">
 <div class="__se_code_view se_textarea language-javascript">
-{% highlight javascript linenos=table %}const mapDispatchToProps = (dispatch, ownProps) =&gt; { 
-  return { 
-    setVisibilityFilter: () =&gt; { 
-        dispatch(setVisibilityFilter(ownProps.filter)); 
-    }, 
-    toggleTodo: () =&gt; { 
-        dispatch(toggleTodo(id)); 
-        dispatch(setVisibilityFilter(ownProps.filter)); 
-    } 
+{% highlight javascript linenos=table %}const mapDispatchToProps = (dispatch, ownProps) =&gt; {
+  return {
+    setVisibilityFilter: () =&gt; {
+        dispatch(setVisibilityFilter(ownProps.filter));
+    },
+    toggleTodo: () =&gt; {
+        dispatch(toggleTodo(id));
+        dispatch(setVisibilityFilter(ownProps.filter));
+    }
 }{% endhighlight javascript %}
 </div>
 </div>
@@ -636,7 +636,7 @@ const makeMapStateToProps = () =&gt; {
 <div class="se_viewArea se_ff_nanumgothic se_fs_T3 se_align-left">
 <div class="se_editView">
 <div class="se_textView">
-<p><a href="http://huns.me/wp/wp-content/uploads/2016/07/SE3-Mobile-Layer-Archictecture-Untitled-Page.png"><img class="aligncenter size-large wp-image-1960" src="{{ site.baseurl }}/assets/images/legacy/SE3-Mobile-Layer-Archictecture-Untitled-Page-1024x1016.png" alt="SE3-Mobile Layer Archictecture - Untitled Page" /></a>각 레이어의 정체성은 아래와 같이 정리했다.</p>
+<p><a href="/assets/images/legacy/2016/07/SE3-Mobile-Layer-Archictecture-Untitled-Page.png"><img class="aligncenter size-large wp-image-1960" src="{{ site.baseurl }}/assets/images/legacy/SE3-Mobile-Layer-Archictecture-Untitled-Page-1024x1016.png" alt="SE3-Mobile Layer Archictecture - Untitled Page" /></a>각 레이어의 정체성은 아래와 같이 정리했다.</p>
 </div>
 </div>
 </div>

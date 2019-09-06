@@ -1,0 +1,548 @@
+---
+layout: post
+title: 도전! JavaScript TDD – 1. 시작
+date: 2013-11-25 00:24:03.000000000 +09:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- 개발 이야기
+tags:
+- TDD
+- Front-End
+- JavaScript
+- Test
+author:
+  login: jeokrang
+  email: jeokrang@gmail.com
+  display_name: 개발왕 김코딩
+  first_name: 훈민
+  last_name: 김
+permalink: "/posts/2013-11-25-chalenge-javascript-tdd-1"
+---
+얼마 전에 끝난 프로젝트를 통해서, 느낀 점 하나가 테스트 코드의 필요성이다. 솔직하게 말하자면 단위 테스트를 하나도 작성하지 않았다. 프로토타이핑이나 해 볼 생각이었는데 일정(물리적 일정보다는 심리적 일정에 더 가까웠음)에 쫓겨서 이 코드가 바로 제품이 되어버리는 바람에 그랬어요 라고 말하고 싶지만, 어디까지나 나의 게으름이 가장 큰 이유다. 바빠 죽겠는데 무슨 테스트냐 싶었다. 언제나 그렇듯이 테스트 코드를 작성하지 않은 대가는 아주 비쌌다.
+
+성능 상에 문제가 있어서 리팩토링을 해야하는데 코드를 한 번 손대면 여기저기서 사이드 이펙트가 터졌다. 게다가 사용하지 않는 불필요한 코드가 남아있어서 지우고 싶어도 사이드 이펙트 날까 불안해서 쉽게 손대지 못했다. 어쩌다가 한 번 손대면 브라우저로 접속해서 수도없이 여기저기 직접 손으로 테스트를 해야만 안심을 할 수 있었다. 나중에라도 테스트를 작성하려고 했지만, 프로젝트 막판, 심리적으로 쫓기는 상황에서 테스트를 작성한다는 건 쉬운 일이 아니다. 심지어 프로젝트가 끝난 후에 테스트를 짜는 일은 또 얼마나 지루하고 귀찮은 일인지.
+
+그동안 많은 프로젝트를 하면서 이런 문제를 경험한 게 한 두번이 아니다. 필요성을 알면서도 못하는 걸 보면 테스트 코드 작성은 습관이 들어야 하는 일인 것 같다.
+
+그래서 더 이상은 미룰 수 없다는 생각에 독한 마음을 먹고 TDD라는 녀석에 도전해보기로 결심했다.
+
+ 
+
+## TDD…?
+
+> TDD…? 그거 테스트 코드 먼저 작성하면 되는 거 아냐?
+
+ 그동안 TDD를 단순히 구현 코드보다 단위 테스트(Unit test)를 먼저 작성하는 개발방법론 정도로 생각해왔다. 실제로 나에게 그렇게 설명하는 사람도 많았다. 그러다가 이번 프로젝트 들어가기 얼마 전에 아는 형과 TDD로 간단한 짝 프로그래밍(Pair Programming)을 해 볼 기회가 있었다. 지금 생각해보면 진짜 운이 좋았다.
+
+짝 프로그래밍 자체가 아주 낯선 경험이라 상당히 신선했는데, 무엇보다 충격적이었던 것은 내가 TDD에 대해서 정말 쥐뿔도 모르고 있었다는 사실이다. TDD를 해보겠다면서 켄트백의 책 한 줄 읽어보지 않았다는 것도 조금 부끄러운 일이다.
+
+내가 본 TDD는 단순히 단위 테스트를 먼저 만드는 게 아니었다. 물론 테스트 코드를 작성하기는 하지만, 그것은 TDD가 추구하고자 하는 목적이 아니라 수단일 뿐이다. 지금도 공부하고 있는 중이라서 ‘TDD는 뭐다’ 라고 딱 꼬집어 이야기 할 수는 없지만, 어쨌든 상당히 상큼한 녀석인 것만은 분명하다. 적어도 나에게는 그렇다.
+
+TDD를 하기 위해서는 기존에 개발하던 방식에서 벗어나야하는데, 오랫동안 쌓여서 굳어진 습관을 하루 아침에 바꾸기는 어렵다. 꾸준한 노력이 필요한 지루한 일이라고 한다. 많은 사람들이 이 과정을 이겨내지 못하고 중도에 포기한다고 하니, 좀 더 잘해보고 싶은 욕심이 생기는 것도 사실이다.
+
+TDD에 적응해나가는 과정을 글로 적어보면 참 멋질 것 같다는 생각이 들었다. 대단한 이론적인 이야기를 하려는 것은 아니고, 짝 프로그래밍 중에 들었던 주옥 같은 이야기와 내가 TDD를 연습하면서 겪는 시행착오의 기록들을 글로 정리하는 것이 목적이다.
+
+어디까지 쓸 수 있을 지는 모르겠지만, 시리즈로 최대한 써 볼 생각이다.
+
+## 학습환경
+
+ 사용할 언어는 JavaScript이며, 테스트 프레임워크는 QUnit이다. 만들고자 하는 어플리케이션은 자판기(VendingMachine)다.
+
+스펙은 간단하다.
+
+동전을 넣어서 음료를 뽑을 수 있고, 남은 금액을 환전을 받을 수 있다. 그리고 재고의 개념을 적용해서 재고가 없으면 음료를 구매할 수 없다. 초보자의 관점에서 TDD를 학습하는 것이 목적이므로 최대한 단순하게 스펙을 잡았다. UI 부분은 향후 진행되는 상황을 보면서 추가 스펙으로 넣을 예정이다.
+
+스펙은 개발을 진행하면서 수정될 수 있다. 그래야 조금 현실적일 것 같고, TDD가 요구사항 변경에 어떻게 대응하는지를 살펴보는 것도 좋을 것 같단 판단이 들어서다. 
+
+Qunit을 활용한 JavaScript 어플리케이션 개발환경 구축은 별도로 설명하지 않고 진행하겠다.
+
+ 
+
+ 
+
+## 뭘 해야할까?
+
+ 자, 그럼 가장 먼저 무엇을 만들어야 할까?
+
+.
+
+.
+
+.
+
+뭘 만들어야하지? 시작부터 막힌다.
+
+ TDD는 코드를 작성하기 전에 테스트를 먼저 작성하라고 한다. 코드가 없는데 뭘 만들어야하지? 뭔가 테스트 코드를 만들긴 해야겠는데, 어디서부터 시작해야 할 지 모르겠다. 심지어 테스트 할 대상이 뭔지 정의도 못하고 있다. 우선 테스트 명세를 작성해보자. 
+
+> “자판기 객체의 buy 메소드는 인자로 전달받은 음료명 문자열과 같은 음료명을 가진 객체를 돌려준다.”
+
+ 나는 처음에 이런 스타일로 명세를 작성했다. 일반적으로 단위 테스트를 작성할 때 많이 쓰는 문장 형식이기도 하다. 그런데 이건 TDD가 권하는 방식이 아니다. 이게 단위 테스트와 TDD를 구분 짓는 중요한 요소이며, TDD를 어렵게 만드는 주범이라고 생각하기 때문에 여기에서 정리를 하고 넘어가야겠다.
+
+## 오해
+
+> 테스트 주도 개발(TDD, Test Driven Development)
+
+ 이름 때문에 테스트가 TDD의 목적인 것처럼 오해하기 쉽다. 하지만 사실 TDD의 본질은 테스트가 아니라, 개발 방식에 있다. TDD는 기본적으로 “문제를 먼저 정의하고, 문제의 해답을 찾아가는 과정”이다. 내가 지금 만들어야 할 것이 무엇인지 우선적으로 명확하게 정의한 후에, 그 내용을 테스트로 표현하는 게 TDD의 근본 취지다. 이름이 주는 오해를 덜고 TDD를 더 빨리 배울 수 있도록 하자는 뜻에서 TDD를 발전시킨 개념으로 BDD(Behavior Driven Development)가 나오기도 했다.
+
+BDD는 우리나라말로 풀어보면 “행위 주도 개발”이다. BDD가 무엇인지 자세하게 알지는 못하지만 “테스트를 작성하기 전에 코드가 수행할 행위에 대한 명세를 먼저 작성”할 것을 강조하고 있는 것만은 분명하다. 내가 지금 만들고자 하는 것이 무엇인지 알고 시작하자는 이야기다.
+
+결국 정리해보면 사용자 요구사항이 우리가 풀어야 할 문제이므로, 가장 먼저 문제를 명세로 정의하고, 명세로 정의한 내용을 테스트 코드로 표현한다. 그리고 그 문제를 풀어내는 코드를 구현하는 것이 TDD나 BDD의 근간인 셈이다.
+
+ TDD를 할 때 문제를 어떻게 정의하느냐는 아주 중요하다. 내가 위에 적어놓은 스펙은 문제가 아니라 코드의 동작을 설명하고 있는 것에 더 가깝다. 마치 코드로 드러내야 할 의도를 주석으로 설명하고 있는 것과 비슷한 상황이랄까? 일반적인 방식으로 단위 테스트를 작성할 때는 이미 구현 코드가 다 나와있는 상태다. 그렇기 때문에 위와 같은 문장으로 테스트 명세를 작성해도 테스트 코드를 작성하는 데 큰 무리가 없다. 눈에 보이는 대상을 테스트하기 때문이다. 
+
+그런데 TDD는?
+
+TDD는 구현 코드가 없는 상황에서 테스트를 먼저 작성해야 한다. 아무 것도 눈에 보이지 않는 상황에서 내가 지금 풀어야 하는 문제를 먼저 정의하고 그 문제를 헤쳐 나가야 한다. 어떤 문제인지 모르는데 위와 같은 테스트 스펙을 작성할 수 있을까? 쉽지 않다. 그래서 아직 존재하지 않는 코드의 작동 방식을 이야기하는 문장 보다는, 테스트 해야 할 대상을 설명해줄 수 있는 문장이 TDD의 명세로 더 적합하다.
+
+내가 TDD에 도전했을 때 가장 어렵게 느꼈던 것도 이 부분이다. 기존 방식과는 다른 방식에 적응하기 위한 생각의 전환이 필요하기 때문이다.
+
+또한 TDD의 테스트 명세는 개발자 관점이 아닌, 사용자 관점에서 작성하는 것이 좋다. TDD는 지금 필요한 만큼의 코드만 작성할 것을 강조하는데 여기에서 지금 필요한 코드의 기준은 사용자가 원하는 가치다. 그 가치를 충족시켜 줄 수 있는 만큼의 코드면 된다. “자판기 객체의 buy 메소드는 인자로 전달받은 음료명 문자열과 같은 음료명을 가진 객체를 돌려준다.” 라는 문장은 사용자보다는 개발자가 얻는 가치에 더 가깝다. 
+
+여기까지 알고나면 TDD에서 명세가 얼마나 중요한지 느낌이 온다. 좀 더 고민해보면 “사용자 스토리”라는 녀석에 관심이 가게 되는데, 나중에 깊게 공부할 기회가 생기면 따로 포스팅을 해야겠다. 
+
+## 명세를 만들자
+
+ 개발자가 아닌 사용자 요구사항 관점에서 자판기의 스펙을 다시 정리하자. 
+
+- 음료를 뽑을 수 있다.
+- 동전을 넣을 수 있다.
+- 지폐를 넣을 수 있다.
+- 거스름 돈을 환전 받을 수 있다.
+- 재고를 관리할 수 있다.
+
+이정도면 충분할 것 같다. 나는 이 스펙을 할 일 목록 같은 개념으로 쓸 생각이기 때문에, 진행중에 떠오른 부족한 점은 차차 목록에 추가해서 보완해나가겠다.
+
+다른 모든 기능이 없어도, “음료를 뽑을 수 있다”면 자판기라고 할 수 있을 것 같다. 시작점으로 잡기에 딱 좋아 보인다.
+
+```js
+test("음료를 뽑을 수 있다.", function(){
+	// Given
+	// When
+	// Then
+});
+```
+
+아래와 같이 Given, When, Then 패턴으로 코드 구조를 나눠놓으면 테스트 코드를 작성하기가 수월하다고 한다.
+
+```js
+$(function() { 
+  test("음료수를 뽑을 수 있다.", function(){
+    // Given
+    // When
+    // Then
+  });
+});
+```
+
+- Given에는 “어떤 상황”이 들어간다.
+- When에는 “어떻게 동작한다”가 들어간다.
+- Then에는 “동작한 결과가 어떠해야 한다”가 들어간다.
+
+Given, When, Then 패턴은 필수적으로 사용해야하는 것은 아니다. 요즘 느끼는 거지만 소프트웨어공학에 절대적인 것은 없는 것 같다. 어쨌든 테스트 코드가 무엇을 하는지 파악하기가 쉬워질 것 같다는 게 내 생각이므로 이 패턴을 따를 생각이다.
+
+## 첫 번째 테스트 코드
+
+ 테스트 할 대상을 정했으니 음료가 나오는지 테스트하는 코드를 작성하겠다. 지금은 TDD를 훈련을 위해 보폭을 작게 할 생각이다.
+
+아래와 같이 테스트 코드를 만들었다.
+
+```js
+test("음료수를 뽑을 수 있다.", function(){
+	// Given
+    var oVendingMachine = new VendingMachine();
+	// When
+    var sBeverage = oVendingMachine.buy("Coke");
+ 
+	// Then
+    ok(sBeverage, "Coke", "sBeverage === Coke");
+});
+```
+
+그런데 작성해놓고 보니 위의 코드는 문제가 있어 보인다.
+
+ Then에 ok 단언을 사용해서 결과를 비교하고 있는데, ok는 설명성이 떨어진다. 그걸 보완하기 위해서 우측에 “sBeverage === Coke”라고 설명을 달아놨다. 코드가 명료하면 주석이 필요없는 것과 마찬가지로 비교 구문의 의미가 명확하면 이런 설명은 불필요해진다. 테스트 코드도 구현 코드와 마찬가지로 계속해서 유지보수해 가야 할 존재이므로 클린하게 관리해야 한다. 그래서 TDD는 테스트 코드도 지속적으로 리팩토링 할 것을 강조한다.
+
+expected와 result를 명확하게 구분할 수 있는 단언을 사용하기 위해 ok를 equal로 변경했다.
+
+```js
+test("음료수를 뽑을 수 있다.", function(){
+	// Given
+    var oVendingMachine = new VendingMachine();
+	// When
+    var sBeverage = oVendingMachine.buy("Coke");
+ 
+	// Then
+    equal(sBeverage, "Coke");
+});
+```
+
+훨씬 좋아보인다. 코드를 수정했으니 테스트를 돌려보자. 테스트는 당연히 통과하지 못한다.
+
+[![스크린샷 2013-11-16 오후 3.35.25](/assets/images/legacy/스크린샷-2013-11-16-오후-3.35.25.png)](/assets/images/legacy/스크린샷-2013-11-16-오후-3.35.25.png)
+
+ 이제 테스트를 가장 빠르게 통과할 수 있는 실제 구현 코드를 작성해보자.
+
+```js
+function VendingMachine() {
+    this._$init.apply(this, arguments);
+};
+ 
+VendingMachine.prototype = {
+    _$init : function(){
+ 
+    },
+ 
+    buy : function(sBeverage){
+        return "Coke";
+    }
+}
+```
+
+다시 테스트를 돌려보면,
+
+[![스크린샷 2013-11-16 오후 3.34.20](/assets/images/legacy/스크린샷-2013-11-16-오후-3.34.20.png)](/assets/images/legacy/스크린샷-2013-11-16-오후-3.34.20.png)
+
+테스트를 통과하였다. 방금 TDD로 기능을 하나를 만들었다.
+
+VendingMachine.prototype.buy 메서드는 “Coke” 문자열을 그대로 반환하고 있다. 상수를 사용하고 있지만 테스트를 통과하는 데 전혀 문제가 없다.
+
+## TDD와 상수
+
+TDD는 가능하면 상수를 사용하라고 이야기한다.
+
+이유가 뭘까?
+
+사람은 코드를 작성할 때 실수를 하기 마련이다. 그래서 테스트 코드가 필요하다. 그런데 테스트 코드를 짤 때는 과연 실수를 하지 않을까?
+
+당연히 한다. 그럼 테스트 코드도 검증이 필요하게 된다. 그렇다면 테스트 코드는 어떻게 검증을 할까? 테스트 코드를 테스트하는 코드를 짜야할까? 이런.. 그럼 마치 뫼비우스의 띠처럼 끝도 없이 테스트 코드를 짜야할 것이다. 이건 무모하고 비생산적인 일이다. 그럼 어떻게 해야할까?
+
+방법은 테스트 코드가 실수할 확률을 줄이는 것이다.
+
+사람은 주로 집중을 하지 못할 때 실수를 많이 한다. 사람이 작성하는 코드도 마찬가지다. 코드가 하는 일이 많으면 많을 수록 집중력이 떨어져서 실수할 확률이 높아 진다. 이와는 반대로 코드가 하는 일이 너무 단순해서 명확하면 실수할 확률은 그만큼 줄어든다.
+
+예를 들어, 1과 2를 받아서 1 + 2를 돌려주는 함수가 있다고 하자. 이 함수는 하는 일이 너무 명확해서 실수를 할 확률이 아주 낮다. 이렇게 아주 단순한 기능을 만들어서 에러가 없음을 검증하고 난 다음에, 여기에 조금씩 살을 붙여나가는 것이 TDD의 기본이다.
+
+그래서 TDD는 에러를 제거하는 코드를 최대한 빨리 단순하게 작성할 것을 강조하며, 그 방법 중에 하나로 상수 사용을 권장한다.
+
+## 필요한 것만 만들자
+
+ 다시 위의 코드로 돌아와서 보면, 우선 테스트는 통과했지만 구현 코드에 좀 걸리는 부분이 있다.
+
+_\$init 메서드는 보통 객체를 생성할 때 객체 초기화 작업을 하기 위해서 사용한다. 그런데 지금 _$init 메서드 안에서는 아무 일도 하지 않고 있다. 심지어 우리가 만든 테스트 코드와 전혀 상관도 없다.
+
+지우고 테스트를 돌려서 확인해보자.
+
+```js
+function VendingMachine() {
+};
+ 
+VendingMachine.prototype = {
+    buy : function(sBeverage){
+        return sBeverage;
+    }
+}
+```
+
+테스트 코드에 에러가 발생하지 않는다면 정말 쓸모 없는 코드인 게 맞다. 오류는 빨리 찾아내서 수정하는 게 좋기 때문에, 어떤 변경이 일어나면 무조건 테스트 코드를 돌려서 확인한다.
+
+[![스크린샷 2013-11-16 오후 3.40.14](/assets/images/legacy/스크린샷-2013-11-16-오후-3.40.14.png)](/assets/images/legacy/스크린샷-2013-11-16-오후-3.40.14.png)
+
+ 테스트를 통과함으로써 _$init 함수가 불필요한 존재였음이 확인 되었다. 불필요한 코드는 가독성을 해치고, 리팩토링을 어렵게 만들며, 때로는 오버엔지니어링의 원인이 되기도 한다. “테스트를 통과하기 위한 코드만 작성”해야한다는 것을 명심하자. TDD에서 구현 코드는 오로지 테스트를 통과하기 위해서만 존재한다. 위에서도 이야기 했지만 테스트 자체가 사용자 요구사항으로서 명세를 표현하는 코드이기 때문이다.
+
+ 
+
+## 두 번째 테스트 코드
+
+ 이제 다음 테스트 코드를 작성하자. 
+
+- ~~음료를 뽑을 수 있다.~~
+- 동전을 넣을 수 있다.
+- 지폐를 넣을 수 있다.
+- 거스름 돈을 환전 받을 수 있다.
+- 재고를 관리할 수 있다.
+
+ 음료를 뽑을 수 있는 기능은 만들었다. 하지만 이걸 좀 다듬어야 할 것 같다. 달랑 콜라만 뽑는 자판기를 만들 수는 없으니까. 뽑을 수 있는 음료수의 종류를 네 가지로 늘려야겠다.
+
+- ~~음료를 뽑을 수 있다.~~
+- 콜라, 사이다, 오렌지 주스, 사과 주스 중 원하는 음료를 뽑을 수 있다.
+- 동전을 넣을 수 있다.
+- 지폐를 넣을 수 있다.
+- 거스름 돈을 환전 받을 수 있다.
+- 재고를 관리할 수 있다.
+
+사이다부터 하나씩 추가해나가자. 이전 테스트 코드를 복사해서 붙여넣고 살짝 내용만 바꿔주면 된다.
+
+```js
+test("자판기에서 사이다를 뽑을 수 있다.", function(){
+    // Given
+    var oVendingMachine = new VendingMachine();
+ 
+    // When
+    var sBeverage1 = oVendingMachine.buy("Sprite");
+ 
+    // Then
+    equal(sBeverage1, "Sprite");
+});
+```
+
+첫 번째로 작성했던 테스트 코드와 중복되는 내용이 많지만, 우선은 테스트가 돌아가는 것이 목적이기 때문에 지금은 모른 척하자. 지금 중요한 것은 오로지 테스트를 통과하는 것 뿐이다.
+
+[![스크린샷 2013-11-19 오후 9.53.36](/assets/images/legacy/스크린샷-2013-11-19-오후-9.53.36.png)](/assets/images/legacy/스크린샷-2013-11-19-오후-9.53.36.png)
+
+ 당연히 테스트는 깨진다. 얼른 테스트를 통과할 수 있는 가장 간단한 코드를 작성한다.
+
+“Coke”라고 상수로 박아뒀던 부분을 변경해주면 될 것 같다.
+
+```js
+function VendingMachine() {};
+ 
+VendingMachine.prototype = {
+ 
+    buy : function(sBeverage){
+        return sBeverage;
+    }
+}
+```
+
+[![스크린샷 2013-11-19 오후 9.56.22](/assets/images/legacy/스크린샷-2013-11-19-오후-9.56.22.png)](/assets/images/legacy/스크린샷-2013-11-19-오후-9.56.22.png)
+
+ 멋지게 테스트를 통과했으니 이제 중복을 제거할 차례다. 위에서 테스트 코드도 앞으로 계속 안고 가야 할 자산이므로, 지속적으로 리팩토링을 해야한다고 이야기 했다. VendingMachine 객체를 생성하는 코드를 Qunit의 Module 객체 쪽으로 옮겨서 중복을 제거하자.
+
+```js
+$(function() {
+  var oVendingMachine = null;
+
+  module('VendingMachine', {
+      setup : function(){
+          oVendingMachine = new VendingMachine();
+      },
+      teardown : function(){
+          /* 리소스 정리 */
+          oVendingMachine = null;
+      }
+  });
+
+  test("자판기에서 음료를 뽑을 수 있다.", function(){
+    // Given
+    // When
+      var sBeverage = oVendingMachine.buy("Coke");
+
+    // Then
+      equal(sBeverage, "Coke");
+  });
+
+  test("자판기에서 사이다를 뽑을 수 있다.", function(){
+      // Given
+      // When
+      var sBeverage1 = oVendingMachine.buy("Sprite");
+
+      // Then
+      equal(sBeverage1, "Sprite");
+  });
+});
+```
+
+module 안의 setup 함수는 각각의 테스트 함수 실행 전에 실행되고, teardown 함수는 테스트가 종료 후에 실행된다(이런 이야기는 이 글의 목적은 아니므로 간단하게만 하고 넘기겠다).
+
+[![스크린샷 2013-11-19 오후 9.56.22](/assets/images/legacy/스크린샷-2013-11-19-오후-9.56.22.png)](/assets/images/legacy/스크린샷-2013-11-19-오후-9.56.22.png)
+
+ 이상없이 테스트를 통과한다.
+
+리팩토링을 하고 난 다음에 테스트 코드를 돌려서 문제가 없다는 사실을 바로 확인할 수 있다는 것이 TDD를 통해서 얻을 수 있는 이점 중 하나다. 간단한 리팩토링이라 오류가 날 가능성이 매우 적었지만, 코드량이 많아질수록 이러한 이점은 더욱 커진다.
+
+오렌지 주스와 사과 주스도 뽑을 수 있는지 확인하는 코드를 추가해야겠다. 따로 테스트 케이스를 만들기에는 너무 중복이 많아 보인다. 그냥 테스트 명세를 조금 수정하는 게 좋겠다.
+
+```js
+test("자판기에서 원하는 음료를 뽑을 수 있다.", function(){
+    // Given
+    // When
+    var sBeverage1 = oVendingMachine.buy("Sprite");
+    var sBeverage2 = oVendingMachine.buy("Orange Juice");
+    var sBeverage3 = oVendingMachine.buy("Apple Juice");
+ 
+    // Then
+    equal(sBeverage1, "Sprite");
+    equal(sBeverage2, "Orange Juice");
+    equal(sBeverage3, "Apple Juice");
+});
+```
+
+테스트를 돌려보면 통과한다.
+
+4가지 음료수 중에서만 선택할 수 있어야 하니까, 나와서는 안 되는 음료수가 나오는지를 확인하는 테스트를 추가하자.
+
+```js
+test("자판기에서 콜라, 사이다, 오렌지 주스, 사과 주스 중 원하는 음료를 뽑을 수 있다.", function(){
+    // Given
+    // When
+    var sBeverage1 = oVendingMachine.buy("Sprite");
+    var sBeverage2 = oVendingMachine.buy("Orange Juice");
+    var sBeverage3 = oVendingMachine.buy("Apple Juice");
+    var sBeverage4 = oVendingMachine.buy("Coffee");
+ 
+    // Then
+    equal(sBeverage1, "Sprite");
+    equal(sBeverage2, "Orange Juice");
+    equal(sBeverage3, "Apple Juice");
+    equal(sBeverage4, null);
+});
+```
+
+[![스크린샷 2013-11-23 오전 10.40.02](/assets/images/legacy/스크린샷-2013-11-23-오전-10.40.02.png)](/assets/images/legacy/스크린샷-2013-11-23-오전-10.40.02.png)
+
+예상대로 테스트는 깨진다. TDD를 하면서 이런 순간이 오면 묘한 흥분을 느낀다. 어쩄든.
+
+가장 빠르게 이 에러를 제거할 수 있는 코드를 추가해서 에러를 벗어나자. buy 메서드에서 Coffee만 걸러내면 되긴 하지만, Milk를 걸러내야하는 상황이 문제가 될 수 있다. 4종류 중에 하나만 선택할 수 있다는 상황이 너무 선명하게 머리 속에 그려지므로 조금만 더 큰 보폭으로 코드를 작성해도 될 것 같다. 아주 조금.
+
+```js
+function VendingMachine() {};
+ 
+VendingMachine.prototype = {
+ 
+    _htProducts : {
+        "Coke" : "Coke",
+        "Sprite" : "Sprite",
+        "Orange Juice" : "Orange Juice",
+        "Apple Juice" : "Apple Juice"
+    },
+ 
+    buy : function(sBeverage){
+        return this._htProducts[sBeverage];
+    }
+}
+```
+
+테스트 코드는 다음과 같다. equal 이었던 단언을 notEqual로 변경했다.
+
+```js
+test("자판기에서 콜라, 사이다, 오렌지 주스, 사과 주스 중 원하는 음료를 뽑을 수 있다.", function(){
+    // Given
+    // When
+    var sBeverage1 = oVendingMachine.buy("Sprite");
+    var sBeverage2 = oVendingMachine.buy("Orange Juice");
+    var sBeverage3 = oVendingMachine.buy("Apple Juice");
+    var sBeverage4 = oVendingMachine.buy("Coffee");
+    var sBeverage5 = oVendingMachine.buy("Milk");
+ 
+    // Then
+    equal(sBeverage1, "Sprite");
+    equal(sBeverage2, "Orange Juice");
+    equal(sBeverage3, "Apple Juice");
+ 
+    notEqual(sBeverage4, "Coffee");
+    notEqual(sBeverage5, "Milk");
+});
+```
+
+테스트를 통과한다. 그런데 가만히 보니까 첫 번째 테스트 케이스와 두 번째 테스트 케이스가 서로 중복되는 느낌이다. 하나로 통합해도 될 것 같으니 리팩토링을 해야겠다.
+
+```js
+test("자판기에서 음료를 뽑을 수 있다.", function(){
+	// Given
+	// When
+    var sBeverage = oVendingMachine.buy("Coke");
+ 
+	// Then
+    equal(sBeverage, "Coke");
+});
+ 
+test("자판기에서 콜라, 사이다, 오렌지 주스, 사과 주스 중 원하는 음료를 뽑을 수 있다.", function(){
+    // Given
+    // When
+    var sBeverage1 = oVendingMachine.buy("Sprite");
+    var sBeverage2 = oVendingMachine.buy("Orange Juice");
+    var sBeverage3 = oVendingMachine.buy("Apple Juice");
+    var sBeverage4 = oVendingMachine.buy("Coffee");
+    var sBeverage5 = oVendingMachine.buy("Milk");
+ 
+    // Then
+    equal(sBeverage1, "Sprite");
+    equal(sBeverage2, "Orange Juice");
+    equal(sBeverage3, "Apple Juice");
+ 
+    notEqual(sBeverage5, "Coffee");
+    notEqual(sBeverage6, "Milk");
+});
+```
+
+하나로 합쳤다.
+
+```js
+test("자판기에서 음료를 뽑을 수 있다.", function(){
+	// Given
+	// When
+    var sBeverage = oVendingMachine.buy("Coke");
+ 
+	// Then
+    equal(sBeverage, "Coke");
+});
+ 
+test("자판기에서 콜라, 사이다, 오렌지 주스, 사과 주스 중 원하는 음료를 뽑을 수 있다.", function(){
+    // Given
+    // When
+    var sBeverage1 = oVendingMachine.buy("Sprite");
+    var sBeverage2 = oVendingMachine.buy("Orange Juice");
+    var sBeverage3 = oVendingMachine.buy("Apple Juice");
+    var sBeverage4 = oVendingMachine.buy("Coffee");
+    var sBeverage5 = oVendingMachine.buy("Milk");
+ 
+    // Then
+    equal(sBeverage1, "Sprite");
+    equal(sBeverage2, "Orange Juice");
+    equal(sBeverage3, "Apple Juice");
+ 
+    notEqual(sBeverage5, "Coffee");
+    notEqual(sBeverage6, "Milk");
+});
+
+```
+
+그런데 합치고 나니 한 곳에 너무 몰려 있는 느낌이 든다.  ‘음료를 뽑을 수 있는 경우’와 ‘음료가 나와서는 안 되는 경우’ 2개의 케이스로 분리를 하면 테스트의 역할이 좀 더 명확해질 것 같다.
+
+```js
+test("자판기에서 음료를 뽑을 수 있다.", function(){
+	// Given
+	// When
+    var sBeverage = oVendingMachine.buy("Coke");
+ 
+	// Then
+    equal(sBeverage, "Coke");
+});
+ 
+test("자판기에서 콜라, 사이다, 오렌지 주스, 사과 주스 중 원하는 음료를 뽑을 수 있다.", function(){
+    // Given
+    // When
+    var sBeverage1 = oVendingMachine.buy("Sprite");
+    var sBeverage2 = oVendingMachine.buy("Orange Juice");
+    var sBeverage3 = oVendingMachine.buy("Apple Juice");
+    var sBeverage4 = oVendingMachine.buy("Coffee");
+    var sBeverage5 = oVendingMachine.buy("Milk");
+ 
+    // Then
+    equal(sBeverage1, "Sprite");
+    equal(sBeverage2, "Orange Juice");
+    equal(sBeverage3, "Apple Juice");
+ 
+    notEqual(sBeverage5, "Coffee");
+    notEqual(sBeverage6, "Milk");
+});
+```
+
+테스트 코드도 앞으로 계속해서 가져가야 할 자산이기 때문에 끊임없이 리팩토링을 해야하는 대상이라는 사실을 잊지 말자.
+
+- ~~음료를 뽑을 수 있다.~~
+- ~~콜라, 사이다, 오렌지 주스, 사과 주스 중 원하는 음료를 뽑을 수 있다.~~
+- 동전을 넣을 수 있다.
+- 지폐를 넣을 수 있다.
+- 거스름 돈을 환전 받을 수 있다.
+- 재고를 관리할 수 있다. 
+
+## 다음 장에 계속…
+
+ 글이 너무 길어지면 안 될 것 같아서 이번 장은 여기까지만 해야겠다. 초반이다보니 TDD에 대한 여러가지를 이야기했는데, TDD의 본질을 명확하게 해서 그동안 오해하고 있던 것들을 정리하고 가지 않으면 진행이 어려울 거라 판단했기 때문이다.
+
+다음 장에서는 동전과 지폐를 다루는 기능을 구현해가면서 TDD에 대해서 좀 더 알아보도록 하겠다.

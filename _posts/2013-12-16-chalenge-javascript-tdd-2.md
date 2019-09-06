@@ -1,0 +1,482 @@
+---
+layout: post
+title: 도전! JavaScript TDD – 2. TDD 리듬
+date: 2013-11-25 00:24:03.000000000 +09:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- 개발 이야기
+tags:
+- TDD
+- Front-End
+- JavaScript
+- Test
+author:
+  login: jeokrang
+  email: jeokrang@gmail.com
+  display_name: 개발왕 김코딩
+  first_name: 훈민
+  last_name: 김
+permalink: "/posts/2013-11-25-chalenge-javascript-tdd-2"
+---
+우선 이야기를 시작하기에 앞서, 이전에 작성했던 코드를 다시 한 번 살펴보자.
+
+아래는 모델 코드다. 모델 코드는 테스트 코드에 대응하는 실제 구현 코드를 말한다.
+
+```js
+function VendingMachine() {};
+ 
+VendingMachine.prototype = {
+ 
+    _htProducts : {
+        "Coke" : "Coke",
+        "Sprite" : "Sprite",
+        "Orange Juice" : "Orange Juice",
+        "Apple Juice" : "Apple Juice"
+    },
+ 
+    buy : function(sBeverage){
+        return this._htProducts[sBeverage];
+    }
+};
+```
+
+그리고 다음은 테스트 코드다.
+
+```js
+$(function() {
+ 
+    var oVendingMachine = null;
+ 
+    module('VendingMachine', {
+        setup : function(){
+            oVendingMachine = new VendingMachine();
+        },
+        teardown : function(){
+            /* 리소스 정리 */
+            oVendingMachine = null;
+        }
+    });
+ 
+    test("여러 종류의 음료 중 원하는 음료를 뽑을 수 있다.", function(){
+        // Given
+        // When
+        var sBeverage1 = oVendingMachine.buy("Coke");
+        var sBeverage2 = oVendingMachine.buy("Sprite");
+        var sBeverage3 = oVendingMachine.buy("Orange Juice");
+        var sBeverage4 = oVendingMachine.buy("Apple Juice");
+ 
+        // Then
+        equal(sBeverage1, "Coke");
+        equal(sBeverage2, "Sprite");
+        equal(sBeverage3, "Orange Juice");
+        equal(sBeverage4, "Apple Juice");
+    });
+ 
+    test("콜라, 사이다, 오렌지 주스, 사과 주스만 뽑을 수 있다.", function(){
+        // Given
+        // When
+        var sBeverage1 = oVendingMachine.buy("Coffee");
+        var sBeverage2 = oVendingMachine.buy("Milk");
+ 
+        // Then
+        notEqual(sBeverage1, "Coffee");
+        notEqual(sBeverage2, "Milk");
+    });
+ 
+});
+```
+
+전에는 잘 몰랐는데 오늘은 테스트 코드의 몇 군데가 마음에 들지 않는다. 어제 마음 다르고, 오늘 마음 다르고. 사람이란 그런 존재다.
+
+첫 번째 테스트 케이스의 명세 중 “여러 종류의 음료”라는 문구가 불명확한 것 같다. 그리고 두 번째 테스트 케이스는 더 어색하게 느껴진다. 테스트 명세는 “콜라, 사이다, 오렌지 주스, 사과 주스만 뽑을 수 있다”인데, 테스트 코드가 이를 잘 표현하지 못하는 것 같다.
+
+하지만 다음 테스트 코드를 작성하는데 크게 방해가 될 것 같진 않으므로 우선은 그냥 진행하고, 다음 번 리팩토링 때 상황을 봐서 수정해야겠다.
+
+## 일단 후퇴
+
+ 남은 할 일 목록은 다음과 같다. 
+
+- ~~음료를 뽑을 수 있다.~~
+- ~~콜라, 사이다, 오렌지 주스, 사과 주스 중 원하는 음료를 뽑을 수 있다.~~
+- 동전을 넣을 수 있다.
+- 지폐를 넣을 수 있다.
+- 거스름 돈을 환전 받을 수 있다.
+- 재고를 관리할 수 있다.
+
+이전 장을 마치면서 이번 장에서 동전 관리 기능을 구현하겠다고 했었다. 그런데 다시 생각해보니 가장 핵심 기능(음료 구매)을 먼저 구현한 다음에 점점 살을 붙여나가는 방식으로 진행하고 있으므로, 재고 관리와 동전 관리 중 어떤 게 더 중요한 가치인지 생각을 좀 해 볼 필요가 있을 것 같다. 이런 류의 판단은 개인의 경험에 기인하는 경우가 많다. 개인적으로 동전을 넣지 않고 음료를 구매할 수 있는 자판기는 본 적이 있지만 무한정 음료가 나오는 자판기는 본 적은 없으므로 재고 관리 기능을 먼저 구현해야겠다.
+
+```js
+test("재고 관리를 할 수 있다.", function(){
+    // given
+    // when
+    // then
+});
+```
+
+테스트 케이스를 먼저 만들자.
+
+.
+
+.
+
+.
+
+이런…?
+
+뭘 해야할지 모르겠다.
+
+재고 관리를 할 수 있다는 것을 어떻게 코드로 표현해야 할까? 아무래도 명세를 잘못 작성한 것 같다. 여기에서 명세의 중요성을 다시 한 번 느낀다. 코드로 표현하기에 “관리”라는 말은 너무 추상적이다. 명세를 좀 더 구체적으로 바꿔줘야겠다.
+
+“재고만큼 음료를 구매할 수 있다.”는 어떨까?
+
+음료 구매와 재고의 개념을 연결하면 자연스럽게 기능을 확장할 수 있을 것 같다. 이 명세가 아주 쉽게 머리 속에서 나온 것 같지만, 사실은 긴 시간 고민해서 얻은 결과다(한 5번 정도는 왔다갔다…).
+
+다음 명세를 어떻게 가져가야할까? 어떻게 하면 기존 기능과 자연스럽게 어울릴 수 있을까? TDD를 하면서 가장 어려운 부분인데, 계속해서 연습하고 고민하는 길만이 답인 것 같다. 그래서 내 할 일 목록은 자주 변경된다.
+
+- ~~음료를 뽑을 수 있다.~~
+- ~~콜라, 사이다, 오렌지 주스, 사과 주스 중 원하는 음료를 뽑을 수 있다.~~
+- 동전을 넣을 수 있다.
+- 지폐를 넣을 수 있다.
+- 거스름 돈을 환전 받을 수 있다.
+- **재고만큼 음료를 구매할 수 있다.**
+
+항상 테스트를 먼저 만들어야 한다는 것을 명심한다.
+
+**“재고만큼 음료를 구매할 수 있다.”**는 내용을 테스트 코드로 어떻게 표현하면 좋을까?
+
+```js
+test("재고만큼 음료를 구매할 수 있다.", function(){
+    // given
+    oVendingMachine.supply({ Coke : 1 });
+ 
+    // when
+    oVendingMachine.buy("Coke");
+ 
+    // then
+    equal( oVendingMachine.getStockCount("Coke"), 0 );
+});
+```
+
+재고를 넣어주고, 음료를 구매한 후에 재고 개수를 확인하는 테스트 코드를 작성했다.
+
+ 
+
+잠깐, 잠깐.
+
+음료의 재고 개수를 보여주는 자판기가 있었던가…? 그런 자판기는 내 기억 속에 없다.
+
+**그렇다면 getStockCount는 필요한 메서드일까?** 우선 테스트에는 필요하다. 그런데 일반적인 자판기를 생각해봤을 때, 자판기 관리자가 자판기를 열어서 확인하는 경우를 보긴 했지만 재고 개수를 화면에 보여주는 자판기는 본 적이 없다. 지금 만들고 있는 자판기 스펙은 내 경험에 비추어 나오는 것이므로, 재고 개수를 보여주는 기능이 들어갈 일도 없을 것 같다. 언젠가 추가 요구사항이 될 수도 있겠지만 어쨌든 지금은 불필요한 메서드인 게 분명하다. 그렇다면 결국 getStockCount는 “테스트만”을 위해서 존재한다는 소리다.
+
+TDD는 단순히 테스트를 위한 메서드를 만드는 것은 권장하지 않는다. 좀 더 자연스러운 다른 방법이 있다면 굳이 불필요한 메서드를 만들 필요가 없기 때문이다. 좀 더 고민을 해보고 진행해야겠다.
+
+자판기 사용 시나리오를 머리 속에 그려보자.
+
+1. 어떤 사람이 와서 콜라를 뽑아갔다.
+2. 재고가 떨어졌다.
+3. 자판기에 품절이라는 불이 들어온다.
+4. 콜라가 먹고 싶어 자판기 버튼을 누르지만 콜라는 나오지 않는다.
+
+그렇다면 재고가 떨어졌을 때 일어나는 일은 두 가지다.
+
+1. 품절이라는 불이 들어온다.
+2. 버튼을 눌러도 아무 것도 나오지 않는다.
+
+1번은 UI는 고려하고 있지 않은 지금 단계에서는 불필요한 스펙인 것 같고, 2번은 괜찮은 시나리오로 보인다.
+
+재고가 하나 남은 상태에서 한 번 구매하면 재고가 0이 된다. 한 번 더 구매를 시도하면 음료가 나오지 않는다. 이걸 표현하는 테스트 코드를 만들어보자.
+
+```js
+test("재고만큼 음료를 구매할 수 있다.", function(){
+    // given
+    oVendingMachine.supply({ Coke : 1 });
+ 
+    // when
+    oVendingMachine.buy("Coke");
+ 
+    // then
+    equal( oVendingMachine.getStockCount("Coke"), 0 );
+});
+```
+
+테스트를 통과하게 만들어 줄 모델 코드는 아래에 있다. 이번에는 보폭이 좀 넓다.
+
+```js
+function VendingMachine() {
+    this._htStocks = {};
+};
+ 
+VendingMachine.prototype = {
+ 
+    _htProducts : {
+        "Coke" : "Coke",
+        "Sprite" : "Sprite",
+        "Orange Juice" : "Orange Juice",
+        "Apple Juice" : "Apple Juice"
+    },
+ 
+    buy : function(sBeverage){
+        if( this._htStocks[sBeverage] < 1 ){
+            return null;
+        }
+ 
+        this._htStocks[sBeverage]--;
+        return this._htProducts[sBeverage];
+    },
+ 
+    supply : function(htStocks){
+        this._htStocks = htStocks;
+    }
+};
+```
+
+테스트를 돌려보자.
+
+[![스크린샷 2013-12-18 오후 11.46.48](/assets/images/legacy/스크린샷-2013-12-18-오후-11.46.48.png)](/assets/images/legacy/스크린샷-2013-12-18-오후-11.46.48.png)
+
+ 이런, 당황스럽게도 내 의도와는 다르게 사이드 이펙트(side effect)가 생겼다. 테스트 코드 없이 개발을 진행하다보면 이런 경우를 모르고 지나칠 때가 종종 있다. 이런 문제를 빨리 발견할 수 있다는 것이 TDD의 장점 중 하나다. 문제를 전혀 모르고 있다가 배포 직전에 QA가 발견했다고 생각해보라. 끔찍하다. 특히, **JavaScript 같은 “낙관적” 언어는 이런 경우가 아주 잦다.**
+
+TDD를 진행하다가 의도치 않게 사이드 이펙트를 만들었을 경우에는 잠시 진행을 멈추고 에러의 원인을 추적한다. 원인이 간단한 문제라면 바로 수정하고,  원인을 잘 모르겠다면 일단 코드를 테스트 통과 가능한 이전 상태로 되돌려놓고 문제를 다시 풀어가는 게 좋다.
+
+침착하게 사이드 이펙트가 발생한 첫번째 에러를 확인하자.
+
+첫 번째 “Coke”는 나오는데, 두 번째 음료부터는 기대와 다르게 null이 떨어진다. 첫번째 테스트 케이스에는 재고를 공급하는 코드를 넣어주지 않았기 때문이다. 쉽게 원인을 찾았으니, 코드를 뒤로 되돌리지 않고 그냥 진행해야겠다.
+
+```js
+test("여러 종류의 음료 중 원하는 음료를 뽑을 수 있다.", function(){
+    // Given
+    oVendingMachine.supply({
+        "Coke": 1,
+        "Sprite" : 1,
+        "Orange Juice" : 1,
+        "Apple Juice" : 1
+    });
+ 
+    // When
+    var sBeverage1 = oVendingMachine.buy("Coke");
+    var sBeverage2 = oVendingMachine.buy("Sprite");
+    var sBeverage3 = oVendingMachine.buy("Orange Juice");
+    var sBeverage4 = oVendingMachine.buy("Apple Juice");
+ 
+    // Then
+    equal(sBeverage1, "Coke");
+    equal(sBeverage2, "Sprite");
+    equal(sBeverage3, "Orange Juice");
+    equal(sBeverage4, "Apple Juice");
+});
+ 
+test("콜라, 사이다, 오렌지 주스, 사과 주스만 뽑을 수 있다.", function(){
+    // Given
+    // When
+    var sBeverage1 = oVendingMachine.buy("Coffee");
+    var sBeverage2 = oVendingMachine.buy("Milk");
+ 
+    // Then
+    notEqual(sBeverage1, "Coffee");
+    notEqual(sBeverage2, "Milk");
+});
+ 
+test("재고만큼 음료를 구매할 수 있다.", function(){
+    // given
+    oVendingMachine.supply({
+        "Coke": 1
+    });
+ 
+    // when
+    var sBeverage1 = oVendingMachine.buy("Coke");
+    var sBeverage2 = oVendingMachine.buy("Coke");
+ 
+    // then
+    equal( sBeverage1, "Coke" );
+    equal( sBeverage2, null );
+});
+```
+
+두 번째 테스트 케이스는 자판기에 없는 음료를 구매하는 테스트이기 때문에 재고를 채워넣을 필요가 없다. .
+
+```js
+function VendingMachine() {
+    this._htStocks = {};
+};
+ 
+VendingMachine.prototype = {
+ 
+    _htProducts : {
+        "Coke" : "Coke",
+        "Sprite" : "Sprite",
+        "Orange Juice" : "Orange Juice",
+        "Apple Juice" : "Apple Juice"
+    },
+ 
+    buy : function(sBeverage){
+        if(this._htStocks[sBeverage] < 1){
+            return null;
+        }
+ 
+        this._htStocks[sBeverage]--;
+        return this._htProducts[sBeverage];
+    },
+ 
+    supply : function(htStocks){
+        this._htStocks = htStocks;
+    }
+};
+```
+
+테스트를 통과했다.
+
+[![스크린샷 2013-12-09 오후 11.31.59](/assets/images/legacy/스크린샷-2013-12-09-오후-11.31.59.png)](/assets/images/legacy/스크린샷-2013-12-09-오후-11.31.59.png)
+
+## 리팩토링
+
+ 위에서 모든 테스트를 통과했으니 이제 리팩토링을 시도해야겠다. 이번 장을 처음 시작할 때 마음에 안 들었던 테스트 코드의 문제도 함께 해결해야겠다.
+
+리팩토링은 반드시 모든 테스트가 통과인 상태일 때만 진행해야한다. 리팩토링 도중에 발생하는 에러를 테스트 코드로 확인해야하는데 테스트 실패 상태에서 리팩토링을 진행해버리면 제대로 가고 있는 건지, 산으로 가고 있는 건지 알 수가 없기 때문이다.
+
+첫 번째 테스트 케이스를 유심히 보다가 번뜩 든 생각인데, 제품 테이블(htProducts)이 필요 없을 것 같다. 재고가 있는 음료만 구매할 수 있다는 걸로 충분히 요구사항을 만족시킬 수 있다. 그래도 혹시 모르니 한 5초만 더 고민해볼까.
+
+.
+
+.
+
+.
+
+없어도 될 것 같다. 과감하게 지워버리자.
+
+```js
+function VendingMachine() {
+    this._htStocks = {};
+};
+ 
+VendingMachine.prototype = {
+ 
+    buy : function(sBeverage){
+        if( !this._htStocks[sBeverage] || this._htStocks[sBeverage] < 1 ){
+            return null;
+        }
+ 
+        this._htStocks[sBeverage]--;
+        return sBeverage;
+    },
+ 
+    supply : function(htStocks){
+        this._htStocks = htStocks;
+    }
+ 
+};
+```
+
+buy 메서드의 if 절의 비교 구문을 별도의 메서드로 추출해서 가독성을 더 높일 수 있다.
+
+```js
+VendingMachine.prototype = {
+ 
+    buy : function(sBeverage){
+        if( this._hasStocks(sBeverage) ){
+            return null;
+        }
+ 
+        this._htStocks[sBeverage]--;
+        return sBeverage;
+    },
+ 
+    _hasStocks: function (sBeverage) {
+        return !this._htStocks[sBeverage] || this._htStocks[sBeverage] < 1;
+    },
+ 
+    supply : function(htStocks){
+        this._htStocks = htStocks;
+    }
+};
+```
+
+테스트를 돌려서 확인한 결과 이상없다.
+
+두 번째 테스트 케이스는 재고의 개념이 생겼으니 “재고가 있는 음료만 구매할 수 있다”라고 명세를 변경하고, 명세를 좀 더 잘 표현해줄 수 있게 단언도 바꿔주자.
+
+```js
+test("재고가 있는 음료만 뽑을 수 있다.", function(){
+    // Given
+    oVendingMachine.supply({
+        "NonExistingDrink": 0
+    });
+ 
+    // When
+    var sBeverage1 = oVendingMachine.buy("NonExistingDrink");
+ 
+    // Then
+    equal(sBeverage1, null);
+});
+```
+
+하는 김에 음료의 이름까지 의미 있게 변경해서 가독성을 높였다. 테스트 코드도 모두 통과한다.
+
+oVendingMachine.supply 코드가 반복되는데 setup으로 옮겨도 되지 않을까?
+
+```js
+test("재고가 있는 음료만 뽑을 수 있다.", function(){
+    // Given
+    oVendingMachine.supply({
+        "NonExistingDrink": 0
+    });
+ 
+    // When
+    var sBeverage1 = oVendingMachine.buy("NonExistingDrink");
+ 
+    // Then
+    equal(sBeverage1, null);
+});
+```
+
+자판기에 음료를 공급하는 코드를 setup으로 몰아서 중복을 제거했다. 이 부분을 처리하는 방식은 개인차가 있는데, 지금 하려는 이야기하고는 살짝 동떨어져 있으므로 다음으로 미룬다.
+
+- ~~음료를 뽑을 수 있다.~~
+- ~~콜라, 사이다, 오렌지 주스, 사과 주스 중 원하는 음료를 뽑을 수 있다.~~
+- 동전을 넣을 수 있다.
+- 지폐를 넣을 수 있다.
+- 거스름 돈을 환전 받을 수 있다.
+- ~~**재고만큼 음료를 구매할 수 있다.**~~ 
+
+## TDD 리듬
+
+눈치가 빠른 사람들은 이미 느꼈을텐데, TDD를 진행하는 과정은 반복적인 프로세스를 가지고 있다. 우리가 지금까지 해 온 과정을 되짚어 보자.
+
+1. 가장 먼저 명세를 작성한다.
+2. 명세를 표현할 수 있는 테스트 코드를 작성한 후에 테스트를 돌려서 테스트가 실패하는 것을 확인한다.
+3. 테스트를 통과할 수 있는 가장 단순한 코드를 작성한다.
+4. 테스트에 성공하면 6번으로 넘어간다.
+5. 테스트에 실패하면 에러의 원인을 파악한다. 쉽게 해결할 수 있다면 코드를 수정해서 테스트를 돌려 확인하고, 원인 파악이 어렵다면  3번 상태로 코드를 되돌린 후 문제에 다시 접근한다.
+6. 모든 테스트가 통과한 상태에서 리팩토링을 진행한다.
+
+ 
+
+이 프로세스를 그림으로 그려보면 다음과 같다.
+
+[![tdd리듬](/assets/images/legacy/tdd리듬.png)](/assets/images/legacy/tdd리듬.png)
+
+오랜 세월 굳어진 습관을 하루 아침에 바꾸기는 어렵다. 오른손으로 밥을 먹다가 어느 날 갑자기 왼손으로 밥을 먹는 일에 도전 했다고 생각해보자. 밥 먹는 내내 엄청난 스트레스에 시달릴 것이 분명하다.
+
+TDD도 마찬가지다. TDD를 잘하기 위해서는 사고의 근원적 전환이 필요한데, 하루 아침에 머리 속 사고의 흐름을 바꿔놓는 것이 쉬운 일일 리가 없지 않은가. 그래서 TDD에 적응해가는 과정을 “수련”이라고 한다.
+
+프로세스라는 단어가 딱딱하게 느껴진다면 일종의 리듬이라고 생각하고 접근해보자.
+
+빨간, 초록, 리팩토링.
+
+혼자 입으로 중얼 거리면서 리듬을 타는 거다. 리듬을 타다보면 습관이 훨씬 몸에 잘 배는 것 같다. 리듬에 익숙해지면 한 번에 진행할 보폭의 너비를 자유자재로 조절할 수 있는 경지에 이를 수 있다고 한다. 아직 나한테는 먼 훗날 이야기므로 지금은 단순한 과정을 계속 반복해서 리듬에 익숙해지는 데 집중할 생각이다.
+
+TDD 리듬은 점진적이다.  발을 한 발짝 내디뎌서 안전한지 확인하고, 안전하지 않다면 다시 돌아와서 다른 쪽으로 발을 내딛는다. 안전하다 싶으면 다음 발을 내딛는다. 조금씩, 조금씩 답을 찾아가면서 불확싱설을 제어한다. 지나온 자리에는 나의 뒤를 받쳐줄 테스트 코드가 남는다.
+
+이걸 조금 뒤집어서 생각해보면, 가야할 길이 너무 명확한 경우에는 조금씩 아장아장 걸어가는 것은 오히려 시간 낭비일 수도 있다. 문제의 정답을 경험적으로 자신할 수 있다면 TDD는 답이 아닐 지도 모른다. 그렇다하더라도 테스트 코드가 반드시 필요하다는 내 생각은 확고하고, 나는 테스트 코드를 나중에 작성할 수 있을 만큼 부지런하지 못하다. 그래서 TDD를 선택했다.
+
+## 다음 장에 계속…
+
+분량 조절을 위해 이 번장은 이 정도로만 마쳐야겠다. 이번 장에서는 TDD 리듬에 대한 이야기를 했다. 다음 장에서는 원래 이번 장에서 다려루고 했던 동전을 넣는 기능을 구현하면서 TDD에 대한 이야기를 계속 진행하겠다. 물론 이건 어디까지나 오늘 유효한 계획이다. 막상 다음 장에 들어가면 또 내 마음이 어떻게 바뀔지 모르겠다. 고객의 마음도 그러하지 않을까. 아니 그러하다.
+
+변경이란 언제 어디에서 어떻게든 생겨날 수 있다. 그래서 개발자는 항상 변경에 대응할 수 있는 무기를 가져야 한다. “변경에 대응할 수 있는 무기”는 “확장 가능성을 고려한 구조”가 아니라 “리팩토링하기 좋은 구조”를 말한다. 뒤에서 이 내용을 이야기할 기회가 있을 것 같다.
+
+어쨌든 오늘은 여기까지.
+
+ 
