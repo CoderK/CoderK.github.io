@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start:js": "webpack --mode=development --watch",
-    "start:jekyll": "bundle exec jekyll liveserve",
+    "start:jekyll": "bundle exec jekyll serve",
     "start": "concurrently \"npm run start:js\" \"npm run start:jekyll\"",
     "build:js": "webpack --mode=production --progress",
     "build:jekyll": "bundle exec jekyll build",
