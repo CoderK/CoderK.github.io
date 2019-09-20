@@ -14,6 +14,7 @@ tags:
 - 설계
 - 기술부채
 - 설득
+image: /assets/images/new/photo-1515187029135-18ee286d815b.jpg
 author:
   login: jeokrang
   email: jeokrang@gmail.com
