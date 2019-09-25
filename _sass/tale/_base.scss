@@ -50,3 +50,11 @@ img {
 td {
   vertical-align: top;
 }
+
+@media (prefers-color-scheme: dark) {
+  html,
+  body {
+    background-color: $dark-black-1;
+    color: $dark-default-color;
+  }
+}

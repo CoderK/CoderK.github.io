@@ -39,3 +39,24 @@
     width: 2rem;
   }
 }
+
+@media (prefers-color-scheme: dark) {
+  .catalogue {
+    &-item {
+      color: $dark-default-shade;
+      border-bottom: 1px solid $dark-default-tint;
+    }
+
+    &-title {
+      color: $dark-default-color;
+    }
+
+    &-line {
+      border-top: .2rem solid $dark-default-shade;
+    }
+
+    &-time {
+      color: $dark-default-shade;
+    }
+  }
+}

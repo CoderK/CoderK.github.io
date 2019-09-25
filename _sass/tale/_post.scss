@@ -140,3 +140,41 @@
     margin: 0;
   }
 }
+
+@media (prefers-color-scheme: dark) {
+  .post {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      color: $dark-default-bold;
+      font-weight: 500;
+    }
+
+    p {
+      color: $dark-default-color;
+    }
+
+    blockquote {
+      background-color: #333333;
+    }
+
+    blockquote:before {
+      color: $dark-default-shade;
+    }
+
+    &-title {
+      color: $dark-default-shade;
+    }
+
+    &-line {
+      border-top: 0.4rem solid $dark-default-shade;
+    }
+
+    hr {
+      border: 1px solid $dark-default-tint;
+    }
+  }
+}

@@ -99,3 +99,23 @@ footer {
   width: $contents-width;
   margin: 0 auto;
 }
+
+@media (prefers-color-scheme: dark) {
+  .nav {
+    box-shadow: 0 2px 2px -2px $dark-shadow-color;
+
+    &-title {
+      color: $dark-default-color;
+    }
+
+    a {
+      color: $dark-default-color;
+    }
+  }
+
+  footer {
+    span {
+      color: $dark-default-shade;
+    }
+  }
+}

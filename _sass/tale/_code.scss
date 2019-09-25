@@ -44,3 +44,14 @@ pre code {
     user-select: none;
   }
 }
+
+@media (prefers-color-scheme: dark) {
+  .highlight {
+    background-color: $dark-black-2;
+  }
+
+  code {
+    background-color: $dark-black-1;
+    color: $code-color;
+  }
+}
