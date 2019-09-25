@@ -19,14 +19,14 @@
 
   &-time {
     color: $default-tint;
-    font-family: $serif-secondary;
+    font-family: $serif;
     letter-spacing: .5px;
   }
 
   &-title {
     color: $default-shade;
     display: block;
-    font-family: $sans-serif;
+    font-family: $sans-serif-secondary;
     font-size: 2rem;
     font-weight: 500;
     margin: .5rem 0;

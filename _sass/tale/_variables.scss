@@ -26,9 +26,9 @@ $dark-default-tint: #383838;
 $dark-shadow-color: rgba(255, 255, 255, 0.2);
 
 // Fonts
-$serif-primary: 'Nanum Gothic', sans-serif;
-$serif-secondary: 'Nanum Myeongjo', serif;
-$sans-serif: 'Nanum Square', sans-serif;
+$sans-serif-primary: 'Nanum Gothic', sans-serif;
+$sans-serif-secondary: 'Noto Sans KR', sans-serif;
+$serif: 'Nanum Myeongjo', serif;
 $monospaced: 'Nanum Gothic Coding', monospace;
 
 @mixin box-sizing($type: border-box) {
