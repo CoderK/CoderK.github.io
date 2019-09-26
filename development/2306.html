@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+  <script>
+    WebFont.load({
+      google: {
+        families: ['Nanum Gothic', 'Noto Sans KR', 'Nanum Gothic Coding', 'Nanum Myeongjo']
+      },
+      active() {
+        var tid = setInterval(function() {
+          if (document.body) {
+            document.body.classList.remove("hidden");
+            clearInterval(tid);
+          }
+        }, 500);
+      }
+    });
+  </script>
+
+  <!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Express.js 서버는 왜 304를 반환하는 걸까? | Huns.me</title>
+<meta name="generator" content="Jekyll v3.8.6">
+<meta property="og:title" content="Express.js 서버는 왜 304를 반환하는 걸까?">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="김코딩 님이 잘하고 싶어서 만든 블로그">
+<meta property="og:description" content="김코딩 님이 잘하고 싶어서 만든 블로그">
+<link rel="canonical" href="http://localhost:4000/development/2306">
+<meta property="og:url" content="http://localhost:4000/development/2306">
+<meta property="og:site_name" content="Huns.me">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2019-08-09T11:29:41+09:00">
+<script type="application/ld+json">
+{"url":"http://localhost:4000/development/2306","dateModified":"2019-08-09T11:29:41+09:00","datePublished":"2019-08-09T11:29:41+09:00","headline":"Express.js 서버는 왜 304를 반환하는 걸까?","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/development/2306"},"description":"김코딩 님이 잘하고 싶어서 만든 블로그","@type":"BlogPosting","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/legacy/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/legacy/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/legacy/apple-touch-icon.png">
+
+  <!-- RSS -->
+  <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Huns.me">
+
+  <!-- Google Analytics-->
+  
+</head>
+
+  <body class="hidden">
+    <nav class="nav">
+  <div class="nav-container">
+    <a href="/">
+      <h2 class="nav-title">Huns.me</h2>
+    </a>
+    <ul>
+      <li><a href="/about">About</a></li>
+      <li><a href="/">Posts</a></li>
+    </ul>
+  </div>
+</nav>
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Written by</span>
+    KimCoding
+
+    
+      <br>
+      <span>on </span><time datetime="2019-08-09 11:29:41 +0900">August 09, 2019</time>
+    
+  </div>
+
+  <h1 class="post-title">Express.js 서버는 왜 304를 반환하는 걸까?</h1>
+  <div class="post-line"></div>
+
+  <p>
+				<!-- wp:paragraph --></p>
+<p><strong><span style="font-size: 20pt;">1.</span> <br></strong>Express.js는 정적 리소스 요청과 동적 리소스 요청을 구분한다. 정적 리소스에 대한 설정은 <code>express.static</code>으로 지정하도록 구분해 놓은 것이 그렇다.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p><strong><span style="font-size: 20pt;">2.</span> <br></strong>어떤 리소스 요청이든, Express.js는 모든 응답에 Etag를 자동으로 생성해서 헤더에 추가한다. 기본 설정이다.  다음은 Etag를 가진 응답의 헤더를 보여준다.</p>
+<p>__</p>
+<p>HTTP/1.1 200 OK<br>Date: Fri, 09 Aug 2019 03:39:50 GMT<br>Server: Apache<br>X-Powered-By: Express<br>Vary: Origin<br>Access-Control-Allow-Credentials: true<br>Accept-Ranges: bytes<br>Cache-Control: public, max-age=0<br>Last-Modified: Thu, 08 Aug 2019 10:39:30 GMT<br>ETag: W/"12f8d-16c70cfead0"<br>Content-Type: image/png<br>Content-Length: 77709<br>Referrer-Policy: unsafe-url<br>Connection: close</p>
+<div class="wp-block-image">
+<p class="alignleft is-resized"><strong><span style="font-size: 20pt;">3.</span> <br></strong>ETag는 HTTP 응답의 버전을 식별하는 일종의 식별자다. Etag가 같으면 같은 응답이고 다르면 다른 응답인 셈이다. Express는 세 가지의 ETag 생성 방식을 제공한다. strong, weak, 그리고 사용자 정의 방식.</p>
+</div>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+2
+3
+</pre></td>
+<td class="code"><pre><span class="nx">app</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="dl">"</span><span class="s2">etag</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">strong</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">app</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="dl">"</span><span class="s2">etag</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">weak</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">app</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="dl">"</span><span class="s2">etag</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">body</span><span class="p">,</span> <span class="nx">encoding</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="cm">/* return etag */</span> <span class="p">});</span>
+</pre></td>
+</tr></tbody></table></code></pre></figure>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:preformatted --><!-- /wp:preformatted --></p>
+<p><!-- wp:paragraph --></p>
+<p>weak 방식은 <a href="https://github.com/expressjs/express/blob/3ffceff3ed356a711fce5fee6ed00a03f43affd8/lib/utils.js#L53">CRC32</a>, strong 방식은 <a href="https://github.com/expressjs/express/blob/3ffceff3ed356a711fce5fee6ed00a03f43affd8/lib/utils.js#L28">MD5</a> 알고리즘을 이용하여 HTTP Body를 인코딩한다.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p><strong><span style="font-size: 20pt;">4.</span> <br></strong>서버로부터 넘겨받은 응답 헤더에 Etag가 있다면, 브라우저(크롬만 확인)는 Etag의 값과 응답을 받은 시간을 기록해두었다가, 다음 번에 동일한 요청을 전송할 때 아래 두 개의 필드를 헤더에 추가하여 서버로 전송한다.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:list --></p>
+<ul>
+<li>'if-none-match': 'W/"12f8d-16c6ffc26c3”'</li>
+<li>'if-modified-since': 'Thu, 08 Aug 2019 06:48:11 GMT'</li>
+</ul>
+<p><!-- /wp:list --></p>
+<p><!-- wp:paragraph --></p>
+<p><strong><span style="font-size: 20pt;">5.</span> <br></strong>Express.js는 요청 헤더에 if-none-match 헤더가 있으면, 응답 결과를 이용해 Etag를 다시 생성한다. 그리고 요청 헤더의 if-none-match 값과 Etag를 비교한다. 값이 동일하다면 304 Not Modified를 반환하는데, 304 응답은 HTTP Body가 없다. 물론 개발자가 헤더의 값을 확인하여 수동으로 캐시 전략을 구현할 수도 있다.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p><strong><span style="font-size: 20pt;">6.</span> <br></strong>어쨌든 브라우저는 304 응답을 받으면 이전에 저장해 둔 정보를 참조한다.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p><strong><span style="font-size: 20pt;">7.</span> <br></strong>Express.js에서 Etag를 생성하지 않도록 설정하는 건 쉽다. 다만 동적 요청에 대한 설정과 정적 요청에 대한 설정 방식이 다르다. 둘을 구분하니까.</p>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td>
+<td class="code"><pre><span class="c1">// 동적 요청에 대한 응답을 보낼 때 etag 생성을 하지 않도록 설정</span>
+<span class="nx">app</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="dl">"</span><span class="s2">etag</span><span class="dl">"</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
+
+<span class="c1">// 정적 요청에 대한 응답을 보낼 때 etag 생성을 하지 않도록 설정</span>
+<span class="kd">const</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">etag</span><span class="p">:</span> <span class="kc">false</span> <span class="p">};</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="kd">static</span><span class="p">(</span><span class="dl">"</span><span class="s2">public</span><span class="dl">"</span><span class="p">,</span> <span class="nx">options</span><span class="p">));</span>
+</pre></td>
+</tr></tbody></table></code></pre></figure>
+<p> </p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:preformatted --><!-- /wp:preformatted -->		</p>
+
+
+</div>
+
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function () {
+    this.page.url = location.href;
+    this.page.identifier = location.href;
+  };
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://huns-me.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
+
+    </main>
+    <footer>
+  <span>
+    © <time datetime="2019-09-26 19:34:59 +0900">2019</time> KimCoding. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+  </span>
+</footer>
+
+  </body>
+</html>

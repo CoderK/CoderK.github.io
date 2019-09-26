@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+  <script>
+    WebFont.load({
+      google: {
+        families: ['Nanum Gothic', 'Noto Sans KR', 'Nanum Gothic Coding', 'Nanum Myeongjo']
+      },
+      active() {
+        var tid = setInterval(function() {
+          if (document.body) {
+            document.body.classList.remove("hidden");
+            clearInterval(tid);
+          }
+        }, 500);
+      }
+    });
+  </script>
+
+  <!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Webpack 4의 Tree Shaking에 대한 이해 | Huns.me</title>
+<meta name="generator" content="Jekyll v3.8.6">
+<meta property="og:title" content="Webpack 4의 Tree Shaking에 대한 이해">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="김코딩 님이 잘하고 싶어서 만든 블로그">
+<meta property="og:description" content="김코딩 님이 잘하고 싶어서 만든 블로그">
+<link rel="canonical" href="http://localhost:4000/development/2265">
+<meta property="og:url" content="http://localhost:4000/development/2265">
+<meta property="og:site_name" content="Huns.me">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2018-11-08T19:04:40+09:00">
+<script type="application/ld+json">
+{"url":"http://localhost:4000/development/2265","dateModified":"2018-11-08T19:04:40+09:00","datePublished":"2018-11-08T19:04:40+09:00","headline":"Webpack 4의 Tree Shaking에 대한 이해","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/development/2265"},"description":"김코딩 님이 잘하고 싶어서 만든 블로그","@type":"BlogPosting","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/legacy/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/legacy/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/legacy/apple-touch-icon.png">
+
+  <!-- RSS -->
+  <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Huns.me">
+
+  <!-- Google Analytics-->
+  
+</head>
+
+  <body class="hidden">
+    <nav class="nav">
+  <div class="nav-container">
+    <a href="/">
+      <h2 class="nav-title">Huns.me</h2>
+    </a>
+    <ul>
+      <li><a href="/about">About</a></li>
+      <li><a href="/">Posts</a></li>
+    </ul>
+  </div>
+</nav>
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Written by</span>
+    KimCoding
+
+    
+      <br>
+      <span>on </span><time datetime="2018-11-08 19:04:40 +0900">November 08, 2018</time>
+    
+  </div>
+
+  <h1 class="post-title">Webpack 4의 Tree Shaking에 대한 이해</h1>
+  <div class="post-line"></div>
+
+  <p>
+				회사에서 만들고 있는 새로운 버전의 스마트에디터는 Webpack 4를 빌드 도구로 사용한다. 초기 로딩 성능을 최적화하기 위해서 Webpack 4의 Tree Shaking 지원을 검토하다가 삽질을 많이 했다. 공부 안 하고 대충하면 될 줄 알았는데 안 되더라.</p>
+<p>경험을 내 안에 썩혀두기가 아까워서 팀에 공유할 목적으로 삽질기를 작성했다. 외부의 누군가에게도 도움이 될 것 같아 원문을 조금 다듬어서 블로그로 옮긴다. 의식의 흐름을 따라 쓴 글이라 두서가 없으니, 찰떡같이 읽어주시길.</p>
+<h1>1.Tree Shaking이란?</h1>
+<p>Tree Shaking은 직역하면 <strong>나무 흔들기 </strong>정도로 표현할 수 있다. Webpack이 JS 모듈을 번들링할 때 사용하지 않는 코드를 제거하는 최적화 과정을 말한다. 나무를 흔들면 잎이 떨어지듯이 사용하지 않는 코드를 털어낸다는 뜻이다. 개념에 이름을 붙일 때 은유를 이용하는 걸 좋아한다. 메타포!<br>
+​<br>
+원래 이 용어를 처음 최적화 개념에 사용한 건 rollup.js지만 Webpack 4가 대단히 영리한 최적화 빌드를 보여주면서 주목받는 사이 rollup.js는 잊힌 느낌이다.</p>
+<p>인터넷에 떠도는 예제와 달리 현실의 설정은 매우 복잡하다. 95개의 패키지를 가지고 있는 Monorepo니 복잡할 수밖에. 그래서 그런지 아무리 설정을 바꿔봐도 최종 번들 파일의 사이즈가 좀처럼 줄어들지를 않았다. 제대로 이해하고 써야겠다는 생각에 <a href="https://github.com/CoderK/tree-shaking-with-side-effect-test">예제 코드</a>를 만들어서 테스트를 하기로 했다.</p>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+</pre></td>
+<td class="code"><pre><span class="k">export</span> <span class="kd">function</span> <span class="nx">a</span><span class="p">()</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">a</span><span class="dl">"</span><span class="p">);</span> <span class="p">}</span>
+<span class="k">export</span> <span class="kd">function</span> <span class="nx">b</span><span class="p">()</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">b</span><span class="dl">"</span><span class="p">);</span> <span class="p">}</span>
+<span class="k">export</span> <span class="kd">function</span> <span class="nx">c</span><span class="p">()</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">c</span><span class="dl">"</span><span class="p">);</span> <span class="p">}</span>
+<span class="k">export</span> <span class="p">{</span> <span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">c</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./abc</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">export</span> <span class="p">{</span> <span class="nx">add</span> <span class="k">as</span> <span class="nx">reexportedAdd</span><span class="p">,</span> <span class="nx">multiply</span> <span class="k">as</span> <span class="nx">reexportedMultiply</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./math</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">export</span> <span class="kd">function</span> <span class="nx">add</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">args</span> <span class="o">=</span> <span class="nx">arguments</span><span class="p">,</span> <span class="nx">l</span> <span class="o">=</span> <span class="nx">args</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="nx">i</span> <span class="o">&amp;</span><span class="nx">lt</span><span class="p">;</span> <span class="nx">l</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">sum</span> <span class="o">+=</span> <span class="nx">args</span><span class="p">[</span><span class="nx">i</span><span class="o">++</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">sum</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="kd">function</span> <span class="nx">multiply</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">이것은 곱하기!</span><span class="dl">"</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">product</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">args</span> <span class="o">=</span> <span class="nx">arguments</span><span class="p">,</span> <span class="nx">l</span> <span class="o">=</span> <span class="nx">args</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="nx">i</span> <span class="o">&amp;</span><span class="nx">lt</span><span class="p">;</span> <span class="nx">l</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">product</span> <span class="o">*=</span> <span class="nx">args</span><span class="p">[</span><span class="nx">i</span><span class="o">++</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">product</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="kd">function</span> <span class="nx">list</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">이것은 리스트!</span><span class="dl">"</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nb">Array</span><span class="p">.</span><span class="k">from</span><span class="p">(</span><span class="nx">arguments</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">add</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./math</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="o">*</span> <span class="k">as</span> <span class="nx">library</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./library</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="nx">add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+
+<span class="nx">library</span><span class="p">.</span><span class="nx">reexportedMultiply</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+</pre></td>
+</tr></tbody></table></code></pre></figure>
+<p>index.js가 엔트리 포인트다. 의도적으로 math.js의 list 함수를 import 하되, 사용하지 않도록 구성했다. Tree Shaking이 정상 동작한다면, 최종 빌드 된 파일에는 list 함수가 없어야한다.</p>
+<p>추적을 쉽게 하기 위해서 콘솔에 문자열을 출력하는 코드를 함수 중간에 추가했다. production 빌드를 하면 소스가 난독화가 되어버려 list 함수를 찾기가 어렵다. 문자열은 난독화되지 않기 때문에 빌드 파일에서 저 문자열을 검색하면 Tree Shaking 수행여부를 확인할 수 있으리라.</p>
+<p>먼저 development 모드로 빌드를 했다. Webpack의 기본 옵션은 development 모드일 때 코드를 최적화하지 않도록 구성되어 있다. 따라서 최적화의 하나인 Tree Shaking을 수행하지 않아야 한다.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+</pre></td>
+<td class="code"><pre><span class="err">…</span><span class="p">(</span><span class="err">생략</span><span class="p">)</span>
+<span class="dl">"</span><span class="s2">use strict</span><span class="dl">"</span><span class="p">;</span>
+<span class="nx">__webpack_require__</span><span class="p">.</span><span class="nx">r</span><span class="p">(</span><span class="nx">__webpack_exports__</span><span class="p">);</span>
+<span class="cm">/* harmony export (binding) */</span> <span class="nx">__webpack_require__</span><span class="p">.</span><span class="nx">d</span><span class="p">(</span><span class="nx">__webpack_exports__</span><span class="p">,</span> <span class="dl">"</span><span class="s2">add</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">add</span><span class="p">;</span> <span class="p">});</span>
+<span class="cm">/* harmony export (binding) */</span> <span class="nx">__webpack_require__</span><span class="p">.</span><span class="nx">d</span><span class="p">(</span><span class="nx">__webpack_exports__</span><span class="p">,</span> <span class="dl">"</span><span class="s2">multiply</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">multiply</span><span class="p">;</span> <span class="p">});</span>
+<span class="cm">/* harmony export (binding) */</span> <span class="nx">__webpack_require__</span><span class="p">.</span><span class="nx">d</span><span class="p">(</span><span class="nx">__webpack_exports__</span><span class="p">,</span> <span class="dl">"</span><span class="s2">list</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">list</span><span class="p">;</span> <span class="p">});</span>
+<span class="kd">function</span> <span class="nx">add</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">args</span> <span class="o">=</span> <span class="nx">arguments</span><span class="p">,</span> <span class="nx">l</span> <span class="o">=</span> <span class="nx">args</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="nx">i</span> <span class="o">&amp;</span><span class="nx">lt</span><span class="p">;</span> <span class="nx">l</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">sum</span> <span class="o">+=</span> <span class="nx">args</span><span class="p">[</span><span class="nx">i</span><span class="o">++</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">sum</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">multiply</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">이것은 곱하기!</span><span class="dl">"</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">product</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">args</span> <span class="o">=</span> <span class="nx">arguments</span><span class="p">,</span> <span class="nx">l</span> <span class="o">=</span> <span class="nx">args</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="nx">i</span> <span class="o">&amp;</span><span class="nx">lt</span><span class="p">;</span> <span class="nx">l</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">product</span> <span class="o">*=</span> <span class="nx">args</span><span class="p">[</span><span class="nx">i</span><span class="o">++</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">product</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">list</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">이것은 리스트!</span><span class="dl">"</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nb">Array</span><span class="p">.</span><span class="k">from</span><span class="p">(</span><span class="nx">arguments</span><span class="p">);</span>
+<span class="p">}</span>
+
+
+<span class="c1">//…(생략)</span>
+</pre></td>
+</tr></tbody></table></code></pre></figure>
+<p>번들 파일 안에 list 함수가 있는 게 보인다. 이번에는 production 모드로 빌드를 해서 비교를 해보자.</p>
+<p><span style="font-size: 10pt;">(가독성 향상을 위해서 beautify하였음)</span></p>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+</pre></td>
+<td class="code"><pre><span class="c1">//…(생략)</span>
+<span class="p">}([</span><span class="kd">function</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span> <span class="nx">e</span><span class="p">,</span> <span class="nx">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">use strict</span><span class="dl">"</span><span class="p">;</span>
+
+    <span class="kd">function</span> <span class="nx">r</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">t</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">e</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">n</span> <span class="o">=</span> <span class="nx">arguments</span><span class="p">,</span> <span class="nx">r</span> <span class="o">=</span> <span class="nx">n</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">e</span> <span class="o">&amp;</span><span class="nx">lt</span><span class="p">;</span> <span class="nx">r</span><span class="p">;)</span> <span class="nx">t</span> <span class="o">+=</span> <span class="nx">n</span><span class="p">[</span><span class="nx">e</span><span class="o">++</span><span class="p">];</span>
+        <span class="k">return</span> <span class="nx">t</span>
+    <span class="p">}</span>
+
+    <span class="kd">function</span> <span class="nx">o</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">이것은 곱하기!</span><span class="dl">"</span><span class="p">);</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">t</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">e</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">n</span> <span class="o">=</span> <span class="nx">arguments</span><span class="p">,</span> <span class="nx">r</span> <span class="o">=</span> <span class="nx">n</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">e</span> <span class="o">&amp;</span><span class="nx">lt</span><span class="p">;</span> <span class="nx">r</span><span class="p">;)</span> <span class="nx">t</span> <span class="o">*=</span> <span class="nx">n</span><span class="p">[</span><span class="nx">e</span><span class="o">++</span><span class="p">];</span>
+        <span class="k">return</span> <span class="nx">t</span>
+    <span class="p">}</span>
+    <span class="nx">n</span><span class="p">.</span><span class="nx">d</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="dl">"</span><span class="s2">a</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">r</span>
+    <span class="p">}),</span> <span class="nx">n</span><span class="p">.</span><span class="nx">d</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="dl">"</span><span class="s2">b</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">o</span>
+    <span class="p">})</span>
+<span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span> <span class="nx">e</span><span class="p">,</span> <span class="nx">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">use strict</span><span class="dl">"</span>
+<span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span> <span class="nx">e</span><span class="p">,</span> <span class="nx">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">use strict</span><span class="dl">"</span><span class="p">;</span>
+    <span class="nx">n</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">r</span> <span class="o">=</span> <span class="nx">n</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+    <span class="nx">n</span><span class="p">.</span><span class="nx">d</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="dl">"</span><span class="s2">a</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">r</span><span class="p">.</span><span class="nx">b</span>
+    <span class="p">})</span>
+<span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span> <span class="nx">e</span><span class="p">,</span> <span class="nx">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">use strict</span><span class="dl">"</span><span class="p">;</span>
+    <span class="nx">n</span><span class="p">.</span><span class="nx">r</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">r</span> <span class="o">=</span> <span class="nx">n</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span>
+        <span class="nx">o</span> <span class="o">=</span> <span class="nx">n</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+    <span class="nb">Object</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">a</span><span class="p">)(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="nx">o</span><span class="p">.</span><span class="nx">a</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="p">}]);</span>
+
+<span class="c1">//…(생략)</span>
+</pre></td>
+</tr></tbody></table></code></pre></figure>
+<p>코드가 난독화되어 읽기 어렵지만 list 함수에 심어놓은 콘솔 출력 문자열이 보이지 않는 걸로 보아 Tree Shaking이 되었다고 유추할 수 있다.</p>
+<p>한 가지 의문이 생긴다. Webpack은 아래와 같은 import 구문도 최적화를 할 수 있는 걸까?</p>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+</pre></td>
+<td class="code"><pre><span class="k">import</span> <span class="o">*</span> <span class="k">as</span> <span class="nx">library</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./library</span><span class="dl">"</span><span class="p">;</span>
+</pre></td>
+</tr></tbody></table></code></pre></figure>
+<p>Webpack 4 이전까지는 이런 구문을 최적화하지 못하였다. 그래서 인터넷에 떠도는 일부 유통기한이 지난 문서에서 최적화를 위해서 이런 구문을 사용하지 말라는 내용을 가끔 볼 수 있었다. 이제는 아닌가 보네?</p>
+<p>확인을 하고 넘어가야 직성이 풀릴 듯하여 검색을 하기 시작했다.</p>
+<h1>3. import * as … from</h1>
+<p>개발을 하다 보면 특정 모듈을 가져와서 import와 동시에 export 하고 싶을 때가 있다. 주로 모듈의 인덱스 파일을 작성할 때 그렇다.</p>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+</pre></td>
+<td class="code"><pre><span class="k">import</span> <span class="o">*</span> <span class="k">as</span> <span class="nx">library</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./library</span><span class="dl">"</span><span class="p">;</span>
+</pre></td>
+</tr></tbody></table></code></pre></figure>
+<p>이런 구문을 뭐라고 불러야 할지 모르겠다. 이 글에서는 <code>re-export</code>라고 부를 생각이다. Tree Shaking을 스마트에디터에 적용하려고 보니, 이 패턴을 너무 많은 곳에서 쓰고 있어서 퍽 난감했다. 또, 의지의 영역으로 들어온 것인가. 한숨을 쉬고 있던 그때. 응? Tree Shaking이 되네?</p>
+<p>궁금해서 Webpack의 공식 문서를 찬찬히 읽어보다가 흥미로운 내용을 발견했다. Webpack 4에 생긴 providedExports라는 최적화 옵션.</p>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td>
+<td class="code"><pre><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">optimization</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">providedExports</span><span class="p">:</span> <span class="kc">true</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+</pre></td>
+</tr></tbody></table></code></pre></figure>
+<p>문서는 이 옵션의 용도를 이렇게 설명한다.</p>
+<blockquote><p>Tells webpack to figure out which exports are provided by modules to generate more efficient code for export * from .... By default optimization.providedExports is enabled.<br>
+<a href="https://webpack.js.org/configuration/optimization/#optimization-providedexports" rel="nofollow">https://webpack.js.org/configuration/optimization/#optimization-providedexports</a></p></blockquote>
+<p><code>export * from</code>을 위해 만들어진 옵션. 나에게 필요한 그것. Webpack 만세!</p>
+<p>Webpack 4는 optimization 프로퍼티로 최적화 설정을 전달받는다. production 빌드를 할 때, 개발자가 optimization을 별도로 설정하지 않으면 기본 값을 적용한다. providedExports는 기본값이 true다. 따로 설정을 하지 않아도 re-export 구문을 최적화한다. 당연한 이야기지만 false로 설정하면 re-export 구문은 최적화 대상에서 제외된다.</p>
+<p>누가 이걸 false로 설정할까 싶지만, 모든 최적화에는 비용이 들기 마련이다. re-export 구문을 분석하고 최적화하는 과정 역시 그렇다. re-export 구문을 사용하지 않는다면 굳이 빌드 시간을 더 소비할 이유가 없다.</p>
+<p>providedExports를 false로 설정하고 빌드를 해보면, 빌드 버전에서 list 함수를 볼 수 있다.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+</pre></td>
+<td class="code"><pre><span class="p">([</span><span class="kd">function</span><span class="p">(</span><span class="nx">n</span><span class="p">,</span> <span class="nx">t</span><span class="p">,</span> <span class="nx">r</span><span class="p">)</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">use strict</span><span class="dl">"</span><span class="p">;</span>
+
+    <span class="kd">function</span> <span class="nx">e</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">n</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">t</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">r</span> <span class="o">=</span> <span class="nx">arguments</span><span class="p">,</span> <span class="nx">e</span> <span class="o">=</span> <span class="nx">r</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">t</span> <span class="o">&amp;</span><span class="nx">lt</span><span class="p">;</span> <span class="nx">e</span><span class="p">;)</span> <span class="nx">n</span> <span class="o">+=</span> <span class="nx">r</span><span class="p">[</span><span class="nx">t</span><span class="o">++</span><span class="p">];</span>
+        <span class="k">return</span> <span class="nx">n</span>
+    <span class="p">}</span>
+
+    <span class="kd">function</span> <span class="nx">o</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">이것은 곱하기!</span><span class="dl">"</span><span class="p">);</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">n</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">t</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">r</span> <span class="o">=</span> <span class="nx">arguments</span><span class="p">,</span> <span class="nx">e</span> <span class="o">=</span> <span class="nx">r</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">t</span> <span class="o">&amp;</span><span class="nx">lt</span><span class="p">;</span> <span class="nx">e</span><span class="p">;)</span> <span class="nx">n</span> <span class="o">*=</span> <span class="nx">r</span><span class="p">[</span><span class="nx">t</span><span class="o">++</span><span class="p">];</span>
+        <span class="k">return</span> <span class="nx">n</span>
+    <span class="p">}</span>
+
+    <span class="kd">function</span> <span class="nx">u</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">이것은 리스트!</span><span class="dl">"</span><span class="p">),</span> <span class="nb">Array</span><span class="p">.</span><span class="k">from</span><span class="p">(</span><span class="nx">arguments</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="nx">r</span><span class="p">.</span><span class="nx">r</span><span class="p">(</span><span class="nx">t</span><span class="p">),</span> <span class="nx">r</span><span class="p">.</span><span class="nx">d</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span> <span class="dl">"</span><span class="s2">add</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">e</span>
+    <span class="p">}),</span> <span class="nx">r</span><span class="p">.</span><span class="nx">d</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span> <span class="dl">"</span><span class="s2">multiply</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">o</span>
+    <span class="p">}),</span> <span class="nx">r</span><span class="p">.</span><span class="nx">d</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span> <span class="dl">"</span><span class="s2">list</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">u</span>
+    <span class="p">})</span>
+<span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">n</span><span class="p">,</span> <span class="nx">t</span><span class="p">,</span> <span class="nx">r</span><span class="p">)</span> <span class="p">{</span>
+</pre></td>
+</tr></tbody></table></code></pre></figure>
+
+<h1>4. lodash와 sideEffects</h1>
+<p>Tree Shaking을 찾아보다가, lodash가 생각이 났다. 사용하지 않는 lodash 모듈을 빌드 버전에서 제외하려고 babel-plugin-lodash를 사용해왔다. Webpack 4의 Tree Shaking이 있으니, 이제 이 플러그인과 작별해도 되겠네? 테스트를 해보자.</p>
+<p>예제에 lodash 패키지를 추가하고,</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+</pre></td>
+<td class="code"><pre><span class="nx">npm</span> <span class="o">-</span><span class="nx">i</span> <span class="nx">lodash</span>
+</pre></td>
+</tr></tbody></table></code></pre></figure>
+
+<p>index.js의 코드를 아래와 같이 수정한 다음에 development 모드로 빌드를 했다.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td>
+<td class="code"><pre><span class="k">import</span> <span class="p">{</span> <span class="nx">add</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./math</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="o">*</span> <span class="k">as</span> <span class="nx">library</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./library</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">defaults</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">lodash</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="nx">defaults</span><span class="p">(</span><span class="dl">"</span><span class="s2">최적화!</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="nx">add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<span class="nx">library</span><span class="p">.</span><span class="nx">reexportedMultiply</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+</pre></td>
+</tr></tbody></table></code></pre></figure>
+
+<p>번들링은 끝이 났고 최종 산출물에서 아까 추가한 코드가 보인다.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+</pre></td>
+<td class="code"><pre><span class="nb">Object</span><span class="p">(</span><span class="nx">lodash__WEBPACK_IMPORTED_MODULE_2__</span><span class="p">[</span><span class="dl">"</span><span class="s2">defaults</span><span class="dl">"</span><span class="p">])(</span><span class="dl">"</span><span class="s2">최적화!</span><span class="dl">"</span><span class="p">);</span>
+</pre></td>
+</tr></tbody></table></code></pre></figure>
+
+<p>import 하지 않은 lodash의 다른 모듈은? Webpack의 보일러 플레이트 코드와 뒤섞여 혼란한 와중에서도 찾기 쉬운 이름의 함수를 검색하는 게 좋을 것 같다. <code>differenceWith</code> 함수를 검색했다.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td>
+<td class="code"><pre><span class="kd">var</span> <span class="nx">differenceWith</span> <span class="o">=</span> <span class="nx">baseRest</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">array</span><span class="p">,</span> <span class="nx">values</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">comparator</span> <span class="o">=</span> <span class="nx">last</span><span class="p">(</span><span class="nx">values</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">isArrayLikeObject</span><span class="p">(</span><span class="nx">comparator</span><span class="p">))</span> <span class="p">{</span>
+    <span class="nx">comparator</span> <span class="o">=</span> <span class="kc">undefined</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">isArrayLikeObject</span><span class="p">(</span><span class="nx">array</span><span class="p">)</span>
+    <span class="p">?</span> <span class="nx">baseDifference</span><span class="p">(</span><span class="nx">array</span><span class="p">,</span> <span class="nx">baseFlatten</span><span class="p">(</span><span class="nx">values</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">isArrayLikeObject</span><span class="p">,</span> <span class="kc">true</span><span class="p">),</span> <span class="kc">undefined</span><span class="p">,</span> <span class="nx">comparator</span><span class="p">)</span>
+    <span class="p">:</span> <span class="p">[];</span>
+<span class="p">});</span>
+</pre></td>
+</tr></tbody></table></code></pre></figure>
+
+<p>development 모드에서는 기본적으로 optimization 옵션이 동작하지 않으니 당연한 결과다. production 빌드를 하면? 없겠지.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td>
+<td class="code"><pre><span class="p">},</span> <span class="nx">he</span><span class="p">.</span><span class="nx">debounce</span> <span class="o">=</span> <span class="nx">ef</span><span class="p">,</span> <span class="nx">he</span><span class="p">.</span><span class="nx">defaults</span> <span class="o">=</span> <span class="nx">Yf</span><span class="p">,</span> <span class="nx">he</span><span class="p">.</span><span class="nx">defaultsDeep</span> <span class="o">=</span> <span class="nx">Qf</span><span class="p">,</span> <span class="nx">he</span><span class="p">.</span><span class="nx">defer</span> <span class="o">=</span> <span class="nx">uf</span><span class="p">,</span> <span class="nx">he</span><span class="p">.</span><span class="nx">delay</span> <span class="o">=</span> <span class="k">of</span> <span class="p">,</span> <span class="nx">he</span><span class="p">.</span><span class="nx">difference</span> <span class="o">=</span> <span class="nx">so</span><span class="p">,</span> <span class="nx">he</span><span class="p">.</span><span class="nx">differenceBy</span> <span class="o">=</span> <span class="nx">ho</span><span class="p">,</span> <span class="nx">he</span><span class="p">.</span><span class="nx">differenceWith</span> <span class="o">=</span> <span class="nx">po</span><span class="p">,</span> <span class="nx">he</span><span class="p">.</span><span class="nx">drop</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">n</span><span class="p">,</span> <span class="nx">t</span><span class="p">,</span> <span class="nx">r</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">e</span> <span class="o">=</span> <span class="kc">null</span> <span class="o">==</span> <span class="nx">n</span> <span class="p">?</span> <span class="mi">0</span> <span class="p">:</span> <span class="nx">n</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nx">e</span> <span class="p">?</span> <span class="nx">Su</span><span class="p">(</span><span class="nx">n</span><span class="p">,</span> <span class="p">(</span><span class="nx">t</span> <span class="o">=</span> <span class="nx">r</span> <span class="o">||</span> <span class="nx">t</span> <span class="o">===</span> <span class="nx">i</span> <span class="p">?</span> <span class="mi">1</span> <span class="p">:</span> <span class="nx">Mf</span><span class="p">(</span><span class="nx">t</span><span class="p">))</span> <span class="o">&amp;</span><span class="nx">lt</span><span class="p">;</span> <span class="mi">0</span> <span class="p">?</span> <span class="mi">0</span> <span class="p">:</span> <span class="nx">t</span><span class="p">,</span> <span class="nx">e</span><span class="p">)</span> <span class="p">:</span> <span class="p">[]</span>
+<span class="p">},</span> <span class="nx">he</span><span class="p">.</span><span class="nx">dropRight</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">n</span><span class="p">,</span> <span class="nx">t</span><span class="p">,</span> <span class="nx">r</span><span class="p">)</span> <span class="p">{</span>
+</pre></td>
+</tr></tbody></table></code></pre></figure>
+
+<p>그런데 있다. Tree Shaking이 동작하지 않았다. 왜?</p>
+<p>​한참 삽질을 하던 중, Webpack의 공식 문서를 읽어보고서야 범인을 알 수 있었다. 범인은 sideEffects.</p>
+<p><a href="https://webpack.js.org/configuration/optimization/#optimization-sideeffects">https://webpack.js.org/configuration/optimization/#optimization-sideeffects</a></p>
+<p><span style="font-size: 10pt;">(Webpack 최적화 옵션의 sideEffects와는 다릅니다.)</span></p>
+<p>Tree Shaking을 수행하면 사용하지 않는 코드가 탈락된다. 이로 인해 사이드 이펙트가 발생할 수 있는데, 코드를 직접 평가하고 실행해보지 않는 이상 Webpack이 사이드 이펙트 발생 여부를 알 수는 없다. 그래서 Webpack이 찾은 대안이 sideEffects다.</p>
+<p>직접 코드를 평가하고 실행하는 대신에, Webpack은 외부 패키지의 package.json에 있는 sideEffects 설정을 보고 사이드 이펙트 존재 여부를 판단하다. 사이드 발생 여부에 대한 판단 책임을 코드 작성자에게 넘긴 셈이다. 만든 사람이 제일 잘 알테니깐.<br>
+​<br>
+이 옵션을 명시하지 않으면 Tree Shaking 시에 사이드 이펙트가 발생할 수 있다고 판단하여 해당 패키지를 Tree Shaking의 대상에서 제외한다. 따라서 package.json에 sideEffects 프로퍼티를 false로 명시해야만 Three Shaking을 적용받을 수 있다.</p>
+<p>위에서 설치한 lodash의 package.json을 확인하자.</p>
+
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+</pre></td>
+<td class="code"><pre><span class="p">{</span><span class="w">
+  </span><span class="nl">"_from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lodash"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lodash@4.17.11"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"_inBundle"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"_integrity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sha512-cQKh8igo5QUhZ7lg38DYWAxMvjSAKG0A8wGSVimP07SIUEK2UO+arSRKbRZWtelMtN5V0Hkwh5ryOto/SshYIg=="</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"_location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/lodash"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"_phantomChildren"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="nl">"_requested"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tag"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"registry"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"raw"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lodash"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lodash"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"escapedName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lodash"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"rawSpec"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"saveSpec"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fetchSpec"</span><span class="p">:</span><span class="w"> </span><span class="s2">"latest"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"_requiredBy"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"#USER"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"/"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"_resolved"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://registry.npmjs.org/lodash/-/lodash-4.17.11.tgz"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"_shasum"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b39ea6229ef607ecd89e2c8df12536891cac9b8d"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"_spec"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lodash"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"_where"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/Users/Naver/Workspace/coderk/tree-shaking-test"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John-David Dalton"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.david.dalton@gmail.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://allyoucanleet.com/"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"bugs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://github.com/lodash/lodash/issues"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"bundleDependencies"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"contributors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John-David Dalton"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.david.dalton@gmail.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://allyoucanleet.com/"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mathias Bynens"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mathias@qiwi.be"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://mathiasbynens.be/"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"deprecated"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lodash modular utilities."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"homepage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://lodash.com/"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://lodash.com/icon.svg"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"modules"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"stdlib"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"util"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"license"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MIT"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"main"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lodash.js"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lodash"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"repository"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"git"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"git+https://github.com/lodash/lodash.git"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"test"</span><span class="p">:</span><span class="w"> </span><span class="s2">"echo </span><span class="se">\"</span><span class="s2">See https://travis-ci.org/lodash-archive/lodash-cli for testing details.</span><span class="se">\"</span><span class="s2">"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4.17.11"</span><span class="w">
+</span><span class="p">}</span>
+</pre></td>
+</tr></tbody></table></code></pre></figure>
+
+<p>역시나 sideEffects 옵션이 없다. lodash의 package.json에 sideEffects:false 옵션을 주고 다시 빌드를 하면 잘 될까?</p>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">sideEffects</span><span class="p">:</span> <span class="kc">false</span></code></pre></figure>
+<p>왠지 여전히 트리 쉐이킹이 되지 않는다.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td>
+<td class="code"><pre><span class="p">},</span> <span class="nx">he</span><span class="p">.</span><span class="nx">debounce</span> <span class="o">=</span> <span class="nx">ef</span><span class="p">,</span> <span class="nx">he</span><span class="p">.</span><span class="nx">defaults</span> <span class="o">=</span> <span class="nx">Yf</span><span class="p">,</span> <span class="nx">he</span><span class="p">.</span><span class="nx">defaultsDeep</span> <span class="o">=</span> <span class="nx">Qf</span><span class="p">,</span> <span class="nx">he</span><span class="p">.</span><span class="nx">defer</span> <span class="o">=</span> <span class="nx">uf</span><span class="p">,</span> <span class="nx">he</span><span class="p">.</span><span class="nx">delay</span> <span class="o">=</span> <span class="k">of</span> <span class="p">,</span> <span class="nx">he</span><span class="p">.</span><span class="nx">difference</span> <span class="o">=</span> <span class="nx">so</span><span class="p">,</span> <span class="nx">he</span><span class="p">.</span><span class="nx">differenceBy</span> <span class="o">=</span> <span class="nx">ho</span><span class="p">,</span> <span class="nx">he</span><span class="p">.</span><span class="nx">differenceWith</span> <span class="o">=</span> <span class="nx">po</span><span class="p">,</span> <span class="nx">he</span><span class="p">.</span><span class="nx">drop</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">n</span><span class="p">,</span> <span class="nx">t</span><span class="p">,</span> <span class="nx">r</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">e</span> <span class="o">=</span> <span class="kc">null</span> <span class="o">==</span> <span class="nx">n</span> <span class="p">?</span> <span class="mi">0</span> <span class="p">:</span> <span class="nx">n</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nx">e</span> <span class="p">?</span> <span class="nx">Su</span><span class="p">(</span><span class="nx">n</span><span class="p">,</span> <span class="p">(</span><span class="nx">t</span> <span class="o">=</span> <span class="nx">r</span> <span class="o">||</span> <span class="nx">t</span> <span class="o">===</span> <span class="nx">i</span> <span class="p">?</span> <span class="mi">1</span> <span class="p">:</span> <span class="nx">Mf</span><span class="p">(</span><span class="nx">t</span><span class="p">))</span> <span class="o">&amp;</span><span class="nx">lt</span><span class="p">;</span> <span class="mi">0</span> <span class="p">?</span> <span class="mi">0</span> <span class="p">:</span> <span class="nx">t</span><span class="p">,</span> <span class="nx">e</span><span class="p">)</span> <span class="p">:</span> <span class="p">[]</span>
+<span class="p">},</span> <span class="nx">he</span><span class="p">.</span><span class="nx">dropRight</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">n</span><span class="p">,</span> <span class="nx">t</span><span class="p">,</span> <span class="nx">r</span><span class="p">)</span> <span class="p">{</span>
+</pre></td>
+</tr></tbody></table></code></pre></figure>
+
+<p>궁금해서 구글링을 하던 중에 Webpack이 ES Module로 의존성을 관리하는 모듈만 Tree Shaking을 한다는 사실이 갑자기 머릿속에 떠올랐다. 혹시?</p>
+<p><a href="https://github.com/lodash/lodash/blob/4.17.11-npm/padEnd.js">https://github.com/lodash/lodash/blob/4.17.11-npm/padEnd.js</a></p>
+<p>역시나. <a href="https://github.com/lodash/lodash/blob/4.17.11-npm/padEnd.js" rel="nofollow">lodash-npm</a>는 CommonJS 스펙의 require를 사용한다. 애초에 Tree Shaking 대상이 아닌 것이다. lodash 팀은 lodash-es에는 sideEffects 옵션을 false로 명시했지만, npm 버전의 lodash에는 해당 옵션을 넣지 않았다. 의미가 없으니까.</p>
+<p><span style="font-size: 10pt;">(lodash-es의 sideEffect 옵션은 <a href="https://github.com/lodash/lodash/pull/3533/commits/e9384031f6063cbcf7772650731c9984e2d29ca9" rel="nofollow">이 커밋</a>에서 추가되었다)</span></p>
+<p> </p>
+<p> </p>
+<p> 		</p>
+
+
+</div>
+
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function () {
+    this.page.url = location.href;
+    this.page.identifier = location.href;
+  };
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://huns-me.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
+
+    </main>
+    <footer>
+  <span>
+    © <time datetime="2019-09-26 19:34:59 +0900">2019</time> KimCoding. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+  </span>
+</footer>
+
+  </body>
+</html>

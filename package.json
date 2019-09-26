@@ -1,0 +1,64 @@
+{
+  "name": "coderk-github-io",
+  "version": "0.1.0",
+  "description": "KimCoding's tech blog",
+  "main": "index.js",
+  "scripts": {
+    "start:js": "webpack --mode=development --watch",
+    "start:jekyll": "bundle exec jekyll serve",
+    "start": "concurrently \"npm run start:js\" \"npm run start:jekyll\"",
+    "build:js": "webpack --mode=production --progress",
+    "build:jekyll": "bundle exec jekyll build",
+    "build": "npm run build:js && npm run build:jekyll",
+    "lint": "tslint --project tsconfig.json --fix 'src/**/*.ts?(x)'",
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "author": "CoderK",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/enzyme": "3.10.3",
+    "@types/enzyme-adapter-react-16": "1.0.5",
+    "@types/jest": "24.0.17",
+    "@types/react": "16.9.1",
+    "@types/react-dom": "16.8.5",
+    "clean-webpack-plugin": "3.0.0",
+    "concurrently": "4.1.2",
+    "enzyme": "3.10.0",
+    "enzyme-adapter-react-16": "1.14.0",
+    "jest": "24.9.0",
+    "terser-webpack-plugin": "1.4.1",
+    "ts-jest": "24.0.2",
+    "ts-loader": "6.0.4",
+    "tslint": "5.18.0",
+    "tslint-config-airbnb": "5.11.1",
+    "tslint-react": "4.0.0",
+    "typescript": "3.5.3",
+    "webpack": "4.39.2",
+    "webpack-cli": "3.3.6"
+  },
+  "dependencies": {
+    "react": "16.9.0",
+    "react-dom": "16.9.0"
+  },
+  "jest": {
+    "modulePaths": [
+      "<rootDir>/src/"
+    ],
+    "preset": "ts-jest",
+    "testRegex": "\\.test\\.(ts|tsx)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "globals": {
+      "ts-jest": {
+        "diagnostics": true
+      }
+    },
+    "setupFilesAfterEnv": [
+      "<rootDir>jest-global-setup.ts"
+    ]
+  }
+}

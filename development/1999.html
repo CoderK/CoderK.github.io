@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+  <script>
+    WebFont.load({
+      google: {
+        families: ['Nanum Gothic', 'Noto Sans KR', 'Nanum Gothic Coding', 'Nanum Myeongjo']
+      },
+      active() {
+        var tid = setInterval(function() {
+          if (document.body) {
+            document.body.classList.remove("hidden");
+            clearInterval(tid);
+          }
+        }, 500);
+      }
+    });
+  </script>
+
+  <!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>로버트 마틴의 클린 코더(The Clean Coder), 그리고 단상 | Huns.me</title>
+<meta name="generator" content="Jekyll v3.8.6">
+<meta property="og:title" content="로버트 마틴의 클린 코더(The Clean Coder), 그리고 단상">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="김코딩 님이 잘하고 싶어서 만든 블로그">
+<meta property="og:description" content="김코딩 님이 잘하고 싶어서 만든 블로그">
+<link rel="canonical" href="http://localhost:4000/development/1999">
+<meta property="og:url" content="http://localhost:4000/development/1999">
+<meta property="og:site_name" content="Huns.me">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2016-08-13T11:45:34+09:00">
+<script type="application/ld+json">
+{"url":"http://localhost:4000/development/1999","dateModified":"2016-08-13T11:45:34+09:00","datePublished":"2016-08-13T11:45:34+09:00","headline":"로버트 마틴의 클린 코더(The Clean Coder), 그리고 단상","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/development/1999"},"description":"김코딩 님이 잘하고 싶어서 만든 블로그","@type":"BlogPosting","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/legacy/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/legacy/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/legacy/apple-touch-icon.png">
+
+  <!-- RSS -->
+  <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Huns.me">
+
+  <!-- Google Analytics-->
+  
+</head>
+
+  <body class="hidden">
+    <nav class="nav">
+  <div class="nav-container">
+    <a href="/">
+      <h2 class="nav-title">Huns.me</h2>
+    </a>
+    <ul>
+      <li><a href="/about">About</a></li>
+      <li><a href="/">Posts</a></li>
+    </ul>
+  </div>
+</nav>
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Written by</span>
+    KimCoding
+
+    
+      <br>
+      <span>on </span><time datetime="2016-08-13 11:45:34 +0900">August 13, 2016</time>
+    
+  </div>
+
+  <h1 class="post-title">로버트 마틴의 클린 코더(The Clean Coder),  그리고 단상</h1>
+  <div class="post-line"></div>
+
+  <p>
+				많은 책을 읽는 편은 아니지만 꾸준히 읽으려고 애쓴다. 책을 그저 읽는 수준에서 마무리를 해버리면, 읽으면서 느낀 감정이나 생각이 너무 쉽게 사라져 버리는 게 못내 아쉽다. 그래서 메모를 많이 남기는 편인데, 여기에 더해 짧게 나마 감상도 남겨볼 생각이다. 리뷰라고 하기엔 거창한 것 같아 다른 단어를 고민해봤으나 적당한 단어가 떠오르지 않으니 그냥 '단상'이라고 하자.</p>
+<p>첫 도전은 로버트 마틴의 유명한 책인 <a href="http://www.acornpub.co.kr/book/clean-coder"><b>'클린 코더'</b></a>다.</p>
+<p>클린 코더(The Clean Coder)는 <a href="http://book.naver.com/bookdb/book_detail.nhn?bid=7390287">클린 코드(Clean Code)</a>로 유명한 엉클 밥이 프로 개발자에 대한 자신의 생각을 전하는 책이다.<span class="Apple-converted-space">  책 표지가 오래전에 나온 책인 클린 코드의 초판 디자인과 비슷해서 같은 책으로 혼동하는 경우가 많은 듯하다. 최신 버전의 클린 코드는 하얀색 표지로 새롭게 단장해서 이전과 전혀 다른 모습을 하고 있다.</span></p>
+<p>클린 코더의 책 표지 디자인은 꽤나 시대에 뒤떨어진 느낌인데, 출판사 측에서 책을 쓸 당시 저자의 의도를 최대한 반영하고 싶었던 거라고, 혼자 추측해 본다. 믿거나 말거나.</p>
+<p>클린 코더는 어떤 코딩 기법을 전하는 책이 아니다.<span class="Apple-converted-space"> 프로 </span>개발자로서 업무를 대하는 태도나 자세에 대한, 다소(?) 진부한 이야기를 처음부터 끝까지 잔소리처럼 늘어놓는다. 누군가는 로버트 마틴이나 되는 개발자니까 할 수 있는 소리라고, 책 속에서나 가능한 비현실적인 이야기라고 할지도 모르겠다.</p>
+<p>하지만 '도저히 도달할 수 없는 이상'을 그저 멍하니 바라보는 체념으로 가득한 세상 속에서, 좀 더 나은 순간이 오기를 학수고대하는 삶을 사는 나에게 로버트 마틴의 잔소리는 꽤나 특별했다. 왜 누군가에게는 가능한 현실이, 누군가에게는 불가능한 현실일까? 우리가 이상이라고 생각하는 것들은 정말 이상일까? 이 모든 것이 단순히 환경의 문제일까? 충분히 할 수 있는 일임에도 애둘러 핑계를 대며 회피하고 있는 것은 아닐까? 늘 의문으로 가득하다. 이 책을 읽으며 현실과 이상 사이를 넘나들었던 시간은 좋은 경험이었다.</p>
+<p>이 외에도, 책 중간중간에 섞여있는 솔직 담백한 로버트 마틴의 자전적인 경험담은 유쾌하고 재밌다. 그중에 로버트 마틴이 젊은 시절에 일정 추정에 실패한 후, 속상해서 필름이 끊길 정도로 술을 마셨다는 에피소드가 가장 기억에 많이 남는다. 개발자라면 흔히 겪는 경험임에도 뭔가 묵직하게 와 닿았던 이유는 주인공이 로버트 마틴이어서 그렇다. 로버트 마틴 같은 대가는 태어날 때부터 천재일 것 같고 살면서 실패 한 번 경험해보지 못 했을 거 같았는데, 이런 사람도 깨지고 부딪히는 과정을 거치면서 끊임없이 학습하고 성장했다는 사실은 많은 걸 생각하게 한다.</p>
+<p>그래서 그런 걸까. 또다시 궁금해졌다. 나는 지금 어디쯤 와 있는 걸까. 어디까지 갈 수 있을까.		</p>
+
+
+</div>
+
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function () {
+    this.page.url = location.href;
+    this.page.identifier = location.href;
+  };
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://huns-me.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
+
+    </main>
+    <footer>
+  <span>
+    © <time datetime="2019-09-26 19:34:59 +0900">2019</time> KimCoding. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+  </span>
+</footer>
+
+  </body>
+</html>

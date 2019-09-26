@@ -1,0 +1,1314 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+  <script>
+    WebFont.load({
+      google: {
+        families: ['Nanum Gothic', 'Noto Sans KR', 'Nanum Gothic Coding', 'Nanum Myeongjo']
+      },
+      active() {
+        var tid = setInterval(function() {
+          if (document.body) {
+            document.body.classList.remove("hidden");
+            clearInterval(tid);
+          }
+        }, 500);
+      }
+    });
+  </script>
+
+  <!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>리덕스(Redux) 애플리케이션 설계에 대한 생각 | Huns.me</title>
+<meta name="generator" content="Jekyll v3.8.6">
+<meta property="og:title" content="리덕스(Redux) 애플리케이션 설계에 대한 생각">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="김코딩 님이 잘하고 싶어서 만든 블로그">
+<meta property="og:description" content="김코딩 님이 잘하고 싶어서 만든 블로그">
+<link rel="canonical" href="http://localhost:4000/development/1953">
+<meta property="og:url" content="http://localhost:4000/development/1953">
+<meta property="og:site_name" content="Huns.me">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2016-07-01T22:05:29+09:00">
+<script type="application/ld+json">
+{"url":"http://localhost:4000/development/1953","dateModified":"2016-07-01T22:05:29+09:00","datePublished":"2016-07-01T22:05:29+09:00","headline":"리덕스(Redux) 애플리케이션 설계에 대한 생각","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/development/1953"},"description":"김코딩 님이 잘하고 싶어서 만든 블로그","@type":"BlogPosting","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/legacy/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/legacy/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/legacy/apple-touch-icon.png">
+
+  <!-- RSS -->
+  <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Huns.me">
+
+  <!-- Google Analytics-->
+  
+</head>
+
+  <body class="hidden">
+    <nav class="nav">
+  <div class="nav-container">
+    <a href="/">
+      <h2 class="nav-title">Huns.me</h2>
+    </a>
+    <ul>
+      <li><a href="/about">About</a></li>
+      <li><a href="/">Posts</a></li>
+    </ul>
+  </div>
+</nav>
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Written by</span>
+    KimCoding
+
+    
+      <br>
+      <span>on </span><time datetime="2016-07-01 22:05:29 +0900">July 01, 2016</time>
+    
+  </div>
+
+  <h1 class="post-title">리덕스(Redux) 애플리케이션  설계에 대한 생각</h1>
+  <div class="post-line"></div>
+
+  <p>
+				이 글은 리덕스를 이용하여 애플리케이션을 개발할 때, 설계를 고민하며 했던 생각을 정리한 글입니다. 리덕스 기초를 소개하는 글이 아니니 읽기 전에 참고하세요.</p>
+<p><b>--</b></p>
+<p> </p>
+<p class="image-wrapper"><img class="wp-image-1987" src="/assets/images/legacy/photo-1416453072034-c8dbfa2856b5-1024x676.jpeg" alt="많은 사람들이 커피숍 테이블에 앉아 왁자지껄 시끄럽게 이야기를 주고 받는 모습의 사진" width="410" loading="lazy"> 타인과 생각을 공유하고 의견을 주고 받으며 부딪히는 과정은 피곤하지만, 그 속에서 더 좋은 해법을 발견한다.</p>
+<p><span class="se_ff_nanumgothic">최근 진행하고 있는 모바일 웹 프로젝트는 리액트(React)와 리덕스(Redux) 조합을 이용하고 있다. 모든 </span><span class="se_ff_nanumgothic">프레임워크가 그렇듯이, 리덕스 역시 모든 문제를 해결하지 않는다. 남은 부분은 개발자의 몫이다. 리덕스 공식 문서의 FAQ는 개발하면서 한 번쯤은 고민해봤을 법한 문제를 리덕스로 해결하는 방법을 친절하게 안내하고 있어 참고할만하지만, 확실하게 딱 잘라서 결정해주는 맛은 없다.<br>
+</span><span class="se_ff_nanumgothic"><br>
+</span><span class="se_ff_nanumgothic">사실 가치 판단의 문제인 경우가 대부분이라, 딱 잘라서 정답을 제시한다는 것 자체가 어렵다. 선택지라도 알려주는 게 어딘가. </span><span class="se_ff_nanumgothic">무엇이 더 좋은 선택인지는 전체 상황을 고려해서 결정해야 하며 </span><span class="se_ff_nanumgothic">프로젝트 초기에 어느 정도 설계의 방향성을 팀원 간에 합의를 하는 것이 좋다. 그렇지 않으면 일관성을 잃어버린 코드가 제멋대로 자라다가 급기야는 시스템을 좀먹는다.</span></p>
+<p>동료들과 프로젝트를 본격적으로 진행하기 전에 설계 방향을 놓고 많은 이야기를 했다. 고민이 등장할 때마다 메모를 해두었는데, 그렇게 마구 흩어놓은 리덕스 디자인에 대한 생각을 정리하는 차원에서 주저리주저리 떠들어 볼 생각이다. 앞으로 써 내려갈 내용 중에는 모두가 동의한 부분도 있고, 그렇지 않은 부분도 있다. 나는 그것이 옳다고 생각하지만 누군가는 더 나은 다른 방법이 있다고 믿는다. 세상사가 다 그런 거 아닌가. 논의하고 부딪히는 과정은 피곤하지만, 그 속에서 더 좋은 해법을 발견한다.</p>
+<p>리덕스를 이야기하면서 플럭스 유틸즈(Flux-utils)와 비교를 안 할 수가 없다.</p>
+<p><b>"뭐가 다른 걸까?"</b></p>
+<p>제일 먼저 리듀서(reducer)가 눈에 들어왔다. 이름부터 난해하다. 리듀서라니. 리덕스를 이해하려면 리듀서를 이해해야 할 것 같다. 그래서 설계의 시작도 리듀서다.</p>
+<h2>리듀서 들여다보기</h2>
+<p>플럭스 유틸즈와 비교했을 때,  리덕스의 가장 눈에 띄는 특징은 <b>'단일 스토어, 다수의 리듀서</b>’ 정책이다. 시스템의 도메인 레이어라 할 수 있는 스토어에서 모든(대부분?) 상태를 관리하는 플럭스 아키텍처 위에서는, 커지는 코드 베이스에 맞춰 스토어 역시 쉽게 비대해진다. 이런 상황이 오면 하나였던 스토어를 다수의 스토어로 분리한다.</p>
+<p>이를 위해 플럭스 유틸즈는 스토어를 추상화한 객체를 제공한다. 그게 설계자의 의도인지는 모르겠지만 구글링을 하면 이런 사례들이 많이 눈에 띈다. 액션이 다수의 스토어에 비동기 요청을 던졌을 때, 각 요청을 처리하는 시점을 제어하는 API(waitFor 같은)를 통해서도 설계자의 의도를 추측할 수 있다.</p>
+<div class="se_editArea">
+<div class="se_viewArea se_ff_nanumgothic se_fs_T3 se_align-left">
+<div class="se_editView">
+<div class="se_textView">
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td>
+<td class="code"><pre><span class="nx">MessageStore</span><span class="p">.</span><span class="nx">dispatchToken</span> <span class="o">=</span> <span class="nx">ChatAppDispatcher</span><span class="p">.</span><span class="nx">register</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">action</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">switch</span><span class="p">(</span><span class="nx">action</span><span class="p">.</span><span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="nx">ActionTypes</span><span class="p">.</span><span class="nx">CLICK_THREAD</span><span class="p">:</span>
+            <span class="c1">// 여기를 유심히 보자</span>
+            <span class="nx">ChatAppDispatcher</span><span class="p">.</span><span class="nx">waitFor</span><span class="p">([</span><span class="nx">ThreadStore</span><span class="p">.</span><span class="nx">dispatchToken</span><span class="p">]);</span>
+            <span class="nx">_markAllInThreadRead</span><span class="p">(</span><span class="nx">ThreadStore</span><span class="p">.</span><span class="nx">getCurrentID</span><span class="p">());</span>
+            <span class="nx">MessageStore</span><span class="p">.</span><span class="nx">emitChange</span><span class="p">();</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="nl">default</span><span class="p">:</span>
+        <span class="c1">// do nothing</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</pre></td>
+</tr></tbody></table></code></pre></figure>
+</div>
+</div>
+</div>
+</div>
+<p class="__se_code_view se_textarea language-javascript">이에 반해 리덕스는 단일 스토어를 유지하되, 상태 처리에 대한 책임을 스토어의 하위에 있는 리듀서에게 넘기는 '단일 스토어, 다수의 리듀서' 전략을 택했다. 리덕스에서 스토어는 컴포넌트와 리듀서를 연결하는 아주 얇은 레이어일 뿐이다. 상태와 상태를 처리하는 행위는 스토어가 아닌 리듀서가 책임진다. 스토어는 여러 개의 리듀서를 가질 수 있다. 각각의 리듀서가 처리하는 상태는 최종적으로 최상위 리듀서가 시스템의 상태 트리로 만들어서 스토어를 구독하는 구독자에게 전달한다.</p>
+<div class="se_editArea">
+<div class="se_viewArea"><img id="SEDOC-1467376846350-892175543_image_2_img" class="se_mediaImage __se_img_el" src="/assets/images/legacy/Redux_Archictecture_-_New_Page_.png" alt="" width="936" data-attachment-id="" loading="lazy"></div>
+</div>
+<p class="se_textarea">물론 플럭스 유틸즈를 이용해도 하나의 스토어를 두고 상태 처리 책임을 분리하는 방식으로 설계할 수 있고, 리덕스 역시 여러 스토어를 구현할 수 있다. 둘 다 어떤 한 가지 정책을 강제하지는 않는다. 다만 기저에 깔린 설계 철학이 어떤 쪽에 더 가까운지를 생각해봤을 때 그렇다는 뜻이고, 이 철학에 맞춰 구현할 때 가장 자연스럽다.</p>
+<p>이 지점에서 분리해야 하는 대상의 본질이 스토어와 액션을 결합하는 인터페이스가 아니라 스토어가 관리하는 상태 데이터와 그 데이터를 처리하는 행위에 있다는 사실을 알 수 있다. 액션과 스토어를 결합하는 방식은 스토어가 어떤 상태를, 어떻게 책임지는지와는 상관없이 모두 동일하다. 이 공통 인터페이스를 플럭스 유틸즈는 상속으로 해결한다. 아래의 링크를 따라가보면 플럭스 유틸즈가 제공하는 스토어 객체를 확인할 수 있다. 플럭스 유틸즈는 모두 세 종류의 스토어 객체를 제공한다.</p>
+<p><a href="http://facebook.github.io/flux/docs/flux-utils.html#content">http://facebook.github.io/flux/docs/flux-utils.html#content</a></p>
+<p>아래의 코드는 플럭스 유틸즈의 ReduceStore를 상속하여 스토어를 정의하는 예제 코드다. 이 코드는 Flow라는 정적 타입 검증기를 사용하고 있어 코드가 조금 낯설어 보일 수 있지만 타입 선언만 제거하면 그냥 자바스크립트다.</p>
+<div class="se_editArea">
+<div class="se_viewArea se_fs_T3 ">
+<div class="se_editView">
+<div class="se_textView">
+<div class="__se_code_view se_textarea language-javascript">
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+</pre></td>
+<td class="code"><pre><span class="k">import</span> <span class="p">{</span><span class="nx">ReduceStore</span><span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">flux/utils</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">class</span> <span class="nx">CounterStore</span> <span class="kd">extends</span> <span class="nx">ReduceStore</span><span class="o">&amp;</span><span class="nx">lt</span><span class="p">;</span><span class="nx">number</span><span class="o">&amp;</span><span class="nx">gt</span><span class="p">;</span> <span class="p">{</span>
+  <span class="nx">getInitialState</span><span class="p">():</span> <span class="nx">number</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="nx">reduce</span><span class="p">(</span><span class="nx">state</span><span class="p">:</span> <span class="nx">number</span><span class="p">,</span> <span class="nx">action</span><span class="p">:</span> <span class="nb">Object</span><span class="p">):</span> <span class="nx">number</span> <span class="p">{</span>
+    <span class="k">switch</span> <span class="p">(</span><span class="nx">action</span><span class="p">.</span><span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">case</span> <span class="dl">'</span><span class="s1">increment</span><span class="dl">'</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nx">state</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+
+      <span class="k">case</span> <span class="dl">'</span><span class="s1">square</span><span class="dl">'</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nx">state</span> <span class="o">*</span> <span class="nx">state</span><span class="p">;</span>
+
+      <span class="nl">default</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nx">state</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></td>
+</tr></tbody></table></code></pre></figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p class="se_textarea">리덕스는 스토어를 좀 더 상위 수준으로 추상화하고 대신 하부 로직을 분리해서 책임을 분산시킨다. 아래의 코드를 보고 알 수 있듯이 리덕스에서 스토어는 내부 실체가 보이지 않는다. 그저 리듀서만 보일 뿐이다. 상태 처리 로직만 작성하면 나머지는 리덕스가 알아서 결합한다.</p>
+<div class="se_editArea">
+<div class="se_viewArea se_ff_nanumgothic se_fs_T3 se_align-left">
+<div class="se_editView">
+<div class="se_textView">
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td>
+<td class="code"><pre><span class="k">import</span> <span class="p">{</span> <span class="nx">createStore</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">redux</span><span class="dl">'</span>
+
+<span class="kd">function</span> <span class="nx">counter</span><span class="p">(</span><span class="nx">state</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">action</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">switch</span> <span class="p">(</span><span class="nx">action</span><span class="p">.</span><span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="dl">'</span><span class="s1">increment</span><span class="dl">'</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nx">state</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+
+        <span class="k">case</span> <span class="dl">'</span><span class="s1">square</span><span class="dl">'</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nx">state</span> <span class="o">*</span> <span class="nx">state</span><span class="p">;</span>
+
+        <span class="nl">default</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nx">state</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">store</span> <span class="o">=</span> <span class="nx">createStore</span><span class="p">(</span><span class="nx">counter</span><span class="p">);</span>
+</pre></td>
+</tr></tbody></table></code></pre></figure>
+</div>
+</div>
+</div>
+</div>
+<h2>리듀서와 순수 함수에 대한 생각</h2>
+<p>리덕스의 공식 문서에 있는 예제들은 순수 함수를 적극 활용한다. Dan Abramov가 함수형 프로그래밍에 영감을 받아서 리덕스를 만들었기 때문인 듯하다. 순수 함수는 아래와 같은 특징을 갖는 함수를 말한다.</p>
+<ol>
+<li>함수 밖에 있는 데이터나 변수를 변경해서 의도치 않은 결과를 발생시키지 않아야 한다.</li>
+<li>동일한 입력 데이터의 집합을 제공받으면 항상 동일한 연산 결과를 반환해야 한다.</li>
+</ol>
+<p>특히 리듀서에 이런 철학이 강하게 묻어있다. 리듀서를 순수하게 유지하면 뭐가 좋은 걸까? 결론적으로 시스템이 복잡해져도 리듀서를 가능한 단순한게 유지할 수 있다.</p>
+<div class="se_editArea">
+<div class="se_viewArea se_fs_T3 ">
+<div class="se_editView">
+<div class="se_textView">
+<div class="__se_code_view se_textarea language-javascript">
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td>
+<td class="code"><pre><span class="nx">resolvers</span><span class="p">.</span><span class="nx">deleteComponent</span> <span class="o">=</span> <span class="p">(</span><span class="nx">prevState</span><span class="p">,</span> <span class="p">{</span> <span class="nx">targetId</span> <span class="p">})</span> <span class="o">=&amp;</span><span class="nx">gt</span><span class="p">;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="p">{</span> <span class="nx">order</span><span class="p">,</span> <span class="nx">compMap</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">prevState</span><span class="p">;</span>
+    <span class="kd">const</span> <span class="nx">updatedOrder</span> <span class="o">=</span> <span class="nx">deleteComponent</span><span class="p">(</span><span class="nx">order</span><span class="p">,</span> <span class="nx">targetId</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="nx">Immutable</span>
+        <span class="p">.</span><span class="nx">fromJS</span><span class="p">(</span><span class="nx">prevState</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">merge</span><span class="p">({</span>
+            <span class="na">order</span><span class="p">:</span> <span class="nx">updatedOrder</span><span class="p">,</span>
+            <span class="na">focusCompId</span><span class="p">:</span> <span class="dl">""</span>
+        <span class="p">})</span>
+        <span class="p">.</span><span class="nx">deleteIn</span><span class="p">([</span><span class="dl">"</span><span class="s2">compMap</span><span class="dl">"</span><span class="p">,</span> <span class="nx">targetId</span><span class="p">])</span>
+        <span class="p">.</span><span class="nx">toJSON</span><span class="p">();</span>
+<span class="p">};</span>
+</pre></td>
+</tr></tbody></table></code></pre></figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p class="se_textarea">입력을 받으면 입력 값을 처리하여 새로운 상태를 결과로 반환하는 게 전부다. 입력 값을 전달하는 것 외에는 함수 실행 중에 외부의 어떤 조건에도 영향을 받지 않는다. 하는 일이 단순하니 예측하기 쉽고, 테스트하기도 쉽다. 리덕스가 자랑하는 시간 여행 디버깅이 가능한 것도 리듀서의 이런 특성 덕이다.</p>
+<div class="se_editArea">
+<div class="se_viewArea se_fs_T3 ">
+<div class="se_editView">
+<div class="se_textView">
+<div class="__se_code_view se_textarea language-javascript">
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td>
+<td class="code"><pre><span class="nx">it</span><span class="p">(</span><span class="dl">"</span><span class="s2">컴포넌트 목록에서 원하는 컴포넌트 하나를 삭제할 수 있다.</span><span class="dl">"</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&amp;</span><span class="nx">gt</span><span class="p">;</span> <span class="p">{</span>
+    <span class="c1">// given</span>
+    <span class="kd">const</span> <span class="nx">deleteTarget</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">target</span><span class="dl">'</span><span class="p">;</span>
+    <span class="kd">const</span> <span class="nx">action</span> <span class="o">=</span> <span class="nx">compListAction</span><span class="p">.</span><span class="nx">deleteComponent</span><span class="p">(</span><span class="nx">deleteTarget</span><span class="p">);</span>
+
+    <span class="c1">// when</span>
+    <span class="kd">const</span> <span class="p">{</span> <span class="nx">order</span><span class="p">,</span> <span class="nx">compMap</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">compListReducer</span><span class="p">(</span><span class="nx">initState</span><span class="p">,</span> <span class="nx">action</span><span class="p">);</span>
+
+    <span class="c1">// then</span>
+    <span class="nx">order</span><span class="p">.</span><span class="nx">should</span><span class="p">.</span><span class="nx">not</span><span class="p">.</span><span class="nx">include</span><span class="p">(</span><span class="nx">deleteTarget</span><span class="p">);</span>
+    <span class="nx">should</span><span class="p">.</span><span class="nx">not</span><span class="p">.</span><span class="nx">exist</span><span class="p">(</span><span class="nx">compMap</span><span class="p">[</span><span class="nx">deleteTarget</span><span class="p">]);</span>
+<span class="p">});</span>
+</pre></td>
+</tr></tbody></table></code></pre></figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p class="se_textarea">하지만 리듀서를 함수로 구성하다 보니 행위와 데이터를 하나로 결합한 도메인 모델을 구성하기가 어렵고, 이로 인해 설계에 익숙하지 않은 어색한 지점이 발생(데이터의 정체성을 어떻게 정의할지 모호하다든지, 데이터를 가져오는 AJAX 요청을 도메인 레이어의 앞단에서 처리해야한다든지)하는 단점이 있다.</p>
+<p class="se_textarea">리듀서가 순수해야 한다는 뜻은 리듀서에 전달하는 값이 동일하다면, 리듀서가 돌려주는 값도 항상 동일해야 함을 의미한다. 그래서 xhr을 이용한 비동기 통신처럼 사이드 이펙트를 만들 수 있는 행위는 리듀서에 담지 않는다. 이는 리듀서가 연산을 수행하는 데 있어 리듀서 외부의 상태에 영향을 받지 않아야 한다는 뜻일 뿐, 그 안에 어떠한 로직도 없어야 한다는 뜻은 아니다. 비즈니스 로직은 처리 대상인 데이터와 가까운 곳에 위치하는 것이 좋기에, 리덕스 애플리케이션의 비즈니스 로직은 리듀서에 위치하는 것이 적절하다. 처리하려는 로직의 성격에 따라 리듀서 내부의 로직도 얼마든지 복잡해질 수 있고, 그러다 보면 리듀서 내에서 다른 여러 함수를 호출하는 경우도 자주 있다.</p>
+<p class="se_textarea">이 지점에서 오해하지 말아야 한 가지는, 리듀서를 '순수'하게 만들기 위해서 반드시 함수를 고집해야 하는 건 아니라는 점이다. 객체를 이용해서도 얼마든지 리듀서를 순수하게 만들 수 있다. 모든 건 구현하기 나름이니 리덕스에 함수형 철학이 묻어있다고 '<b>함수형이 </b>짱짱맨'이라는 생각은 하지 말자. 다만 리덕스를 이용하면 함수 단위로 코드를 작성하는 게 조금 더 자연스러울 뿐이다.</p>
+<h2>상태 트리 설계에 대한 고민</h2>
+<p class="se_textarea">리덕스는 리듀서를 트리 구조로 분리함으로써 상태 관리에 대한 책임을 분산시킨다. 분리한 상태는 combineReduce 함수로 조합하여 최상위 리듀서가 시스템의 단일 상태 트리로 조합한다. 이 지점에서 시스템의 상태 구조가 드러난다.</p>
+<p class="se_textarea">리듀서를 너무 깊은 트리 구조로 만들면 리듀서 결합이 복잡해지고, 상태의 흐름이 잘 안 읽힌다. 그래서 최대한 평탄한(flat) 구조로 만들어야 한다. 하지만 너무 평탄해버리면 상태 간의 관련성을 가독성 있게 표현하기 어렵다. 어느 지점에서 균형을 잡아야 한다. 상태 트리 구성과 분류 기준을 선택하는 일은 리덕스 시스템의 큰 틀과 방향을 결정하는 중요한 의사결정이다.</p>
+<div class="se_editArea">
+<div class="se_viewArea se_fs_T3 ">
+<div class="se_editView">
+<div class="se_textView">
+<div class="__se_code_view se_textarea language-javascript">
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre></td>
+<td class="code"><pre><span class="k">import</span> <span class="p">{</span> <span class="nx">combineReducers</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">redux</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">routerReducer</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">react-router-redux</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="k">import</span> <span class="nx">toast</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./toast/reducer.js</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">toolbar</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./toolbar/reducer.js</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">modalDialog</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./modal-dialog/reducer.js</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">components</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./components/reducer.js</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">suggest</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./suggest/reducer.js</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">metaData</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./meta-data/reducer.js</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">combineReducers</span><span class="p">({</span>
+    <span class="nx">toast</span><span class="p">,</span>
+    <span class="nx">toolbar</span><span class="p">,</span>
+    <span class="nx">modalDialog</span><span class="p">,</span>
+    <span class="nx">components</span><span class="p">,</span>
+    <span class="nx">suggest</span><span class="p">,</span>
+    <span class="nx">metaData</span><span class="p">,</span>
+    <span class="na">routing</span><span class="p">:</span> <span class="nx">routerReducer</span>
+<span class="p">});</span>
+</pre></td>
+</tr></tbody></table></code></pre></figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p class="se_textarea">'너무 깊은 트리 구조'를 만들지 말라는 걸 중첩 JSON 구조로 데이터를 정의하지 말라는 걸로 오해하면 곤란하다. 단지 리듀서를 지나치게 중첩하지 말라는 소리다. 리듀서가 난립하면 결합한 상태 트리의 모습을 예측하기 어려워진다.</p>
+<p class="se_textarea">그렇다면 상태 트리는 어떠한 기준으로 설계를 하는 것이 좋을까? 처음에는 UI를 기준으로 상태 트리를 구성하는 걸 생각해봤다. 헤더가 있고, 푸터가 있고. 메뉴별로 상태 트리를 만들면 어떨까? 하지만 곧 생각을 접었다.</p>
+<div class="se_editArea">
+<div class="se_viewArea se_fs_T3 ">
+<div class="se_editView">
+<div class="se_textView">
+<div class="__se_code_view se_textarea language-javascript">
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td>
+<td class="code"><pre><span class="p">{</span>
+    <span class="nl">header</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="nb">navigator</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="nx">contents</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="nx">footer</span><span class="p">:</span> <span class="p">{}</span>
+<span class="p">}</span>
+</pre></td>
+</tr></tbody></table></code></pre></figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p class="se_textarea">UI 단위로 상태 트리를 구성하면 UI와 리듀서가 강하게 묶인다. 어떤 상태를 상태 트리에 추가하면, 그 상태를 관리하는 리듀서가 있어야 한다. 반대 역시 마찬가지다. 결국 UI와 리듀서를 함께 끌고 다녀야 한다. UI는 변경이 잦은 부분이라 불안정한 UI와 리듀서를 엮어 버리면 리듀서 역시 불안정해진다.</p>
+<p class="se_textarea">결국 팀원들과 긴 논의를 거친 끝에, 기능을 기준으로 상태 트리를 설계하기로 했다. 기능 단위로 리듀서를 설계하면 UI와 리듀서의 관계를 약하게 만들 수 있고, UI의 변경이 미치는 파급효과를 줄일 수 있다. 상태 트리를 보고 시스템이 제공하는 기능을 유추할 수 있다는 점은 기능 단위로 상태 트리를 설계했을 때 얻을 수 있는 또 하나의 장점이다. 아래의 상태 트리 예제를 보면 도구막대와 컴포넌트 목록 관련 기능을 제공한다는 걸 유추할 수 있다.</p>
+<div class="se_editArea">
+<div class="se_viewArea se_fs_T3 ">
+<div class="se_editView">
+<div class="se_textView">
+<div class="__se_code_view se_textarea language-javascript">
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+</pre></td>
+<td class="code"><pre><span class="p">{</span>
+    <span class="nl">toolbar</span> <span class="p">:</span> <span class="p">{</span>
+        <span class="nl">isShown</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="nx">components</span> <span class="p">:</span> <span class="p">{</span>
+        <span class="nl">order</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">comp_1</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">comp_2</span><span class="dl">"</span><span class="p">]</span>
+        <span class="nx">compMap</span> <span class="p">:{</span>
+            <span class="dl">"</span><span class="s2">comp_1</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nl">ui</span> <span class="p">:</span> <span class="p">{},</span>
+                <span class="nx">doc</span> <span class="p">:</span> <span class="p">{}</span>
+            <span class="p">},</span>
+            <span class="dl">"</span><span class="s2">comp_2</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nl">ui</span> <span class="p">:</span> <span class="p">{},</span>
+                <span class="nx">doc</span> <span class="p">:</span> <span class="p">{}</span>
+            <span class="p">},</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nx">metaData</span> <span class="p">:</span> <span class="p">{</span>
+        <span class="nl">document</span> <span class="p">:</span> <span class="p">{}</span>
+        <span class="nl">release</span> <span class="p">:</span> <span class="p">{}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></td>
+</tr></tbody></table></code></pre></figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p class="se_textarea">상태 트리를 기능 단위로 정리했다면, 액션은 사용자의 행위를 기준으로 정리한다. 사용자가 수행하는 하나의 동작은 다수의 기능과 결합할 수 있다. 따라서 너무 당연한 이야기지만 액션과 리듀서의 관계는 <b>1:N</b>이다.</p>
+<h2>리덕스를 지탱하는 두 가지 리액트 컴포넌트</h2>
+<p class="se_textarea">리덕스를 접할 때 애플리케이션의 '모든 상태'를 리듀서에서 관리하고, 컴포넌트 자체는 무상태로 만들어야 한다고 생각하는 경우를 가끔 본다. 결론부터 이야기하자면 이는 오해다. 리덕스는 모든 상태를 리듀서, 즉 스토어에서 관리할 것을 강제하지 않는다. 컴포넌트는 지역 상태를, 리듀서는 전역 상태를 관리할 수 있고 그래야  효율적이고 유연한 애플리케이션을 만들 수 있다.</p>
+<p class="se_textarea">그렇다면 무엇이 지역 상태고, 무엇이 전역 상태일까? 이를 이해하려면 우선 표현 컴포넌트와 컨테이너 컴포넌트를 이해해야 한다. <a class="se_link" href="http://redux.js.org/docs/basics/UsageWithReact.html" target="_blank">리덕스 공식 문서</a>는 리액트 컴포넌트를 두 종류로 구분한다.</p>
+<ol>
+<li class="se_textarea">표현(Presentational) 컴포넌트</li>
+<li class="se_textarea">컨테이너(Container) 컴포넌트</li>
+</ol>
+<p>이는 전혀 새로운 개념은 아니며 용어는 조금 다르지만 플럭스 유틸즈도 이런 방식으로 컴포넌트를 구분하고 있다. 이 둘에 대한 자세한 설명은 리덕스의 창시자인 Dan Abramov가 쓴 <a class="se_link" href="https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0#.5k8kybm16" target="_blank">Presentational and Container Components</a>에 잘 나와있다.  예전 리덕스 공식 문서에서는 smart component, dumb component라는 이름으로 이 둘의 기준을 모호하게 설명하고 있었으나, 최신 문서에서는 presentational, container라는 명칭을 사용하고 설명을 보완하여 이 둘의 경계를 분명하게 구분하고 있다.</p>
+<p>표현 컴포넌는 리덕스 시스템과 별개인 컴포넌트로 화면에 컴포넌트를 어떻게 렌더링 할지를 결정하고, 사용자의 요청을 이벤트로 받아 상위 컴포넌트로 전달하는 역할만을 수행한다. 아래의 코드는 표현 컴포넌트의 예다.</p>
+<div class="se_editArea">
+<div class="se_viewArea se_fs_T3 ">
+<div class="se_editView">
+<div class="se_textView">
+<div class="__se_code_view se_textarea language-javascript">
+<figure class="highlight"><pre><code class="language-jsx" data-lang="jsx"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+</pre></td>
+<td class="code"><pre><span class="k">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">PropTypes</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span>
+
+<span class="kd">const</span> <span class="nx">Link</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">active</span><span class="p">,</span> <span class="nx">children</span><span class="p">,</span> <span class="nx">onClick</span> <span class="p">})</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">active</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span><span class="si">{</span><span class="nx">children</span><span class="si">}</span><span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href=</span><span class="s2">"#"</span>
+      <span class="na">onClick=</span><span class="si">{</span><span class="nx">e</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">()</span>
+        <span class="nx">onClick</span><span class="p">()</span>
+      <span class="p">}</span><span class="si">}</span><span class="p">&gt;</span>
+
+      <span class="si">{</span><span class="nx">children</span><span class="si">}</span>
+    <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+  <span class="p">)</span>
+<span class="p">}</span>
+
+<span class="nx">Link</span><span class="p">.</span><span class="nx">propTypes</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">active</span><span class="p">:</span> <span class="nx">PropTypes</span><span class="p">.</span><span class="nx">bool</span><span class="p">.</span><span class="nx">isRequired</span><span class="p">,</span>
+  <span class="na">children</span><span class="p">:</span> <span class="nx">PropTypes</span><span class="p">.</span><span class="nx">node</span><span class="p">.</span><span class="nx">isRequired</span><span class="p">,</span>
+  <span class="na">onClick</span><span class="p">:</span> <span class="nx">PropTypes</span><span class="p">.</span><span class="nx">func</span><span class="p">.</span><span class="nx">isRequired</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">Link</span>
+</pre></td>
+</tr></tbody></table></code></pre></figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p class="se_textarea">이와 달리 컨테이너 컴포넌트는 표현 컴포넌트와 리덕스 시스템 사이의 연결 고리로 하위 컴포넌트에서 올라오는 요청을 해석하여 시스템의 어느 쪽으로 요청을 전달(mapDispatchToProps) 할 것인지를 결정하고, 전체 시스템의 상태 트리를 스토어로부터 넘겨받아 하위 컴포넌트로 전달(mapStateToProps) 하는 책임을 수행한다.</p>
+<div class="se_editArea">
+<div class="se_viewArea se_fs_T3 ">
+<div class="se_editView">
+<div class="se_textView">
+<div class="__se_code_view se_textarea language-javascript">
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+</pre></td>
+<td class="code"><pre><span class="k">import</span> <span class="p">{</span> <span class="nx">connect</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react-redux</span><span class="dl">'</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">setVisibilityFilter</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../actions</span><span class="dl">'</span>
+<span class="k">import</span> <span class="nx">Link</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../components/Link</span><span class="dl">'</span>
+
+<span class="kd">const</span> <span class="nx">mapStateToProps</span> <span class="o">=</span> <span class="p">(</span><span class="nx">state</span><span class="p">,</span> <span class="nx">ownProps</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="na">active</span><span class="p">:</span> <span class="nx">ownProps</span><span class="p">.</span><span class="nx">filter</span> <span class="o">===</span> <span class="nx">state</span><span class="p">.</span><span class="nx">visibilityFilter</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">mapDispatchToProps</span> <span class="o">=</span> <span class="p">(</span><span class="nx">dispatch</span><span class="p">,</span> <span class="nx">ownProps</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="na">onClick</span><span class="p">:</span> <span class="p">()</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="nx">dispatch</span><span class="p">(</span><span class="nx">setVisibilityFilter</span><span class="p">(</span><span class="nx">ownProps</span><span class="p">.</span><span class="nx">filter</span><span class="p">))</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">FilterLink</span> <span class="o">=</span> <span class="nx">connect</span><span class="p">(</span>
+  <span class="nx">mapStateToProps</span><span class="p">,</span>
+  <span class="nx">mapDispatchToProps</span>
+<span class="p">)(</span><span class="nx">Link</span><span class="p">)</span>
+</pre></td>
+</tr></tbody></table></code></pre></figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p class="se_textarea">결국 컨테이너라는 존재에 의해 컨테이너가 아닌 모든 컴포넌트는 리덕스에 얽매이지 않는, 독립적인 개체로서 자율성을 가질 수 있는 셈이다. 필요한 지점에서 컨테이너를 이용해 컴포넌트를 리덕스 시스템과 결합하면 된다.</p>
+<p class="se_textarea">리덕스 공식 문서의 예제에 있는 표현 컴포넌트는 모두 무상태 컴포넌트(Stateless Component)다. 하지만 이는 예제가 너무 단순하여 내부에서 관리할 상태가 없기 때문이지, 모든 표현 컴포넌트가 무상태 컴포넌트여야 하는 것은 아니다.  컴포넌트를 드래그 앤 드롭할 때 현재 좌표 값이나 현재 스크롤 좌표 추적같이 매우 빈번한 연산을 요구하는 인터랙션 처리에 필요한 상태는 리듀서에서 관리할 경우 엄청난 비효율을 초래한다. 최대한 연산 수행 시간을 줄여야 하는 상황에서 상태를 변경할 때마다 아래와 같은 과정을 거쳐야 한다는 건 생각만 해도 아찔한 일이다. 결국 컴포넌트와 리듀서, 모두에게 각자의 상태를 들고 있어야 할 나름의 사정이 있다.</p>
+<p class="se_textarea"><b>"action -&gt; dispatch -&gt; store -&gt; reducer -&gt; store -&gt; compoent"</b></p>
+<p class="se_textarea">그렇다면 어떤 상태는 컴포넌트에 위치하고 어떤 상태는 리듀서에 위치해야 하는 걸까? 결론적으로 전역 상태는 리듀서가, 지역 상태는 개별 컴포넌트가 관리한다. 말은 쉽다. 하나씩 풀어보자.</p>
+<h2>전역 상태와 지역 상태, 무엇이 다를까?</h2>
+<p class="se_textarea">전역 상태는 다음과 같이 정의할 수 있다.</p>
+<blockquote>
+<p class="se_textarea">"영속성을 가져야 하는 도메인 데이터, 또는 서로 다른 컨테이너나 컴포넌트 간에 공유해야 하는 UI의 상태"</p>
+</blockquote>
+<p class="se_textarea">에디터를 예로 들자면, 사용자가 작성한 문서에 대한 정보는 도메인 데이터로 영속성을 가져야 한다. 애플리케이션의 생애 주기 동안 관리하고, 시스템을 종료했다가 다음에 다시 데이터를 불러와서 동일한 상태를 재현할 수 있어야 한다. 이러한 상태는 신뢰할 수 있는 단일한 장소에서, 일관성을 가지고 관리해야 한다. 리덕스에서는 리듀서가 바로 그 지점이다.</p>
+<p class="se_textarea">그리고 도메인이 아닌 개별 UI의 상태지만 리듀서에서 관리를 해야 하는 경우가 있다. 서로 다른 컨테이너 간에 공유해야 하는 상태가 그렇다. 어떤 컴포넌트에 포커스가 들어오면 직전에 포커스를 가지고 있던 컴포넌트에서 포커스를 제거해야 하는 경우를 생각해보자. 포커스는 도메인 데이터가 아닌, UI의 상태일 뿐이다. 하지만 단 하나의 컴포넌트만 포커스를 가질 수 있다는 규칙상, 각 컴포넌트가 서로의 상태를 공유해야 한다. 이럴 때 포커스를 가지고 있는 컴포넌트에 대한 정보를 리듀서에서 상태로 관리할 수 있다.</p>
+<p class="se_textarea">자, 이제 지역 상태란 무엇일까? 지역 상태란 이렇게 정의할 수 있다.</p>
+<blockquote>
+<p class="se_textarea">"컴포넌트가 시스템과 상관없이 독립성을 갖고 표현 로직을 처리하는 데 필요한, 컴포넌트 내부에 캡슐화할 수 있는 상태"</p>
+</blockquote>
+<p class="se_textarea">컴포넌트의 모든 상태를 리듀서에서 관리하면 컴포넌트와 리듀서가 강하게 결합해 종속성이 생긴다. 컴포넌트가 어떤 인터랙션을 처리하려면 리듀서를 통해야만 하는데, 이는 성능 문제와도 연관이 있다. 앞에서 이야기했듯이 컴포넌트를 드래그 앤 드롭할 때, 현재 좌표 값 처리와 같이 매우 빈번한 연산을 수행하는 데 필요한 상태를 리듀서에서 관리하면 상당한 비효율이 발생한다. 따라서 이런 상태는 컴포넌트 내부에 캡슐화하여 컴포넌트가 자율적으로 상태를 처리할 수 있게 두는 게 좋다.</p>
+<p class="se_textarea">실제 제품을 개발할 때는 이것을 전역 상태로 둘지, 지역 상태로 둘지 결정하기 모호한 경우를 꽤 자주 만난다. 특히나 요구 사항이 완전치 않은 개발 초기에 이런 상황을 자주 접한다. 이럴 때는 우선 지역 상태로 분류하는 게 좋다. 전역 상태를 처리하는 과정이 지역 상태를 처리하는 과정 보다 번거롭고, 지역 상태가 전역 상태보다 외부와의 접점이 적기 때문에 나중에 상태의 성격을 변경할 때 수정 비용이 더 적게 들어간다. 그리고 지역 상태를 중심으로 자율성을 갖는 컴포넌트가 더 유연하다. 물론 유연하다는 것은 구현에 그만큼의 비용이 더 들어간다는 뜻이기도 하다. 따라서 상황에 따라 적절히 판단해야 하며 이는 개발자의 몫이다.</p>
+<h2>리액트와 리덕스의 결합이란...</h2>
+<p class="se_textarea">컨테이너 컴포넌트는 리액트 컴포넌트에서 발생한 이벤트를 해석하여 리듀서로 전달하고, 스토어가 전파하는 상태 변경 이벤트를 받아서 변경한 상태 값을 컴포넌트에 전달하는 역할을 수행한다. 한 마디로, 리덕스 시스템과 리액트 컴포넌트를 결합하는 얇은 레이어다. 아래는 리덕스 공식 문서에 있는 컨테이너 컴포넌트를 설명하는 예제 중 하나다.</p>
+<div class="se_editArea">
+<div class="se_viewArea se_fs_T3 ">
+<div class="se_editView">
+<div class="se_textView">
+<div class="__se_code_view se_textarea language-javascript">
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+</pre></td>
+<td class="code"><pre><span class="k">import</span> <span class="p">{</span> <span class="nx">connect</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react-redux</span><span class="dl">'</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">setVisibilityFilter</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../actions</span><span class="dl">'</span>
+<span class="k">import</span> <span class="nx">Link</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../components/Link</span><span class="dl">'</span>
+
+<span class="kd">const</span> <span class="nx">mapStateToProps</span> <span class="o">=</span> <span class="p">(</span><span class="nx">state</span><span class="p">,</span> <span class="nx">ownProps</span><span class="p">)</span> <span class="o">=&amp;</span><span class="nx">gt</span><span class="p">;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="na">active</span><span class="p">:</span> <span class="nx">ownProps</span><span class="p">.</span><span class="nx">filter</span> <span class="o">===</span> <span class="nx">state</span><span class="p">.</span><span class="nx">visibilityFilter</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">mapDispatchToProps</span> <span class="o">=</span> <span class="p">(</span><span class="nx">dispatch</span><span class="p">,</span> <span class="nx">ownProps</span><span class="p">)</span> <span class="o">=&amp;</span><span class="nx">gt</span><span class="p">;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="na">onClick</span><span class="p">:</span> <span class="p">()</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="nx">dispatch</span><span class="p">(</span><span class="nx">setVisibilityFilter</span><span class="p">(</span><span class="nx">ownProps</span><span class="p">.</span><span class="nx">filter</span><span class="p">))</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">FilterLink</span> <span class="o">=</span> <span class="nx">connect</span><span class="p">(</span>
+  <span class="nx">mapStateToProps</span><span class="p">,</span>
+  <span class="nx">mapDispatchToProps</span>
+<span class="p">)(</span><span class="nx">Link</span><span class="p">)</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">FilterLink</span>
+</pre></td>
+</tr></tbody></table></code></pre></figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p class="se_textarea">리덕스는 connect라는 함수를 제공한다. connect는 이름을 보고 알 수 있듯이, 리액트 컴포넌트와 리덕스 시스템을 결합하는 역할을 수행한다. connect는 첫 번째 호출에서 두 개의 함수를 인자로 받는다.</p>
+<div class="se_editArea">
+<div class="se_viewArea se_fs_T3 ">
+<div class="se_editView">
+<div class="se_textView">
+<div class="__se_code_view se_textarea language-javascript">
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td>
+<td class="code"><pre><span class="kd">const</span> <span class="nx">mapStateToProps</span> <span class="o">=</span> <span class="p">(</span><span class="nx">state</span><span class="p">,</span> <span class="nx">ownProps</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="na">active</span><span class="p">:</span> <span class="nx">ownProps</span><span class="p">.</span><span class="nx">filter</span> <span class="o">===</span> <span class="nx">state</span><span class="p">.</span><span class="nx">visibilityFilter</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></td>
+</tr></tbody></table></code></pre></figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p class="se_textarea">mapStateToProps와 mapDispatchToProps다. 함수 이름이 매우 직관적이라, 보기만 해도 어떤 일을 하는 녀석인지 바로 알 수 있다.</p>
+<p class="se_textarea">mapStateToProps를 이용하면 스토어에서 전달받은 상태 트리를 컴포넌트에 전달하기 전에 원하는 형태로 가공할 수 있다. 통역가 역할을 수행하는 셈인데, 이 함수 덕에 컴포넌트와 리듀서, 어느 쪽의 상태 구조가 바뀌어도 변경이 미치는 파급을 최소화할 수 있다.</p>
+<div class="se_editArea">
+<div class="se_viewArea se_fs_T3 ">
+<div class="se_editView">
+<div class="se_textView">
+<div class="__se_code_view se_textarea language-javascript">
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td>
+<td class="code"><pre><span class="kd">const</span> <span class="nx">mapStateToProps</span> <span class="o">=</span> <span class="p">(</span><span class="nx">state</span><span class="p">,</span> <span class="nx">ownProps</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="na">active</span><span class="p">:</span> <span class="nx">ownProps</span><span class="p">.</span><span class="nx">filter</span> <span class="o">===</span> <span class="nx">state</span><span class="p">.</span><span class="nx">visibilityFilter</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></td>
+</tr></tbody></table></code></pre></figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p class="se_textarea">리덕스처럼 이벤트 통지를 직접 사용자가 제어하지 않는 단일 스토어 방식은 컴포넌트가 구독할 스토어의 이벤트를 직접 지정할 수 없다는 단점을 가지고 있다. 이로 인해 컴포넌트는 자신의 활동과 상관없는 이벤트를 구독해야 한다. 결국 하위 컴포넌트에 불필요한 조정(reconcilation) 프로세스를 발생시켜 이 결과로 애플리케이션의 성능을 저하시킬 가능성이 높아진다.</p>
+<p class="se_textarea">이 점이 마음에 걸린다면 <a class="se_link" href="https://github.com/reactjs/reselect" target="_blank">reseletor</a> 같은 모듈을 이용하면 좋다. 이전 상태를 캐시하고 있다가 새로운 상태가 들어오면 변경 여부를 확인하여 변경이 있을 때만 하위 컴포넌트로 상태를 전파하는 문지기 역할을 하는 모듈이다. 리듀서의 상태를 불변(Immutable)하게 관리하면 이 지점에서 성능상 이점을 얻을 수 있다.</p>
+<div class="se_editArea">
+<div class="se_viewArea se_fs_T3 ">
+<div class="se_editView">
+<div class="se_textView">
+<div class="__se_code_view se_textarea language-javascript">
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+</pre></td>
+<td class="code"><pre><span class="k">import</span> <span class="p">{</span> <span class="nx">createSelector</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">reselect</span><span class="dl">'</span>
+
+<span class="kd">const</span> <span class="nx">getVisibilityFilter</span> <span class="o">=</span> <span class="p">(</span><span class="nx">state</span><span class="p">,</span> <span class="nx">props</span><span class="p">)</span> <span class="o">=&amp;</span><span class="nx">gt</span><span class="p">;</span>
+  <span class="nx">state</span><span class="p">.</span><span class="nx">todoLists</span><span class="p">[</span><span class="nx">props</span><span class="p">.</span><span class="nx">listId</span><span class="p">].</span><span class="nx">visibilityFilter</span>
+
+<span class="kd">const</span> <span class="nx">getTodos</span> <span class="o">=</span> <span class="p">(</span><span class="nx">state</span><span class="p">,</span> <span class="nx">props</span><span class="p">)</span> <span class="o">=&amp;</span><span class="nx">gt</span><span class="p">;</span>
+  <span class="nx">state</span><span class="p">.</span><span class="nx">todoLists</span><span class="p">[</span><span class="nx">props</span><span class="p">.</span><span class="nx">listId</span><span class="p">].</span><span class="nx">todos</span>
+
+<span class="kd">const</span> <span class="nx">makeGetVisibleTodos</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&amp;</span><span class="nx">gt</span><span class="p">;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">createSelector</span><span class="p">(</span>
+    <span class="p">[</span> <span class="nx">getVisibilityFilter</span><span class="p">,</span> <span class="nx">getTodos</span> <span class="p">],</span>
+    <span class="p">(</span><span class="nx">visibilityFilter</span><span class="p">,</span> <span class="nx">todos</span><span class="p">)</span> <span class="o">=&amp;</span><span class="nx">gt</span><span class="p">;</span> <span class="p">{</span>
+      <span class="k">switch</span> <span class="p">(</span><span class="nx">visibilityFilter</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="dl">'</span><span class="s1">SHOW_COMPLETED</span><span class="dl">'</span><span class="p">:</span>
+          <span class="k">return</span> <span class="nx">todos</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">todo</span> <span class="o">=&amp;</span><span class="nx">gt</span><span class="p">;</span> <span class="nx">todo</span><span class="p">.</span><span class="nx">completed</span><span class="p">)</span>
+        <span class="k">case</span> <span class="dl">'</span><span class="s1">SHOW_ACTIVE</span><span class="dl">'</span><span class="p">:</span>
+          <span class="k">return</span> <span class="nx">todos</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">todo</span> <span class="o">=&amp;</span><span class="nx">gt</span><span class="p">;</span> <span class="o">!</span><span class="nx">todo</span><span class="p">.</span><span class="nx">completed</span><span class="p">)</span>
+        <span class="k">default</span><span class="p">:</span>
+          <span class="k">return</span> <span class="nx">todos</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">makeMapStateToProps</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&amp;</span><span class="nx">gt</span><span class="p">;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">getVisibleTodos</span> <span class="o">=</span> <span class="nx">makeGetVisibleTodos</span><span class="p">()</span>
+  <span class="kd">const</span> <span class="nx">mapStateToProps</span> <span class="o">=</span> <span class="p">(</span><span class="nx">state</span><span class="p">,</span> <span class="nx">props</span><span class="p">)</span> <span class="o">=&amp;</span><span class="nx">gt</span><span class="p">;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="na">todos</span><span class="p">:</span> <span class="nx">getVisibleTodos</span><span class="p">(</span><span class="nx">state</span><span class="p">,</span> <span class="nx">props</span><span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">mapStateToProps</span>
+<span class="p">}</span>
+</pre></td>
+</tr></tbody></table></code></pre></figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p class="se_textarea">mapStateToProps가 스토어에서 리액트 컴포넌트로 들어가는 통로라면, mapDispatchToProps는 반대로 리액트 컴포넌트에서 스토어로 들어가는 통로다. mapDispatchToProps는 리액트 컴포넌트에서 발생한 이벤트를 액션과 결합하여 스토어로 전달한다. 스토어로 전달한 액션은 리듀서로 넘어가 전역 상태를 변경한다.</p>
+<div class="se_editArea">
+<div class="se_viewArea se_fs_T3 ">
+<div class="se_editView">
+<div class="se_textView">
+<div class="__se_code_view se_textarea language-javascript">
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td>
+<td class="code"><pre><span class="kd">const</span> <span class="nx">mapDispatchToProps</span> <span class="o">=</span> <span class="p">(</span><span class="nx">dispatch</span><span class="p">,</span> <span class="nx">ownProps</span><span class="p">)</span> <span class="o">=&amp;</span><span class="nx">gt</span><span class="p">;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="na">onClick</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&amp;</span><span class="nx">gt</span><span class="p">;</span> <span class="p">{</span>
+      <span class="nx">dispatch</span><span class="p">(</span><span class="nx">setVisibilityFilter</span><span class="p">(</span><span class="nx">ownProps</span><span class="p">.</span><span class="nx">filter</span><span class="p">));</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></td>
+</tr></tbody></table></code></pre></figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p class="se_textarea">리덕스는 mapDispatchToProps가 반환하는 객체를 하위 컴포넌트에 props로 전달한다. 결국 이는 애플리케이션의 요구 사항을 하위 컴포넌트에 콜백으로 전달하는 셈이다. 구글에서 예제를 찾아봤더니 리액트와 리덕스를 결합하는 방식을 크게 두 가지로 압축할 수 있었다.</p>
+<ol>
+<li class="se_textarea">이벤트(onClick, onChange, onUpdate...) 기반으로 결합</li>
+<li class="se_textarea">요구 사항을 수행하는 메서드(toggleTodo, updateVideo...)를 전달하여 결합</li>
+</ol>
+<p class="se_textarea">1번은 컨테이너에서 react 컴포넌트로 이벤트 콜백 함수를 내려주면, 컴포넌트는 내부에서 발생하는 사건을 이벤트로 컨테이너에게 알려준다. <b>컨테이너가 발생한 이벤트를 해석하여 수행할 동작을 결정</b>하는방식이다.</p>
+<div class="se_editArea">
+<div class="se_viewArea se_fs_T3 ">
+<div class="se_editView">
+<div class="se_textView">
+<div class="__se_code_view se_textarea language-javascript">
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td>
+<td class="code"><pre><span class="kd">const</span> <span class="nx">mapDispatchToProps</span> <span class="o">=</span> <span class="p">(</span><span class="nx">dispatch</span><span class="p">,</span> <span class="nx">ownProps</span><span class="p">)</span> <span class="o">=&amp;</span><span class="nx">gt</span><span class="p">;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="na">onClickDisplay</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&amp;</span><span class="nx">gt</span><span class="p">;</span> <span class="p">{</span>
+      <span class="nx">dispatch</span><span class="p">(</span><span class="nx">setVisibilityFilter</span><span class="p">(</span><span class="nx">ownProps</span><span class="p">.</span><span class="nx">filter</span><span class="p">));</span>
+    <span class="p">},</span>
+    <span class="na">onClickTodo</span><span class="p">:</span> <span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="o">=&amp;</span><span class="nx">gt</span><span class="p">;</span> <span class="p">{</span>
+      <span class="nx">dispatch</span><span class="p">(</span><span class="nx">toggleTodo</span><span class="p">(</span><span class="nx">id</span><span class="p">));</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></td>
+</tr></tbody></table></code></pre></figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p class="se_textarea">2번은 컨테이너에서 dispatch와 액션을 결합한 행위를 조합하여 props로 내려주면, <b>리액트 컴포넌트가</b><b>어떤 행위를 어떤 시점에 실행할지 알아서 결정</b>하는 방식이다.</p>
+<div class="se_editArea">
+<div class="se_viewArea se_fs_T3 ">
+<div class="se_editView">
+<div class="se_textView">
+<div class="__se_code_view se_textarea language-javascript">
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td>
+<td class="code"><pre><span class="kd">const</span> <span class="nx">mapDispatchToProps</span> <span class="o">=</span> <span class="p">(</span><span class="nx">dispatch</span><span class="p">,</span> <span class="nx">ownProps</span><span class="p">)</span> <span class="o">=&amp;</span><span class="nx">gt</span><span class="p">;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="na">setVisibilityFilter</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&amp;</span><span class="nx">gt</span><span class="p">;</span> <span class="p">{</span>
+        <span class="nx">dispatch</span><span class="p">(</span><span class="nx">setVisibilityFilter</span><span class="p">(</span><span class="nx">ownProps</span><span class="p">.</span><span class="nx">filter</span><span class="p">));</span>
+    <span class="p">},</span>
+    <span class="na">toggleTodo</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&amp;</span><span class="nx">gt</span><span class="p">;</span> <span class="p">{</span>
+        <span class="nx">dispatch</span><span class="p">(</span><span class="nx">toggleTodo</span><span class="p">(</span><span class="nx">id</span><span class="p">));</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></td>
+</tr></tbody></table></code></pre></figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p class="se_textarea">위의 예제 코드를 보면 무슨 말장난인가 싶다. 단순하게 함수 이름 짓는 방식의 차이 정도로 보이기 때문이다. 맞다. 지금 정도의 코드라면 큰 문제가 없고 이 둘 간의 차이는 무시할만하다.문제는 요구사항 변경이 일어났을 때다.</p>
+<p class="se_textarea">요구사항이 바뀌어서 할 일을 클릭하면 필터를 변경(setVisibilityFilter)하고 할 일을 토글(toggleTodo) 해야 한다고 가정해보자. 첫 번째 방식의 경우, 아래와 같이 코드를 수정하면 하위 컴포넌트에서는 특별히 다른 처리를 할 필요가 없다. 이벤트 기반으로 props를 구성해서 하위 컴포넌트와 컨테이너를 결합했기 때문에, 컨테이너가 UI에서 발생한 이벤트를 해석하여 적당한 대상에게 전달하는 책임을 지는 것이 자연스럽다.</p>
+<div class="se_editArea">
+<div class="se_viewArea se_fs_T3 ">
+<div class="se_editView">
+<div class="se_textView">
+<div class="__se_code_view se_textarea language-javascript">
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td>
+<td class="code"><pre><span class="kd">const</span> <span class="nx">mapDispatchToProps</span> <span class="o">=</span> <span class="p">(</span><span class="nx">dispatch</span><span class="p">,</span> <span class="nx">ownProps</span><span class="p">)</span> <span class="o">=&amp;</span><span class="nx">gt</span><span class="p">;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="na">onClickDisplay</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&amp;</span><span class="nx">gt</span><span class="p">;</span> <span class="p">{</span>
+      <span class="nx">dispatch</span><span class="p">(</span><span class="nx">setVisibilityFilter</span><span class="p">(</span><span class="nx">ownProps</span><span class="p">.</span><span class="nx">filter</span><span class="p">));</span>
+    <span class="p">},</span>
+    <span class="na">onClickTodo</span><span class="p">:</span> <span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="o">=&amp;</span><span class="nx">gt</span><span class="p">;</span> <span class="p">{</span>
+      <span class="nx">dispatch</span><span class="p">(</span><span class="nx">toggleTodo</span><span class="p">(</span><span class="nx">id</span><span class="p">));</span>
+      <span class="nx">dispatch</span><span class="p">(</span><span class="nx">setVisibilityFilter</span><span class="p">(</span><span class="nx">ownProps</span><span class="p">.</span><span class="nx">filter</span><span class="p">));</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></td>
+</tr></tbody></table></code></pre></figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p class="se_textarea">이와는 달리 두 번째 방식은 props가 행위를 의미하는 이름을 가지고 있다 보니, 아래의 코드처럼 컨테이너로부터 props로 전달받은 행위를 하위 컴포넌트 내부에서 조합하는 형태로 처리하는 유혹에 빠지기 쉽다. 이는 곧 사용자 인터랙션으로 발생한 이벤트를 해석하는 책임을 컴포넌트 내부에서 지는 모양새다.</p>
+<div class="se_editArea">
+<div class="se_viewArea se_fs_T3 ">
+<div class="se_editView">
+<div class="se_textView">
+<div class="__se_code_view se_textarea language-javascript">
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td>
+<td class="code"><pre><span class="kd">const</span> <span class="nx">TodoList</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">todos</span><span class="p">,</span> <span class="nx">setVisibilityFilter</span><span class="p">,</span> <span class="nx">toggleTodo</span> <span class="p">})</span> <span class="o">=&amp;</span><span class="nx">gt</span><span class="p">;</span> <span class="p">(</span>
+  <span class="o">&amp;</span><span class="nx">lt</span><span class="p">;</span><span class="nx">ul</span><span class="o">&amp;</span><span class="nx">gt</span><span class="p">;</span>
+    <span class="p">{</span><span class="nx">todos</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">todo</span> <span class="o">=&amp;</span><span class="nx">gt</span><span class="p">;</span>
+      <span class="o">&amp;</span><span class="nx">lt</span><span class="p">;</span><span class="nx">Todo</span>
+        <span class="nx">key</span><span class="o">=</span><span class="p">{</span><span class="nx">todo</span><span class="p">.</span><span class="nx">id</span><span class="p">}</span>
+        <span class="p">{...</span><span class="nx">todo</span><span class="p">}</span>
+        <span class="nx">onClick</span><span class="o">=</span><span class="p">{()</span> <span class="o">=&amp;</span><span class="nx">gt</span><span class="p">;</span>
+            <span class="nx">setVisibilityFilter</span><span class="p">();</span>
+            <span class="nx">toggleTodo</span><span class="p">();</span>
+        <span class="p">}</span>
+      <span class="sr">/&amp;gt</span><span class="err">;
+</span>    <span class="p">)}</span>
+  <span class="o">&amp;</span><span class="nx">lt</span><span class="p">;</span><span class="sr">/ul&amp;gt</span><span class="err">;
+</span><span class="p">)</span>
+</pre></td>
+</tr></tbody></table></code></pre></figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p class="se_textarea">이제 컴포넌트가 시스템의 요구 사항과 강한 의존성을 갖게 돼 유연성이 떨어져 버렸다. 아직까지 심각한 수준이 아니지만 이런 게 하나둘 쌓이다 보면 걷잡을 수 없다. 물론 아래처럼 첫 번째 방식과 동일하게 해결할 수도 있으나, 함수나 변수의 이름은 알게 모르게 개발자의 생각에 큰 영향을 미친다. 참여 구성원이 많은 프로젝트일수록 코드에 작성자의 의도를 잘 담아내는 일이 중요하다.</p>
+<div class="se_editArea">
+<div class="se_viewArea se_fs_T3 ">
+<div class="se_editView">
+<div class="se_textView">
+<div class="__se_code_view se_textarea language-javascript">
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td>
+<td class="code"><pre><span class="kd">const</span> <span class="nx">mapDispatchToProps</span> <span class="o">=</span> <span class="p">(</span><span class="nx">dispatch</span><span class="p">,</span> <span class="nx">ownProps</span><span class="p">)</span> <span class="o">=&amp;</span><span class="nx">gt</span><span class="p">;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="na">setVisibilityFilter</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&amp;</span><span class="nx">gt</span><span class="p">;</span> <span class="p">{</span>
+        <span class="nx">dispatch</span><span class="p">(</span><span class="nx">setVisibilityFilter</span><span class="p">(</span><span class="nx">ownProps</span><span class="p">.</span><span class="nx">filter</span><span class="p">));</span>
+    <span class="p">},</span>
+    <span class="na">toggleTodo</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&amp;</span><span class="nx">gt</span><span class="p">;</span> <span class="p">{</span>
+        <span class="nx">dispatch</span><span class="p">(</span><span class="nx">toggleTodo</span><span class="p">(</span><span class="nx">id</span><span class="p">));</span>
+        <span class="nx">dispatch</span><span class="p">(</span><span class="nx">setVisibilityFilter</span><span class="p">(</span><span class="nx">ownProps</span><span class="p">.</span><span class="nx">filter</span><span class="p">));</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></td>
+</tr></tbody></table></code></pre></figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p class="se_textarea">여기에서 이야기하고자 하는 핵심은, 어떤 방법을 사용하든 UI에서 발생하는 <b>인터랙션을 해석하여 어떤 액션과 결합할 것인지를 결정하는 책임은 컨테이너</b>에 맡겨야 한다는 점이다. 그래야 리액트 컴포넌트와 리덕스 시스템의 결합도를 낮출 수 있다.</p>
+<h2>리덕스에 레이어 설계 더하기</h2>
+<p class="se_textarea">MVC 패턴을 설계에 도입해 본 사람이라면 '모델, 뷰, 컨트롤러'에 애플리케이션의 모든 관심사를 담을 수 없다는 사실을 잘 알 것이다. 큰 시스템에서 MVC의 각 구성요소는 전체 애플리케이션을 구성하는 레이어 중 어딘가에 위치하는 좀 더 작은 단위의 레이어 또는 객체일 뿐, 그 자체가 전체 설계를 의미하지 않는다. 리덕스도 마찬가지다. 플럭스 아키텍처에 기반을 둔 리덕스가 안내하는 구성요소들에 모든 책임을 담을 수 있을까? 그렇지 않다. 리듀서의 본질을 정리했고, 상태 트리 설계 규칙을 세웠으며, 지역 상태와 전역 상태 구분 규칙을 만들었지만 여전히 리덕스 안에 담을 수 없는 모호한 책임이 있다.</p>
+<p>비동기 XHR 요청을 예로 들어보자. 리듀서는 XHR 요청이 위치할 자리가 아니라는 건 분명하다. 그렇다면 어디에 있어야 할까? 컨테이너? 컴포넌트? 액션? 미들웨어? 외부에서 데이터를 가져와 개발 중인 시스템이 해석할 수 있는 포맷으로 데이터를 변환하는 전처리는 어디에서 해야 할까? 여러 액션을 하나의  요청 단위로 묶어야 한다면, 이런 처리는 어디에서 하는 게 적절할까?</p>
+<p>개발을 진행하면서 새로운 책임이 계속 등장하는데, 그때마다 이 녀석들을 어디에 둬야 할지를 두고 긴 논쟁이 벌어졌다. 우리가 얻은 결론이 하나 있다면, 어디에 둬도 장단점이 있고 어색하지 않다는 것이다. 다만 비슷한 책임을 수행하는 녀석들을 서로 근접한 곳에 일관성 있게 모아둘 규칙이 필요했다.</p>
+<p>그래서 레이어 설계를 정리했다. 도메인 주도 설계(Domain Driven Design)를 참고했지만 어디까지나 지침으로 받아들였다. 레거시와 리덕스가 놓인 상황을 고려해서 우리 식의 해석을 보탰다. 레이어를 합의하고, 컨테이너, 액션, 리듀서의 역할을 정리했다. 이제 새로운 책임이 등장하면 앞에서 정한 규칙에 맞춰 소속을 결정한다. 다만, 그 조차도 모호할 때가 종종 있다는 건 함정이지만, 큰 틀은 마련한 셈이다.</p>
+<div class="se_editArea">
+<div class="se_viewArea se_ff_nanumgothic se_fs_T3 se_align-left">
+<div class="se_editView">
+<div class="se_textView">
+<p><a href="/assets/images/legacy/2016/07/SE3-Mobile-Layer-Archictecture-Untitled-Page.png"><img class="aligncenter size-large wp-image-1960" src="/assets/images/legacy/SE3-Mobile-Layer-Archictecture-Untitled-Page-1024x1016.png" alt="SE3-Mobile Layer Archictecture - Untitled Page" loading="lazy"></a>각 레이어의 정체성은 아래와 같이 정리했다.</p>
+</div>
+</div>
+</div>
+</div>
+<p class="se_textarea"><b>UI 레이어</b></p>
+<p class="se_textarea"><span style="line-height: 1.5;">UI 레이어는 사용자에게 정보를 보여준다. 지역 상태와 관련한 사용자의 요청을 해석하여 상위 컴포넌트 혹은 컨테이너로 전달한다. 컨테이너는 UI를 리덕스 시스템과 연결하는 연결 고리 역할을 한다.</span></p>
+<p class="se_textarea"><b>애플리케이션 레이어</b></p>
+<p class="se_textarea"><span style="line-height: 1.5;">애플리케이션의 활동을 조율하는 얇은 레이어 UI 레이어에서 넘어온 사용자 요청을 해석하여 적절한 레이어로 전달한다. 어떤 상태도 직접 보관하거나 관리하지 않는다. 시스템에 사이드 이펙트를 만드는 외부와의 커뮤니케이션 요청을 처리하는 로직은 애플리케이션 레이어에 위임한다. 사용자의 요청을 해석하는 로직이 복잡하거나, 외부에서 넘겨받은 데이터를 가공해야 하는 등의 복잡한 연산을 수행해야 한다면, 관련 로직을 캡슐화하여 서비스 레이어에 위임할 수 있다.</span></p>
+<p class="se_textarea"><b>서비스 레이어</b></p>
+<p class="se_textarea"><span style="line-height: 1.5;">XHR을 이용한 외부 데이터 요청, 외부 데이터 변환 같은 애플리케이션 레이어의 임무 수행을 지원하는 모듈이 위치한다. 리듀서에서 사이드 이펙트를 불러오는 외부 데이터 요청을 금지하는 리덕스의 특성상, 외부의 리소스를 요청하는 처리를 이 레이어에서 담당한다.</span></p>
+<p class="se_textarea"><b>도메인 레이어</b></p>
+<p class="se_textarea"><span style="line-height: 1.5;">도메인 정보를 가지고 있으며, 생성, 변경, 삭제 등을 담당한다. 전역 상태를 관리하고 처리하며, 처리한 결과를 통지한다. 업무 규칙을 관리하며 전역 상태를 처리할 때 적절한 업무 규칙을 적용한다. 리덕스의 특성상 영속성과 관련한 책임은 도메인 레이어에서 수행하지 않는다.</span></p>
+<p class="se_textarea"><b>인프라스트럭쳐 레이어</b></p>
+<p class="se_textarea"><span style="line-height: 1.5;">다른 레이어 모두를 지원하는 라이브러리로 동작한다. 레이어 간의 통신을 제공하고 전역 상태의 영속성을 책임진다. 사용자 인터페이스 레이어에서 사용하는 내/외부 라이브러리를 포함한다.</span></p>
+<h2>리듀서와 액션, 단위 테스트 디자인</h2>
+<p class="se_textarea">리액트를 이용할 때 가장 마음에 들었던 점은 테스트가 간결해진다는 부분이다. 다만 이전 플럭스 아키텍처를 이용할 때는 스토어를 테스트하는 코드가 좀 복잡해서 아쉬웠었는데 리덕스는 리듀서로 인해 이 부분에 대한 테스트도 쉬운 편이다. 하지만 두 가지 좀 난해한 부분이 있었다. 아래 내용은 이 부분에 대한 고민의 기록이다.</p>
+<p class="se_textarea">처음에는 리듀서와 액션의 테스트를 따로 작성했었다. 하지만 작성하다 보니 뭔가 비효율적이라는 생각을 지울 수가 없었는데 그때 고민했던 포인트는 다음과 같다.</p>
+<ul>
+<li class="se_textarea">액션의 행위는 너무 단순하여 테스트로 얻을 수 있는 이점이 매우 적다(특히 순수한 액션)</li>
+<li class="se_textarea">액션은 결국 리듀서와 결합해야 하고, 액션이 반환하는 값 자체보다 리듀서가 액션이 전달한 요청을 제대로 처리하고 있는지가 더 중요하다.</li>
+<li class="se_textarea">리듀서의 행위를 테스트하려면 어쨌든 액션 만드는 페이로드가 필요하다. 더미로 만들 수 있지만 이 경우 실제 액션이 생성하는 페이로드와 더미 페이로드 간의 동기화 문제가 생겨 테스트를 취약(fragile) 하게 만든다.</li>
+</ul>
+<p>그래서 리듀서와 액션의 테스트를 하나로 통합했다. 리듀서를 테스트하면 액션은 자연스레 검증된다.</p>
+<div class="se_editArea">
+<div class="se_viewArea se_fs_T3 ">
+<div class="se_editView">
+<div class="se_textView">
+<div class="__se_code_view se_textarea language-javascript">
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td>
+<td class="code"><pre><span class="nx">it</span><span class="p">(</span><span class="dl">"</span><span class="s2">컴포넌트 목록에서 원하는 컴포넌트 하나를 삭제할 수 있다.</span><span class="dl">"</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&amp;</span><span class="nx">gt</span><span class="p">;</span> <span class="p">{</span>
+    <span class="c1">// given</span>
+    <span class="kd">const</span> <span class="nx">deleteTarget</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">target</span><span class="dl">'</span><span class="p">;</span>
+    <span class="kd">const</span> <span class="nx">action</span> <span class="o">=</span> <span class="nx">compListAction</span><span class="p">.</span><span class="nx">deleteComponent</span><span class="p">(</span><span class="nx">deleteTarget</span><span class="p">);</span>
+
+    <span class="c1">// when</span>
+    <span class="kd">const</span> <span class="p">{</span> <span class="nx">order</span><span class="p">,</span> <span class="nx">compMap</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">compListReducer</span><span class="p">(</span><span class="nx">initState</span><span class="p">,</span> <span class="nx">action</span><span class="p">);</span>
+
+    <span class="c1">// then</span>
+    <span class="nx">order</span><span class="p">.</span><span class="nx">should</span><span class="p">.</span><span class="nx">not</span><span class="p">.</span><span class="nx">include</span><span class="p">(</span><span class="nx">deleteTarget</span><span class="p">);</span>
+    <span class="nx">should</span><span class="p">.</span><span class="nx">not</span><span class="p">.</span><span class="nx">exist</span><span class="p">(</span><span class="nx">compMap</span><span class="p">[</span><span class="nx">deleteTarget</span><span class="p">]);</span>
+<span class="p">});</span>
+</pre></td>
+</tr></tbody></table></code></pre></figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p class="se_textarea">액션을 중첩해서 수행한다거나, 비동기 액션 처리를 위해서 redux-thunk라는 모듈을 사용하는데 이때 중첩 액션을 수행하는 코드는 고차 함수를 이용하여 내부에 함수 클로저를 만드는 방식이다 보니 위에서 보여준 예제의 방식으로는 테스트가 어렵다. 말이 좀 복잡한데 아래의 코드를 보면 redux-thunk가 하위 액션을 어떻게 중첩하는지 알 수 있다.</p>
+<div class="se_editArea">
+<div class="se_viewArea se_fs_T3 ">
+<div class="se_editView">
+<div class="se_textView">
+<div class="__se_code_view se_textarea language-javascript">
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+</pre></td>
+<td class="code"><pre><span class="k">export</span> <span class="kd">function</span> <span class="nx">deleteComponent</span><span class="p">(</span><span class="nx">compId</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span> <span class="na">type</span><span class="p">:</span> <span class="nx">DELETE_COMPONENT</span><span class="p">,</span> <span class="na">compId</span><span class="p">:</span> <span class="nx">compId</span> <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="kd">function</span> <span class="nx">deleteComponentWithFocus</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span><span class="nx">dispatch</span><span class="p">,</span> <span class="nx">getState</span><span class="p">)</span> <span class="o">=&amp;</span><span class="nx">gt</span><span class="p">;</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="p">{</span> <span class="nx">components</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">getState</span><span class="p">();</span>
+      <span class="nx">dispatch</span><span class="p">(</span><span class="nx">deleteComponent</span><span class="p">(</span><span class="nx">components</span><span class="p">.</span><span class="nx">focusCompId</span><span class="p">));</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="kd">function</span> <span class="nx">routeByButtonName</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span><span class="nx">dispatch</span><span class="p">,</span> <span class="nx">getState</span><span class="p">)</span> <span class="o">=&amp;</span><span class="nx">gt</span><span class="p">;</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="p">{</span> <span class="nx">focusCompId</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">getState</span><span class="p">().</span><span class="nx">components</span><span class="p">;</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="nx">name</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">remove</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">dispatch</span><span class="p">(</span><span class="nx">deleteComponentWithFocus</span><span class="p">());</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nx">name</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">upward</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">dispatch</span><span class="p">(</span><span class="nx">moveUpComponent</span><span class="p">(</span><span class="nx">focusCompId</span><span class="p">,</span> <span class="nx">UNMOVABLE_COMPONENTS</span><span class="p">));</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nx">name</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">downward</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">dispatch</span><span class="p">(</span><span class="nx">moveDownComponent</span><span class="p">(</span><span class="nx">focusCompId</span><span class="p">,</span> <span class="nx">UNMOVABLE_COMPONENTS</span><span class="p">));</span>
+      <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></td>
+</tr></tbody></table></code></pre></figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p class="se_textarea">위의 코드에서 routeBybuttonName -&gt; deleteComponentWithFocus -&gt; deleteComponent에 최종 도착했을 때 최종적으로 반환한 액션이 { type: DELETE_COMPONENT, compId: compId }라는 걸 어떻게 검증해야 할까? sinon을 이용하면 이렇게 테스트할 수는 있다.</p>
+<div class="se_editArea">
+<div class="se_viewArea se_fs_T3 ">
+<div class="se_editView">
+<div class="se_textView">
+<div class="__se_code_view se_textarea language-javascript">
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td>
+<td class="code"><pre><span class="nx">it</span><span class="p">(</span><span class="dl">"</span><span class="s2">도구막대의 삭제 버튼을 클릭해서 현재 포커스를 가지고 있는 컴포넌트를 삭제할 것을 요청할 수 있다.</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// given</span>
+  <span class="kd">const</span> <span class="nx">btnName</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">remove</span><span class="dl">'</span><span class="p">;</span>
+  <span class="kd">const</span> <span class="nx">fakeDispatcher</span> <span class="o">=</span> <span class="nx">sandboxSinon</span><span class="p">.</span><span class="nx">spy</span><span class="p">(()</span> <span class="o">=&amp;</span><span class="nx">gt</span><span class="p">;</span> <span class="p">{});</span>
+  <span class="kd">const</span> <span class="nx">fakeStore</span> <span class="o">=</span> <span class="nx">sandboxSinon</span><span class="p">.</span><span class="nx">spy</span><span class="p">(()</span> <span class="o">=&amp;</span><span class="nx">gt</span><span class="p">;</span> <span class="p">({</span> <span class="na">components</span><span class="p">:</span> <span class="p">[]</span> <span class="p">}));</span>
+
+  <span class="c1">// when</span>
+  <span class="kd">const</span> <span class="nx">action</span> <span class="o">=</span> <span class="nx">toolbarActions</span><span class="p">.</span><span class="nx">routeByButtonName</span><span class="p">(</span><span class="nx">btnName</span><span class="p">);</span>
+  <span class="nx">action</span><span class="p">(</span><span class="nx">fakeDispatcher</span><span class="p">,</span> <span class="nx">fakeStore</span><span class="p">);</span>
+
+  <span class="kd">const</span> <span class="nx">deleteComponentWithFocus</span> <span class="o">=</span> <span class="nx">fakeDispatcher</span><span class="p">.</span><span class="nx">args</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">];</span>
+  <span class="nx">deleteComponentWithFocus</span><span class="p">(</span><span class="nx">fakeDispatcher</span><span class="p">,</span> <span class="nx">fakeStore</span><span class="p">);</span>
+
+  <span class="c1">// then</span>
+  <span class="nx">fakeDispatcher</span><span class="p">.</span><span class="nx">args</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">].</span><span class="nx">should</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">eql</span><span class="p">(</span><span class="nx">deleteComponent</span><span class="p">());</span>
+<span class="p">});</span>
+</pre></td>
+</tr></tbody></table></code></pre></figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p class="se_textarea">하지만 이 코드를 읽고 fakeDispatcher.args[1][0]이 무엇을 의미하는지 단박에 알아차릴 사람이 있을까? when 절의 복잡해서 도대체 무엇을 하고 싶은 건지 이해할 수 없다. 내가 작성했지만 나도 모른다.  이조차도 어려운데, 리듀서와 결합해버리면 더 복잡해진다.</p>
+<p class="se_textarea">이 문제는 <a class="se_link" href="https://www.npmjs.com/package/redux-mock-store" target="_blank">redux-mock-store</a>를 도입해서 해결할 수 있다. 아래의 코드는 위에 있는 테스트 코드를 redux-mock-store를 이용해서 개선한 코드다. 테스트의 가독성이 훨씬 높아졌다.</p>
+<div class="se_editArea">
+<div class="se_viewArea se_fs_T3 ">
+<div class="se_editView">
+<div class="se_textView">
+<div class="__se_code_view se_textarea language-javascript">
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+</pre></td>
+<td class="code"><pre><span class="nx">it</span><span class="p">(</span><span class="dl">"</span><span class="s2">도구막대의 삭제 버튼을 클릭해서 현재 포커스를 가지고 있는 컴포넌트를 삭제할 것을 요청할 수 있다.</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// given</span>
+    <span class="kd">const</span> <span class="nx">fakeState</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="na">components</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">focusCompId</span><span class="p">:</span> <span class="dl">'</span><span class="s1">focus</span><span class="dl">'</span>
+        <span class="p">}</span>
+    <span class="p">};</span>
+    <span class="kd">const</span> <span class="nx">store</span> <span class="o">=</span> <span class="nx">createMockStore</span><span class="p">(</span><span class="nx">fakeState</span><span class="p">);</span>
+
+    <span class="c1">// when</span>
+    <span class="nx">store</span><span class="p">.</span><span class="nx">dispatch</span><span class="p">(</span><span class="nx">toolbarActions</span><span class="p">.</span><span class="nx">routeByButtonName</span><span class="p">(</span><span class="dl">'</span><span class="s1">remove</span><span class="dl">'</span><span class="p">));</span>
+
+    <span class="c1">// then</span>
+    <span class="kd">const</span> <span class="nx">actualActions</span> <span class="o">=</span> <span class="nx">store</span><span class="p">.</span><span class="nx">getActions</span><span class="p">();</span>
+    <span class="nx">actualActions</span><span class="p">.</span><span class="nx">should</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">eql</span><span class="p">([</span>
+        <span class="nx">compsActions</span><span class="p">.</span><span class="nx">deleteComponent</span><span class="p">(</span><span class="nx">fakeState</span><span class="p">.</span><span class="nx">components</span><span class="p">.</span><span class="nx">focusCompId</span><span class="p">)</span>
+    <span class="p">]);</span>
+<span class="p">});</span>
+</pre></td>
+</tr></tbody></table></code></pre></figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p class="se_textarea">가짜 스토어 객체를 만들어서 수행한 액션을 히스토리로 기록해 뒀다가 단언으로 검증하는 방식이다.</p>
+<h2 class="se_textarea">끝으로...</h2>
+<div class="se_component se_paragraph default"></div>
+<div class="se_component se_paragraph default">
+<p>리덕스로 UI를 개발하다 보면 컴포넌트에서 사용자의 요청을 이벤트로 받아 액션을 스토어로 전달해 리듀서에 있는 상태를 변경한 다음에, 변경한 결과를 받아서 다시 화면을 렌더링 하는 과정이 지나치게 번거롭게 느껴질 때가 있다. 이건 리덕스의 문제라기보다는 애플리케이션을 구조화했을 때 발생하는 문제다. 단방향 데이터 흐름을 강제하는 플럭스 아키텍처 하에서는 이 문제가 좀 더 크게 느껴진다. 그래서 간단한 위젯이나 페이지 내의 인터랙션 처리는 그냥 jQuery로 뚝딱 만드는 게 더 생산적일 수 있다.</p>
+<p>그럼에도 이런 번거로운 과정을 견뎌가면서 애플리케이션을 구조화하려고 애쓰는 이유는, 시스템이 복잡해졌을 때 복잡도를 최소화하고 변경이 미치는 파급효과를 최소화하기 위해서다. 당연한 이야기겠지만, 단순히 어떤 프레임워크나 설계 패턴을 도입했다고 해서 시스템의 복잡도가 바로 줄어들지는 않는다. 프로젝트에 참여하는 구성원들이 사용하는 도구의 기저에 깔려있는 철학을 잘 이해해야 하고, 이런 이해를 바탕으로 설계가 해결하지 못하는 사각에 있는 요소들을 찾아서 일관된 방향으로 코드가 자랄 수 있게 또 다른 규칙을 합의해야 한다. 일치한 줄 알았던 서로의 생각이, 훗날 동상이몽이었던 걸로 드러나 허탈해하는 경우는 아주 흔한 일이다. 그래서 꾸준히 생각을 주고받을 수 있는 코드 리뷰 같은 장치가 필요하다. 결국 <b>'좋은 설계를 지탱하는 한 축은 원활한 커뮤니케이션'</b>이 아닐까.</p>
+<p>오늘 맞다고 생각했던 것들이 내일 뒤집히는 일이 부지기수라 이 글에 적은 생각의 유통기한이 얼마일지는 모르겠다. 좋은 생각이 떠오를 때마다 계속 업데이트를 해야지.</p>
+</div>
+<p> </p>
+<hr>
+<p>이 글은 제 <a href="http://m.post.naver.com/viewer/postView.nhn?volumeNo=4575578&amp;memberNo=1377642">포스트</a>와 <a href="http://blog.naver.com/jukrang/220751641825">블로그</a>에서도 보실 수 있습니다.		</p>
+
+
+</div>
+
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function () {
+    this.page.url = location.href;
+    this.page.identifier = location.href;
+  };
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://huns-me.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
+
+    </main>
+    <footer>
+  <span>
+    © <time datetime="2019-09-26 19:34:59 +0900">2019</time> KimCoding. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+  </span>
+</footer>
+
+  </body>
+</html>

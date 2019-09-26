@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+  <script>
+    WebFont.load({
+      google: {
+        families: ['Nanum Gothic', 'Noto Sans KR', 'Nanum Gothic Coding', 'Nanum Myeongjo']
+      },
+      active() {
+        var tid = setInterval(function() {
+          if (document.body) {
+            document.body.classList.remove("hidden");
+            clearInterval(tid);
+          }
+        }, 500);
+      }
+    });
+  </script>
+
+  <!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>리액트 딜레마 | Huns.me</title>
+<meta name="generator" content="Jekyll v3.8.6">
+<meta property="og:title" content="리액트 딜레마">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="김코딩 님이 잘하고 싶어서 만든 블로그">
+<meta property="og:description" content="김코딩 님이 잘하고 싶어서 만든 블로그">
+<link rel="canonical" href="http://localhost:4000/development/2011">
+<meta property="og:url" content="http://localhost:4000/development/2011">
+<meta property="og:site_name" content="Huns.me">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2016-08-22T13:09:10+09:00">
+<script type="application/ld+json">
+{"url":"http://localhost:4000/development/2011","dateModified":"2016-08-22T13:09:10+09:00","datePublished":"2016-08-22T13:09:10+09:00","headline":"리액트 딜레마","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/development/2011"},"description":"김코딩 님이 잘하고 싶어서 만든 블로그","@type":"BlogPosting","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/legacy/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/legacy/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/legacy/apple-touch-icon.png">
+
+  <!-- RSS -->
+  <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Huns.me">
+
+  <!-- Google Analytics-->
+  
+</head>
+
+  <body class="hidden">
+    <nav class="nav">
+  <div class="nav-container">
+    <a href="/">
+      <h2 class="nav-title">Huns.me</h2>
+    </a>
+    <ul>
+      <li><a href="/about">About</a></li>
+      <li><a href="/">Posts</a></li>
+    </ul>
+  </div>
+</nav>
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Written by</span>
+    KimCoding
+
+    
+      <br>
+      <span>on </span><time datetime="2016-08-22 13:09:10 +0900">August 22, 2016</time>
+    
+  </div>
+
+  <h1 class="post-title">리액트 딜레마</h1>
+  <div class="post-line"></div>
+
+  <div>
+<p>페이스북은 React를 'MVC에서 View만을 담당하는 작고 가벼운 라이브러리'라고 소개했다. 여기에는 이견이 없다.</p>
+<p>그런데 잠깐, View만 가지고 만들 수 있는 게 뭐가 있을까?</p>
+<p>하나의 애플리케이션 안에는 여러 가지의 관심사가 존재하고, 각각의 관심사를 처리하는 기술 또한 다양하다.  React 프로젝트를 하다 보면 React가 해결할 수 없는 영역을 채워줄 대안을 찾게 되고, 결국에는 단일 프레임워크스러운 무언가를 만들고 있는 자신을 발견한다. 이들을 찾아서 학습하고, 비교하고, 선택하는 과정도 비용이다.</p>
+<p>React만으로 해결할 수 있는 문제의 범위는 생각 보다 좁다. 단순한 위젯이나 범용적으로 만든 라이브러리성 컴포넌트 정도가 떠오른다. 그런데 이렇게 단순한 녀석이라면, React 환경에 맞춰서 구현해야하는 특별한 이유가 없는 한, 그냥 순수 JavaScript나 jQuery를 이용해서 만드는 게 더 생산적일 수도 있다. React 개발 환경을 구축하고 코드를 트랜스파일 하는 과정 역시 지속적으로 지불해야 할 비용이니까.</p>
+<p>결국 'React는 작고 가벼운 라이브러리지만, React만 가지고서 할 수 있는 일은 많지 않기에 진정으로 작고 가볍기 어렵다'는 결론에 도달했고, 나는 이걸 '리액트 딜레마'라고 부른다. 물론 나만 쓰는 용어다. 이런 딜레마가 완전히 단점이라고 말하기는 어렵다. 장점과 단점은 종이 한 장 차이라던가. 개발자에게 다양한 선택지를 준다는 점에서 React는 분명 가볍다.</p>
+</div>
+<p>역으로 이런 생각도 해봤다. Monolithic Framework(Angular같은)는 정말 하나로 모든 문제를 해결할까? 글쎄, 프로젝트 성격에 따라서 다를 수는 있겠지만 보편적으로 어렵지 않을까. 이런 고민을 하던 중에 페이스북에서 만난, 박성철 님의 글이 인상 깊다.</p>
+<p><iframe width="500" height="510" style="border: none; overflow: hidden;" src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Ffupfin.geek%2Fposts%2F353216358400687&amp;width=500" scrolling="no" frameborder="0" allowtransparency="true"></iframe>		</p>
+
+
+</div>
+
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function () {
+    this.page.url = location.href;
+    this.page.identifier = location.href;
+  };
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://huns-me.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
+
+    </main>
+    <footer>
+  <span>
+    © <time datetime="2019-09-26 19:34:59 +0900">2019</time> KimCoding. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+  </span>
+</footer>
+
+  </body>
+</html>
