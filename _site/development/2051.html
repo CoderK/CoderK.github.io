@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+  <script>
+    WebFont.load({
+      google: {
+        families: ['Nanum Gothic', 'Noto Sans KR', 'Nanum Gothic Coding', 'Nanum Myeongjo']
+      },
+      active() {
+        var tid = setInterval(function() {
+          if (document.body) {
+            document.body.classList.remove("hidden");
+            clearInterval(tid);
+          }
+        }, 500);
+      }
+    });
+  </script>
+
+  <!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>MS는 ReactiveX를 왜 만들었을까? (feat. RxJS) | Huns.me</title>
+<meta name="generator" content="Jekyll v3.8.6">
+<meta property="og:title" content="MS는 ReactiveX를 왜 만들었을까? (feat. RxJS)">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="김코딩 님이 잘하고 싶어서 만든 블로그">
+<meta property="og:description" content="김코딩 님이 잘하고 싶어서 만든 블로그">
+<link rel="canonical" href="http://localhost:4000/development/2051">
+<meta property="og:url" content="http://localhost:4000/development/2051">
+<meta property="og:site_name" content="Huns.me">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2016-09-09T13:26:01+09:00">
+<script type="application/ld+json">
+{"url":"http://localhost:4000/development/2051","dateModified":"2016-09-09T13:26:01+09:00","datePublished":"2016-09-09T13:26:01+09:00","headline":"MS는 ReactiveX를 왜 만들었을까? (feat. RxJS)","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/development/2051"},"description":"김코딩 님이 잘하고 싶어서 만든 블로그","@type":"BlogPosting","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/legacy/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/legacy/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/legacy/apple-touch-icon.png">
+
+  <!-- RSS -->
+  <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Huns.me">
+
+  <!-- Google Analytics-->
+  
+</head>
+
+  <body class="hidden">
+    <nav class="nav">
+  <div class="nav-container">
+    <a href="/">
+      <h2 class="nav-title">Huns.me</h2>
+    </a>
+    <ul>
+      <li><a href="/about">About</a></li>
+      <li><a href="/">Posts</a></li>
+    </ul>
+  </div>
+</nav>
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Written by</span>
+    KimCoding
+
+    
+      <br>
+      <span>on </span><time datetime="2016-09-09 13:26:01 +0900">September 09, 2016</time>
+    
+  </div>
+
+  <h1 class="post-title">MS는 ReactiveX를 왜 만들었을까? (feat. RxJS)</h1>
+  <div class="post-line"></div>
+
+  <p>
+				 </p>
+<p class="image-wrapper"><img class="wp-image-2123" src="/assets/images/legacy/ngrx.png" alt="컨퍼런스에서 ngrx를 주제로 발표하는 남자의 사진" loading="lazy"></p>
+<p>요즘 웹 프론트엔드 분야에서 재밌는 주제를 하나 꼽자면, RxJS가 떠오른다. 그 동안 웹 프론트엔드 쪽에서는 큰 관심을 못 받던 기술이었는데 최근에 RxJS와 관련한 이야기가 솔솔 나오는 이유는 Angular2가 RxJS를 기본으로 탑재한 덕인 것 같다.</p>
+<p>내가 RxJS를 처음 알게 된 건 React 커뮤니티를 통해서였다. 이미 Angular2 등장 이전부터 React 커뮤니티에서는 React와 Rx를 결합하려는 시도가 있었다. 그래서 Rx를 가볍게 훑어본 적이 있었는데 언뜻 보기에 옵저버 패턴으로 이벤트를 바인딩하는 API를 제공하는 라이브러리 정도로 보였다. 별로 새로울 게 없다고 그냥 넘겼더랬다. 사실 그땐 사는 게 너무 바빠서 뭘 깊게 들여다 볼 여유가 없었다. 그렇게 Rx는 내 머리에서 잊혔다. 시간이 흐르고, 내 삶에 여유가 조금 찾아왔다. 마침 Angular2도 찾아오셨다.</p>
+<p>응?</p>
+<p>그런데 Angular2가 Rx를 달고 나왔네? Angular2는 Rx를 뭐에 쓰는 거지? 궁금했다. 소문에 의하면 Redux한테 반기를 들고 나온 Cycle.js는 Rx 비슷한(xstream) 무언가로 모든 건 스트림이네, 어쩌네 하는 소리를 떠들고 다닌다던데, 이건 또 뭐람? 궁금했지만 애써 들여다보고 싶지는 않았다. 귀찮았으니까. 그런데 때마침 지인들이 Rx를 스터디를 한다길래 살포시 숟가락 하나 얹었다.</p>
+<p><a href="http://reactivex.io/intro.html" rev="en_rl_small">http://reactivex.io/intro.html</a></p>
+<p>공식 사이트부터 들어가 봤다. 예제 코드 좀 훑어보고, 소개 글을 읽었다. 여기에 나와있는 설명 그대로, Rx는 <strong>비동기 데이터 스트림을 처리</strong>하는 API를 제공하는 라이브러리다.</p>
+<p>그렇군. 어려운 단어는 없는데 뭔지는 잘 모르겠다. 그런데 리액티브 프로그래밍(Reactive Programming, RP), 함수형 리액티브 프로그래밍(Functional Reactive Programming, FRP), LINQ(Language-Intergrated Query), 얘네들은 다 뭐람? 들어본 적은 있으나, 설명을 못하겠는 걸 보니 모르는 게 분명하다. 너무 궁금하다. 내 성격에 이걸 이해 못하면 코드 한 줄도 못 짤 분위기다.</p>
+<p>Rx를 만든 배경을 조사해보면, 개념이 좀 명확해지지 않을까? 그래서 Rx의 역사를 찾아 뒤를 캐봤다.</p>
+<h2><b>Rx(ReactiveX)의 어제</b></h2>
+<p>하지만 Rx의 역사를 찾는 일은 쉽지 않았는데, 매끄럽게 정리되어 있는 글을 도통 찾을 수가 없었다. 할 수 없이 인터넷에 떠도는 솜털 구름 같은 정보들을 찾아서 하나씩 가내수공업으로 이어 붙였다. 모호한 이야기가 많아서 이마저도 쉽지 않았다. 어떤 내용은 기사에 달려있는 댓글을 하나씩 읽어서 상황을 유추해야만 했다. 유물 찾으러 다니는 고고학자의 기분이 이런 걸까.</p>
+<p>그렇게 디지털 공간을 헤메고 다니다가 Volta라는 녀석에게서 흥미로운 냄새를 맡았다.</p>
+<h4><b>2007년 12월, Live Labs Volta</b></h4>
+<p>때는 2007년.</p>
+<p>MS의 인터넷 제품과 서비스 연구 조직이었던 Live Labs는 Volta라는 프로젝트를 발표한다. Volta는 지금은 흔적만 남아있는 프로젝트로, 정보의 바다라는 인터넷에서도 Volta에 대한 정보는 찾기 어렵다. 어렵게 수집한 정보를 토대로 Volta를 설명해보자면, <strong>다양한 기술을 하나의 플랫폼 안에서 실행할 수 있는 환경을 제공</strong>함으로써 기술 습득 비용을 줄이이는 것을 목적으로 하는 프로젝트라고 할 수 있다.</p>
+<p>지금의 GWT(Google Web Toolkit)와 유사하다. 다른 점은 Java로 작성한 코드를 JavaScript로 변환하는 한정적인 범위를 처리하는 GWT와 다르게 Volta는 좀 더 광범위(many to many)한 환경에 대응하려는 기술이었다는 점이다. Volta를 만든 에릭 마이어는 이를 GWT와 Volta는 사과와 오렌지의 차이와 같다고 표현했다. 같은 과일이지만 겉과 속이 다르다는 뜻이다.</p>
+<p>Volta 프로젝트는 갑작스레 어떤 이유로 중단되었고, 아직까지도 부활하지 못했다. 아래의 몇몇 기사를 통해 Volta의 대략적인 컨셉은 살펴볼 수 있었다.</p>
+<ul>
+<li><a href="http://Microsoft%20architect%20compares%20Volta%20and%20Google's%20GWT">Microsoft architect compares Volta and Google's GWT</a></li>
+<li><a href="http://www.zdnet.co.kr/news/news_view.asp?artice_id=00000039164019">MS, 웹 애플리케이션 개발 킷「볼타」릴리스</a></li>
+<li class="entry-title"><a href="https://blogs.msdn.microsoft.com/bkchung/2007/12/06/microsoft-live-labs-volta-ctp/">Microsoft Live Labs의 Volta 프로젝트 CTP</a></li>
+<li><a href="http://blog.lemonbrain.net/21">진정한 웹다중Tier개발의 시작? VOLTA플랫폼</a></li>
+</ul>
+<p>개발자가 특정 어노테이션을 이용하여 코드를 작성하면, .NET 언어와 라이브러리/개발도구를 이용해서 MSIL로 컴파일한다. 그러면, MSIL 안에 있는 어노테이션을 Volta가 해석해서 다양한 환경에서 실행할 수 있는 보일러 플레이트 코드를 삽입한다. 이렇게 만들어진 MSIL을 브라우저에서 실행한다. 대략 이런 개념이다.</p>
+<p>한편, Rx와 Volta의 관계에 대한 비밀은 로고에 있다. 두 녀석의 로고가 똑같다.</p>
+<p><a href="/assets/images/legacy/2016/09/voltal-and-reactivex.png"><img class="왼쪽에는 Volta의 로고, 오른쪽은 ReactiveX의 로고 사진. 둘의 로고가 같다. aligncenter wp-image-2125 size-full" src="/assets/images/legacy/voltal-and-reactivex.png" alt="volta와 reactivex의 로고. 둘의 로고가 같다." loading="lazy"></a></p>
+<p>이는 Rx가 Volta에서 시작되었기 때문이다. Volta는 사라졌지만, 개발팀은 프로젝트의 일부를 Reactive Framework라는 프로젝트로 분리하여 계속 개발을 진행하였는데, 이게 훗날의 Rx다.</p>
+<p>정확히 당시에 어떤 문제를 해결하기 위해서 Reactive Framework를 만들었는지는 알 수 없다. 다만 JavaScript와 같은 이벤트 기반의 동적 언어와 C# 같은 정적 언어 간의 코드 호환성을 맞추려다보면 필연적으로 비동기 로직을 쉽게 처리할 수 있는 방법을 고민했을 것이고, 이를 해결하는 과정에서 Reactive Framework를 만들지 않았을까?</p>
+<p>그저 추측이지만 완전히 근거 없는 소리는 아니다. Rx를 주제로 에릭 마이어가 한 인터뷰에서 Rx를 만든 이유가 비동기 프로그래밍에 있다는 사실을 유추할 수 있다.</p>
+<blockquote>
+<p>"Of all the work I’ve done in my career so far, this is the most exciting. […] I know it’s a bold statement, but I really believe that the problem of asynchronous programming events has been solved."</p>
+<p id="ph_pcontent3_0_MainHeading" class="title"><a href="https://campustechnology.com/articles/2009/08/10/microsofts-new-.net-rx-framework-tackles-challenges-of-asynchronous-programming.aspx">Microsoft's New .NET Rx Framework Tackles Challenges of Asynchronous Programming</a></p>
+</blockquote>
+<h4><b>2009. 11. 17, Reactive Extensions for .NET의 첫 릴리즈</b></h4>
+<p>Volta에서 떨어져 나온 Reactive Framework는 2009년에 Reactive Extensions로 이름을 바꾸고, 아래의 세 가지 버전의 Rx를 공식 출시한다.</p>
+<ul>
+<li>Reactive Extensions For .NET 3.5 Sp1</li>
+<li>Reactive Extensions For .NET 4 beta 2</li>
+<li>Rx for Silverlight3</li>
+</ul>
+<p>우리가 아는 Rx의 첫 등장이다. 하지만 이 당시 Rx는 오픈 소스가 아니었다.</p>
+<p><a href="https://blogs.msdn.microsoft.com/rxteam/2010/10/28/release-notes/">ReactiveX Release Notes</a></p>
+<p>출시 이전까지 사람들은 Reactive Framework라는 코드명을 줄여서 Rx라고 불렀다. 에릭 마이어 또한 Reactive Framework라는 이름으로 개발, 교육, 홍보를 했는데 정작 릴리즈 당시의 제품명은 Reactive Extensions For .NET였다. 이름이 바뀐 자세한 맥락은 알 수 없으나, <a href="https://channel9.msdn.com/Shows/Going+Deep/E2E-Erik-Meijer-and-Wes-Dyer-Reactive-Framework-Rx-Under-the-Hood-1-of-2" rev="en_rl_minimal">이 글</a>에 있는 <a href="https://twitter.com/Carmine007" rev="en_rl_minimal">Charles Torre</a>라는 사람의 댓글을 통해 그 이유를 유추해 본다.</p>
+<p>.NET 자체가 프레임워크였기 때문에 Reactive Framework라는 이름은 사용자에게 혼란을 초래할 수 있다. Rx라는 명칭을 그대로 유지하면서, 사용자의 혼란을 줄이고 .NET 프레임워크를 확장한다는 의미를 더해줄 수 있는 Reactive Extensions라는 이름은 어떨까?</p>
+<p>그럴듯하다.</p>
+<h4><b>2010. 03. 17, RxJS 첫 릴리즈</b></h4>
+<p>MS는 이듬해 3월에는 Rx의 JavaScript 버전인 RxJS를 공개한다.</p>
+<p>웹 프론트엔드 UI가 화려하고 복잡해지면서 AJAX 기술의 비중이 높아지던 시점이다. 비동기 행위를 쉽게 처리할 수 있는 방법이 필요했다. RxJS가 만들어질 당시에는 JavaScript의 콜백 지옥을 완화할 Promise 같은 마땅한 대체 기술(Promises/A+가 처음 나온 게 2012년 12월 6일)이 없었다는 점을 생각해보면 RxJS의 등장은 감격스럽다.</p>
+<p>하지만 당시에 JavaScript 개발자들한테 큰 호응을 얻지는 못한 것 같다. 이유는 잘 모르겠으나, RxJS는 어렵고 낯선 기술이 아니었을까? 아니면 RxJS를 사용해야 할 정도의 문제를 겪고 있는 프로젝트가 많지 않았다든지. 그러고 보면 콜백 지옥 문제가 큰 화두로 등장한 건, node.js가 대중적인 인기를 끌면서부터 였던 것 같다.</p>
+<p>(사실 요즘 Rx를 공부하면서 Rx가 인기를 얻지 못한 이유에 대해서 몇 가지 생각을 정리했지만 이 글의 주제는 아니므로 다음을 기약한다)</p>
+<h4><b>2012. 11. 06, ReactiveX, 오픈 소스로</b></h4>
+<p>드디어 2012년 11월에 <a href="http://www.hanselman.com/blog/ReactiveExtensionsRxIsNowOpenSource.aspx">MS는 Rx의 세 가지 버전인, Rx .NET, RxJS, Rx++을 오픈 소스로 공개</a>한다. RxJava를 알고 있는 사람들이 많을 텐데, <a href="https://github.com/ReactiveX/RxJava/wiki">RxJava</a>는 넷플릭스에서 만들어서 공개한 버전이다.</p>
+<h2><b>Rx는 어떻게 문제를 해결하는가?</b></h2>
+<p>앞에서 Rx의 탄생 배경이 비동기 프로그래밍 문제를 해결하는 데 있다고 했다. 비동기 프로그래밍은 어렵다. 비동기 코드가 많아지면 제어의 흐름이 복잡하게 얽혀 코드를 예측하기 어려워진다. 따라서 전통적인 절차적 프로그래밍으로는 이 문제를 풀기가 쉽지 않다.</p>
+<p>그렇다면 Rx는 어떻게 비동기 프로그래밍 문제를 해결한다는 걸까? 이제부터 Rx가 제안하는 대안을 알아보자. 핵심 키워드는 리액티브 프로그래밍과 LINQ다.</p>
+<h4><b>리액티브 프로그래밍</b></h4>
+<p>소프트웨어를 둘러싼 요즘의 환경은 과거와 많이 달라졌다. 인터넷 환경이 발달하면서 트래픽이 전에 비해 엄청나게 증가하였고, 무어의 법칙은 한계에 도달했다. 멀티 코어 프로세서에서 대안을 찾기 시작하면서 동시성 프로그래밍이 중요해졌다. 클라우드 컴퓨팅 환경도 등장했다. 사용자 요구사항은 점점 까다로워져 더 정교하고 화려한 UI 인터랙션과 더 빠른 반응 속도를 요구한다. 전에 비해 훨씬 복잡해진 소프트웨어의 안정성은, 언제나 중요한 문제다.</p>
+<p>리액티브  매니페스토는 이 시대의 소프트웨어는 좋은 반응성(Responsive)을 가져야 하며, 좋은 반응성을 갖기 위해 회복탄력성(Resilient)과 유연성(Elastic)을 갖도록 시스템을 설계해야 한다고 주장한다. 이를 달성할 수 있는 방법으로 메시지(Message-Driven)로 시스템과 시스템, 모듈과 모듈을 연결하는 방법을 제안한다. 결국 비동기 처리를 적극 활용하는 데에서 문제의 해법을 찾는다.</p>
+<blockquote>
+<p>"Reactive Systems rely on asynchronous message-passing to establish a boundary between components that ensures loose coupling, isolation and location transparency."</p>
+<p><i><a href="http://www.reactivemanifesto.org/">The Reactive Manifesto</a></i></p>
+</blockquote>
+<p>이런 흐름은 자연스레 리액티브 프로그래밍에 대한 개발자들의 관심으로 이어졌다. 위키에 나와있는 리액티브 프로그래밍의 정의는 이렇다.</p>
+<blockquote>
+<p>데이터 플로우와 상태 변경을 전파한다는 생각에 근간을 둔 프로그래밍 패러다임</p>
+<p><a href="https://en.wikipedia.org/wiki/Reactive_programming">Reactive Programming in Wikipedia, The Free Encyclopedia</a></p>
+</blockquote>
+<p>이 정의에는 리액티브 프로그래밍의 목적이 빠져있다. 무엇을 위해서, 데이터 플로우 관점에서 사고하고, 변경을 전파하는 걸까? 리액티브 프로그래밍이 처음 등장했던 배경을 돌아보자.</p>
+<p><span style="font-size: 10pt;">(데이터 플로우 프로그래밍(Dataflow Programming)의 하위 개념으로서의 리액티브 프로그래밍을 이야기하자면 훨신 더 이전으로 거슬러 올라가야하는데 이해의 수준이 아직 거기까지 가지 못했으므로 이 글에서는 언급하지 않을 생각이다.)</span></p>
+<p>리액티브 프로그래밍의 처음 시작이 어디인지는 명확하지 않다. 다만 추측할 수 있는 단서는 있다. 1985년에 David Harel, Amir Pnueil가 발표한 <a href="http://s3.amazonaws.com/academia.edu.documents/30783693/ReactiveSystems.pdf?AWSAccessKeyId=AKIAJ56TQJRTWSMTNPEA&amp;Expires=1470547942&amp;Signature=4yF7csn8uvK4wjhrRRrYAmivkzo%3D&amp;response-content-disposition=inline%3B%20filename%3DOn_the_development_of_reactive_systems.pdf" rev="en_rl_minimal">On the development of reactive systems</a>라는 논문에 처음으로 리액티브 시스템(Reactive Systems)이라는 용어가 등장한다. 이 논문에서 이야기하는 리액티브 시스템은 아래와 같은 특징을 가진다.</p>
+<blockquote><p>Reactive systems… are repeatedly prompted by the outside world and their role is to continusouly respond external inputs</p></blockquote>
+<p>즉, 리액티브 시스템이란 외부에서 들어오는 요청에 계속해서 응답하는 시스템이다. 이 논문은 리액티브 시스템을 구현하는 데에 적합한 프로그래밍 방법론에 대한 이야기를 담고 있는데, 이를 리액티브 프로그래밍으로 이해할 수 있다.</p>
+<p>여기에서 힌트를 하나 얻었다. 계속해서 응답한다는 건 <strong>'반응'</strong>한다는 뜻이다. 그렇다면 리액티브 프로그래밍의 목적이 외부에서 들어온 자극에 반응하는 구조를 만드는 데 있다고 볼 수 있지 않을까? 여기에서 '반응'은 아래 두 가지 의미를 내포한다.</p>
+<ul>
+<li>자극은 밖에서 안으로 흐른다.</li>
+<li>자극이 있어야만 반응하는 수동성을 갖는다.</li>
+</ul>
+<p>정리하자면 프로그램이 외부와 상호 작용하는 방식을 거꾸로 뒤집어서 수동적 반응성을 획득하는 일, 이것이 리액티브 프로그래밍의 목적이다. 에릭 마이어가 리액티브 프레임워크를 소개하는 강연에서 보여주었던 아래 그림은 리액티브 프로그래밍의 핵심을 잘 보여준다.</p>
+<p class="image-wrapper"><img class="wp-image-2126 size-large" title="리액티브 환경과 인터랙티브 환경에서 제어가 흐르는 모습을 비교하는 그림" src="/assets/images/legacy/reactive-eric-1024x640.png" alt="에릭 마이어가 리액티브 프로그래밍을 소개하며 강연에서 사용했던 발표 자료로 외부에서 안으로 자극이 들어오는 리액티브 프로그래밍의 본질을 잘 보여준다." loading="lazy"> 출처를 까먹어서 찾을 수가 없다... 찾는 대로 업데이트 할 예정.</p>
+<p>이 설명에 따르면 프로그램이 외부 환경과 커뮤니케이션을 하는 방법은 크게 두 가지가 있다. pull-scenario, 그리고 push-scenario.</p>
+<ul>
+<li>
+<strong>pull-scenario</strong>는 우리에게 익숙한 방식으로 프로그램이 외부 환경에 명령하여 원하는 결과를 획득하는 방식이다. 이 경우 프로그램이 직접 제어의 흐름을 통제한다.</li>
+<li>
+<strong>push-scenario</strong>는 이를 뒤집어서, 환경이 프로그램 안으로 요청을 밀어넣는다. 외부 환경에 명령을 하고 응답이 오기까지 기다리는 것이 아니라, 외부에서 응답이 오면 그때 반응한다.</li>
+</ul>
+<p>push-scenario의 장점은 제어의 흐름을 통제할 권한을 외부 환경으로 넘김으로써 응답 대기 비용을 줄일 수 있다. 비동기 처리에 유리하다. 이 모습은 옵저버 패턴이나 리액터 패턴과 유사다. 그런데 리액티브 프레임워크 개발팀은 이 지점에서 한 가지 재밌는 사실을 발견한다. 바로 Iterator 패턴과 Observer 패턴이 쌍대(Duality)관계라는 점이다.</p>
+<p>쌍대관계란 용어는 여러 분야에서 다양하게 쓰이며, 문맥에 따라 미묘한 의미의 차이가 있어 설명하기가 참 어려운데(사실 나도 잘 이해하고 있는건지 모르겠다), <strong>A와 B가 있을 때 A에서 성립하는 정리를 뒤집어서 B에도 적용할 수 있는 경우</strong>를 말한다. 한 마디로 A와 B의 본질이 같다는 뜻이다.</p>
+<p>Iterator는 연속하는 데이터를 pull-scenario로 가져온다. Observer는 외부에서 데이터를 주입 받는(주로 이벤트로) push-scenario라고 볼 수 있다. 이벤트를 여러 번 호출하면, 연속하는 데이터를 주입할 수 있는데 이는 Iterator와 본질이 같다. 다만 데이터가 흐르는 방향이 다를 뿐이다.  Rx는 외부에서 안으로 연속해서 밀어넣는 데이터를 받을 수 있는 인터페이스를 제공함으로써 리액티브 프로그래밍을 지원한다. Observable이다.</p>
+<table>
+<thead>
+<tr>
+<th>event</th>
+<th>Iterable (pull)</th>
+<th>Observable (push)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>retrieve data</td>
+<td><code>T next()</code></td>
+<td><code>onNext(T)</code></td>
+</tr>
+<tr>
+<td>discover error</td>
+<td>throws <code>Exception</code>
+</td>
+<td><code>onError(Exception)</code></td>
+</tr>
+<tr>
+<td>complete</td>
+<td><code>!hasNext()</code></td>
+<td><code>onCompleted()</code></td>
+</tr>
+</tbody>
+</table>
+<p>여기까지 보면 느낌이 Promise랑 비슷하다. 차이가 있다면 Promise는 단일 값을 처리하고, Observable은 여러 값을 처리한다.</p>
+<h4><b>LINQ와 이벤트 결합(LINQ To Events)</b></h4>
+<p>Rx는 외부에서 들어온 데이터를 단순히 목적지까지 운반하는 데 그치지 않는다. 더 나아가 이벤트와 LINQ라는 개념을 결합한 인터페이스를 제공하는데, 이를 이용하면 Observable로 전달받은 데이터를 LINQ 스타일로 처리할 수 있다. 이를 오퍼레이터(operator)라고 한다.</p>
+<p>LINQ(Language Intergrated Query)는 에릭 마이어가 만든 통합 질의 언어다. LINQ는 C# 3.0에 처음 등장했는데, 쿼리를 언어에 통합하여 코드 상에서 데이터를 질의할 때 SQL 쿼리처럼 표현할 수 있게 도와주는 일종의 확장 문법이다. 이를 이용하면 데이터 콜렉션에 대한 복잡한 절차적 질의를, 마치 SQL로 처리하는 것처럼 간결하게 변경할 수 있다. C#에서 제공하는 LINQ는 아래와 같은 모습이다.</p>
+
+<figure class="highlight"><pre><code class="language-c#" data-lang="c#"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td>
+<td class="code"><pre><span class="k">using</span> <span class="p">(</span><span class="n">ServiceContext</span> <span class="n">svcContext</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ServiceContext</span><span class="p">(</span><span class="n">_serviceProxy</span><span class="p">))</span>
+<span class="p">{</span>
+ <span class="kt">var</span> <span class="n">query_where1</span> <span class="p">=</span> <span class="k">from</span> <span class="n">a</span> <span class="k">in</span> <span class="n">svcContext</span><span class="p">.</span><span class="n">AccountSet</span>
+                    <span class="k">where</span> <span class="n">a</span><span class="p">.</span><span class="n">Name</span><span class="p">.</span><span class="nf">Contains</span><span class="p">(</span><span class="s">"Contoso"</span><span class="p">)</span>
+                    <span class="k">select</span> <span class="n">a</span><span class="p">;</span>
+ <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">a</span> <span class="k">in</span> <span class="n">query_where1</span><span class="p">)</span>
+ <span class="p">{</span>
+  <span class="n">System</span><span class="p">.</span><span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">Name</span> <span class="p">+</span> <span class="s">" "</span> <span class="p">+</span> <span class="n">a</span><span class="p">.</span><span class="n">Address1_City</span><span class="p">);</span>
+ <span class="p">}</span>
+<span class="p">}</span>
+</pre></td>
+</tr></tbody></table></code></pre></figure>
+
+<p>C#은 쿼리 구문(Query Syntax)과 메서드 구문(Method Syntax)이라는 두 가지 타입의 LINQ를 제공한다. 이 둘의 차이는 아래의 링크에서 확인할 수 있다.</p>
+<p class="title"><a href="https://msdn.microsoft.com/ko-kr/library/bb397947.aspx">Query Syntax and Method Syntax in LINQ (C#)</a></p>
+
+<figure class="highlight"><pre><code class="language-c#" data-lang="c#"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td>
+<td class="code"><pre><span class="c1">//Query syntax:</span>
+<span class="n">IEnumerable</span><span class="p">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="kt">int</span><span class="p">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">numQuery1</span> <span class="p">=</span>
+    <span class="k">from</span> <span class="n">num</span> <span class="k">in</span> <span class="n">numbers</span>
+    <span class="k">where</span> <span class="n">num</span> <span class="p">%</span> <span class="m">2</span> <span class="p">==</span> <span class="m">0</span>
+    <span class="k">orderby</span> <span class="n">num</span>
+    <span class="k">select</span> <span class="n">num</span><span class="p">;</span>
+
+<span class="c1">//Method syntax:</span>
+<span class="n">IEnumerable</span><span class="p">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="kt">int</span><span class="p">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">numQuery2</span> <span class="p">=</span> <span class="n">numbers</span>
+    <span class="p">.</span><span class="nf">Where</span><span class="p">(</span><span class="n">num</span> <span class="p">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">num</span> <span class="p">%</span> <span class="m">2</span> <span class="p">==</span> <span class="m">0</span><span class="p">)</span>
+    <span class="p">.</span><span class="nf">OrderBy</span><span class="p">(</span><span class="n">n</span> <span class="p">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">n</span><span class="p">);</span>
+</pre></td>
+</tr></tbody></table></code></pre></figure>
+
+<p>JavaScript 개발자라면 underscore나 lodash 같은 함수형 유틸 라이브러리를 접하면서 LINQ에 대한 이야기를 많이 들어봤을 텐데, Rx가 제공하는 LINQ 스타일 오퍼레이터는 메서드 구문의 LINQ와 유사하다.</p>
+<h4>“Your Mouse Is DataBase"</h4>
+<p>Observable은 프로그램이 연산을 수행하는 관점을 뒤집음으로써 비동기 처리에 유리한 구조를 만들 수 있는 토대를 제공한다. LINQ는 외부에서 스트림으로 들어오는 데이터를 쉽게 처리할 수 있는 방법을 제공한다.</p>
+<p class="image-wrapper"><img class="wp-image-2068" title="에릭마이어가 리액티브 프로그래밍을 강연하는 모습" src="/assets/images/legacy/maxresdefault-1024x576.jpg" alt="에릭마이어가 리액티브 프로그래밍을 강연하는 모습" loading="lazy"></p>
+<p>리액티브 프로그래밍과 LINQ의 개념을 바탕으로 Rx가 비동기 데이터를 처리하는 방식을 이해하기 위해 드래그 앤 드롭을 예로 들어보자.</p>
+<p>마우스를 움직일 때마다 변하는 현재 위치 좌표는 외부에서 안으로 들어오는 자극이자, 데이터다. 이 좌표 데이터들은 Rx의 Observable이 만들어 놓은 문을 통해 프로그램 안으로 진입한다. 프로그램 안으로 들어온 데이터는 LINQ로 미리 작성해둔 오퍼레이터 사이를 헤엄쳐 최종 목적지에 도달한다. 프로그램은 최종 목적지로 들어온 데이터를 확인하여 응답한다. 이 과정은 마우스가 이동을 멈추지 않는 한 끊임없이 계속해서 이뤄진다. 마치 강물이 흐르듯이. 이게 Rx가 제안하는, 데이터 관점의 비동기 처리 방식이다.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td>
+<td class="code"><pre><span class="kd">const</span> <span class="nx">dragElement</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">dragElement</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">mouseDrag$</span> <span class="o">=</span> <span class="nx">Rx</span><span class="p">.</span><span class="nx">Observable</span>
+    <span class="p">.</span><span class="nx">fromEvent</span><span class="p">(</span><span class="nx">dragElement</span><span class="p">,</span> <span class="dl">'</span><span class="s1">mouseup</span><span class="dl">'</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">md</span> <span class="o">=&amp;</span><span class="nx">gt</span><span class="p">;</span> <span class="p">({</span>
+        <span class="na">startX</span><span class="p">:</span> <span class="nx">md</span><span class="p">.</span><span class="nx">offsetX</span><span class="p">,</span>
+        <span class="na">startY</span><span class="p">:</span> <span class="nx">md</span><span class="p">.</span><span class="nx">offsetY</span>
+    <span class="p">}));</span>
+
+<span class="nx">mouseDrag$</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">pos</span> <span class="o">=&amp;</span><span class="nx">gt</span><span class="p">;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">pos</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></td>
+</tr></tbody></table></code></pre></figure>
+
+<p>에릭 마이어의 말처럼, Rx 세상 속에서 <a href="http://queue.acm.org/detail.cfm?id=2169076">Your Mouse는 DataBase</a>다.</p>
+<p>(Rx는 이외에도 스케줄러나 함수형 패러다임을 지원하는 다양한 장치를 제공한다. 다만 이 글에서는 핵심만 짚었을 뿐이다)</p>
+<h2><b>끝으로...</b></h2>
+<p>Rx를 조사하면서 리액티브 프로그래밍에 대한 다양한 이해가 존재하는 것만큼 Rx에 대한 이해 또한 다양하다는 사실을 알았다. Rx와 리액티브 프로그래밍을 동일시 하거나, 함수형 리액티브 프로그래밍을 리액티브 프로그래밍 그 자체로 생각하는 견해를 종종 볼 수 있다.</p>
+<div>시대에 따라 용어가 내포하는 개념은 넓어지기도 하고, 좁아지기도 하기에 어느 쪽 해석이 전적으로 틀렸다고 말하긴 어렵다. 그래서 개념과 주장이 난무하여 혼란스러울 때, 잠깐 손을 놓고 지나온 길을 돌아보는 일은 꽤나 의미있다.</div>
+<div>
+<div></div>
+<blockquote>
+<p>어떤 개념을 정말로 이해하려면 그 개념이 최초로 언급된 당시의 전후 맥락을 재구성해 볼 필요가 있다. 이렇게 해야 개념의 정수가 그 모든 중간자를 거치고도 살아남았음을 확인할 수 있다.</p>
+<p>- 프로그래머의 길, 멘토에게 묻다 -</p>
+</blockquote>
+</div>
+<p>Rx는 다양한 문맥에서 다양한 방식으로 쓰인다. 하지만 목적하는 바는 비슷하다. 해법이 조금 다를 뿐이다. 최근의 웹 프론트엔드 분야만 놓고 보자면 XHR을 이용한 비동기 요청을 처리할 때 Promise를 대체하는 정도로 제한적으로 사용하는가 하면, Cycle.js(Rx의 경량화 버전이라 할 수 있는 xstream을 이용) 처럼 아예 프레임워크 설계 수준까지 끌어올려서 사용하는 경우도 있다.</p>
+<p>한 달 정도 공부한, 웹 프론트엔드에서의 RxJS에 대한 나의 느낌은 물음표다. 제한해서 사용한다면 꽤나 괜찮은 녀석일 것 같은데, 이에 비해 들여야하는 학습 비용이 너무 크게 느껴졌다. 오퍼레이터는 이름으로 용도를 유추하기 너무 힘들다. 오퍼레이터를 모르면 코드를 읽을 수가 없다. 협업 상황에서 치명적인 마이너스 요인이다.</p>
+<p>그럼에도 낯선 세계가 주는 경험은 매우 흥미로웠고, Rx를 둘러싼 배경을 들여다보면서 다양한 인사이트를 얻을 수 있었다. 특히 Redux를 다른 관점에서 이해(<strong>Redux는 이미 리액티브하다</strong>)하게 되었는데 이에 대한 이야기는 다른 글에서 할 생각이다(이렇게 말하고 글을 이어 쓴 적이 한 번도 없더라...). 사실 Rx 보다는 리액티브 프로그래밍에 관심이 더 많다.</p>
+<p>연습 삼아서 간단한 개인 프로젝트를 해봤다. 작성한 코드는 아래 링크에서 볼 수 있다.</p>
+<p><a href="https://github.com/CoderK/github-filter-extension">github-filter-extension with RxJS</a></p>
+<p>순전히 재미와 연습을 목적으로 구현한 거라 오버엔지니어링을 많이 했다. 특히 RxJS의 스트림을 극적으로 활용하는 함수형 Rx의 느낌을 맞보고 싶어서 Cycle.js의 MVI 설계를 네이티브로 따라 해 봤다. 함수형 코드의 구조화를 고민하다 보니 모듈을 좀 과하게 분리해놓은 감이 있다. 역시나 쪼렙인지라. RxJS를 이용해서 코딩을 하다가 대략 멍해지는 순간을 많이 만났다.</p>
+<p>조사를 하면서 많은 자료를 찾았는데 논문 수준의 글은 내가 이해하기에 버거웠고, 쉽게 읽히는 글들은 깊이가 부족했다. 그래서 중간에 제대로 이해하지 못한 내용이 있을 수도 있다. 잘못 설명하고 있는 부분이 있다면 언제든 댓글이나 SNS로 의견 주시기 바라며 글을 마친다.</p>
+<p> </p>
+<hr>
+<ol>
+<li>공부하면서 참고했던 자료는 <a href="https://github.com/CoderK/What-I-Have-Learned/blob/master/README.md#rx%EC%99%80-%EB%A6%AC%EC%95%A1%ED%8B%B0%EB%B8%8C-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D2016">여기</a>에 모아두었습니다.</li>
+<li>레진에서 Rx를 주제로 발표할 기회가 있었는데, 이 때 발표한 내용에는 FRP에 대한 설명도 들어가 있으니 관심있는 분은 <a href="http://www.slideshare.net/jeokrang/rx-70197043">여기</a>를 참고하세요.</li>
+</ol>
+<p> 		</p>
+
+
+</div>
+
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function () {
+    this.page.url = location.href;
+    this.page.identifier = location.href;
+  };
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://huns-me.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
+
+    </main>
+    <footer>
+  <span>
+    © <time datetime="2019-09-26 19:34:59 +0900">2019</time> KimCoding. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+  </span>
+</footer>
+
+  </body>
+</html>
