@@ -22,7 +22,7 @@ author:
   last_name: 김
 permalink: "/posts/2019-09-26-overengineering-vs-underengineering"
 ---
-<img src="/assets/images/new/photo-1491554150239-a9062e24de5c.jpg" alt="산 정상 호수에 남자가 혼자 서 있는 사진" loading="lazy">
+<img src="/assets/images/new/photo-1491554150239-a9062e24de5c.jpg" alt="산 정상 호수에 남자가 혼자 서 있는 사진">
 
 YAGNI(You Aren't Gonna Need it)란 약어에는 오버 엔지니어링에 대한 경계심이 담겨 있다. XP(eXtrem Programming)는 설계 결정의 순간을 최대한 미루는 것을 설계 원칙으로 제시한다. 당장에 필요한 것에만 집중함으로써 지금 하지 않아도 될 일을 하지 말라는 뜻이다. 낭비를 경계하는 일은 실용주의 개발자의 미덕이다.
 

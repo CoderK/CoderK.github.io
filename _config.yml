@@ -38,3 +38,5 @@ paginate:       5
 
 # Excludes
 exclude: [ Gemfile, Gemfile.lock, tale.gemspec ]
+
+plugins_dir:     _plugins

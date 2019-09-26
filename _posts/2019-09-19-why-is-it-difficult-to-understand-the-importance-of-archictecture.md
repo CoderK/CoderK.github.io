@@ -23,7 +23,7 @@ author:
   last_name: 김
 permalink: "/posts/2019-09-19-why-is-it-difficult-to-understand-the-importance-of-archictecture"
 ---
-<img src="/assets/images/new/photo-1515187029135-18ee286d815b.jpg" alt="사람들이 강의실에 모여있고, 가운데에 있는 여자가 무언가를 설명하는 그림" loading="lazy">
+<img src="/assets/images/new/photo-1515187029135-18ee286d815b.jpg" alt="사람들이 강의실에 모여있고, 가운데에 있는 여자가 무언가를 설명하는 그림">
 
 > *설계가 후순위가 되면 시스템을 개발하는 비용이 더 많이 들고,* 
 > *일부 또는 전체 시스템에 변경을 가하는 일이 현실적으로 불가능해진다.*

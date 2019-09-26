@@ -94,6 +94,10 @@
     margin: 0 auto 1rem;
     word-break: break-word;
     width: $contents-width;
+
+    &.image-wrapper {
+      width: $container-width;
+    }
   }
 
   & > table {
