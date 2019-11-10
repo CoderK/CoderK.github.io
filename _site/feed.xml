@@ -5,9 +5,105 @@
         <description>김코딩 님이 잘하고 싶어서 만든 블로그</description>
         <link>http://localhost:4000/</link>
         <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Thu, 26 Sep 2019 19:34:59 +0900</pubDate>
-        <lastBuildDate>Thu, 26 Sep 2019 19:34:59 +0900</lastBuildDate>
+        <pubDate>Sun, 10 Nov 2019 20:14:33 +0900</pubDate>
+        <lastBuildDate>Sun, 10 Nov 2019 20:14:33 +0900</lastBuildDate>
         <generator>Jekyll v3.8.6</generator>
+        
+        <item>
+            <title>우리는 이렇게 일을 하기로 했습니다.</title>
+            <description>&lt;p&gt;&lt;img src=&quot;/assets/images/new/54e3d042425baa14ea89807fc62d327a1522dfe05452734f762778d3_1280.png&quot; alt=&quot;여러 색깔이 손바닥이 서로 겹쳐있는 그림&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이직을 한 지 한 달이 지났다. 새로운 회사에서 맡은 역할은 프론트엔드 조직의 테크 리드, 팀장 같은 거다.&lt;/p&gt;
+
+&lt;p&gt;이전 회사에서도 소규모 그룹을 리드하는 역할을 하고 있었기에, 새로운 직책을 맡는다는 것에 부담을 느끼지는 않았다. 차이가 있다면 공식 직함이 생겼고 권한이 더 많아졌으니 내 레버리지를 그만큼 더 넓혀야 한다는 것 정도?&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/new/IMG_6460.jpg&quot; alt=&quot;메쉬코리아 사무실 모습&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;앞으로 어떤 색깔을 가진 친구들과 일을 하게 될지 궁금했다. 출근한 첫 주부터 팀 동료들과 1:1로 이야기를 나누는 걸로 일을 시작했다. 관심사는 무엇이고, 잘하는 것은 무엇이며, 어떤 꿈을 갖고 있는지. 회사, 그리고 서로에게 기대하는 바는 무엇인지. 앞으로 만들어 갈 팀의 모습을 동료들과 함께 그렸다.&lt;/p&gt;
+
+&lt;p&gt;그렇게 8개의 Code of Conduct를 만들었다. 공유하는 정신은 어떤 장치 보다 강하다. 평소의 내 철학과 회사의 인재상이 큰 영향을 미친 것은 사실이지만 팀원들은 흔쾌히 동의를 해주었다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;사용자에게 가치를 줄 수 있는 일을 합니다.&lt;/li&gt;
+  &lt;li&gt;경계를 넘어 서로 돕습니다.&lt;/li&gt;
+  &lt;li&gt;서로 신뢰합니다.&lt;/li&gt;
+  &lt;li&gt;수평적인 관계와 수직적인 의사결정의 조화를 추구합니다.&lt;/li&gt;
+  &lt;li&gt;동료와 함께 성장합니다.&lt;/li&gt;
+  &lt;li&gt;과학적으로 접근하고 경험적으로 학습합니다.&lt;/li&gt;
+  &lt;li&gt;자신이 만든 결과물에 대해서 전문가로서의 책임감을 갖습니다.&lt;/li&gt;
+  &lt;li&gt;규칙으로 정하지 않은 일은 스스로 생각하고 행동합니다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;그렇게 한 달이 지났다.&lt;/p&gt;
+
+&lt;p&gt;8개는 너무 많은 것… 같다는 생각이 들었다. 장황해서 집중을 하기가 어렵다. 우리가 집중해야 할 가치가 무엇일지 다시 고민을 했다. 나도 모르게 자주 쓰는, 내 머릿속의 한편을 굳건히 지키고 있는 문장 두 개가 떠올랐다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;서로 돕고 함께 성장하자.&lt;/li&gt;
+  &lt;li&gt;일을 기다리지 말자.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;그래, 2개로 줄이자. 줄이는 김에 내 생각도 정리를 하자.&lt;/p&gt;
+
+&lt;h2 id=&quot;하나-서로-돕고-함께-성장하자&quot;&gt;하나, 서로 돕고 함께 성장하자.&lt;/h2&gt;
+
+&lt;p&gt;팀이라는 울타리 안에 사람을 그저 모아 놓으면 알아서 협력할 거라는 생각은 오만하다. 팀이라는 경계는  그 자체로 의미가 없다. 울타리를 치우고 나면 남는 것은 사람뿐이다. 팀에 속한 구성원 사이에 흐르는 에너지의 색깔이 더 중요하다. 한자리에 모여 앉아서 각자의 모니터만 바라보고 있다면, 그걸 팀이라고 말하기는 어렵지 않겠는가. 아무런 시너지도 만들지 못한다. 서로를 엮는 무엇이 있어야 한다.&lt;/p&gt;
+
+&lt;p&gt;입사하고 며칠 동안 팀 동료들이 일하는 모습을 관찰했다. 자기의 책상에 앉아서, 자기의 일을 열심히 했다. 부지런한 친구들이다. 유일한 접점은 코드 리뷰. 팀이라고 부르기에는 부족했다.&lt;/p&gt;
+
+&lt;p&gt;팀원들과 “우리가 하는 일의 본질과 협업의 가치”에 대해서 이야기를 많이 나눴다. 공감대가 어느 정도 형성이 되자 팀원들이 먼저 새로운 활동을 제안하고, 자신이 학습한 것을 팀에 공유하기도 했다. 사람 사이에 교집합을 만드는 장치를 하나씩, 하나씩 만들었다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;일하는 중간중간 잡담을 하도록 유도한다.&lt;/li&gt;
+  &lt;li&gt;데일리 미팅에서 서로 도울 수 있는 연결 고리를 찾아서 이어준다.&lt;/li&gt;
+  &lt;li&gt;일정을 함께 추정하거나 페어 프로그래밍을 함으로써 생각과 관점을 공유한다.&lt;/li&gt;
+  &lt;li&gt;설계를 동료와 함께 논의하도록 유도하여 부딪히는 순간을 만든다.&lt;/li&gt;
+  &lt;li&gt;자신이 학습한 것을 공유하고 토론을 하도록 자극한다.&lt;/li&gt;
+  &lt;li&gt;간단한 일이라도 담당자를 두 명을 할당해서 협업을 유도한다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;6번은 언뜻 보면 비효율을 만드는 것처럼 보인다. 하지만 나는 6번을 꽤나 중요하게 생각한다. 단순히 두 사람이 붙어 앉아있다고 해서, 커피를 같이 마신다고 해서 사람과 사람 사이에 교집합이 생기지는 않기 때문이다. 서로 공유할 수 있는 목표롤 만들어주고 함께 일을 하도록 유도해야 한다. 어느 정도 슬랙(Slack: 물리적, 심리적 여유)을 만들어 주는 것도 중요하다. 마음에 여유가 없는 사람은 주변을 돌아보지 못한다.&lt;/p&gt;
+
+&lt;p&gt;효율이나 생산성에만 집착하면 이 모든 게 허튼 짓으로 보이겠지만 교집합이 점점 단단해져 신뢰가 쌓이고, 쌓인 신뢰가 우리를 더 빠르게 만들어 줄 수 있다면 기꺼이 투자할만하다.&lt;/p&gt;
+
+&lt;h2 id=&quot;둘-일을-기다리지-말자&quot;&gt;둘, 일을 기다리지 말자.&lt;/h2&gt;
+
+&lt;p&gt;프론트엔드만으로 완성할 수 있는 제품은 거의 없다. 여러 과정을 거치며 다양한 직군이 만든 힘을 합쳐야 비로소 하나의 제품이 만들어진다. 협업이 중요하다. 협업을 하기 좋은 조직 구조를 생각하면 목표를 공유하는 교차 기능(Cross-Functional) 팀을 구성하는 게 좋을 것 같다. 하지만 이런 팀은 몇 가지 이유로 만들기가 어렵다.&lt;/p&gt;
+
+&lt;p&gt;교차 기능 팀에 속한 개인은 여러 직군이 모인 조직에서 기능적으로 고립되기가 쉽다. 팀에 자기 혼자만 프론트엔드 개발자인 상황을 떠올려 보라. 다양한 전문성을 가진 집단을, 한 명의 리더가 이끈다는 것 역시 생각만 해봐도 어렵다. 교차 기능 팀에 속한 개인은 탁월해야 하고, 이런 팀은 다른 종류의 리더십으로 이끌어야 한다. 채용 전쟁의 시대에 리소스 불균형도 해결하기 부담스러운 문제다. 교차 기능 팀을 구성하려다 이런 문제를 겪은 회사는 자연스레 기능(Functional) 조직으로 눈을 돌린다. 지금 다니고 있는 회사도 그렇다.&lt;/p&gt;
+
+&lt;p&gt;각각의 장단점이 있다. 누군가는 이중 구조(매트릭스 조직 같은)로 묶는 것만이 이 문제를 해결할 수 있는 유일한 방법이라고 주장한다. 무엇이 정답인지는 잘 모르겠다. 답은 모르지만 살아남는 데에 가장 유리한 구조를 선택하고, 그로 인해서 발생하는 단점을 극복하기 위해서 노력은 할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;기능(Functional) 조직에 속해서 일을 하다 보면 일이 흐르는 과정이 아닌, 일 그 자체만을 쳐다보기가 쉽다. 웹 프론트엔드 파트는, 웹 프론트엔드 기술을 가진 친구들이 모여서, 웹 프론트엔드의 문제를 해결한다. 그러다 보니 눈앞에 보이지 않는 것들은 생각을 하기가 어렵다.&lt;/p&gt;
+
+&lt;p&gt;이런 분위기에서는 협업하는 부서에서 일이 오기를 기다리는 경우를 흔히 볼 수 있다. 내가 한 일과 협업 부서가 한 일이 목표한 지점에 제대로 도달했는지 확인해보지도 않고 QA로 제품을 넘긴다. QA 기간에 버그 리포트를 받고서야 부랴부랴 인터페이스를 맞춰 보고, 디자인을 검토하고, 놓친 스펙을 구현한다. 그렇게 추정은 빗나가고 출시는 미뤄진다.&lt;/p&gt;
+
+&lt;p&gt;기능 조직은 업무 완결성을 갖지 못한다. 어느 한곳이 망가지면, 모든 일이 멈춰버린다. 그래서 기능 조직을 운영할 때는 조직 간의 커뮤니케이션에 더 많은 에너지를 써야 한다. 기능 조직에 속한 프론트엔드 개발자는 더욱 그러하다. 디자인과 서버 사이, 그 어딘가에 있는 타고난 포지션도 한몫을 한다.&lt;/p&gt;
+
+&lt;p&gt;디자인이 없으면 디자이너를 찾아서 요청을 해야 하고, 디자이너가 없으면 더미로 구현을 할 수 있다. 서버 API가 없으면 서버 개발자를 찾아아야 하고, 서버 개발자가 없으면 인터페이스만 협의를 하고 Fake Server를 이용해서 구현을 할 수 있다. 이도 저도 안 된다면 문제가 있음을 관계자에게 알리고 일정을 재조율해야 한다.&lt;/p&gt;
+
+&lt;p&gt;일을 기다려서는 안 된다. 일이 흐르는 전체 흐름을 보고, 내 위치를 자각하고, 적극적으로 일을 챙겨야 한다. 함께 하는 일이니까. 그래야 일이 된다.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;지금은 이 두 가지를 문화로 승화시키는 데에만 집중하기로 했다. 말은 누구나 하지만, 말을 현실로 만들기란 정말 어렵다. 꼰대스럽지 않음 위에 공감을 쌓아야 한다. 말 한마디, 문장 하나 매우 조심스럽게 사용하려고 노력한다. 설득하고 있지만 복종하지는 않았으면 좋겠다. 조급하지만 기다리려 애쓴다.&lt;/p&gt;
+
+&lt;p&gt;신뢰가 쌓여서 팀원 모두가 팀 안에서 소속감과 안정감을 느꼈으면 좋겠다.&lt;/p&gt;
+</description>
+            <pubDate>Sun, 10 Nov 2019 00:00:00 +0900</pubDate>
+            <link>http://localhost:4000/posts/2019-11-10-32</link>
+            <guid isPermaLink="true">http://localhost:4000/posts/2019-11-10-32</guid>
+            
+            <category>조직운영</category>
+            
+            <category>조직문화</category>
+            
+            <category>팀빌딩</category>
+            
+            
+            <category>개발 이야기</category>
+            
+        </item>
         
         <item>
             <title>오버엔지니어링과 언더엔지니어링의 경계</title>
@@ -59,6 +155,64 @@
         <item>
             <title>설계의 중요성을 설명하기가 왜 어려웠을까?</title>
             <description>&lt;p&gt;&lt;img src=&quot;/assets/images/new/photo-1515187029135-18ee286d815b.jpg&quot; alt=&quot;사람들이 강의실에 모여있고, 가운데에 있는 여자가 무언가를 설명하는 그림&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;em&gt;설계가 후순위가 되면 시스템을 개발하는 비용이 더 많이 들고,&lt;/em&gt; 
+&lt;em&gt;일부 또는 전체 시스템에 변경을 가하는 일이 현실적으로 불가능해진다.&lt;/em&gt;
+&lt;cite&gt;- Clean Archictecture, 21P&lt;/cite&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;돌아가는 행위(외부 품질)만 중시하고, 설계(내부 품질)를 등한시하면 유지 보수 비용이 증가할 거라는 믿음은 기술 부채라는 메타포를 만들었다. 내 주변의 개발자 중에서 이를 모르는 사람은 거의 없다.&lt;/p&gt;
+
+&lt;p&gt;Clean Archictecture의 저자, Robert C. Martin은 설계(Archictecture)의 중요성을 설득하는 책임은 개발팀에게 있다고 말한다. 그에게 이는 장인 정신의 문제다. 문제를 잘 아는 사람이, 문제를 잘 모르는 사람을 설득할 수밖에 없다는 점에서 공감한다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;em&gt;따라서 기능의 긴급성이 아닌 아키텍처의 중요성을 설득하는 일은&lt;/em&gt; 
+&lt;em&gt;소프트웨어 개발팀이 마땅히 책임져야 한다.&lt;/em&gt; 
+&lt;em&gt;이러한 책임을 다하려면 싸움판에 뛰어들어야 하며,&lt;/em&gt; 
+&lt;em&gt;더 정확히는 ‘투쟁’해야 한다.&lt;/em&gt;
+&lt;cite&gt;- Clean Archictecture, 20P&lt;/cite&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;그럼에도 현실에서 이 문제를 풀기가 어려웠던 이유는, 설계가 비즈니스에 기여하는 바를 실증하는 논거를 만들기가 어려웠기 때문이다.&lt;/p&gt;
+
+&lt;p&gt;비즈니스 이해관계자에게 비즈니스 논리는 대체로 선명하고, 이성적이고, 성실하다. 이에 반해 기술 논리는 모호하고, 감성적이고, 게으르다. 이 때문에 기술 논리는 비즈니스 논리 앞에서 자주 무력해졌다. 상황은 긴박한데 꽃구경을 가자는 이야기 정도로 취급을 받기 십상이다. 눈에 잘 보이지 않는다. 문제가 터지기 전까지는 문제라는 걸 느끼지 못한다.&lt;/p&gt;
+
+&lt;p&gt;느려지는 속도를 개인의 시간으로 메우다가, 진흙탕에 빠져있음을 몸으로 느끼는 상황이 왔을 때는 이미 늦다. 기술 부채가 커질수록 청산에 드는 수고 역시 커지지만 왜 그런지 비즈니스 논리에는 여유가 없다. 이런 상황에서는 과거의 부채를 청산할 여력 자체가 없다. 악화가 악화를 부른다. 악순환이다.&lt;/p&gt;
+
+&lt;p&gt;악순환에 빠져있음을 증명하려면 기술 부채라는 녀석을 눈에 보이는 무언가로 만들어 그것이 가진 비즈니스 가치를 증명해야 한다. 데이터가 필요하다. 데이터를 수집하려면 프로세스를 장악해야 한다. 개발 과정에 흔적을 남기고, 흔적을 수거해서 정보를 얻어야 하니까. 프로세스를 장악하려면? 동료의 신뢰를 얻어야 하고 설득을 해야 한다. 어느 정도의 지적 권위도 필요하다. 그 자체로 어려운 일이다. 연습하는 시간도 필요하다. 그런데 비즈니스 논리는 항상 긴박하다.&lt;/p&gt;
+
+&lt;p&gt;무언가 잘못되어 가고 있음을 직감하지만, 그 느낌을 실증하기가 어려운 이유는 이 때문이었다. 투쟁에서 이기려면 증명을 해야 하는데, 증명을 하는 데에는 대단히 많은 에너지와 시간을 들여야 한다. 시간을 확보하려면 투쟁을 해야 한다. 투쟁에서 이기려면 증명을 해야 한다. 돌고 돈다.&lt;/p&gt;
+
+&lt;p&gt;조직의 상층부로 갈수록 기술보다는 비즈니스 논리에 가까워지는데, 안타깝게도 의사결정권자가 비즈니스 논리에 가까울수록 이 문제는 더 풀기가 어렵다. 설득에 대한 책임은 조직의 계층 구조에서 밑바닥에 있는 자들의 것이 되어 버리기 때문이다. 이야기가 바닥에서만 돌 뿐, 위로 뻗어가지 못한다.&lt;/p&gt;
+
+&lt;p&gt;상황은 어렵지만, 실무자의 입장에서 이 악순환의 연결고리를 끊을 수 있는 방법은 없는 시간이라도 쥐어짜내는 것뿐이라는 생각에 도달했다. 어떤 식으로든 부채를 가시화하고 근거를 만들어서 주장을 하는 것 외에 다른 방법이 있을까? 아무 일도 하지 않으면 아무것도 바꿀 수 없다. Clean Archictecture에서 저자가 말하는 투쟁은 이런 맥락의 이야기일 것이다.&lt;/p&gt;
+
+&lt;p&gt;QA 과정에서 발견한 버그의 유형을 목록화하고 기술 부채와의 연관성을 추적한다. 기술 부채를 관리하는 백로그를 만들고 규모를 추정하여 수치화를 할 수도 있다. 새로운 기능을 구현함에 있어 기술 부채로 인해서 발생한 지연 일정을 수치화하여 보고하는 것도 하나의 방법이다.&lt;/p&gt;
+
+&lt;p&gt;물론 말은 쉽다. 세상의 많은 일은 몰라서 못하는 게 아니다. 나 또한 네이버에서 일을 하면서 이 투쟁을 완성하지 못했으니까. 그럼에도 조금씩, 조금씩 두들기다 보면 언젠가는 저 벽을 허물 수 있지 않을까.&lt;/p&gt;
+
+</description>
+            <pubDate>Thu, 19 Sep 2019 00:00:00 +0900</pubDate>
+            <link>http://localhost:4000/posts/2019-09-19-why-is-it-difficult-to-understand-the-importance-of-archictecture</link>
+            <guid isPermaLink="true">http://localhost:4000/posts/2019-09-19-why-is-it-difficult-to-understand-the-importance-of-archictecture</guid>
+            
+            <category>개발</category>
+            
+            <category>설계</category>
+            
+            <category>기술부채</category>
+            
+            <category>설득</category>
+            
+            
+            <category>개발 이야기</category>
+            
+        </item>
+        
+        <item>
+            <title>설계의 중요성을 설명하기가 왜 어려웠을까?</title>
+            <description>&lt;p&gt;&lt;img src=&quot;/assets/images/new/photo-1515187029135-18ee286d815b.jpg&quot; alt=&quot;사람들이 강의실에 모여있고, 가운데에 있는 여자가 무언가를 설명하는 그림&quot; loading=&quot;lazy&quot; /&gt;&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;&lt;em&gt;설계가 후순위가 되면 시스템을 개발하는 비용이 더 많이 들고,&lt;/em&gt; 
@@ -723,7 +877,7 @@
 35
 36
 37
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;c1&quot;&gt;//…(생략)&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;c1&quot;&gt;//…(생략)&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}([&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;use strict&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 
@@ -5177,542 +5331,6 @@ Content-Type: text/plain&lt;/p&gt;
             <pubDate>Mon, 25 Nov 2013 00:24:03 +0900</pubDate>
             <link>http://localhost:4000/posts/2013-11-25-chalenge-javascript-tdd-2</link>
             <guid isPermaLink="true">http://localhost:4000/posts/2013-11-25-chalenge-javascript-tdd-2</guid>
-            
-            <category>TDD</category>
-            
-            <category>Front-End</category>
-            
-            <category>JavaScript</category>
-            
-            <category>Test</category>
-            
-            
-            <category>개발 이야기</category>
-            
-        </item>
-        
-        <item>
-            <title>도전! JavaScript TDD – 1. 시작</title>
-            <description>&lt;p&gt;얼마 전에 끝난 프로젝트를 통해서, 느낀 점 하나가 테스트 코드의 필요성이다. 솔직하게 말하자면 단위 테스트를 하나도 작성하지 않았다. 프로토타이핑이나 해 볼 생각이었는데 일정(물리적 일정보다는 심리적 일정에 더 가까웠음)에 쫓겨서 이 코드가 바로 제품이 되어버리는 바람에 그랬어요 라고 말하고 싶지만, 어디까지나 나의 게으름이 가장 큰 이유다. 바빠 죽겠는데 무슨 테스트냐 싶었다. 언제나 그렇듯이 테스트 코드를 작성하지 않은 대가는 아주 비쌌다.&lt;/p&gt;
-
-&lt;p&gt;성능 상에 문제가 있어서 리팩토링을 해야하는데 코드를 한 번 손대면 여기저기서 사이드 이펙트가 터졌다. 게다가 사용하지 않는 불필요한 코드가 남아있어서 지우고 싶어도 사이드 이펙트 날까 불안해서 쉽게 손대지 못했다. 어쩌다가 한 번 손대면 브라우저로 접속해서 수도없이 여기저기 직접 손으로 테스트를 해야만 안심을 할 수 있었다. 나중에라도 테스트를 작성하려고 했지만, 프로젝트 막판, 심리적으로 쫓기는 상황에서 테스트를 작성한다는 건 쉬운 일이 아니다. 심지어 프로젝트가 끝난 후에 테스트를 짜는 일은 또 얼마나 지루하고 귀찮은 일인지.&lt;/p&gt;
-
-&lt;p&gt;그동안 많은 프로젝트를 하면서 이런 문제를 경험한 게 한 두번이 아니다. 필요성을 알면서도 못하는 걸 보면 테스트 코드 작성은 습관이 들어야 하는 일인 것 같다.&lt;/p&gt;
-
-&lt;p&gt;그래서 더 이상은 미룰 수 없다는 생각에 독한 마음을 먹고 TDD라는 녀석에 도전해보기로 결심했다.&lt;/p&gt;
-
-&lt;h2 id=&quot;tdd&quot;&gt;TDD…?&lt;/h2&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;TDD…? 그거 테스트 코드 먼저 작성하면 되는 거 아냐?&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;그동안 TDD를 단순히 구현 코드보다 단위 테스트(Unit test)를 먼저 작성하는 개발방법론 정도로 생각해왔다. 실제로 나에게 그렇게 설명하는 사람도 많았다. 그러다가 이번 프로젝트 들어가기 얼마 전에 아는 형과 TDD로 간단한 짝 프로그래밍(Pair Programming)을 해 볼 기회가 있었다. 지금 생각해보면 진짜 운이 좋았다.&lt;/p&gt;
-
-&lt;p&gt;짝 프로그래밍 자체가 아주 낯선 경험이라 상당히 신선했는데, 무엇보다 충격적이었던 것은 내가 TDD에 대해서 정말 쥐뿔도 모르고 있었다는 사실이다. TDD를 해보겠다면서 켄트백의 책 한 줄 읽어보지 않았다는 것도 조금 부끄러운 일이다.&lt;/p&gt;
-
-&lt;p&gt;내가 본 TDD는 단순히 단위 테스트를 먼저 만드는 게 아니었다. 물론 테스트 코드를 작성하기는 하지만, 그것은 TDD가 추구하고자 하는 목적이 아니라 수단일 뿐이다. 지금도 공부하고 있는 중이라서 ‘TDD는 뭐다’ 라고 딱 꼬집어 이야기 할 수는 없지만, 어쨌든 상당히 상큼한 녀석인 것만은 분명하다. 적어도 나에게는 그렇다.&lt;/p&gt;
-
-&lt;p&gt;TDD를 하기 위해서는 기존에 개발하던 방식에서 벗어나야하는데, 오랫동안 쌓여서 굳어진 습관을 하루 아침에 바꾸기는 어렵다. 꾸준한 노력이 필요한 지루한 일이라고 한다. 많은 사람들이 이 과정을 이겨내지 못하고 중도에 포기한다고 하니, 좀 더 잘해보고 싶은 욕심이 생기는 것도 사실이다.&lt;/p&gt;
-
-&lt;p&gt;TDD에 적응해나가는 과정을 글로 적어보면 참 멋질 것 같다는 생각이 들었다. 대단한 이론적인 이야기를 하려는 것은 아니고, 짝 프로그래밍 중에 들었던 주옥 같은 이야기와 내가 TDD를 연습하면서 겪는 시행착오의 기록들을 글로 정리하는 것이 목적이다.&lt;/p&gt;
-
-&lt;p&gt;어디까지 쓸 수 있을 지는 모르겠지만, 시리즈로 최대한 써 볼 생각이다.&lt;/p&gt;
-
-&lt;h2 id=&quot;학습환경&quot;&gt;학습환경&lt;/h2&gt;
-
-&lt;p&gt;사용할 언어는 JavaScript이며, 테스트 프레임워크는 QUnit이다. 만들고자 하는 어플리케이션은 자판기(VendingMachine)다.&lt;/p&gt;
-
-&lt;p&gt;스펙은 간단하다.&lt;/p&gt;
-
-&lt;p&gt;동전을 넣어서 음료를 뽑을 수 있고, 남은 금액을 환전을 받을 수 있다. 그리고 재고의 개념을 적용해서 재고가 없으면 음료를 구매할 수 없다. 초보자의 관점에서 TDD를 학습하는 것이 목적이므로 최대한 단순하게 스펙을 잡았다. UI 부분은 향후 진행되는 상황을 보면서 추가 스펙으로 넣을 예정이다.&lt;/p&gt;
-
-&lt;p&gt;스펙은 개발을 진행하면서 수정될 수 있다. 그래야 조금 현실적일 것 같고, TDD가 요구사항 변경에 어떻게 대응하는지를 살펴보는 것도 좋을 것 같단 판단이 들어서다.&lt;/p&gt;
-
-&lt;p&gt;Qunit을 활용한 JavaScript 어플리케이션 개발환경 구축은 별도로 설명하지 않고 진행하겠다.&lt;/p&gt;
-
-&lt;h2 id=&quot;뭘-해야할까&quot;&gt;뭘 해야할까?&lt;/h2&gt;
-
-&lt;p&gt;자, 그럼 가장 먼저 무엇을 만들어야 할까?&lt;/p&gt;
-
-&lt;p&gt;.&lt;/p&gt;
-
-&lt;p&gt;.&lt;/p&gt;
-
-&lt;p&gt;.&lt;/p&gt;
-
-&lt;p&gt;뭘 만들어야하지? 시작부터 막힌다.&lt;/p&gt;
-
-&lt;p&gt;TDD는 코드를 작성하기 전에 테스트를 먼저 작성하라고 한다. 코드가 없는데 뭘 만들어야하지? 뭔가 테스트 코드를 만들긴 해야겠는데, 어디서부터 시작해야 할 지 모르겠다. 심지어 테스트 할 대상이 뭔지 정의도 못하고 있다. 우선 테스트 명세를 작성해보자.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;“자판기 객체의 buy 메소드는 인자로 전달받은 음료명 문자열과 같은 음료명을 가진 객체를 돌려준다.”&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;나는 처음에 이런 스타일로 명세를 작성했다. 일반적으로 단위 테스트를 작성할 때 많이 쓰는 문장 형식이기도 하다. 그런데 이건 TDD가 권하는 방식이 아니다. 이게 단위 테스트와 TDD를 구분 짓는 중요한 요소이며, TDD를 어렵게 만드는 주범이라고 생각하기 때문에 여기에서 정리를 하고 넘어가야겠다.&lt;/p&gt;
-
-&lt;h2 id=&quot;오해&quot;&gt;오해&lt;/h2&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;테스트 주도 개발(TDD, Test Driven Development)&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;이름 때문에 테스트가 TDD의 목적인 것처럼 오해하기 쉽다. 하지만 사실 TDD의 본질은 테스트가 아니라, 개발 방식에 있다. TDD는 기본적으로 “문제를 먼저 정의하고, 문제의 해답을 찾아가는 과정”이다. 내가 지금 만들어야 할 것이 무엇인지 우선적으로 명확하게 정의한 후에, 그 내용을 테스트로 표현하는 게 TDD의 근본 취지다. 이름이 주는 오해를 덜고 TDD를 더 빨리 배울 수 있도록 하자는 뜻에서 TDD를 발전시킨 개념으로 BDD(Behavior Driven Development)가 나오기도 했다.&lt;/p&gt;
-
-&lt;p&gt;BDD는 우리나라말로 풀어보면 “행위 주도 개발”이다. BDD가 무엇인지 자세하게 알지는 못하지만 “테스트를 작성하기 전에 코드가 수행할 행위에 대한 명세를 먼저 작성”할 것을 강조하고 있는 것만은 분명하다. 내가 지금 만들고자 하는 것이 무엇인지 알고 시작하자는 이야기다.&lt;/p&gt;
-
-&lt;p&gt;결국 정리해보면 사용자 요구사항이 우리가 풀어야 할 문제이므로, 가장 먼저 문제를 명세로 정의하고, 명세로 정의한 내용을 테스트 코드로 표현한다. 그리고 그 문제를 풀어내는 코드를 구현하는 것이 TDD나 BDD의 근간인 셈이다.&lt;/p&gt;
-
-&lt;p&gt;TDD를 할 때 문제를 어떻게 정의하느냐는 아주 중요하다. 내가 위에 적어놓은 스펙은 문제가 아니라 코드의 동작을 설명하고 있는 것에 더 가깝다. 마치 코드로 드러내야 할 의도를 주석으로 설명하고 있는 것과 비슷한 상황이랄까? 일반적인 방식으로 단위 테스트를 작성할 때는 이미 구현 코드가 다 나와있는 상태다. 그렇기 때문에 위와 같은 문장으로 테스트 명세를 작성해도 테스트 코드를 작성하는 데 큰 무리가 없다. 눈에 보이는 대상을 테스트하기 때문이다.&lt;/p&gt;
-
-&lt;p&gt;그런데 TDD는?&lt;/p&gt;
-
-&lt;p&gt;TDD는 구현 코드가 없는 상황에서 테스트를 먼저 작성해야 한다. 아무 것도 눈에 보이지 않는 상황에서 내가 지금 풀어야 하는 문제를 먼저 정의하고 그 문제를 헤쳐 나가야 한다. 어떤 문제인지 모르는데 위와 같은 테스트 스펙을 작성할 수 있을까? 쉽지 않다. 그래서 아직 존재하지 않는 코드의 작동 방식을 이야기하는 문장 보다는, 테스트 해야 할 대상을 설명해줄 수 있는 문장이 TDD의 명세로 더 적합하다.&lt;/p&gt;
-
-&lt;p&gt;내가 TDD에 도전했을 때 가장 어렵게 느꼈던 것도 이 부분이다. 기존 방식과는 다른 방식에 적응하기 위한 생각의 전환이 필요하기 때문이다.&lt;/p&gt;
-
-&lt;p&gt;또한 TDD의 테스트 명세는 개발자 관점이 아닌, 사용자 관점에서 작성하는 것이 좋다. TDD는 지금 필요한 만큼의 코드만 작성할 것을 강조하는데 여기에서 지금 필요한 코드의 기준은 사용자가 원하는 가치다. 그 가치를 충족시켜 줄 수 있는 만큼의 코드면 된다. “자판기 객체의 buy 메소드는 인자로 전달받은 음료명 문자열과 같은 음료명을 가진 객체를 돌려준다.” 라는 문장은 사용자보다는 개발자가 얻는 가치에 더 가깝다.&lt;/p&gt;
-
-&lt;p&gt;여기까지 알고나면 TDD에서 명세가 얼마나 중요한지 느낌이 온다. 좀 더 고민해보면 “사용자 스토리”라는 녀석에 관심이 가게 되는데, 나중에 깊게 공부할 기회가 생기면 따로 포스팅을 해야겠다.&lt;/p&gt;
-
-&lt;h2 id=&quot;명세를-만들자&quot;&gt;명세를 만들자&lt;/h2&gt;
-
-&lt;p&gt;개발자가 아닌 사용자 요구사항 관점에서 자판기의 스펙을 다시 정리하자.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;음료를 뽑을 수 있다.&lt;/li&gt;
-  &lt;li&gt;동전을 넣을 수 있다.&lt;/li&gt;
-  &lt;li&gt;지폐를 넣을 수 있다.&lt;/li&gt;
-  &lt;li&gt;거스름 돈을 환전 받을 수 있다.&lt;/li&gt;
-  &lt;li&gt;재고를 관리할 수 있다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;이정도면 충분할 것 같다. 나는 이 스펙을 할 일 목록 같은 개념으로 쓸 생각이기 때문에, 진행중에 떠오른 부족한 점은 차차 목록에 추가해서 보완해나가겠다.&lt;/p&gt;
-
-&lt;p&gt;다른 모든 기능이 없어도, “음료를 뽑을 수 있다”면 자판기라고 할 수 있을 것 같다. 시작점으로 잡기에 딱 좋아 보인다.&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;음료를 뽑을 수 있다.&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-	&lt;span class=&quot;c1&quot;&gt;// Given&lt;/span&gt;
-	&lt;span class=&quot;c1&quot;&gt;// When&lt;/span&gt;
-	&lt;span class=&quot;c1&quot;&gt;// Then&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;아래와 같이 Given, When, Then 패턴으로 코드 구조를 나눠놓으면 테스트 코드를 작성하기가 수월하다고 한다.&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; 
-  &lt;span class=&quot;nx&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;음료수를 뽑을 수 있다.&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// Given&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// When&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// Then&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Given에는 “어떤 상황”이 들어간다.&lt;/li&gt;
-  &lt;li&gt;When에는 “어떻게 동작한다”가 들어간다.&lt;/li&gt;
-  &lt;li&gt;Then에는 “동작한 결과가 어떠해야 한다”가 들어간다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Given, When, Then 패턴은 필수적으로 사용해야하는 것은 아니다. 요즘 느끼는 거지만 소프트웨어공학에 절대적인 것은 없는 것 같다. 어쨌든 테스트 코드가 무엇을 하는지 파악하기가 쉬워질 것 같다는 게 내 생각이므로 이 패턴을 따를 생각이다.&lt;/p&gt;
-
-&lt;h2 id=&quot;첫-번째-테스트-코드&quot;&gt;첫 번째 테스트 코드&lt;/h2&gt;
-
-&lt;p&gt;테스트 할 대상을 정했으니 음료가 나오는지 테스트하는 코드를 작성하겠다. 지금은 TDD를 훈련을 위해 보폭을 작게 할 생각이다.&lt;/p&gt;
-
-&lt;p&gt;아래와 같이 테스트 코드를 만들었다.&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;음료수를 뽑을 수 있다.&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-	&lt;span class=&quot;c1&quot;&gt;// Given&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;oVendingMachine&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;VendingMachine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-	&lt;span class=&quot;c1&quot;&gt;// When&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sBeverage&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;oVendingMachine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;buy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Coke&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
- 
-	&lt;span class=&quot;c1&quot;&gt;// Then&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;ok&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sBeverage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Coke&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;sBeverage === Coke&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;그런데 작성해놓고 보니 위의 코드는 문제가 있어 보인다.&lt;/p&gt;
-
-&lt;p&gt;Then에 ok 단언을 사용해서 결과를 비교하고 있는데, ok는 설명성이 떨어진다. 그걸 보완하기 위해서 우측에 “sBeverage === Coke”라고 설명을 달아놨다. 코드가 명료하면 주석이 필요없는 것과 마찬가지로 비교 구문의 의미가 명확하면 이런 설명은 불필요해진다. 테스트 코드도 구현 코드와 마찬가지로 계속해서 유지보수해 가야 할 존재이므로 클린하게 관리해야 한다. 그래서 TDD는 테스트 코드도 지속적으로 리팩토링 할 것을 강조한다.&lt;/p&gt;
-
-&lt;p&gt;expected와 result를 명확하게 구분할 수 있는 단언을 사용하기 위해 ok를 equal로 변경했다.&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;음료수를 뽑을 수 있다.&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-	&lt;span class=&quot;c1&quot;&gt;// Given&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;oVendingMachine&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;VendingMachine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-	&lt;span class=&quot;c1&quot;&gt;// When&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sBeverage&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;oVendingMachine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;buy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Coke&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
- 
-	&lt;span class=&quot;c1&quot;&gt;// Then&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;equal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sBeverage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Coke&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;훨씬 좋아보인다. 코드를 수정했으니 테스트를 돌려보자. 테스트는 당연히 통과하지 못한다.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;/assets/images/legacy/스크린샷-2013-11-16-오후-3.35.25.png&quot;&gt;&lt;img src=&quot;/assets/images/legacy/스크린샷-2013-11-16-오후-3.35.25.png&quot; alt=&quot;스크린샷 2013-11-16 오후 3.35.25&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;이제 테스트를 가장 빠르게 통과할 수 있는 실제 구현 코드를 작성해보자.&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;VendingMachine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;_$init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;apply&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;arguments&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
- 
-&lt;span class=&quot;nx&quot;&gt;VendingMachine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;prototype&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;$init&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
- 
-    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
- 
-    &lt;span class=&quot;na&quot;&gt;buy&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sBeverage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Coke&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;다시 테스트를 돌려보면,&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;/assets/images/legacy/스크린샷-2013-11-16-오후-3.34.20.png&quot;&gt;&lt;img src=&quot;/assets/images/legacy/스크린샷-2013-11-16-오후-3.34.20.png&quot; alt=&quot;스크린샷 2013-11-16 오후 3.34.20&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;테스트를 통과하였다. 방금 TDD로 기능을 하나를 만들었다.&lt;/p&gt;
-
-&lt;p&gt;VendingMachine.prototype.buy 메서드는 “Coke” 문자열을 그대로 반환하고 있다. 상수를 사용하고 있지만 테스트를 통과하는 데 전혀 문제가 없다.&lt;/p&gt;
-
-&lt;h2 id=&quot;tdd와-상수&quot;&gt;TDD와 상수&lt;/h2&gt;
-
-&lt;p&gt;TDD는 가능하면 상수를 사용하라고 이야기한다.&lt;/p&gt;
-
-&lt;p&gt;이유가 뭘까?&lt;/p&gt;
-
-&lt;p&gt;사람은 코드를 작성할 때 실수를 하기 마련이다. 그래서 테스트 코드가 필요하다. 그런데 테스트 코드를 짤 때는 과연 실수를 하지 않을까?&lt;/p&gt;
-
-&lt;p&gt;당연히 한다. 그럼 테스트 코드도 검증이 필요하게 된다. 그렇다면 테스트 코드는 어떻게 검증을 할까? 테스트 코드를 테스트하는 코드를 짜야할까? 이런.. 그럼 마치 뫼비우스의 띠처럼 끝도 없이 테스트 코드를 짜야할 것이다. 이건 무모하고 비생산적인 일이다. 그럼 어떻게 해야할까?&lt;/p&gt;
-
-&lt;p&gt;방법은 테스트 코드가 실수할 확률을 줄이는 것이다.&lt;/p&gt;
-
-&lt;p&gt;사람은 주로 집중을 하지 못할 때 실수를 많이 한다. 사람이 작성하는 코드도 마찬가지다. 코드가 하는 일이 많으면 많을 수록 집중력이 떨어져서 실수할 확률이 높아 진다. 이와는 반대로 코드가 하는 일이 너무 단순해서 명확하면 실수할 확률은 그만큼 줄어든다.&lt;/p&gt;
-
-&lt;p&gt;예를 들어, 1과 2를 받아서 1 + 2를 돌려주는 함수가 있다고 하자. 이 함수는 하는 일이 너무 명확해서 실수를 할 확률이 아주 낮다. 이렇게 아주 단순한 기능을 만들어서 에러가 없음을 검증하고 난 다음에, 여기에 조금씩 살을 붙여나가는 것이 TDD의 기본이다.&lt;/p&gt;
-
-&lt;p&gt;그래서 TDD는 에러를 제거하는 코드를 최대한 빨리 단순하게 작성할 것을 강조하며, 그 방법 중에 하나로 상수 사용을 권장한다.&lt;/p&gt;
-
-&lt;h2 id=&quot;필요한-것만-만들자&quot;&gt;필요한 것만 만들자&lt;/h2&gt;
-
-&lt;p&gt;다시 위의 코드로 돌아와서 보면, 우선 테스트는 통과했지만 구현 코드에 좀 걸리는 부분이 있다.&lt;/p&gt;
-
-&lt;p&gt;_$init 메서드는 보통 객체를 생성할 때 객체 초기화 작업을 하기 위해서 사용한다. 그런데 지금 _$init 메서드 안에서는 아무 일도 하지 않고 있다. 심지어 우리가 만든 테스트 코드와 전혀 상관도 없다.&lt;/p&gt;
-
-&lt;p&gt;지우고 테스트를 돌려서 확인해보자.&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;VendingMachine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
- 
-&lt;span class=&quot;nx&quot;&gt;VendingMachine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;prototype&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;buy&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sBeverage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sBeverage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;테스트 코드에 에러가 발생하지 않는다면 정말 쓸모 없는 코드인 게 맞다. 오류는 빨리 찾아내서 수정하는 게 좋기 때문에, 어떤 변경이 일어나면 무조건 테스트 코드를 돌려서 확인한다.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;/assets/images/legacy/스크린샷-2013-11-16-오후-3.40.14.png&quot;&gt;&lt;img src=&quot;/assets/images/legacy/스크린샷-2013-11-16-오후-3.40.14.png&quot; alt=&quot;스크린샷 2013-11-16 오후 3.40.14&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;테스트를 통과함으로써 _$init 함수가 불필요한 존재였음이 확인 되었다. 불필요한 코드는 가독성을 해치고, 리팩토링을 어렵게 만들며, 때로는 오버엔지니어링의 원인이 되기도 한다. “테스트를 통과하기 위한 코드만 작성”해야한다는 것을 명심하자. TDD에서 구현 코드는 오로지 테스트를 통과하기 위해서만 존재한다. 위에서도 이야기 했지만 테스트 자체가 사용자 요구사항으로서 명세를 표현하는 코드이기 때문이다.&lt;/p&gt;
-
-&lt;h2 id=&quot;두-번째-테스트-코드&quot;&gt;두 번째 테스트 코드&lt;/h2&gt;
-
-&lt;p&gt;이제 다음 테스트 코드를 작성하자.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;del&gt;음료를 뽑을 수 있다.&lt;/del&gt;&lt;/li&gt;
-  &lt;li&gt;동전을 넣을 수 있다.&lt;/li&gt;
-  &lt;li&gt;지폐를 넣을 수 있다.&lt;/li&gt;
-  &lt;li&gt;거스름 돈을 환전 받을 수 있다.&lt;/li&gt;
-  &lt;li&gt;재고를 관리할 수 있다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;음료를 뽑을 수 있는 기능은 만들었다. 하지만 이걸 좀 다듬어야 할 것 같다. 달랑 콜라만 뽑는 자판기를 만들 수는 없으니까. 뽑을 수 있는 음료수의 종류를 네 가지로 늘려야겠다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;del&gt;음료를 뽑을 수 있다.&lt;/del&gt;&lt;/li&gt;
-  &lt;li&gt;콜라, 사이다, 오렌지 주스, 사과 주스 중 원하는 음료를 뽑을 수 있다.&lt;/li&gt;
-  &lt;li&gt;동전을 넣을 수 있다.&lt;/li&gt;
-  &lt;li&gt;지폐를 넣을 수 있다.&lt;/li&gt;
-  &lt;li&gt;거스름 돈을 환전 받을 수 있다.&lt;/li&gt;
-  &lt;li&gt;재고를 관리할 수 있다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;사이다부터 하나씩 추가해나가자. 이전 테스트 코드를 복사해서 붙여넣고 살짝 내용만 바꿔주면 된다.&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;자판기에서 사이다를 뽑을 수 있다.&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// Given&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;oVendingMachine&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;VendingMachine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
- 
-    &lt;span class=&quot;c1&quot;&gt;// When&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sBeverage1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;oVendingMachine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;buy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Sprite&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
- 
-    &lt;span class=&quot;c1&quot;&gt;// Then&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;equal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sBeverage1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Sprite&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;첫 번째로 작성했던 테스트 코드와 중복되는 내용이 많지만, 우선은 테스트가 돌아가는 것이 목적이기 때문에 지금은 모른 척하자. 지금 중요한 것은 오로지 테스트를 통과하는 것 뿐이다.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;/assets/images/legacy/스크린샷-2013-11-19-오후-9.53.36.png&quot;&gt;&lt;img src=&quot;/assets/images/legacy/스크린샷-2013-11-19-오후-9.53.36.png&quot; alt=&quot;스크린샷 2013-11-19 오후 9.53.36&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;당연히 테스트는 깨진다. 얼른 테스트를 통과할 수 있는 가장 간단한 코드를 작성한다.&lt;/p&gt;
-
-&lt;p&gt;“Coke”라고 상수로 박아뒀던 부분을 변경해주면 될 것 같다.&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;VendingMachine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{};&lt;/span&gt;
- 
-&lt;span class=&quot;nx&quot;&gt;VendingMachine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;prototype&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
- 
-    &lt;span class=&quot;na&quot;&gt;buy&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sBeverage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sBeverage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;a href=&quot;/assets/images/legacy/스크린샷-2013-11-19-오후-9.56.22.png&quot;&gt;&lt;img src=&quot;/assets/images/legacy/스크린샷-2013-11-19-오후-9.56.22.png&quot; alt=&quot;스크린샷 2013-11-19 오후 9.56.22&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;멋지게 테스트를 통과했으니 이제 중복을 제거할 차례다. 위에서 테스트 코드도 앞으로 계속 안고 가야 할 자산이므로, 지속적으로 리팩토링을 해야한다고 이야기 했다. VendingMachine 객체를 생성하는 코드를 Qunit의 Module 객체 쪽으로 옮겨서 중복을 제거하자.&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;oVendingMachine&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-  &lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;VendingMachine&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;setup&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-          &lt;span class=&quot;nx&quot;&gt;oVendingMachine&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;VendingMachine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;teardown&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-          &lt;span class=&quot;cm&quot;&gt;/* 리소스 정리 */&lt;/span&gt;
-          &lt;span class=&quot;nx&quot;&gt;oVendingMachine&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-
-  &lt;span class=&quot;nx&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;자판기에서 음료를 뽑을 수 있다.&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// Given&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// When&lt;/span&gt;
-      &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sBeverage&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;oVendingMachine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;buy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Coke&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-    &lt;span class=&quot;c1&quot;&gt;// Then&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;equal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sBeverage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Coke&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-
-  &lt;span class=&quot;nx&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;자판기에서 사이다를 뽑을 수 있다.&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-      &lt;span class=&quot;c1&quot;&gt;// Given&lt;/span&gt;
-      &lt;span class=&quot;c1&quot;&gt;// When&lt;/span&gt;
-      &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sBeverage1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;oVendingMachine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;buy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Sprite&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-      &lt;span class=&quot;c1&quot;&gt;// Then&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;equal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sBeverage1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Sprite&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;module 안의 setup 함수는 각각의 테스트 함수 실행 전에 실행되고, teardown 함수는 테스트가 종료 후에 실행된다(이런 이야기는 이 글의 목적은 아니므로 간단하게만 하고 넘기겠다).&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;/assets/images/legacy/스크린샷-2013-11-19-오후-9.56.22.png&quot;&gt;&lt;img src=&quot;/assets/images/legacy/스크린샷-2013-11-19-오후-9.56.22.png&quot; alt=&quot;스크린샷 2013-11-19 오후 9.56.22&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;이상없이 테스트를 통과한다.&lt;/p&gt;
-
-&lt;p&gt;리팩토링을 하고 난 다음에 테스트 코드를 돌려서 문제가 없다는 사실을 바로 확인할 수 있다는 것이 TDD를 통해서 얻을 수 있는 이점 중 하나다. 간단한 리팩토링이라 오류가 날 가능성이 매우 적었지만, 코드량이 많아질수록 이러한 이점은 더욱 커진다.&lt;/p&gt;
-
-&lt;p&gt;오렌지 주스와 사과 주스도 뽑을 수 있는지 확인하는 코드를 추가해야겠다. 따로 테스트 케이스를 만들기에는 너무 중복이 많아 보인다. 그냥 테스트 명세를 조금 수정하는 게 좋겠다.&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;자판기에서 원하는 음료를 뽑을 수 있다.&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// Given&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// When&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sBeverage1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;oVendingMachine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;buy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Sprite&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sBeverage2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;oVendingMachine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;buy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Orange Juice&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sBeverage3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;oVendingMachine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;buy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Apple Juice&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
- 
-    &lt;span class=&quot;c1&quot;&gt;// Then&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;equal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sBeverage1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Sprite&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;equal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sBeverage2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Orange Juice&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;equal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sBeverage3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Apple Juice&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;테스트를 돌려보면 통과한다.&lt;/p&gt;
-
-&lt;p&gt;4가지 음료수 중에서만 선택할 수 있어야 하니까, 나와서는 안 되는 음료수가 나오는지를 확인하는 테스트를 추가하자.&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;자판기에서 콜라, 사이다, 오렌지 주스, 사과 주스 중 원하는 음료를 뽑을 수 있다.&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// Given&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// When&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sBeverage1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;oVendingMachine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;buy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Sprite&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sBeverage2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;oVendingMachine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;buy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Orange Juice&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sBeverage3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;oVendingMachine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;buy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Apple Juice&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sBeverage4&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;oVendingMachine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;buy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Coffee&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
- 
-    &lt;span class=&quot;c1&quot;&gt;// Then&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;equal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sBeverage1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Sprite&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;equal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sBeverage2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Orange Juice&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;equal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sBeverage3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Apple Juice&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;equal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sBeverage4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;a href=&quot;/assets/images/legacy/스크린샷-2013-11-23-오전-10.40.02.png&quot;&gt;&lt;img src=&quot;/assets/images/legacy/스크린샷-2013-11-23-오전-10.40.02.png&quot; alt=&quot;스크린샷 2013-11-23 오전 10.40.02&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;예상대로 테스트는 깨진다. TDD를 하면서 이런 순간이 오면 묘한 흥분을 느낀다. 어쩄든.&lt;/p&gt;
-
-&lt;p&gt;가장 빠르게 이 에러를 제거할 수 있는 코드를 추가해서 에러를 벗어나자. buy 메서드에서 Coffee만 걸러내면 되긴 하지만, Milk를 걸러내야하는 상황이 문제가 될 수 있다. 4종류 중에 하나만 선택할 수 있다는 상황이 너무 선명하게 머리 속에 그려지므로 조금만 더 큰 보폭으로 코드를 작성해도 될 것 같다. 아주 조금.&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;VendingMachine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{};&lt;/span&gt;
- 
-&lt;span class=&quot;nx&quot;&gt;VendingMachine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;prototype&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
- 
-    &lt;span class=&quot;na&quot;&gt;_htProducts&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Coke&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Coke&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Sprite&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Sprite&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Orange Juice&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Orange Juice&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Apple Juice&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Apple Juice&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
- 
-    &lt;span class=&quot;na&quot;&gt;buy&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sBeverage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;_htProducts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sBeverage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;테스트 코드는 다음과 같다. equal 이었던 단언을 notEqual로 변경했다.&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;자판기에서 콜라, 사이다, 오렌지 주스, 사과 주스 중 원하는 음료를 뽑을 수 있다.&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// Given&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// When&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sBeverage1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;oVendingMachine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;buy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Sprite&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sBeverage2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;oVendingMachine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;buy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Orange Juice&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sBeverage3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;oVendingMachine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;buy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Apple Juice&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sBeverage4&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;oVendingMachine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;buy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Coffee&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sBeverage5&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;oVendingMachine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;buy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Milk&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
- 
-    &lt;span class=&quot;c1&quot;&gt;// Then&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;equal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sBeverage1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Sprite&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;equal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sBeverage2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Orange Juice&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;equal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sBeverage3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Apple Juice&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
- 
-    &lt;span class=&quot;nx&quot;&gt;notEqual&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sBeverage4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Coffee&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;notEqual&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sBeverage5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Milk&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;테스트를 통과한다. 그런데 가만히 보니까 첫 번째 테스트 케이스와 두 번째 테스트 케이스가 서로 중복되는 느낌이다. 하나로 통합해도 될 것 같으니 리팩토링을 해야겠다.&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;자판기에서 음료를 뽑을 수 있다.&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-	&lt;span class=&quot;c1&quot;&gt;// Given&lt;/span&gt;
-	&lt;span class=&quot;c1&quot;&gt;// When&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sBeverage&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;oVendingMachine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;buy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Coke&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
- 
-	&lt;span class=&quot;c1&quot;&gt;// Then&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;equal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sBeverage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Coke&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
- 
-&lt;span class=&quot;nx&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;자판기에서 콜라, 사이다, 오렌지 주스, 사과 주스 중 원하는 음료를 뽑을 수 있다.&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// Given&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// When&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sBeverage1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;oVendingMachine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;buy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Sprite&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sBeverage2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;oVendingMachine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;buy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Orange Juice&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sBeverage3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;oVendingMachine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;buy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Apple Juice&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sBeverage4&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;oVendingMachine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;buy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Coffee&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sBeverage5&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;oVendingMachine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;buy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Milk&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
- 
-    &lt;span class=&quot;c1&quot;&gt;// Then&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;equal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sBeverage1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Sprite&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;equal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sBeverage2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Orange Juice&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;equal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sBeverage3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Apple Juice&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
- 
-    &lt;span class=&quot;nx&quot;&gt;notEqual&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sBeverage5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Coffee&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;notEqual&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sBeverage6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Milk&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;하나로 합쳤다.&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;자판기에서 음료를 뽑을 수 있다.&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-	&lt;span class=&quot;c1&quot;&gt;// Given&lt;/span&gt;
-	&lt;span class=&quot;c1&quot;&gt;// When&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sBeverage&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;oVendingMachine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;buy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Coke&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
- 
-	&lt;span class=&quot;c1&quot;&gt;// Then&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;equal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sBeverage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Coke&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
- 
-&lt;span class=&quot;nx&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;자판기에서 콜라, 사이다, 오렌지 주스, 사과 주스 중 원하는 음료를 뽑을 수 있다.&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// Given&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// When&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sBeverage1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;oVendingMachine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;buy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Sprite&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sBeverage2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;oVendingMachine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;buy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Orange Juice&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sBeverage3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;oVendingMachine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;buy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Apple Juice&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sBeverage4&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;oVendingMachine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;buy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Coffee&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sBeverage5&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;oVendingMachine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;buy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Milk&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
- 
-    &lt;span class=&quot;c1&quot;&gt;// Then&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;equal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sBeverage1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Sprite&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;equal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sBeverage2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Orange Juice&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;equal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sBeverage3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Apple Juice&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
- 
-    &lt;span class=&quot;nx&quot;&gt;notEqual&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sBeverage5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Coffee&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;notEqual&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sBeverage6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Milk&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;그런데 합치고 나니 한 곳에 너무 몰려 있는 느낌이 든다.  ‘음료를 뽑을 수 있는 경우’와 ‘음료가 나와서는 안 되는 경우’ 2개의 케이스로 분리를 하면 테스트의 역할이 좀 더 명확해질 것 같다.&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;자판기에서 음료를 뽑을 수 있다.&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-	&lt;span class=&quot;c1&quot;&gt;// Given&lt;/span&gt;
-	&lt;span class=&quot;c1&quot;&gt;// When&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sBeverage&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;oVendingMachine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;buy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Coke&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
- 
-	&lt;span class=&quot;c1&quot;&gt;// Then&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;equal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sBeverage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Coke&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
- 
-&lt;span class=&quot;nx&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;자판기에서 콜라, 사이다, 오렌지 주스, 사과 주스 중 원하는 음료를 뽑을 수 있다.&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// Given&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// When&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sBeverage1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;oVendingMachine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;buy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Sprite&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sBeverage2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;oVendingMachine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;buy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Orange Juice&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sBeverage3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;oVendingMachine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;buy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Apple Juice&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sBeverage4&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;oVendingMachine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;buy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Coffee&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sBeverage5&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;oVendingMachine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;buy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Milk&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
- 
-    &lt;span class=&quot;c1&quot;&gt;// Then&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;equal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sBeverage1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Sprite&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;equal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sBeverage2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Orange Juice&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;equal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sBeverage3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Apple Juice&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
- 
-    &lt;span class=&quot;nx&quot;&gt;notEqual&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sBeverage5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Coffee&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;notEqual&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sBeverage6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Milk&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;테스트 코드도 앞으로 계속해서 가져가야 할 자산이기 때문에 끊임없이 리팩토링을 해야하는 대상이라는 사실을 잊지 말자.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;del&gt;음료를 뽑을 수 있다.&lt;/del&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;del&gt;콜라, 사이다, 오렌지 주스, 사과 주스 중 원하는 음료를 뽑을 수 있다.&lt;/del&gt;&lt;/li&gt;
-  &lt;li&gt;동전을 넣을 수 있다.&lt;/li&gt;
-  &lt;li&gt;지폐를 넣을 수 있다.&lt;/li&gt;
-  &lt;li&gt;거스름 돈을 환전 받을 수 있다.&lt;/li&gt;
-  &lt;li&gt;재고를 관리할 수 있다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;다음-장에-계속&quot;&gt;다음 장에 계속…&lt;/h2&gt;
-
-&lt;p&gt;글이 너무 길어지면 안 될 것 같아서 이번 장은 여기까지만 해야겠다. 초반이다보니 TDD에 대한 여러가지를 이야기했는데, TDD의 본질을 명확하게 해서 그동안 오해하고 있던 것들을 정리하고 가지 않으면 진행이 어려울 거라 판단했기 때문이다.&lt;/p&gt;
-
-&lt;p&gt;다음 장에서는 동전과 지폐를 다루는 기능을 구현해가면서 TDD에 대해서 좀 더 알아보도록 하겠다.&lt;/p&gt;
-</description>
-            <pubDate>Mon, 25 Nov 2013 00:24:03 +0900</pubDate>
-            <link>http://localhost:4000/posts/2013-11-25-chalenge-javascript-tdd-1</link>
-            <guid isPermaLink="true">http://localhost:4000/posts/2013-11-25-chalenge-javascript-tdd-1</guid>
             
             <category>TDD</category>
             
