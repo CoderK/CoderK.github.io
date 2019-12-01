@@ -3,10 +3,10 @@
     <channel>
         <title>Huns.me</title>
         <description>김코딩 님이 잘하고 싶어서 만든 블로그</description>
-        <link>http://localhost:4000/</link>
-        <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Sun, 01 Dec 2019 15:42:46 +0900</pubDate>
-        <lastBuildDate>Sun, 01 Dec 2019 15:42:46 +0900</lastBuildDate>
+        <link>https://coderk.github.io/</link>
+        <atom:link href="https://coderk.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+        <pubDate>Sun, 01 Dec 2019 15:57:53 +0900</pubDate>
+        <lastBuildDate>Sun, 01 Dec 2019 15:57:53 +0900</lastBuildDate>
         <generator>Jekyll v3.8.6</generator>
         
         <item>
@@ -51,25 +51,7 @@
 
 &lt;p&gt;입사하고 며칠 동안 팀 동료들이 일하는 모습을 관찰했다. 자기의 책상에 앉아서, 자기의 일을 열심히 했다. 부지런한 친구들이다. 유일한 접점은 코드 리뷰. 팀이라고 부르기에는 부족했다.&lt;/p&gt;
 
-&lt;p&gt;«««&amp;lt; HEAD
-팀원들과 “우리가 하는 일의 본질과 협업의 가치”에 대해서 이야기를 많이 나눴다. 공감대가 어느 정도 형성이 되자 팀원들이 먼저 새로운 활동을 제안하고, 자신이 학습한 것을 팀에 공유하기도 했다. 사람 사이에 교집합을 만드는 장치를 하나씩, 하나씩 만들었다.
-=======
-팀원들과 “우리가 하는 일의 본질과 협업의 가치”에 대해서 이야기를 많이 나눴다. 공감대가 어느 정도 형성이 되자 팀원들이 먼저 새로운 활동을 제안하고, 자신이 학습한 것을 팀에 공유하기도 했다. 사람 사이에 교집합을 하나씩, 하나씩 만들었다.&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;blockquote&gt;
-    &lt;blockquote&gt;
-      &lt;blockquote&gt;
-        &lt;blockquote&gt;
-          &lt;blockquote&gt;
-            &lt;blockquote&gt;
-              &lt;p&gt;6446241127e7453a687c3c64a47f988be294e583&lt;/p&gt;
-            &lt;/blockquote&gt;
-          &lt;/blockquote&gt;
-        &lt;/blockquote&gt;
-      &lt;/blockquote&gt;
-    &lt;/blockquote&gt;
-  &lt;/blockquote&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;팀원들과 “우리가 하는 일의 본질과 협업의 가치”에 대해서 이야기를 많이 나눴다. 공감대가 어느 정도 형성이 되자 팀원들이 먼저 새로운 활동을 제안하고, 자신이 학습한 것을 팀에 공유하기도 했다. 사람 사이에 교집합을 하나씩, 하나씩 만들었다.&lt;/p&gt;
 
 &lt;ol&gt;
   &lt;li&gt;일하는 중간중간 잡담을 하도록 유도한다.&lt;/li&gt;
@@ -80,49 +62,13 @@
   &lt;li&gt;간단한 일이라도 담당자를 두 명을 할당해서 협업을 유도한다.&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;«««&amp;lt; HEAD
-6번은 언뜻 보면 비효율을 만드는 것처럼 보인다. 하지만 나는 6번을 꽤나 중요하게 생각한다. 단순히 두 사람이 붙어 앉아있다고 해서, 커피를 같이 마신다고 해서 사람과 사람 사이에 교집합이 생기지는 않기 때문이다. 서로 공유할 수 있는 목표롤 만들어주고 함께 일을 하도록 유도해야 한다. 어느 정도 슬랙(Slack: 물리적, 심리적 여유)을 만들어 주는 것도 중요하다. 마음에 여유가 없는 사람은 주변을 돌아보지 못한다. 
-=======
-6번은 언뜻 보면 비효율을 만드는 것처럼 보이지만, 매우 중요하다. 단순히 두 사람이 붙어 앉아있다고 해서, 커피를 같이 마신다고 해서 사람과 사람 사이에 교집합이 생기지는 않기 때문이다. 서로 공유할 수 있는 목표롤 만들어주고 함께 일을 하도록 유도해야 한다. 어느 정도 슬랙(Slack: 물리적, 심리적 여유)을 만들어 주는 것도 중요하다. 마음에 여유가 없는 사람은 주변을 돌아보지 못한다.&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;blockquote&gt;
-    &lt;blockquote&gt;
-      &lt;blockquote&gt;
-        &lt;blockquote&gt;
-          &lt;blockquote&gt;
-            &lt;blockquote&gt;
-              &lt;p&gt;6446241127e7453a687c3c64a47f988be294e583&lt;/p&gt;
-            &lt;/blockquote&gt;
-          &lt;/blockquote&gt;
-        &lt;/blockquote&gt;
-      &lt;/blockquote&gt;
-    &lt;/blockquote&gt;
-  &lt;/blockquote&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;6번은 언뜻 보면 비효율을 만드는 것처럼 보이지만, 매우 중요하다. 단순히 두 사람이 붙어 앉아있다고 해서, 커피를 같이 마신다고 해서 사람과 사람 사이에 교집합이 생기지는 않기 때문이다. 서로 공유할 수 있는 목표롤 만들어주고 함께 일을 하도록 유도해야 한다. 어느 정도 슬랙(Slack: 물리적, 심리적 여유)을 만들어 주는 것도 중요하다. 마음에 여유가 없는 사람은 주변을 돌아보지 못한다.&lt;/p&gt;
 
 &lt;p&gt;효율이나 생산성에만 집착하면 이 모든 게 허튼 짓으로 보이겠지만 교집합이 점점 단단해져 신뢰가 쌓이고, 쌓인 신뢰가 우리를 더 빠르게 만들어 줄 수 있다면 기꺼이 투자할만하다.&lt;/p&gt;
 
 &lt;h2 id=&quot;둘-일을-기다리지-말자&quot;&gt;둘, 일을 기다리지 말자.&lt;/h2&gt;
 
-&lt;p&gt;«««&amp;lt; HEAD
-프론트엔드만으로 완성할 수 있는 제품은 거의 없다. 여러 과정을 거치며 다양한 직군이 만든 힘을 합쳐야 비로소 하나의 제품이 만들어진다. 협업이 중요하다. 협업을 하기 좋은 조직 구조를 생각하면 목표를 공유하는 교차 기능(Cross-Functional) 팀을 구성하는 게 좋을 것 같다. 하지만 이런 팀은 몇 가지 이유로 만들기가 어렵다.
-=======
-프론트엔드만으로 완성할 수 있는 제품은 거의 없다. 여러 과정을 거치며 다양한 직군이 힘을 합쳐야 비로소 하나의 제품이 만들어진다. 협업이 중요하다. 협업을 하기 좋은 조직 구조를 생각하면 목표를 공유하는 교차 기능(Cross-Functional) 팀을 구성하는 게 좋을 것 같다. 하지만 이런 팀은 몇 가지 이유로 만들기가 어렵다.&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;blockquote&gt;
-    &lt;blockquote&gt;
-      &lt;blockquote&gt;
-        &lt;blockquote&gt;
-          &lt;blockquote&gt;
-            &lt;blockquote&gt;
-              &lt;p&gt;6446241127e7453a687c3c64a47f988be294e583&lt;/p&gt;
-            &lt;/blockquote&gt;
-          &lt;/blockquote&gt;
-        &lt;/blockquote&gt;
-      &lt;/blockquote&gt;
-    &lt;/blockquote&gt;
-  &lt;/blockquote&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;프론트엔드만으로 완성할 수 있는 제품은 거의 없다. 여러 과정을 거치며 다양한 직군이 힘을 합쳐야 비로소 하나의 제품이 만들어진다. 협업이 중요하다. 협업을 하기 좋은 조직 구조를 생각하면 목표를 공유하는 교차 기능(Cross-Functional) 팀을 구성하는 게 좋을 것 같다. 하지만 이런 팀은 몇 가지 이유로 만들기가 어렵다.&lt;/p&gt;
 
 &lt;p&gt;교차 기능 팀에 속한 개인은 여러 직군이 모인 조직에서 기능적으로 고립되기가 쉽다. 팀에 자기 혼자만 프론트엔드 개발자인 상황을 떠올려 보라. 다양한 전문성을 가진 집단을, 한 명의 리더가 이끈다는 것 역시 생각만 해봐도 어렵다. 교차 기능 팀에 속한 개인은 탁월해야 하고, 이런 팀은 다른 종류의 리더십으로 이끌어야 한다. 채용 전쟁의 시대에 리소스 불균형도 해결하기 부담스러운 문제다. 교차 기능 팀을 구성하려다 이런 문제를 겪은 회사는 자연스레 기능(Functional) 조직으로 눈을 돌린다. 지금 다니고 있는 회사도 그렇다.&lt;/p&gt;
 
@@ -145,8 +91,8 @@
 &lt;p&gt;신뢰가 쌓여서 팀원 모두가 팀 안에서 소속감과 안정감을 느꼈으면 좋겠다.&lt;/p&gt;
 </description>
             <pubDate>Sun, 10 Nov 2019 00:00:00 +0900</pubDate>
-            <link>http://localhost:4000/posts/2019-11-10-32</link>
-            <guid isPermaLink="true">http://localhost:4000/posts/2019-11-10-32</guid>
+            <link>https://coderk.github.io/posts/2019-11-10-32</link>
+            <guid isPermaLink="true">https://coderk.github.io/posts/2019-11-10-32</guid>
             
             <category>조직운영</category>
             
@@ -192,8 +138,8 @@
 &lt;p&gt;설계의 촉을 예민하게 세워야 한다. 촉을 세우려면 설계를 알아야 하고 엔지니어링을 알아야 한다. 아는 만큼 본다. 알아야 촉이 생기고, 퇴로를 만들고, 기회를 잡을 수 있다.&lt;/p&gt;
 </description>
             <pubDate>Thu, 26 Sep 2019 00:00:00 +0900</pubDate>
-            <link>http://localhost:4000/posts/2019-09-26-overengineering-vs-underengineering</link>
-            <guid isPermaLink="true">http://localhost:4000/posts/2019-09-26-overengineering-vs-underengineering</guid>
+            <link>https://coderk.github.io/posts/2019-09-26-overengineering-vs-underengineering</link>
+            <guid isPermaLink="true">https://coderk.github.io/posts/2019-09-26-overengineering-vs-underengineering</guid>
             
             <category>개발</category>
             
@@ -248,8 +194,8 @@
 
 </description>
             <pubDate>Thu, 19 Sep 2019 00:00:00 +0900</pubDate>
-            <link>http://localhost:4000/posts/2019-09-19-why-is-it-difficult-to-understand-the-importance-of-archictecture</link>
-            <guid isPermaLink="true">http://localhost:4000/posts/2019-09-19-why-is-it-difficult-to-understand-the-importance-of-archictecture</guid>
+            <link>https://coderk.github.io/posts/2019-09-19-why-is-it-difficult-to-understand-the-importance-of-archictecture</link>
+            <guid isPermaLink="true">https://coderk.github.io/posts/2019-09-19-why-is-it-difficult-to-understand-the-importance-of-archictecture</guid>
             
             <category>개발</category>
             
@@ -324,8 +270,8 @@
 &lt;p&gt;&lt;!-- wp:preformatted --&gt;&lt;!-- /wp:preformatted --&gt;		&lt;/p&gt;
 </description>
             <pubDate>Fri, 09 Aug 2019 11:29:41 +0900</pubDate>
-            <link>http://localhost:4000/development/2306</link>
-            <guid isPermaLink="true">http://localhost:4000/development/2306</guid>
+            <link>https://coderk.github.io/development/2306</link>
+            <guid isPermaLink="true">https://coderk.github.io/development/2306</guid>
             
             <category>304</category>
             
@@ -482,8 +428,8 @@
 &lt;p&gt;&lt;!-- /wp:paragraph --&gt;		&lt;/p&gt;
 </description>
             <pubDate>Sat, 11 May 2019 14:42:00 +0900</pubDate>
-            <link>http://localhost:4000/development/2297</link>
-            <guid isPermaLink="true">http://localhost:4000/development/2297</guid>
+            <link>https://coderk.github.io/development/2297</link>
+            <guid isPermaLink="true">https://coderk.github.io/development/2297</guid>
             
             
             <category>개발 이야기</category>
@@ -680,8 +626,8 @@
 &lt;/div&gt;
 </description>
             <pubDate>Wed, 06 Mar 2019 21:43:13 +0900</pubDate>
-            <link>http://localhost:4000/development/2281</link>
-            <guid isPermaLink="true">http://localhost:4000/development/2281</guid>
+            <link>https://coderk.github.io/development/2281</link>
+            <guid isPermaLink="true">https://coderk.github.io/development/2281</guid>
             
             <category>개발자</category>
             
@@ -1233,8 +1179,8 @@
 &lt;p&gt;&amp;nbsp;		&lt;/p&gt;
 </description>
             <pubDate>Thu, 08 Nov 2018 19:04:40 +0900</pubDate>
-            <link>http://localhost:4000/development/2265</link>
-            <guid isPermaLink="true">http://localhost:4000/development/2265</guid>
+            <link>https://coderk.github.io/development/2265</link>
+            <guid isPermaLink="true">https://coderk.github.io/development/2265</guid>
             
             <category>optimization</category>
             
@@ -1284,8 +1230,8 @@
 &lt;p&gt;&lt;span style=&quot;font-size: 12pt;&quot;&gt;​&lt;/span&gt;&lt;span style=&quot;font-size: 12pt;&quot;&gt;...(이하 생략)&lt;/span&gt;&lt;/p&gt;
 </description>
             <pubDate>Fri, 31 Aug 2018 10:12:42 +0900</pubDate>
-            <link>http://localhost:4000/development/2252</link>
-            <guid isPermaLink="true">http://localhost:4000/development/2252</guid>
+            <link>https://coderk.github.io/development/2252</link>
+            <guid isPermaLink="true">https://coderk.github.io/development/2252</guid>
             
             <category>book</category>
             
@@ -1365,8 +1311,8 @@
 &lt;p&gt;&amp;nbsp;		&lt;/p&gt;
 </description>
             <pubDate>Sun, 05 Feb 2017 12:16:31 +0900</pubDate>
-            <link>http://localhost:4000/development/2206</link>
-            <guid isPermaLink="true">http://localhost:4000/development/2206</guid>
+            <link>https://coderk.github.io/development/2206</link>
+            <guid isPermaLink="true">https://coderk.github.io/development/2206</guid>
             
             <category>TDD</category>
             
@@ -1399,8 +1345,8 @@
 &lt;/div&gt;
 </description>
             <pubDate>Fri, 27 Jan 2017 00:53:16 +0900</pubDate>
-            <link>http://localhost:4000/development/2183</link>
-            <guid isPermaLink="true">http://localhost:4000/development/2183</guid>
+            <link>https://coderk.github.io/development/2183</link>
+            <guid isPermaLink="true">https://coderk.github.io/development/2183</guid>
             
             <category>개발자</category>
             
@@ -1431,8 +1377,8 @@
 &lt;p&gt;&amp;nbsp;		&lt;/p&gt;
 </description>
             <pubDate>Thu, 29 Dec 2016 22:28:52 +0900</pubDate>
-            <link>http://localhost:4000/development/2159</link>
-            <guid isPermaLink="true">http://localhost:4000/development/2159</guid>
+            <link>https://coderk.github.io/development/2159</link>
+            <guid isPermaLink="true">https://coderk.github.io/development/2159</guid>
             
             
             <category>개발 이야기</category>
@@ -1663,8 +1609,8 @@
 &lt;p&gt;&amp;nbsp;		&lt;/p&gt;
 </description>
             <pubDate>Fri, 09 Sep 2016 13:26:01 +0900</pubDate>
-            <link>http://localhost:4000/development/2051</link>
-            <guid isPermaLink="true">http://localhost:4000/development/2051</guid>
+            <link>https://coderk.github.io/development/2051</link>
+            <guid isPermaLink="true">https://coderk.github.io/development/2051</guid>
             
             <category>rx</category>
             
@@ -1690,8 +1636,8 @@
 &lt;p&gt;&lt;iframe width=&quot;500&quot; height=&quot;510&quot; style=&quot;border: none; overflow: hidden;&quot; src=&quot;https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Ffupfin.geek%2Fposts%2F353216358400687&amp;amp;width=500&quot; scrolling=&quot;no&quot; frameborder=&quot;0&quot; allowtransparency=&quot;true&quot;&gt;&lt;/iframe&gt;		&lt;/p&gt;
 </description>
             <pubDate>Mon, 22 Aug 2016 13:09:10 +0900</pubDate>
-            <link>http://localhost:4000/development/2011</link>
-            <guid isPermaLink="true">http://localhost:4000/development/2011</guid>
+            <link>https://coderk.github.io/development/2011</link>
+            <guid isPermaLink="true">https://coderk.github.io/development/2011</guid>
             
             <category>react</category>
             
@@ -1715,8 +1661,8 @@
 &lt;p&gt;그래서 그런 걸까. 또다시 궁금해졌다. 나는 지금 어디쯤 와 있는 걸까. 어디까지 갈 수 있을까.		&lt;/p&gt;
 </description>
             <pubDate>Sat, 13 Aug 2016 11:45:34 +0900</pubDate>
-            <link>http://localhost:4000/development/1999</link>
-            <guid isPermaLink="true">http://localhost:4000/development/1999</guid>
+            <link>https://coderk.github.io/development/1999</link>
+            <guid isPermaLink="true">https://coderk.github.io/development/1999</guid>
             
             <category>단상</category>
             
@@ -2863,8 +2809,8 @@
 &lt;p&gt;이 글은 제 &lt;a href=&quot;http://m.post.naver.com/viewer/postView.nhn?volumeNo=4575578&amp;amp;memberNo=1377642&quot;&gt;포스트&lt;/a&gt;와 &lt;a href=&quot;http://blog.naver.com/jukrang/220751641825&quot;&gt;블로그&lt;/a&gt;에서도 보실 수 있습니다.		&lt;/p&gt;
 </description>
             <pubDate>Fri, 01 Jul 2016 22:05:29 +0900</pubDate>
-            <link>http://localhost:4000/development/1953</link>
-            <guid isPermaLink="true">http://localhost:4000/development/1953</guid>
+            <link>https://coderk.github.io/development/1953</link>
+            <guid isPermaLink="true">https://coderk.github.io/development/1953</guid>
             
             <category>Javascript</category>
             
@@ -3081,8 +3027,8 @@
 &lt;/div&gt;
 </description>
             <pubDate>Sat, 30 Apr 2016 10:29:37 +0900</pubDate>
-            <link>http://localhost:4000/development/1865</link>
-            <guid isPermaLink="true">http://localhost:4000/development/1865</guid>
+            <link>https://coderk.github.io/development/1865</link>
+            <guid isPermaLink="true">https://coderk.github.io/development/1865</guid>
             
             <category>nightwatch.js</category>
             
@@ -3139,8 +3085,8 @@
 &lt;div class=&quot;se_component se_paragraph default&quot;&gt;&lt;/div&gt;
 </description>
             <pubDate>Sat, 09 Apr 2016 10:06:05 +0900</pubDate>
-            <link>http://localhost:4000/development/1851</link>
-            <guid isPermaLink="true">http://localhost:4000/development/1851</guid>
+            <link>https://coderk.github.io/development/1851</link>
+            <guid isPermaLink="true">https://coderk.github.io/development/1851</guid>
             
             <category>사색</category>
             
@@ -3169,8 +3115,8 @@
 &amp;nbsp;		&lt;/p&gt;
 </description>
             <pubDate>Fri, 18 Mar 2016 13:44:25 +0900</pubDate>
-            <link>http://localhost:4000/development/1839</link>
-            <guid isPermaLink="true">http://localhost:4000/development/1839</guid>
+            <link>https://coderk.github.io/development/1839</link>
+            <guid isPermaLink="true">https://coderk.github.io/development/1839</guid>
             
             <category>babel6</category>
             
@@ -3230,8 +3176,8 @@
 &amp;nbsp;		&lt;/p&gt;
 </description>
             <pubDate>Wed, 24 Feb 2016 17:39:43 +0900</pubDate>
-            <link>http://localhost:4000/development/1802</link>
-            <guid isPermaLink="true">http://localhost:4000/development/1802</guid>
+            <link>https://coderk.github.io/development/1802</link>
+            <guid isPermaLink="true">https://coderk.github.io/development/1802</guid>
             
             <category>react</category>
             
@@ -3252,8 +3198,8 @@
 &lt;p class=&quot;p1&quot;&gt;&lt;span class=&quot;s1&quot;&gt;개발자에게 균형 감각이 중요하다는 사실을 항상 잊지 말자.&lt;/span&gt;&lt;/p&gt;
 </description>
             <pubDate>Fri, 19 Feb 2016 13:24:21 +0900</pubDate>
-            <link>http://localhost:4000/development/1775</link>
-            <guid isPermaLink="true">http://localhost:4000/development/1775</guid>
+            <link>https://coderk.github.io/development/1775</link>
+            <guid isPermaLink="true">https://coderk.github.io/development/1775</guid>
             
             <category>react</category>
             
@@ -3285,8 +3231,8 @@
 &lt;p class=&quot;p1&quot;&gt;
 </description>
             <pubDate>Sun, 14 Feb 2016 18:41:05 +0900</pubDate>
-            <link>http://localhost:4000/development/1765</link>
-            <guid isPermaLink="true">http://localhost:4000/development/1765</guid>
+            <link>https://coderk.github.io/development/1765</link>
+            <guid isPermaLink="true">https://coderk.github.io/development/1765</guid>
             
             <category>babel6</category>
             
@@ -3330,8 +3276,8 @@
 &lt;p&gt;&amp;nbsp;		&lt;/p&gt;
 </description>
             <pubDate>Fri, 04 Dec 2015 23:54:40 +0900</pubDate>
-            <link>http://localhost:4000/development/1745</link>
-            <guid isPermaLink="true">http://localhost:4000/development/1745</guid>
+            <link>https://coderk.github.io/development/1745</link>
+            <guid isPermaLink="true">https://coderk.github.io/development/1745</guid>
             
             <category>facebook</category>
             
@@ -3372,8 +3318,8 @@
 &lt;p&gt;&amp;nbsp;		&lt;/p&gt;
 </description>
             <pubDate>Wed, 02 Dec 2015 14:16:06 +0900</pubDate>
-            <link>http://localhost:4000/development/1717</link>
-            <guid isPermaLink="true">http://localhost:4000/development/1717</guid>
+            <link>https://coderk.github.io/development/1717</link>
+            <guid isPermaLink="true">https://coderk.github.io/development/1717</guid>
             
             <category>단상</category>
             
@@ -3464,8 +3410,8 @@
 &lt;p&gt;&amp;nbsp;&lt;/p&gt;
 </description>
             <pubDate>Sat, 14 Nov 2015 16:23:07 +0900</pubDate>
-            <link>http://localhost:4000/development/1672</link>
-            <guid isPermaLink="true">http://localhost:4000/development/1672</guid>
+            <link>https://coderk.github.io/development/1672</link>
+            <guid isPermaLink="true">https://coderk.github.io/development/1672</guid>
             
             <category>smarteditor3</category>
             
@@ -3495,8 +3441,8 @@
 &lt;p&gt;&amp;nbsp;		&lt;/p&gt;
 </description>
             <pubDate>Mon, 09 Nov 2015 00:24:03 +0900</pubDate>
-            <link>http://localhost:4000/development/1652</link>
-            <guid isPermaLink="true">http://localhost:4000/development/1652</guid>
+            <link>https://coderk.github.io/development/1652</link>
+            <guid isPermaLink="true">https://coderk.github.io/development/1652</guid>
             
             <category>book</category>
             
@@ -3518,8 +3464,8 @@
 &lt;p&gt;&amp;nbsp;		&lt;/p&gt;
 </description>
             <pubDate>Mon, 09 Nov 2015 00:03:57 +0900</pubDate>
-            <link>http://localhost:4000/development/1647</link>
-            <guid isPermaLink="true">http://localhost:4000/development/1647</guid>
+            <link>https://coderk.github.io/development/1647</link>
+            <guid isPermaLink="true">https://coderk.github.io/development/1647</guid>
             
             <category>short thoughts</category>
             
@@ -4109,8 +4055,8 @@ Content-Type: text/plain&lt;/p&gt;
 &lt;/blockquote&gt;
 </description>
             <pubDate>Sun, 20 Apr 2014 00:24:03 +0900</pubDate>
-            <link>http://localhost:4000/posts/2014-04-20-ajax-cors-overview</link>
-            <guid isPermaLink="true">http://localhost:4000/posts/2014-04-20-ajax-cors-overview</guid>
+            <link>https://coderk.github.io/posts/2014-04-20-ajax-cors-overview</link>
+            <guid isPermaLink="true">https://coderk.github.io/posts/2014-04-20-ajax-cors-overview</guid>
             
             <category>AJAX</category>
             
@@ -4852,8 +4798,8 @@ Content-Type: text/plain&lt;/p&gt;
 &lt;p&gt;어쨌든 오늘은 여기까지.&lt;/p&gt;
 </description>
             <pubDate>Mon, 25 Nov 2013 00:24:03 +0900</pubDate>
-            <link>http://localhost:4000/2014-01-19-chalenge-javascript-tdd-3</link>
-            <guid isPermaLink="true">http://localhost:4000/2014-01-19-chalenge-javascript-tdd-3</guid>
+            <link>https://coderk.github.io/2014-01-19-chalenge-javascript-tdd-3</link>
+            <guid isPermaLink="true">https://coderk.github.io/2014-01-19-chalenge-javascript-tdd-3</guid>
             
             <category>TDD</category>
             
@@ -5325,8 +5271,8 @@ Content-Type: text/plain&lt;/p&gt;
 
 </description>
             <pubDate>Mon, 25 Nov 2013 00:24:03 +0900</pubDate>
-            <link>http://localhost:4000/posts/2013-11-25-chalenge-javascript-tdd-2</link>
-            <guid isPermaLink="true">http://localhost:4000/posts/2013-11-25-chalenge-javascript-tdd-2</guid>
+            <link>https://coderk.github.io/posts/2013-11-25-chalenge-javascript-tdd-2</link>
+            <guid isPermaLink="true">https://coderk.github.io/posts/2013-11-25-chalenge-javascript-tdd-2</guid>
             
             <category>TDD</category>
             
@@ -5861,8 +5807,8 @@ Content-Type: text/plain&lt;/p&gt;
 &lt;p&gt;다음 장에서는 동전과 지폐를 다루는 기능을 구현해가면서 TDD에 대해서 좀 더 알아보도록 하겠다.&lt;/p&gt;
 </description>
             <pubDate>Mon, 25 Nov 2013 00:24:03 +0900</pubDate>
-            <link>http://localhost:4000/posts/2013-11-25-chalenge-javascript-tdd-1</link>
-            <guid isPermaLink="true">http://localhost:4000/posts/2013-11-25-chalenge-javascript-tdd-1</guid>
+            <link>https://coderk.github.io/posts/2013-11-25-chalenge-javascript-tdd-1</link>
+            <guid isPermaLink="true">https://coderk.github.io/posts/2013-11-25-chalenge-javascript-tdd-1</guid>
             
             <category>TDD</category>
             
