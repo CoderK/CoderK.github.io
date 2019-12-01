@@ -34,7 +34,7 @@
 <meta property="og:site_name" content="Huns.me" />
 <link rel="next" href="http://localhost:4000/page2" />
 <script type="application/ld+json">
-{"description":"김코딩 님이 잘하고 싶어서 만든 블로그","@type":"WebSite","url":"http://localhost:4000/","name":"Huns.me","author":{"@type":"Person","name":"KimCoding"},"headline":"Huns.me","@context":"http://schema.org"}</script>
+{"description":"김코딩 님이 잘하고 싶어서 만든 블로그","headline":"Huns.me","@type":"WebSite","url":"http://localhost:4000/","name":"Huns.me","author":{"@type":"Person","name":"KimCoding"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -49,7 +49,15 @@
   <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Huns.me" />
 
   <!-- Google Analytics-->
-  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-41794782-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-41794782-1');
+</script>
 </head>
 
   <body class="hidden">
@@ -71,7 +79,7 @@
     <a href="/posts/2019-11-10-32" class="catalogue-item">
       <div>
         <time datetime="2019-11-10 00:00:00 +0900" class="catalogue-time">November 10, 2019</time>
-        <h1 class="catalogue-title">우리는 이렇게 일을 하기로 했습니다.</h1>
+        <h1 class="catalogue-title">팀을 맡고, 한 달 동안 가장 공을 들인 일</h1>
         <div class="catalogue-line"></div>
 
         <p>
@@ -107,19 +115,6 @@
       </div>
     </a>
   
-    <a href="/posts/2019-09-19-why-is-it-difficult-to-understand-the-importance-of-archictecture" class="catalogue-item">
-      <div>
-        <time datetime="2019-09-19 00:00:00 +0900" class="catalogue-time">September 19, 2019</time>
-        <h1 class="catalogue-title">설계의 중요성을 설명하기가 왜 어려웠을까?</h1>
-        <div class="catalogue-line"></div>
-
-        <p>
-          설계가 후순위가 되면 시스템을 개발하는 비용이 더 많이 들고, 일부 또는 전체 시스템에 변경을 가하는 일이 현실적으로 불가능해진다. - Clean Archictecture, 21P 돌아가는 행위(외부 품질)만 중시하고, 설계(내부 품질)를 등한시하면 유지...
-        </p>
-
-      </div>
-    </a>
-  
     <a href="/development/2306" class="catalogue-item">
       <div>
         <time datetime="2019-08-09 11:29:41 +0900" class="catalogue-time">August 09, 2019</time>
@@ -128,6 +123,19 @@
 
         <p>
           1. Express.js는 정적 리소스 요청과 동적 리소스 요청을 구분한다. 정적 리소스에 대한 설정은 express.static으로 지정하도록 구분해 놓은 것이 그렇다. 2. 어떤 리소스 요청이든, Express.js는 모든 응답에 Etag를 자동으로 생성해서 헤더에...
+        </p>
+
+      </div>
+    </a>
+  
+    <a href="/development/2297" class="catalogue-item">
+      <div>
+        <time datetime="2019-05-11 14:42:00 +0900" class="catalogue-time">May 11, 2019</time>
+        <h1 class="catalogue-title">CORS 실패 시, 응답 개체의 status는 왜 0일까?</h1>
+        <div class="catalogue-line"></div>
+
+        <p>
+          문제를 만나다 클라이언트의 도메인과 서버의 도메인이 서로 다른 경우, 브라우저는 크로스 도메인(Cross Domain) 보안 정책에 따라 요청을 차단한다. 이 상황을 우회하는 몇 가지 해법이 있는데, 스마트에디터 원은 주로 CORS를 이용하고...
         </p>
 
       </div>
@@ -149,7 +157,7 @@
     </main>
     <footer>
   <span>
-    &copy; <time datetime="2019-11-10 20:14:33 +0900">2019</time> KimCoding. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+    &copy; <time datetime="2019-12-01 15:42:46 +0900">2019</time> KimCoding. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
   </span>
 </footer>
 
