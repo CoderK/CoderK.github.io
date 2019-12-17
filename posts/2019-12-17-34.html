@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+  <script>
+    WebFont.load({
+      google: {
+        families: ['Nanum Gothic', 'Noto Sans KR', 'Nanum Gothic Coding', 'Nanum Myeongjo']
+      },
+      active() {
+        var tid = setInterval(function() {
+          if (document.body) {
+            document.body.classList.remove("hidden");
+            clearInterval(tid);
+          }
+        }, 500);
+      }
+    });
+  </script>
+
+  <!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>GitHub Actions로 간단히 CI 서버 대신하기 | Huns.me</title>
+<meta name="generator" content="Jekyll v3.8.6">
+<meta property="og:title" content="GitHub Actions로 간단히 CI 서버 대신하기">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="회사에서 CI/CD 도구로 Bamboo를, 코드 저장소로 GitHub를 이용하고 있다. CI 파이프라인을 구축하면서 Bamboo를 GitHub와 연결하려 아래와 같은 흐름을 만들려고 했으나 머지 브랜치를 상대로 CI 빌드를 할 수 있는 방법을 찾지 못하였다.">
+<meta property="og:description" content="회사에서 CI/CD 도구로 Bamboo를, 코드 저장소로 GitHub를 이용하고 있다. CI 파이프라인을 구축하면서 Bamboo를 GitHub와 연결하려 아래와 같은 흐름을 만들려고 했으나 머지 브랜치를 상대로 CI 빌드를 할 수 있는 방법을 찾지 못하였다.">
+<link rel="canonical" href="https://coderk.github.io/posts/2019-12-17-34">
+<meta property="og:url" content="https://coderk.github.io/posts/2019-12-17-34">
+<meta property="og:site_name" content="Huns.me">
+<meta property="og:image" content="https://coderk.github.io/assets/images/new/52e0d0474955ab14ea89807fc62d327a1522dfe054577541702e7ad2_1280.jpg">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2019-12-17T00:00:00+09:00">
+<script type="application/ld+json">
+{"url":"https://coderk.github.io/posts/2019-12-17-34","headline":"GitHub Actions로 간단히 CI 서버 대신하기","dateModified":"2019-12-17T00:00:00+09:00","datePublished":"2019-12-17T00:00:00+09:00","image":"https://coderk.github.io/assets/images/new/52e0d0474955ab14ea89807fc62d327a1522dfe054577541702e7ad2_1280.jpg","description":"회사에서 CI/CD 도구로 Bamboo를, 코드 저장소로 GitHub를 이용하고 있다. CI 파이프라인을 구축하면서 Bamboo를 GitHub와 연결하려 아래와 같은 흐름을 만들려고 했으나 머지 브랜치를 상대로 CI 빌드를 할 수 있는 방법을 찾지 못하였다.","mainEntityOfPage":{"@type":"WebPage","@id":"https://coderk.github.io/posts/2019-12-17-34"},"@type":"BlogPosting","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/legacy/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/legacy/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/legacy/apple-touch-icon.png">
+
+  <!-- RSS -->
+  <link type="application/atom+xml" rel="alternate" href="https://coderk.github.io/feed.xml" title="Huns.me">
+
+  <!-- Google Analytics-->
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-41794782-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-41794782-1');
+</script>
+</head>
+
+  <body class="hidden">
+    <nav class="nav">
+  <div class="nav-container">
+    <a href="/">
+      <h2 class="nav-title">Huns.me</h2>
+    </a>
+    <ul>
+      <li><a href="/about">About</a></li>
+      <li><a href="/">Posts</a></li>
+    </ul>
+  </div>
+</nav>
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Written by</span>
+    KimCoding
+
+    
+      <br>
+      <span>on </span><time datetime="2019-12-17 00:00:00 +0900">December 17, 2019</time>
+    
+  </div>
+
+  <h1 class="post-title">GitHub Actions로 간단히 CI 서버 대신하기</h1>
+  <div class="post-line"></div>
+
+  <p>이 글은 2019년 12월 17일에 작성하였습니다. 이후에는 문서의 내용이 유효하지 않을 수 있습니다.</p>
+
+<p>…</p>
+
+<p class="image-wrapper"><img src="/assets/images/new/52e0d0474955ab14ea89807fc62d327a1522dfe054577541702e7ad2_1280.jpg" alt="책상 위에 파이프라인을 구분해둔 보드판이 보임. 각 단계는 Stories, Todo, In Progress, Testing, Done이라고 이름이 붙어있다." loading="lazy"></p>
+
+<p>회사에서 CI/CD 도구로 Bamboo를, 코드 저장소로 GitHub를 이용하고 있다. CI 파이프라인을 구축하면서 Bamboo를 GitHub와 연결해서 아래의 흐름을 만들려고 했으나 머지 브랜치를 상대로 CI 빌드를 할 수 있는 방법을 찾지 못하였다.</p>
+
+<p class="image-wrapper"><img src="/assets/images/new/expected-pipepline.png" alt="Pull Request -&gt; Merge Branch 생성 -&gt; Build -&gt; Test 파이프라인을 표현하는 그림" loading="lazy"></p>
+
+<p>정확하게, GitHub PR의 머지 브랜치를 참조하는 방법을 Bamboo가 지원하지 않는다. Bamboo는 Atlassian 제품(Bitbucket 같은)과 궁합이 잘 맞는 대신, GitHub에 대한 지원은 빈약하다. GitHub을 이용한다면 Bamboo에서 Pull Request 이벤트를 받아서 베이스 브랜치를 기준으로만 빌드를 할 수 있다. GitHub를 모른 척 할 수 있는 패기에 감탄 :(</p>
+
+<p>​
+어쨌든 나는 살아야겠으니 대안을 찾자.</p>
+
+<p>​</p>
+<h1 id="01-대안을-찾아서">01. 대안을 찾아서…</h1>
+
+<p>Jenkins라는 대안이 있지만 직접 설치를 해야 하는 게 부담이다. Bamboo에, 모든 프로젝트의 배포 플랜을 모으는 게 회사 정책이라 CI 서버를 양쪽에 두면 혼란할 것 같다. 손 안대고 코를 풀고 싶다. 방법이 없을까?</p>
+
+<p>고민을 하다가 배포 파이프라인에서 CI 빌드 단계만 GitHub Actions로 이전하는 걸 검토하기로 했다.</p>
+
+<h1 id="02-github-actions-무엇에-쓰는-물건">02. GitHub Actions, 무엇에 쓰는 물건?</h1>
+
+<p><a href="https://github.com/features/actions">GitHub Actions</a>는 GitHub에서 제공하는 워크플로우(Workflow) 자동화 도구다. 워크플로우라는 단어가 의미하듯 테스트, 빌드, 배포  뿐 아니라 다양한 작업을 만들어서 자동으로 실행하게 할 수 있다. PR에 특정 코멘트를 남기면 자동으로 머지를 하게 만들 수 있고, 데이터를 수집하는 데에 이용할 수도 있다. 누구는 부동산 정보를 수집하기도 하더라.</p>
+
+<blockquote>
+  <p>GitHub hosts Linux and Windows runners on Standard_DS2_v2 virtual machines in Microsoft Azure with the GitHub Actions runner application installed. The GitHub-hosted runner is a fork of the Azure Pipelines Agent. For more information about the Standard_DS2_v2 machine resources, see “DSv2-series” in the Microsoft Azure documentation. - https://bit.ly/2EilXFd</p>
+</blockquote>
+
+<p>GitHub Actions는 Runner 위에서 실행이 되고, Runner는 가상 머신 위에서 실행이 된다. GitHub는 두 종류의 Runner를 제공한다. GitHub-hosted Runner, 그리고 Self-Hosted Runner.</p>
+
+<p>GitHub-Hosted Runner는 MS Azure의 가상 머신 위에서 돌아간다. 아래에 보이듯이 아직 가상 머신의 사양이 그렇게 좋지는 않다.</p>
+
+<ul>
+  <li>2-core CPU</li>
+  <li>7 GB of RAM memory</li>
+  <li>14 GB of SSD disk space</li>
+</ul>
+
+<p>로컬에서 9분이 걸리는 CI 빌드를, GitHub-Hosted에서 수행하는 데에 14분이 걸렸다. 만족스럽지는 않지만 쓸만한 정도랄까.
+Self-Hosted Runner를 이용하면 직접 가상 머신을 임대해서 GitHub Actions 실행 환경을 만들 수 있다(고 한다). GitHub Actions를 로컬에서 실행할 수도 있다. 해보지 않았으니 자세한 내용은 생략.</p>
+
+<p><a href="https://help.github.com/en/actions/automating-your-workflow-with-github-actions/adding-self-hosted-runners">Adding self-hosted runners - GitHub Help</a></p>
+
+<p>아직 베타 버전이고, 라이센스 플랜에 따라 사용하는 데에 제한이 있지만 프론트엔드 저장소를 빌드하는 목적으로 쓰기에는 충분해 보인다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>GitHub plan</strong></th>
+      <th><strong>Total concurrent jobs</strong></th>
+      <th><strong>Maximum concurrent macOS jobs</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Free</td>
+      <td>20</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>Pro</td>
+      <td>40</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>Team</td>
+      <td>60</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>Enterprise</td>
+      <td>180</td>
+      <td>15</td>
+    </tr>
+  </tbody>
+</table>
+
+<h1 id="03-사용-신청을-해보자">03. 사용 신청을 해보자!</h1>
+
+<p>아직 베타 서비스이기에 따로 신청을 해야만 사용할 수 있다. 신청을 하면 저장소 페이지의 상단 탭에 Actions 메뉴가 생긴다.</p>
+
+<p class="image-wrapper"><img src="/assets/images/new/screenshot-with-actions-tab.png" alt="GitHub의 저장소 페이지 상단 탭에 Actions 메뉴가 보인다." loading="lazy"></p>
+
+<h1 id="04-action과-workflow">04. Action과 Workflow</h1>
+
+<p>Action은 사용자가 작성하는 실행 가능한 코드 덩어리로, 하나의 작업을 설명한다. Workflow는 Action을 실행하는 환경과 단계를 서술한다.</p>
+
+<p>하나의 Workflow는 여러 개의 Action을 실행할 수 있다. 그래서 이름이 GitHub Actions다. Actions 페이지에 들어가 보면 저장소에서 사용하는 기술에 맞는 Workflow 템플릿을 추천 해준다.</p>
+
+<p class="image-wrapper"><img src="/assets/images/new/github-actions-page.png" alt="GitHub가 제시하는 추천 Workflow가 보이는 이미지. Node.js, Node.js Package, Rust, Python package 등." loading="lazy"></p>
+
+<p>프론트엔드 애플리케이션의 CI 빌드 워크플로우를 작성하기 위해서 Node.js Workflow를 선택했다.</p>
+
+<p class="image-wrapper"><img src="/assets/images/new/nodejs-workflow.png" alt="기본으로 제공하는 샘플 Node.js Workflow" loading="lazy"></p>
+
+<p>Workflow 파일은 .github/workflows 디렉터리에 위치한다. 화면에 보이는 것처럼 GitHub의 Actions 탭에서 직접 작성할 수 있다. 로컬에서 소스 코드처럼 작성하고 GitHub 원격 저장소로 Push를 할 수도 있다.</p>
+
+<p>Action을 npm 패키지처럼 Marketplace에  배포를 하면 우측의 <a href="https://github.com/marketplace">GitHub Marketplace</a>에 노출되어 다른 사용자와 공유할 수 있다. 물론 다른 사람이 작성한 Action을 이용하는 것도 가능.
+​</p>
+<h1 id="05-pull-request--test-실행하기">05. Pull Request → Test 실행하기</h1>
+
+<p>Node.js Workflow를 선택하면 아래의 yml이 만들어진다.</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+</pre></td>
+<td class="code"><pre>name: Node CI
+
+on: <span class="o">[</span>push]
+
+<span class="nb">jobs</span>:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: <span class="o">[</span>8.x, 10.x, 12.x]
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js <span class="k">${</span><span class="p">{ matrix.node-version </span><span class="k">}</span><span class="o">}</span>
+      uses: actions/setup-node@v1
+      with:
+        node-version: <span class="k">${</span><span class="p">{ matrix.node-version </span><span class="k">}</span><span class="o">}</span>
+    - name: npm <span class="nb">install</span>, build, and <span class="nb">test
+      </span>run: |
+        npm ci
+        npm run build <span class="nt">--if-present</span>
+        npm <span class="nb">test
+      env</span>:
+        CI: <span class="nb">true</span>
+</pre></td>
+</tr></tbody></table></code></pre></figure>
+
+<p>YAML 문법으로 작성하기에, 몇 가지 패턴만 익히면 누구나 쉽게 작성할 수 있다. 내가 참여하고 있는 프로젝트는 GitHub Packages + GitHub Private Repository + Yarn을 이용하고 있기 때문에 이 Workflow를 그대로 사용할 수 없다. Wowrkflow를 수정하자.</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+</pre></td>
+<td class="code"><pre>name: CI Build
+
+on: <span class="o">[</span>pull_request]
+
+<span class="nb">jobs</span>:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: <span class="o">[</span>12.x]
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Use Node.js <span class="k">${</span><span class="p">{ matrix.node-version </span><span class="k">}</span><span class="o">}</span>
+        uses: actions/setup-node@v1
+        with:
+          node-version: <span class="k">${</span><span class="p">{ matrix.node-version </span><span class="k">}</span><span class="o">}</span>
+          registry-url: <span class="s2">"https://npm.pkg.github.com"</span>
+
+      - name: Set up SSH Agent
+        uses: webfactory/ssh-agent@v0.1.1
+        with:
+          ssh-private-key: <span class="k">${</span><span class="p">{ secrets.SSH_PRIVATE_KEY </span><span class="k">}</span><span class="o">}</span>
+
+      - name: Install dependencies
+        run: yarn <span class="nb">install
+        env</span>:
+          NODE_AUTH_TOKEN: <span class="k">${</span><span class="p">{ secrets.GPR_AUTH_TOKEN </span><span class="k">}</span><span class="o">}</span>
+          CI: <span class="nb">true</span>
+
+      - name: Run Build
+        run: yarn build
+
+      - name: Run Tests
+        run: yarn run <span class="nb">test</span>:ci
+</pre></td>
+</tr></tbody></table></code></pre></figure>
+
+<p>이제 저장소로 PR을 보내면 아래와 같이 GitHub이 Workflow를 실행하는 모습을 볼 수 있다. 다른 설정을 할 필요가 없다.</p>
+
+<p class="image-wrapper"><img src="/assets/images/new/progress-in-status-check.png" alt="PR 페이지에서 Status Check가 진행중이며, Some checks haven't completed yet이라는 문장이 보인다." loading="lazy"></p>
+
+<p>체크 섹션의 Details를 클릭하거나, PR 페이지 → Checks 탭을 클릭하면 실행 로그를 볼 수 있다.</p>
+
+<p class="image-wrapper"><img src="/assets/images/new/github-actions-view.png" alt="Checks 탭에서 실행하고 있는 Workflow의 진행 로그를 보여주는 화면을 볼 수 있다." loading="lazy"></p>
+
+<p>성공하면 이렇게 바뀐다.</p>
+
+<p class="image-wrapper"><img src="/assets/images/new/status-check-success.png" alt="Status Check를 통과한 화면. All checks have passed라는 문장이 보인다." loading="lazy"></p>
+
+<h1 id="06-workflow-파일-하나씩-뜯어-보기">06. Workflow 파일, 하나씩 뜯어 보기</h1>
+
+<p>문법이 매우 직관적이고 공식 문서도 잘 정리되어 있어서 누구나 30분만 공부하면 금방 Workflow를 만들 수 있다.</p>
+
+<p><a href="https://help.github.com/en/actions/automating-your-workflow-with-github-actions">Automating your workflow with GitHub Actions</a></p>
+
+<p>그것마저도 귀찮은 누군가를 위해서 내가 위에서 작성한 워크 플로우를 단계별로 간단히 살펴본다.
+​</p>
+<h3 id="1-워크-플로우-이름">1) 워크 플로우 이름</h3>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+</pre></td>
+<td class="code"><pre>name: CI Build
+</pre></td>
+</tr></tbody></table></code></pre></figure>
+
+<p>name은 이 워크 플로우의 이름을 의미한다.</p>
+
+<h3 id="2-실행-시점">2) 실행 시점</h3>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+</pre></td>
+<td class="code"><pre>on: <span class="o">[</span>pull_request]
+</pre></td>
+</tr></tbody></table></code></pre></figure>
+
+<p>on은 이 워크 플로우를 실행할 시점을 설정한다. pull_request는 GitHub로 PR을 보낼때, PR에 커밋을 추가할 때마다 실행하라는 뜻이다. Webhook 처럼 이벤트 시점을 등록할 수 있고, POSIX cron 문법으로 직접 스케줄을 정의할 수도 있다.</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+2
+3
+</pre></td>
+<td class="code"><pre>on:
+  schedule:
+    - cron:  <span class="s1">'*/15 * * * *'</span>
+</pre></td>
+</tr></tbody></table></code></pre></figure>
+
+<p><a href="https://help.github.com/en/actions/automating-your-workflow-with-github-actions/events-that-trigger-workflows">Events that trigger workflows</a>
+​</p>
+<h3 id="3-머지-브랜치-체크아웃">3) 머지 브랜치 체크아웃</h3>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+</pre></td>
+<td class="code"><pre>- uses: actions/checkout@v1
+</pre></td>
+</tr></tbody></table></code></pre></figure>
+
+<p>uses는 사용할 액션의 패키지 이름을 지정한다. <a href="https://github.com/actions/checkout">actions/checkout@v1</a>은 저장소를 설정하고 PR의 머지 브랜치를 체크아웃한다.</p>
+
+<p>사용할 수 있는 Action은 Marketplace에서 검색할 수 있다. npm package registry와 비슷한 친구다. 직접 로컬에 Action을 작성한 경우에는 로컬 디렉터리를 지정해줄 수도 있다.</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+</pre></td>
+<td class="code"><pre>- uses: ./.github/actions/coverage-commenter
+</pre></td>
+</tr></tbody></table></code></pre></figure>
+
+<p>사용자 정의 Action을 만들려면 GitHub이 안내하는 방식을 따라야 한다. 아래 문서에 잘 나와 있다.</p>
+
+<p><a href="https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-a-javascript-action">Creating a JavaScript action</a></p>
+
+<p>또는 직접 <a href="https://github.com/marketplace?type=actions">Marketplace에</a> 올라온 Action의 코드(예, <a href="https://github.com/ziishaned/jest-reporter-action">jest-reporter-action</a>)를 살펴보는 것도 좋다.
+​</p>
+<h3 id="4-nodejs-환경-설정">4) Node.js 환경 설정</h3>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td>
+<td class="code"><pre>- name: Use Node.js <span class="k">${</span><span class="p">{ matrix.node-version </span><span class="k">}</span><span class="o">}</span>
+  uses: actions/setup-node@v1
+  with:
+    node-version: <span class="k">${</span><span class="p">{ matrix.node-version </span><span class="k">}</span><span class="o">}</span>
+    registry-url: <span class="s2">"https://npm.pkg.github.com"</span>
+</pre></td>
+</tr></tbody></table></code></pre></figure>
+
+<p>이후 Workflow를 실행할 Node.js 환경을 설정한다. 사설 npm 저장소를 이용하는 경우에 registry-url을 옵션으로 설정해야 한다. https://npm.pkg.github.com은 GitHub Packages Registry를 가리킨다.</p>
+
+<p><code class="highlighter-rouge">${{ ... }}</code>은 Runner를 실행하는 <a href="https://help.github.com/en/actions/automating-your-workflow-with-github-actions/contexts-and-expression-syntax-for-github-actions#contexts">문맥(Contexts)</a>에 대한 정보나 <a href="https://help.github.com/en/actions/automating-your-workflow-with-github-actions/using-environment-variables">환경 변수(Environment Variables)</a>를 참조할 때 이용하는 표현식이다.
+​</p>
+<h3 id="5-ssh-agent-설정">5) SSH Agent 설정</h3>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td>
+<td class="code"><pre>- name: Set up SSH Agent
+  uses: webfactory/ssh-agent@v0.1.1
+  with:
+    ssh-private-key: <span class="k">${</span><span class="p">{ secrets.SSH_PRIVATE_KEY </span><span class="k">}</span><span class="o">}</span>
+</pre></td>
+</tr></tbody></table></code></pre></figure>
+
+<p>Private 저장소를 이용한다면 SSH 비밀키를 설정해야 한다. <a href="https://github.com/marketplace/actions/webfactory-ssh-agent">webfactory/ssh-agent@v0.1.1</a>는 SSH Agent에 비밀키를 설정하는 걸 돕는다. 보안에 예민한 접근 제한키나 토큰과 같은 정보는 직접 워크 플로우 파일에 작성하기가 찜찜하다. 그래서 GitHub는 Secrets라는 기능을 제공한다.</p>
+
+<p>​이 기능은 <u>저장소 &gt; Settings &gt; Secrets</u>에서 이용할 수 있다.</p>
+
+<p>Secrets에 환경 변수를 등록하면 GitHub는 이를 암호화해서 들고 있다가, 런타임에 secrets의 프로퍼티로 제공한다. 참고로 Secrets에 입력한 값은 자동으로 암호화(Encrypted)가 된다. 토큰을 Secrets에 등록할 때는 암호화하지 않은 버전을 등록해야 한다는 걸 주의하자.
+​</p>
+<h3 id="6-패키지-설치">6) 패키지 설치</h3>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td>
+<td class="code"><pre>- name: Install dependencies
+  run: yarn <span class="nb">install
+  env</span>:
+    NODE_AUTH_TOKEN: <span class="k">${</span><span class="p">{ secrets.GPR_AUTH_TOKEN </span><span class="k">}</span><span class="o">}</span>
+    CI: <span class="nb">true</span>
+</pre></td>
+</tr></tbody></table></code></pre></figure>
+
+<p>run은 CLI 명령어를 실행할 때 사용한다. env를 이용해 Runner에 환경 변수를 설정할 수 있다. 사설 npm 저장소를 이용하기에 인증 토큰을 NODE_AUTH_TOKEN 환경 변수에 설정했다.
+​</p>
+<h3 id="7-빌드-테스트">7) 빌드, 테스트</h3>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td>
+<td class="code"><pre>- name: Run Build
+  run: yarn build
+
+- name: Run Tests
+  run: yarn run <span class="nb">test</span>:ci
+</pre></td>
+</tr></tbody></table></code></pre></figure>
+
+<p>마지막으로 소스 코드를 빌드하고 테스트를 실행한다. 미리 작성해둔 npm scripts를 실행하는 일이라 여기에서는 특별히 볼 게 없다. run에 입력한 코드를 그대로 실행하는 게 전부다. 두 개의 스텝을 아래와 같이 하나로 합칠 수도 있다.</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+2
+3
+</pre></td>
+<td class="code"><pre>- name: Run build and tests
+  run: yarn build <span class="o">&amp;&amp;</span> yarn run <span class="nb">test</span>:ci
+​
+</pre></td>
+</tr></tbody></table></code></pre></figure>
+
+<h1 id="07-소감은">07. 소감은…?</h1>
+
+<p>GitHub와 CI 서버를 연동하기 위해서 번거로운 작업을 하지 않아도 되는 점이 가장 좋았다. Actions를 만들어서 오픈 소스로 쉽게 공유할 수 있는 것도 장점이다. 지금은 실행 속도가 조금 느리지만 앞으로 고사양의 가상 서버를 추가하면서 더 나아질거라 기대한다. 물론 공짜는 아니겠지.</p>
+
+<p>Repository, GitHub Actions, GitHub Packages 까지. GitHub이 착실하게 자신의 영역을 넓히고 있다. GitHub DevOps를 볼 날이 얼마 남지 않았다.</p>
+
+
+</div>
+
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function () {
+    this.page.url = location.href;
+    this.page.identifier = location.href;
+  };
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://huns-me.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
+
+    </main>
+    <footer>
+  <span>
+    © <time datetime="2019-12-23 10:34:44 +0900">2019</time> KimCoding. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+  </span>
+</footer>
+
+  </body>
+</html>
