@@ -5,9 +5,32 @@
         <description>김코딩 님이 잘하고 싶어서 만든 블로그</description>
         <link>https://coderk.github.io/</link>
         <atom:link href="https://coderk.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Wed, 06 May 2020 15:12:14 +0900</pubDate>
-        <lastBuildDate>Wed, 06 May 2020 15:12:14 +0900</lastBuildDate>
+        <pubDate>Mon, 10 Jan 2022 22:22:26 +0900</pubDate>
+        <lastBuildDate>Mon, 10 Jan 2022 22:22:26 +0900</lastBuildDate>
         <generator>Jekyll v3.8.6</generator>
+        
+        <item>
+            <title>2022년에 잘하고 싶은 두 가지</title>
+            <description>&lt;p&gt;올해 잘하고 싶은 두 가지.&lt;/p&gt;
+
+&lt;h3 id=&quot;1어깨에-힘-빼기&quot;&gt;1.어깨에 힘 빼기&lt;/h3&gt;
+
+&lt;p&gt;회사에서 하는 일이, 치열함보다는 즐거움에 더 가까웠으면 좋겠다. 팀이 가치를 만들어가는 과정이 고통스럽거나, 누군가의 희생에 의지하지 않기를 바란다. 풀어야 하는 문제와 우리가 가진 역량 사이에서 균형점을 잘 찾아야 한다. 12척도 안 되는 배를 가지고 적과 싸운다. 전선을 최대한 좁히고 유리한 위치를 찾아서 자리를 잡자. 어렵지만 지난주에 약간 힌트를 얻은 것 같다.&lt;/p&gt;
+
+&lt;h3 id=&quot;2-인생을-좀-더-즐기기&quot;&gt;2. 인생을 좀 더 즐기기&lt;/h3&gt;
+
+&lt;p&gt;올해는 꼭 가족과 함께 할 수 있는 소소한 취미를 찾고 싶다. 인생이 짧다고 생각했는데, 나이를 먹을수록 더 짧게 느껴진다. 문득 일을 뺀 내 삶이 참 재미없다는 생각이 들었다. 가족이 생기면서 훨씬 나아졌지만 그래도 삶은 지루하다. 생각해 보면 제대로 된 취미 하나 없네? 올해는 꼭 해도해도 질리지 않는 소소한 취미를 찾아서, 줘도줘도 아깝지 않은 가족과 함께 즐기고 싶다.&lt;/p&gt;
+</description>
+            <pubDate>Mon, 10 Jan 2022 00:00:00 +0900</pubDate>
+            <link>https://coderk.github.io/posts/2022-01-10-37</link>
+            <guid isPermaLink="true">https://coderk.github.io/posts/2022-01-10-37</guid>
+            
+            <category>단상</category>
+            
+            
+            <category>단상</category>
+            
+        </item>
         
         <item>
             <title>리팩터링에 대한 단상</title>
@@ -4681,27 +4704,6 @@ on: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;pull_request]
             <guid isPermaLink="true">https://coderk.github.io/development/1652</guid>
             
             <category>book</category>
-            
-            <category>short thoughts</category>
-            
-            
-            <category>개발 이야기</category>
-            
-        </item>
-        
-        <item>
-            <title>정말 소프트웨어는 '겉에서 보기에 잘 돌아가면 그만'일까?</title>
-            <description>&lt;p&gt;
-				소프트웨어는 '겉에서 보기에 잘 돌아가면 그만'이라고 말하는 사람을 종종 본다. 이러한 주장에는 소프트웨어의 내부 품질은 별로 중요하지 않다는 생각이 깔려있다. 나는 여기에 공감하지 않는다.&lt;/p&gt;
-&lt;p&gt;겉에서 보기에 잘 돌아간다는 것은 지금 당장에 유효한 사실일 뿐, 미래에도 그럴 것이라 보장할 수 없다. 게다가 요즘처럼 빠르게 변하는 불확실한 환경에서 살아남기 위해서는 급변하는 비지니스 환경에 맞춰 기민하게 대응할 수 있도록 애플리케이션의 구조를 변경하기 유리하게 만들어야 한다.  여기에서 변경하기 유리한 구조란 높은 품질의 코드를 뜻한다. 요구사항 변경에 빠르게 대응하기 어려운 저품질의 코드는 중요한 순간에 비즈니스의 발목을 잡을 가능성이 매우 높다.&lt;/p&gt;
-&lt;p&gt;시한 폭탄을 안고 어디까지 갈 수 있을까?&lt;/p&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
-&lt;p&gt;&amp;nbsp;		&lt;/p&gt;
-</description>
-            <pubDate>Mon, 09 Nov 2015 00:03:57 +0900</pubDate>
-            <link>https://coderk.github.io/development/1647</link>
-            <guid isPermaLink="true">https://coderk.github.io/development/1647</guid>
             
             <category>short thoughts</category>
             
