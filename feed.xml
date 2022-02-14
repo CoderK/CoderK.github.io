@@ -3,45 +3,82 @@
     <channel>
         <title>Huns.me</title>
         <description>김코딩 님이 잘하고 싶어서 만든 블로그</description>
-        <link>http://localhost:4000/</link>
-        <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Sat, 29 Jan 2022 18:15:09 +0900</pubDate>
-        <lastBuildDate>Sat, 29 Jan 2022 18:15:09 +0900</lastBuildDate>
+        <link>https://coderk.github.io/</link>
+        <atom:link href="https://coderk.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+        <pubDate>Tue, 15 Feb 2022 10:16:12 +0900</pubDate>
+        <lastBuildDate>Tue, 15 Feb 2022 10:16:12 +0900</lastBuildDate>
         <generator>Jekyll v3.8.6</generator>
+        
+        <item>
+            <title>(리뷰)팀 토폴로지 -  빠른 업무 플로우를 만드는 조직 설계</title>
+            <description>&lt;p&gt;&lt;img src=&quot;/assets/images/new/2022-02-14-39-background.jpeg&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;올해 4번째로 읽은 책, &lt;a href=&quot;https://book.naver.com/bookdb/book_detail.nhn?bid=17689088&quot;&gt;팀 토폴로지&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;콘웨이는 일찍이 “조직은 자신의 커뮤니케이션 경로를 반영한 설계를 하도록 제약받는다”라고 했다. 소프트웨어 아키텍처는 소프트웨어를 개발하는 조직의 커뮤니케이션 역학을 거스르지 못한다는 뜻이다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;콘웨이의 법칙이라고 가장 많이 알려진 구절은 다음과 같다.&lt;/p&gt;
+
+  &lt;p&gt;‘조직은 자신의 커뮤니케이션 경로를 반영한 설계를 하도록 제약 받는다.’&lt;/p&gt;
+
+  &lt;p&gt;콘웨이는 초기 전자 컴퓨터 시스템을 구현한 기업들을 관찰했다. 콘웨이가 말한 법칙이란 조직 커뮤니케이션의 실제 경로(플래깅이 언급한 가치 창출 구조)와 조직이 개발한 소프트웨어 아키텍처 사이의 강한 관성, 혹은 알란 켈리(Allan Kelly)가 준동형의 힘(homorphic force)이라 부른 것을 의미한다. 준동형의 힘은 소프트웨어 아키텍처와 팀 구조 사이의 모든 것을 동일한 형태로 만드는 경향이 있다. 다시 말해, 실현 가능한 소프트웨어 아키텍처를 올바로 선택해 구현하려면 팀 커뮤니케이션에 관한 이해부터 선행돼야 한다. 만일 만들고자 하는 이론적 시스템 구조와 실질적 조직 모델이 상충하면 둘 중 하나를 바꿔야 한다.&lt;/p&gt;
+
+  &lt;p&gt;&lt;cite&gt;팀 토폴로지 &amp;gt; 부활한 콘웨이의 법칙 - P.45&lt;/cite&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;소프트웨어를 설계할 때는 조직 커뮤니케이션 구조를 함께 고민해야 한다. 기술, 사람, 그리고 기술과 사람 사이에 존재하는 역학까지. 아키텍트는 설계의, 기술적, 사회적, 환경적 측면을 모두 다뤄야 한다. 이게 안 되면 문제의 아주 지엽적인 면만 겨우 건드리거나, 문제랑 동떨어진, 현실성 없는 해결책을 만들 수밖에 없다. 그렇게 설계는 실패한다.&lt;/p&gt;
+
+&lt;p&gt;1장은 주로 문제를 정의하며 콘웨이 법칙의 중요성을 강조하는데, 경험적으로 공감 가는 내용이 정말 많았다. 내가 책을 쓰면 이렇게 썼을 것 같다 싶을 정도. 2~3장에서는 팀 커뮤니케이션 설계 대안으로 4가지 기본 팀 토폴로지와 3가지 핵심 팀 상호 작용 모드를 제안한다. 이게 핵심. 의도적으로 단순화 한 설계 패턴을 팀 빌딩 블록으로 제시하는데, 이 단순한 조합이 만들어내는 유연성과 탄력성은 많은 인사이트를 준다.&lt;/p&gt;
+
+&lt;p&gt;그런데 번역이 너무 아쉽다. 번역만 아니면 인생 도서에 올릴 책인데. 문장을 여러번 곱씹어야 겨우 저자의 의도를 이해할 수 있더라. 나중에 번역을 개선한 개선판이 나와주면 좋겠다.&lt;/p&gt;
+</description>
+            <pubDate>Mon, 14 Feb 2022 00:00:00 +0900</pubDate>
+            <link>https://coderk.github.io/posts/2022-02-14-39-팀토폴로지</link>
+            <guid isPermaLink="true">https://coderk.github.io/posts/2022-02-14-39-팀토폴로지</guid>
+            
+            <category>책리뷰</category>
+            
+            
+            <category>책리뷰</category>
+            
+        </item>
         
         <item>
             <title>메타버스에 대한 몇 가지 끄적임</title>
             <description>&lt;p&gt;&lt;img src=&quot;/assets/images/new/2022-01-29-38-background.jpeg&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;메타버스에 대한, 내 머리 속에 떠도는 몇 가지 생각을 끄적이기.&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;메타버스는 개념이 모호하고 여러 가지가 뒤얽혀서 진짜를 알기 쉽지 않다. 솔루션은 많지만 문제는 희소하다. 아이디어는 많지만 실체는 부족하다. 열풍에는 분명 거품이 껴 있다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;거품이 나쁘다는 건 아니다. 거품 안에 기회가 있다는 건 과거의 여러 사례가 증명하니깐. 거품이 생길 때 투자가 일어나고 인프라가 폭발적으로 확장되지 않았나. 인간의 욕망이 여기로 모이고 있다는 게 중요하다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;거품의 끝에 뭐가 남을지 궁금하다. 그게 이 현상의 본질일 테니까. 본질을 잘 찌르는 기업이 승리하겠지. 페이스북이 소셜을 먹었듯이. 어쩌면 그날의 메타버스는 우리가 지금 아는 거랑 다른 모습일 수도 있겠다는 상상을 해본다. 지금 쏟아지는 것들이 1-2년 성숙되어야 뭐가 좀 보일 것 같다. 로블록스나 제페토 같은 비즈니스가 지속 성장 가능할지도 관건이고. 시시해지면 곧 사라질지도 모르지 않나.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;10대 취항의 아바타형 메타버스가 시장을 이끌고 있지만, 10~20대를 넘어서 30~60대, 그 이상의 참여를 이끌어내야 하지 않을까? 이건 어떻게 풀려나? 이걸 해내지 못하면 결국 마이너 아닌가? 네이버 같은 기업한테는 특히 중요한 문제일 듯.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;메타버스의 개념이 혼란해서 그런지 상대적으로 기술은 선명해 보인다. 교집합에 있는 녀석이 가장 본질에 가깝지 않을까? 3D, XR, AI, 클라우드, NFT 등등등. 이거 그냥 다 가져다 끌어올 기세다. 게임이 이런 요소를 많이 가지고 있다는 데 동의. MS의 액티비전 인수는 임팩트가 크다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;성장이 정체되어 고심하던 게임 업계가 이 기회를 놓칠 리 없지. 역시나 너도나도 뛰어들며 탑을 쌓는 중. 어떻게 보면 FOMO 같기도. 시선을 잡아끄는 데는 성공.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;근데 아이디어가 게임스러운 모습을 하고 있다고 이게 게임인가 하면 그건 또 아닌 것 같고. 산업과 기술이 폭넓게 융합하면서 디지털 전환 속도가 빨라지고 있다는 관점에서 봐야 하지 않을까? 게임 회사 입장에서도 전에 경험하지 못한 영역으로 뛰어드는 상황이다. 유리하기만 한 경기는 아닐터. 결핍을 어떤 식으로 해소할지 지켜보는 것도 흥미로울 듯.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;이런 상황에서는 용어보다는 기술에 집중하는 게 어떨까? 손에 잡히는 것들을 다양하게 엮는 상상을 하고, 상상을 빠르게, 많이, 만들어 보는 게 좋은 전략이라는 생각이 든다. 물론 기업은 바깥에 뻥카를 잘 쳐야 할 거고. 있어 보이게. 답을 찾을(은) 것처럼.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
 
-&lt;p&gt;1. 
-지금의 메타버스 열풍에는 거품이 껴 있다고 생각한다. 개념이 모호하고 여러 가지가 뒤얽혀서 진짜를 가려내기 쉽지 않다. 솔루션은 많지만 문제는 희소하다.&lt;/p&gt;
-
-&lt;p&gt;2. 
-거품이 나쁘다는 건 아니다. 거품 안에 기회가 있다는 건 과거의 여러 사례가 증명하니깐. 거품이 생길 때 투자가 일어나고 인프라가 폭발적으로 확장되지 않았나. 인간의 욕망이 여기로 모이고 있다는 게 중요하다.&lt;/p&gt;
-
-&lt;p&gt;3. 
-거품의 끝에 뭐가 남을지 궁금하다. 그게 이 현상의 본질일 테니까. 본질을 잘 찌르는 기업이 승리하겠지. 페이스북이 소셜을 먹었듯이. 어쩌면 그때의 메타버스는 우리가 지금 아는 거랑 다른 모습일 수도 있겠다는 상상을 해본다. 지금 쏟아지는 것들이 1-2년 성숙되어야 뭐가 좀 보일 것 같다. 로블록스나 제페토 같은 비즈니스가 지속 성장 가능할지도 관건이고. 시시해지면 곧 사라질지도 모르지 않나.&lt;/p&gt;
-
-&lt;p&gt;4. 
-10대 취항의 아바타형 메타버스가 시장을 이끌고 있지만, 10 ~ 20대를 넘어서 30 ~ 60대, 그 이상의 참여를 이끌어내야 하지 않을까? 이건 어떻게 풀려나? 이걸 해내지 못하면 결국 마이너 아닌가? 네이버 같은 기업한테는 특히 중요한 문제일 듯.&lt;/p&gt;
-
-&lt;p&gt;5. 
-메타버스의 개념이 혼란해서 그런지 상대적으로 기술은 선명해 보인다. 교집합에 있는 녀석이 가장 본질에 가깝지 않을까? 3D, XR, AI, 클라우드, NFT 등등등. 이거 그냥 다 가져다 끌어올 기세다. 게임이 이런 요소를 많이 가지고 있다는 데 동의.&lt;/p&gt;
-
-&lt;p&gt;6. 
-성장이 정체되어 고심하던 게임 업계가 이 기회를 놓칠 리 없지. 역시나 너도나도 뛰어들며 탑을 쌓는 중. 어떻게 보면 FOMO 같기도. 시선을 잡아끄는 데는 성공했다.&lt;/p&gt;
-
-&lt;p&gt;7. 
-근데 아이디어가 게임스러운 모습을 하고 있다고 이게 게임인가 하면 그건 또 아닌 것 같고. 산업과 기술이 폭넓게 융합하면서 디지털 전환 속도가 빨라지고 있다는 관점에서 봐야 하지 않을까? 게임 회사 입장에서도 전에 경험하지 못한 영역으로 뛰어드는 상황이다. 유리하기만 한 경기는 아니다. 결핍을 어떤 식으로 해소하며 연합할지 지켜보는 것도 흥미로울 듯.&lt;/p&gt;
-
-&lt;p&gt;8. 
-이런 상황에서는 용어보다는 기술에 집중하는 게 어떨까? 손에 잡히는 것들을 다양하게 엮는 상상을 하고, 상상을 빠르게, 많이, 만들어 보는 게 좋은 전략이라는 생각이 든다. 물론 기업은 바깥에 뻥카를 잘 쳐야 할 거고. 있어 보이게. 답을 찾을(은) 것처럼.&lt;/p&gt;
 </description>
             <pubDate>Sat, 29 Jan 2022 00:00:00 +0900</pubDate>
-            <link>http://localhost:4000/posts/2022-01-29-38</link>
-            <guid isPermaLink="true">http://localhost:4000/posts/2022-01-29-38</guid>
+            <link>https://coderk.github.io/posts/2022-01-29-38</link>
+            <guid isPermaLink="true">https://coderk.github.io/posts/2022-01-29-38</guid>
             
             <category>단상</category>
             
@@ -63,8 +100,8 @@
 &lt;p&gt;올해는 꼭 가족과 함께 할 수 있는 소소한 취미를 찾고 싶다. 인생이 짧다고 생각했는데, 나이를 먹을수록 더 짧게 느껴진다. 문득 일을 뺀 내 삶이 참 재미없다는 생각이 들었다. 가족이 생기면서 훨씬 나아졌지만 그래도 삶은 지루하다. 생각해 보면 제대로 된 취미 하나 없네? 올해는 꼭 해도해도 질리지 않는 소소한 취미를 찾아서, 줘도줘도 아깝지 않은 가족과 함께 즐기고 싶다.&lt;/p&gt;
 </description>
             <pubDate>Mon, 10 Jan 2022 00:00:00 +0900</pubDate>
-            <link>http://localhost:4000/posts/2022-01-10-37</link>
-            <guid isPermaLink="true">http://localhost:4000/posts/2022-01-10-37</guid>
+            <link>https://coderk.github.io/posts/2022-01-10-37</link>
+            <guid isPermaLink="true">https://coderk.github.io/posts/2022-01-10-37</guid>
             
             <category>단상</category>
             
@@ -138,8 +175,8 @@
 &lt;p&gt;1번은 열심히 공부하는 하는 걸로. 2번과 3번은 평소에 고민하고 있었는데 마침 기회가 닿아 동료와 따로 논의하는 자리를 만들기로 했다. 하나씩 부러뜨려 보자.&lt;/p&gt;
 </description>
             <pubDate>Wed, 06 May 2020 00:00:00 +0900</pubDate>
-            <link>http://localhost:4000/posts/2020-05-06-36</link>
-            <guid isPermaLink="true">http://localhost:4000/posts/2020-05-06-36</guid>
+            <link>https://coderk.github.io/posts/2020-05-06-36</link>
+            <guid isPermaLink="true">https://coderk.github.io/posts/2020-05-06-36</guid>
             
             <category>리팩터링</category>
             
@@ -842,8 +879,8 @@
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 </description>
             <pubDate>Wed, 08 Jan 2020 00:00:00 +0900</pubDate>
-            <link>http://localhost:4000/posts/2020-01-09-35</link>
-            <guid isPermaLink="true">http://localhost:4000/posts/2020-01-09-35</guid>
+            <link>https://coderk.github.io/posts/2020-01-09-35</link>
+            <guid isPermaLink="true">https://coderk.github.io/posts/2020-01-09-35</guid>
             
             <category>Test</category>
             
@@ -1242,8 +1279,8 @@ on: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;pull_request]
 &lt;p&gt;Repository, GitHub Actions, GitHub Packages 까지. GitHub이 착실하게 자신의 영역을 넓히고 있다. GitHub DevOps를 볼 날이 얼마 남지 않았다.&lt;/p&gt;
 </description>
             <pubDate>Tue, 17 Dec 2019 00:00:00 +0900</pubDate>
-            <link>http://localhost:4000/posts/2019-12-17-34</link>
-            <guid isPermaLink="true">http://localhost:4000/posts/2019-12-17-34</guid>
+            <link>https://coderk.github.io/posts/2019-12-17-34</link>
+            <guid isPermaLink="true">https://coderk.github.io/posts/2019-12-17-34</guid>
             
             <category>GitHub</category>
             
@@ -1293,8 +1330,8 @@ on: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;pull_request]
 &lt;p&gt;그래야 빠르게 의사결정을 할 수 있습니다.&lt;/p&gt;
 </description>
             <pubDate>Thu, 05 Dec 2019 00:00:00 +0900</pubDate>
-            <link>http://localhost:4000/posts/2019-12-05-33</link>
-            <guid isPermaLink="true">http://localhost:4000/posts/2019-12-05-33</guid>
+            <link>https://coderk.github.io/posts/2019-12-05-33</link>
+            <guid isPermaLink="true">https://coderk.github.io/posts/2019-12-05-33</guid>
             
             <category>조직운영</category>
             
@@ -1391,8 +1428,8 @@ on: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;pull_request]
 &lt;p&gt;신뢰가 쌓여서 팀원 모두가 팀 안에서 소속감과 안정감을 느꼈으면 좋겠다.&lt;/p&gt;
 </description>
             <pubDate>Sun, 10 Nov 2019 00:00:00 +0900</pubDate>
-            <link>http://localhost:4000/posts/2019-11-10-32</link>
-            <guid isPermaLink="true">http://localhost:4000/posts/2019-11-10-32</guid>
+            <link>https://coderk.github.io/posts/2019-11-10-32</link>
+            <guid isPermaLink="true">https://coderk.github.io/posts/2019-11-10-32</guid>
             
             <category>조직운영</category>
             
@@ -1438,8 +1475,8 @@ on: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;pull_request]
 &lt;p&gt;설계의 촉을 예민하게 세워야 한다. 촉을 세우려면 설계를 알아야 하고 엔지니어링을 알아야 한다. 아는 만큼 본다. 알아야 촉이 생기고, 퇴로를 만들고, 기회를 잡을 수 있다.&lt;/p&gt;
 </description>
             <pubDate>Thu, 26 Sep 2019 00:00:00 +0900</pubDate>
-            <link>http://localhost:4000/posts/2019-09-26-overengineering-vs-underengineering</link>
-            <guid isPermaLink="true">http://localhost:4000/posts/2019-09-26-overengineering-vs-underengineering</guid>
+            <link>https://coderk.github.io/posts/2019-09-26-overengineering-vs-underengineering</link>
+            <guid isPermaLink="true">https://coderk.github.io/posts/2019-09-26-overengineering-vs-underengineering</guid>
             
             <category>개발</category>
             
@@ -1494,8 +1531,8 @@ on: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;pull_request]
 
 </description>
             <pubDate>Thu, 19 Sep 2019 00:00:00 +0900</pubDate>
-            <link>http://localhost:4000/posts/2019-09-19-why-is-it-difficult-to-understand-the-importance-of-archictecture</link>
-            <guid isPermaLink="true">http://localhost:4000/posts/2019-09-19-why-is-it-difficult-to-understand-the-importance-of-archictecture</guid>
+            <link>https://coderk.github.io/posts/2019-09-19-why-is-it-difficult-to-understand-the-importance-of-archictecture</link>
+            <guid isPermaLink="true">https://coderk.github.io/posts/2019-09-19-why-is-it-difficult-to-understand-the-importance-of-archictecture</guid>
             
             <category>개발</category>
             
@@ -1570,8 +1607,8 @@ on: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;pull_request]
 &lt;p&gt;&lt;!-- wp:preformatted --&gt;&lt;!-- /wp:preformatted --&gt;		&lt;/p&gt;
 </description>
             <pubDate>Fri, 09 Aug 2019 11:29:41 +0900</pubDate>
-            <link>http://localhost:4000/development/2306</link>
-            <guid isPermaLink="true">http://localhost:4000/development/2306</guid>
+            <link>https://coderk.github.io/development/2306</link>
+            <guid isPermaLink="true">https://coderk.github.io/development/2306</guid>
             
             <category>304</category>
             
@@ -1728,8 +1765,8 @@ on: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;pull_request]
 &lt;p&gt;&lt;!-- /wp:paragraph --&gt;		&lt;/p&gt;
 </description>
             <pubDate>Sat, 11 May 2019 14:42:00 +0900</pubDate>
-            <link>http://localhost:4000/development/2297</link>
-            <guid isPermaLink="true">http://localhost:4000/development/2297</guid>
+            <link>https://coderk.github.io/development/2297</link>
+            <guid isPermaLink="true">https://coderk.github.io/development/2297</guid>
             
             
             <category>개발 이야기</category>
@@ -1926,8 +1963,8 @@ on: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;pull_request]
 &lt;/div&gt;
 </description>
             <pubDate>Wed, 06 Mar 2019 21:43:13 +0900</pubDate>
-            <link>http://localhost:4000/development/2281</link>
-            <guid isPermaLink="true">http://localhost:4000/development/2281</guid>
+            <link>https://coderk.github.io/development/2281</link>
+            <guid isPermaLink="true">https://coderk.github.io/development/2281</guid>
             
             <category>개발자</category>
             
@@ -2479,8 +2516,8 @@ on: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;pull_request]
 &lt;p&gt;&amp;nbsp;		&lt;/p&gt;
 </description>
             <pubDate>Thu, 08 Nov 2018 19:04:40 +0900</pubDate>
-            <link>http://localhost:4000/development/2265</link>
-            <guid isPermaLink="true">http://localhost:4000/development/2265</guid>
+            <link>https://coderk.github.io/development/2265</link>
+            <guid isPermaLink="true">https://coderk.github.io/development/2265</guid>
             
             <category>optimization</category>
             
@@ -2530,8 +2567,8 @@ on: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;pull_request]
 &lt;p&gt;&lt;span style=&quot;font-size: 12pt;&quot;&gt;​&lt;/span&gt;&lt;span style=&quot;font-size: 12pt;&quot;&gt;...(이하 생략)&lt;/span&gt;&lt;/p&gt;
 </description>
             <pubDate>Fri, 31 Aug 2018 10:12:42 +0900</pubDate>
-            <link>http://localhost:4000/development/2252</link>
-            <guid isPermaLink="true">http://localhost:4000/development/2252</guid>
+            <link>https://coderk.github.io/development/2252</link>
+            <guid isPermaLink="true">https://coderk.github.io/development/2252</guid>
             
             <category>book</category>
             
@@ -2611,8 +2648,8 @@ on: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;pull_request]
 &lt;p&gt;&amp;nbsp;		&lt;/p&gt;
 </description>
             <pubDate>Sun, 05 Feb 2017 12:16:31 +0900</pubDate>
-            <link>http://localhost:4000/development/2206</link>
-            <guid isPermaLink="true">http://localhost:4000/development/2206</guid>
+            <link>https://coderk.github.io/development/2206</link>
+            <guid isPermaLink="true">https://coderk.github.io/development/2206</guid>
             
             <category>TDD</category>
             
@@ -2645,8 +2682,8 @@ on: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;pull_request]
 &lt;/div&gt;
 </description>
             <pubDate>Fri, 27 Jan 2017 00:53:16 +0900</pubDate>
-            <link>http://localhost:4000/development/2183</link>
-            <guid isPermaLink="true">http://localhost:4000/development/2183</guid>
+            <link>https://coderk.github.io/development/2183</link>
+            <guid isPermaLink="true">https://coderk.github.io/development/2183</guid>
             
             <category>개발자</category>
             
@@ -2677,8 +2714,8 @@ on: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;pull_request]
 &lt;p&gt;&amp;nbsp;		&lt;/p&gt;
 </description>
             <pubDate>Thu, 29 Dec 2016 22:28:52 +0900</pubDate>
-            <link>http://localhost:4000/development/2159</link>
-            <guid isPermaLink="true">http://localhost:4000/development/2159</guid>
+            <link>https://coderk.github.io/development/2159</link>
+            <guid isPermaLink="true">https://coderk.github.io/development/2159</guid>
             
             
             <category>개발 이야기</category>
@@ -2909,8 +2946,8 @@ on: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;pull_request]
 &lt;p&gt;&amp;nbsp;		&lt;/p&gt;
 </description>
             <pubDate>Fri, 09 Sep 2016 13:26:01 +0900</pubDate>
-            <link>http://localhost:4000/development/2051</link>
-            <guid isPermaLink="true">http://localhost:4000/development/2051</guid>
+            <link>https://coderk.github.io/development/2051</link>
+            <guid isPermaLink="true">https://coderk.github.io/development/2051</guid>
             
             <category>rx</category>
             
@@ -2936,8 +2973,8 @@ on: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;pull_request]
 &lt;p&gt;&lt;iframe width=&quot;500&quot; height=&quot;510&quot; style=&quot;border: none; overflow: hidden;&quot; src=&quot;https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Ffupfin.geek%2Fposts%2F353216358400687&amp;amp;width=500&quot; scrolling=&quot;no&quot; frameborder=&quot;0&quot; allowtransparency=&quot;true&quot;&gt;&lt;/iframe&gt;		&lt;/p&gt;
 </description>
             <pubDate>Mon, 22 Aug 2016 13:09:10 +0900</pubDate>
-            <link>http://localhost:4000/development/2011</link>
-            <guid isPermaLink="true">http://localhost:4000/development/2011</guid>
+            <link>https://coderk.github.io/development/2011</link>
+            <guid isPermaLink="true">https://coderk.github.io/development/2011</guid>
             
             <category>react</category>
             
@@ -2961,8 +2998,8 @@ on: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;pull_request]
 &lt;p&gt;그래서 그런 걸까. 또다시 궁금해졌다. 나는 지금 어디쯤 와 있는 걸까. 어디까지 갈 수 있을까.		&lt;/p&gt;
 </description>
             <pubDate>Sat, 13 Aug 2016 11:45:34 +0900</pubDate>
-            <link>http://localhost:4000/development/1999</link>
-            <guid isPermaLink="true">http://localhost:4000/development/1999</guid>
+            <link>https://coderk.github.io/development/1999</link>
+            <guid isPermaLink="true">https://coderk.github.io/development/1999</guid>
             
             <category>단상</category>
             
@@ -4109,8 +4146,8 @@ on: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;pull_request]
 &lt;p&gt;이 글은 제 &lt;a href=&quot;http://m.post.naver.com/viewer/postView.nhn?volumeNo=4575578&amp;amp;memberNo=1377642&quot;&gt;포스트&lt;/a&gt;와 &lt;a href=&quot;http://blog.naver.com/jukrang/220751641825&quot;&gt;블로그&lt;/a&gt;에서도 보실 수 있습니다.		&lt;/p&gt;
 </description>
             <pubDate>Fri, 01 Jul 2016 22:05:29 +0900</pubDate>
-            <link>http://localhost:4000/development/1953</link>
-            <guid isPermaLink="true">http://localhost:4000/development/1953</guid>
+            <link>https://coderk.github.io/development/1953</link>
+            <guid isPermaLink="true">https://coderk.github.io/development/1953</guid>
             
             <category>Javascript</category>
             
@@ -4327,8 +4364,8 @@ on: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;pull_request]
 &lt;/div&gt;
 </description>
             <pubDate>Sat, 30 Apr 2016 10:29:37 +0900</pubDate>
-            <link>http://localhost:4000/development/1865</link>
-            <guid isPermaLink="true">http://localhost:4000/development/1865</guid>
+            <link>https://coderk.github.io/development/1865</link>
+            <guid isPermaLink="true">https://coderk.github.io/development/1865</guid>
             
             <category>nightwatch.js</category>
             
@@ -4385,8 +4422,8 @@ on: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;pull_request]
 &lt;div class=&quot;se_component se_paragraph default&quot;&gt;&lt;/div&gt;
 </description>
             <pubDate>Sat, 09 Apr 2016 10:06:05 +0900</pubDate>
-            <link>http://localhost:4000/development/1851</link>
-            <guid isPermaLink="true">http://localhost:4000/development/1851</guid>
+            <link>https://coderk.github.io/development/1851</link>
+            <guid isPermaLink="true">https://coderk.github.io/development/1851</guid>
             
             <category>사색</category>
             
@@ -4415,8 +4452,8 @@ on: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;pull_request]
 &amp;nbsp;		&lt;/p&gt;
 </description>
             <pubDate>Fri, 18 Mar 2016 13:44:25 +0900</pubDate>
-            <link>http://localhost:4000/development/1839</link>
-            <guid isPermaLink="true">http://localhost:4000/development/1839</guid>
+            <link>https://coderk.github.io/development/1839</link>
+            <guid isPermaLink="true">https://coderk.github.io/development/1839</guid>
             
             <category>babel6</category>
             
@@ -4476,8 +4513,8 @@ on: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;pull_request]
 &amp;nbsp;		&lt;/p&gt;
 </description>
             <pubDate>Wed, 24 Feb 2016 17:39:43 +0900</pubDate>
-            <link>http://localhost:4000/development/1802</link>
-            <guid isPermaLink="true">http://localhost:4000/development/1802</guid>
+            <link>https://coderk.github.io/development/1802</link>
+            <guid isPermaLink="true">https://coderk.github.io/development/1802</guid>
             
             <category>react</category>
             
@@ -4498,8 +4535,8 @@ on: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;pull_request]
 &lt;p class=&quot;p1&quot;&gt;&lt;span class=&quot;s1&quot;&gt;개발자에게 균형 감각이 중요하다는 사실을 항상 잊지 말자.&lt;/span&gt;&lt;/p&gt;
 </description>
             <pubDate>Fri, 19 Feb 2016 13:24:21 +0900</pubDate>
-            <link>http://localhost:4000/development/1775</link>
-            <guid isPermaLink="true">http://localhost:4000/development/1775</guid>
+            <link>https://coderk.github.io/development/1775</link>
+            <guid isPermaLink="true">https://coderk.github.io/development/1775</guid>
             
             <category>react</category>
             
@@ -4531,8 +4568,8 @@ on: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;pull_request]
 &lt;p class=&quot;p1&quot;&gt;
 </description>
             <pubDate>Sun, 14 Feb 2016 18:41:05 +0900</pubDate>
-            <link>http://localhost:4000/development/1765</link>
-            <guid isPermaLink="true">http://localhost:4000/development/1765</guid>
+            <link>https://coderk.github.io/development/1765</link>
+            <guid isPermaLink="true">https://coderk.github.io/development/1765</guid>
             
             <category>babel6</category>
             
@@ -4576,8 +4613,8 @@ on: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;pull_request]
 &lt;p&gt;&amp;nbsp;		&lt;/p&gt;
 </description>
             <pubDate>Fri, 04 Dec 2015 23:54:40 +0900</pubDate>
-            <link>http://localhost:4000/development/1745</link>
-            <guid isPermaLink="true">http://localhost:4000/development/1745</guid>
+            <link>https://coderk.github.io/development/1745</link>
+            <guid isPermaLink="true">https://coderk.github.io/development/1745</guid>
             
             <category>facebook</category>
             
@@ -4618,8 +4655,8 @@ on: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;pull_request]
 &lt;p&gt;&amp;nbsp;		&lt;/p&gt;
 </description>
             <pubDate>Wed, 02 Dec 2015 14:16:06 +0900</pubDate>
-            <link>http://localhost:4000/development/1717</link>
-            <guid isPermaLink="true">http://localhost:4000/development/1717</guid>
+            <link>https://coderk.github.io/development/1717</link>
+            <guid isPermaLink="true">https://coderk.github.io/development/1717</guid>
             
             <category>단상</category>
             
@@ -4628,96 +4665,6 @@ on: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;pull_request]
             <category>발췌</category>
             
             <category>장인</category>
-            
-            
-            <category>개발 이야기</category>
-            
-        </item>
-        
-        <item>
-            <title>스마트에디터3 오픈에 즈음하여</title>
-            <description>&lt;p&gt;
-				2015년 11월 13일 금요일. 드디어 오늘, 블로그 버전의 스마트에디터3가 세상에 나왔다. 지난 3주를 어떻게 보냈는지 기억이 없다. 출시 이틀 전까지는 모든 게 순조로웠다. 그래, 그렇게 쉽게 끝날리가 없지. 리얼 서버에 배포하고 테스트 하던 도중 치명적인 문제를 발견했다. 어쩔 수 없이 릴리즈 일정을 이틀 연기하고 내부 테스트를 계속 진행하며 버그를 찾아 수정하고 테스트를 보완했다. 어렵게 어렵게 오픈은 했지만 행여나 버그가 있지는 않을까 초조한 마음에 다리를 떨며 부은 눈으로 서비스를 모니터링하고 있는 중이다.&lt;/p&gt;
-&lt;p&gt;포스트 버전을 공개한 이후로 내가 만든 에디터로 멋드러진 글 하나는 써야한다는 심적 압박을 강하게 받았지만, 본 게임은 블로그라는 핑계를 대며 저항했다. 이제 더이상은 그럴 수 없다. 그날이 와버렸으니까.&lt;/p&gt;
-&lt;p&gt;글을 쓰긴 해야하는데 무슨 이야기를 해야할지 잘 모르겠다. 배운 게 도둑질이라고 에디터를 만들면서 사용한 기술 스택을 가지고 썰을 푸는 게 제일 만만한데, 아쉽게도 스마트에디터3는 아직 코드 컴포넌트를 제공하지 않는다. 정확히는 못하고 있다. 외부에서 우릴 보는 사람들은 그 많은 개발자 데리고 뭐하냐고 묻겠지만, 우리는 만성 개발자 결핍증에 시달리고 있다.&lt;/p&gt;
-&lt;p&gt;고민 끝에 프로젝트를 진행하는 동안에 머리 속에서 맴돌았던 생각들을 정리하는 글을 쓰기로 했다.&lt;/p&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
-&lt;h1&gt;&lt;strong&gt;코딩만 하던 날들이여, 안녕.&lt;/strong&gt;&lt;/h1&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;/assets/images/legacy/2015/11/startup-593296_1920.jpg&quot;&gt;&lt;img class=&quot;aligncenter size-large wp-image-1675&quot; src=&quot;/assets/images/legacy/startup-593296_1920-1024x683.jpg&quot; alt=&quot;startup-593296_1920&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;이 프로젝트에 참여하기 이전까지 내가 회사에서 하는 일의 90%는 코딩이었다. 문제와 해법이 위에서 정해져 내려오면 그저 코드로 옮기는 게 일이다.&lt;/p&gt;
-&lt;p&gt;이제는 상황이 달라졌다. '린'할 것을 강요(?)받는 시대를 사는 개발자는 넓은 활동반경을 가져야 한다. 모바일 시대가 열리면서 변화의 속도는 전에 비해 훨씬 빨라졌다. 유행은 빠르게 왔다 쉽게 사라진다. 무언가를 예측한다는 것이 무의미해졌다.&lt;/p&gt;
-&lt;p&gt;잘 만들어진 스토리 보드는 꿈 속에 사는 드래곤 같다. 그런게 있기는 한 걸까? 그것이 있든지 없든지, 얌전히 앉아서 드래곤을 기다릴 시간이 없다는 사실은 분명하다. 가벼운 제품을 빠르게 만들어서 시장에 내놓고 사용자의 반응을 보면서 점진적으로 개선하는 방식의 비지니스 운영이 대세다.&lt;/p&gt;
-&lt;p&gt;빠르게 대응하려면 불필요한 커뮤니케이션 비용을 최대한 줄여야한다. 이제는 개발자도 문제를 함께 찾는다. 문제가 무엇인지, 어떻게 해결할 것인지 프로젝트에 참여하는 모든 구성원이 마주보고 앉아 치열하게 고민한다. 그리고 뭔가를 해보기로 결정했다면 프로토타입을 만들어서 빠르게 검증한다. 괜찮다면 그 기능은 바로 그 자리에서 스펙이 된다.&lt;/p&gt;
-&lt;p&gt;여러 일을 동시에 해야하는 상황은 이제 흔하다. 하나의 기능을 만들면서 다음에 만들 기능을 논의한다. 익숙한 관성을 버리고 이런 프로세스에 적응하는 일은 꽤나 어렵다. 한 번에 두 가지를 잘 못하다보니 이런 상황에 적응하는 데 애를 많이 먹었다. 기억력도 좋지 않다. 방금 이야기 한 내용을 돌아서면 까먹는다. 그래서 모든 내용을 위키, BTS, 커밋 로그에 상세하게 기록하기 시작했다. 인간은 적응의 동물이 아닌가. 열심히 몸부림을 치다보니 이제는 조금 적응을 했는지 전보다 살만하다.&lt;/p&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
-&lt;h1&gt;&lt;/h1&gt;
-&lt;h1&gt;&lt;strong&gt;테스트, 테스트, 테스트&lt;/strong&gt;&lt;/h1&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
-&lt;p&gt;오늘 우리가 한 의사결정은 언제든 뒤집힐 수 있다. 그것이 사용자에게 더 나은 선택이라면, 기꺼이 그 결정을 받아들여야 한다. 잦은 변경은 개발자에게 기술적 탁월함을 요구한다. 코드 품질이 나쁘다면 변경에 빠르게 대응할 수 없다.&lt;/p&gt;
-&lt;p&gt;안타깝게도 어떤 변경이 일어날지는 미리 알 수는 없다. 그저 할 수 있는 일이라곤 변경에 대응하기 유리한 구조를 만드는 일이다. 그런 구조를 만들려면 끊임없이 리팩터링을 해야하고, 리팩터링을 하려면 자동화된 테스트가 있어야 한다. 리팩터링을 한 후에도 제품이 정상적으로 동작하고 있다는 사실을 확인해야 할테니까. 모든 기능을 수동으로 테스트를 하기에는 우리에게 주어진 시간이 너무 부족하다.&lt;/p&gt;
-&lt;p&gt;스마트에디터3는 상당히 큰 규모의 프로젝트다. UI가 단순해서 느끼기 어려웠겠지만, 이 제품을 만들기 위해 많은 부서가 협업했다. 전체 코드량도 상당하다. 코드 베이스가 커지면 코드 복잡도가 증가하고, 코드 복잡도가 증가하면 사이드 이펙트가 자주 발생한다. 제품 출시 전날 버그를 잡으려고 추가한 코드가 두세 개의 버그를 만드는 기적(?)을 개발자라면 모두 해봤을 것이다. 우리 모두는 사이드 이펙트를 만드는 데 능숙하고, 그렇게 무에서 유를 창조한다. 개발자라는 직업을 택한 이상 평생 안고 가야 할 숙명이다.&lt;/p&gt;
-&lt;p&gt;사이드 이펙트는 나의 시간 뿐만이 아니라 동료의 시간까지 뺏는다는 점이 더 무섭다. 내가 수정한 부분이 동료의 코드를 망가뜨리고, 이 때문에 동료가 집에 못 가고 있는 모습을 볼 때면 쥐구멍에라도 숨고 싶다. 이럴 때는 초등학생으로 빙의하여 '너도 나한테 그랬잖아!'라며 마음 속의 불편함을 애써 모른 체한다. 잦은 버그를 만들다 보니 자연스레 방어기제가 몸에 배었나?&lt;/p&gt;
-&lt;p&gt;사이드 이펙트는 순식간에 내가 미쳐 예상치 못한 곳까지 도달한다. 홍길동처럼 어디에서 나타날지 알 수 없다. 그래서 샅샅이 뒤져서 찾아야하지만 인간은 게으르고, 나는 조금 더 게으르다. 원래 좀 귀찮니즘을 잘 느끼는 데다가, 개발경력도 쪼렙이다보니 시야가 좁다. 게다가 콘텍스트 스위칭(Context Switching)을 잘 못한다. 그냥 그렇게 태어났다. 고쳐보려했지만 인간은 쉽게 안 바뀐다. 이런 상황에서 내가 할 수 있는 선택은 내 단점을 보완해줄 수 있는 무언가를 찾는 일이었다. 그렇게 찾은 수단이 바로 테스트 자동화다.&lt;/p&gt;
-&lt;p&gt;언젠가 한 번은 하루 종일 내가 하는 일 중 가장 빈도수가 많고, 가장 많은 시간을 차지하는 게 뭘까 생각해봤다. 브라우저를 열어 F5를 누르는 횟수가 가장 많았고, 코드를 수정한 후에 에디터의 버튼을 하나 하나 눌러보며 이상이 없는지 확인하는 데 시간을 가장 많이 소모하는 것 같았다. 어디까지나 느낌적 느낌이지만 어마어마하게 높은 확률로 사실이라는 데에 내가 아끼는 카카오 프렌즈 피규어를 건다.&lt;/p&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;/assets/images/legacy/2015/11/NHN_NEXT.jpeg&quot;&gt;&lt;img class=&quot;aligncenter size-full wp-image-1686&quot; src=&quot;/assets/images/legacy/NHN_NEXT.jpeg&quot; alt=&quot;NHN_NEXT&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
-&lt;p&gt;테스트에 대한 고민을 시작한 것은 3년 전이지만, 적극적이 된 건 작년 NHN NEXT에서 했던 프로젝트에 참여하면서부터다. 이 프로젝트는 개발자 교체가 잦았고, 요구사항 변경이 잦았으며, 디자인 교체가 잦았다. 소용돌이치는 환경 속에서 살기 위해 몸부림쳐야 했다. 단위 테스트 자동화를 도입하려했지만 뭔가를 해보려던 때에 아쉽게도 팀 사정상 전배를 가야했다. 그렇게 아무 것도 하지 못하고 네이버로 자리를 옮겼다.&lt;/p&gt;
-&lt;p&gt;네이버로 이직한 후 스마트에디터3 프로젝트를 시작하면서 의욕 충만하게 테스트를 작성하려했다. 생각처럼 잘 되지 않았다. 이번에는 고민의 축을 &quot;테스트를 작성해야한다&quot;에서 &quot;왜 테스트를 작성하지 않을까?&quot;로 옮겼다.&lt;/p&gt;
-&lt;p&gt;테스트 작성에 대한 팀 공통 기준이 없었고, 테스트가 개발 프로세스에 자연스레 녹아있지 않았다. 테스트 작성이 코딩과 하나로 묶인 작업이 아닌, 추가로 해야하는 귀찮은 노동 취급을 받고 있었다. 이 문제를 해결하려면 프로세스 개선이 필요하다고 생각했고 사용자 스토리 작성부터 시작해서 기능 테스트 작성까지 이어지는 프로세스를 나름 팀에 적응할 수 있겠다 싶은 수준으로 추렸다.&lt;/p&gt;
-&lt;p&gt;TF의 리더인 상훈 님이 내가 그동안 생각해온 것들을 하나씩 꺼내서 풀어놓을 시간을 주었다. 흔치 않은 기회를 얻었다. 팀 동료 한 명이랑 둘이서 한 달정도 실무에 적용해봤고 괜찮겠다 싶어 팀에 전면 도입을 요청했지만 아직 어떻게 할지 결론이 나지 않았다. 적응하려면 상당한 연습과 시간이 필요한데 우리는 아직 너무 바쁘다. 결정적으로 &lt;b&gt;&quot;좋다&quot;&lt;/b&gt;고 &lt;b&gt;&quot;강요&quot;&lt;/b&gt;하기에는 내 경험이 너무 미천하다.&lt;/p&gt;
-&lt;p&gt;내가 느끼는 그대로를 상대에게 전달하여 설득하는 일은 언제나 힘들다. 팟캐스트에서 이재명 시장이 한 이야기가 가슴을 후벼팠다.&lt;/p&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p &gt;사람들은 설득 잘 안 당합니다.&lt;br /&gt;
-보여주고 행동하면 따라옵니다.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
-&lt;p&gt;내 자신을 많이 반성했다. 그래서 우선은 나부터 잘하는 데 힘쓰기로 했다. 설득은 그 다음의 일이다.&lt;/p&gt;
-&lt;p&gt;테스트와 관련해서는 하고 싶은 이야기가 정말 많은데, 글의 주제를 벗어나니 따로 포스팅을 해야겠다. 지금은 그저 &lt;b&gt;&quot;테스트는 정말 중요하다&lt;/b&gt;&lt;b&gt;&quot;&lt;/b&gt;는 걸 전하는 정도로 만족해야지.&lt;/p&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
-&lt;h1&gt;&lt;/h1&gt;
-&lt;h1&gt;&lt;strong&gt;선택은 어렵다&lt;/strong&gt;&lt;/h1&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;/assets/images/legacy/2015/11/photo-1444220451343-9fcc0681ff8d.jpeg&quot;&gt;&lt;img class=&quot;aligncenter size-full wp-image-1682&quot; src=&quot;/assets/images/legacy/photo-1444220451343-9fcc0681ff8d.jpeg&quot; alt=&quot;photo-1444220451343-9fcc0681ff8d&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;삶은 매순간이 선택의 연속이다. 짬뽕인지 짜장인지, 물냉인지 비냉인지, 부먹인지 찍먹인지. 하루에도 여러 번 갈림길에 서고 방황한다. 고심 끝에 선택하지만 뒤돌아서면 방금 전에 한 선택을 뒤집고 싶다. 그만큼 선택은 어렵고, 어렵게 한 선택을 끝까지 고수하기는 더 어렵다.&lt;/p&gt;
-&lt;p&gt;이 프로젝트를 진행하면서 &lt;b&gt;&quot;무엇이 더 좋은 선택&quot;&lt;/b&gt;인지를 판단해야하는 순간을 자주 만났다. 사람들이 원하는 게 무엇인지, 어떻게 하면 사용자가 편하게 글을 쓸 수 있을지. 그때마다 고민하고, 논의하고, 선택한다. 이런 과정은 언제나 새롭고 어렵다.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;문제를 해결해야하는데 그 문제를 해결하면, 또 다른 문제가 튀어나온다.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;기존 서비스가 안고 있는 문제를, 기존 사용자의 편의를 모두 고려하면서 해결하기는 쉽지 않다. 에디터는 본질적으로 '도구'고, 도구란 원래 그런 존재다. 만능 열쇠가 아니기에 모든 문제를 해결할 수 없다. 남길 것과 버릴 것을 구분하고 무엇을 새로 넣을지 결정해야 한다. 프로젝트내내 무겁게 고민하고 선택을 했다. 물론 나는 쪼렙인지라 주로 결정을 따라가는 쪽에 더 가까웠지만, 아무 생각없이 따라갔던 적은 한 번도 없다.&lt;/p&gt;
-&lt;p&gt;좀 더 나은 사용자 경험을 만들기 위해 우리가 한 선택이 반대편에 있는 누군가를 불편하게 만들 수 있다는 사실을 잘 알고 있다. 네이버 블로그처럼 레거시가 많은 서비스는 더욱 그렇다. 변화를 만들어야하지만, 기존 관성을 인정해야 한다. 사용자에게 무조건 변화를 강요할 수는 없는 노릇이다. 변화와 안정, 둘 다 잡을 수 있는 최선의 선택은 도대체 어디에 있는지 보이지를 않는다. 어렵다.&lt;/p&gt;
-&lt;p&gt;출처는 기억이 안 나지만 인간이 가장 스트레스를 받는 순간이 선택을 하기 힘든 상황에 놓였을 때라고 어디에서 주워들었다. 아무튼 그렇다더라. 어려웠고, 지금도 어렵고, 앞으로도 어려울 것이다.&lt;/p&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
-&lt;p&gt;네이버 블로그는 사용자가 많은 서비스라 오픈하자마자 반응이 무섭게 들어왔다. 그동안 개발자로 일하면서 여러 서비스를 런칭했지만 제대로 서비스도 못하고 접은 게 대부분이었기에 이런 반응이 신기하고 재밌다.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;/assets/images/legacy/2015/11/keyboard-597007_1920.jpg&quot;&gt;&lt;img class=&quot;aligncenter size-large wp-image-1674&quot; src=&quot;/assets/images/legacy/keyboard-597007_1920-1024x683.jpg&quot; alt=&quot;keyboard-597007_1920&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;좋은 반응도 있고 좋지 않은 반응도 있다. 만들어줘서 고맙다는 평부터, 대체 이게 뭐냐는 평까지. 그 중에 어떤 댓글은 읽다가 마음이 아팠다. 어렵게 한 선택이 누군가를 불편하게 만들거라는 점을 몰랐던 게 아니었음에도 사용자의 분노에 찬 불평을 아무렇지 않게 직면하기에는 아직 나의 내공이 부족하다.&lt;/p&gt;
-&lt;p&gt;어느 하나 소중하지 않은 의견이 없기에 머리가 복잡하다. 진정성을 제대로 전달하지 못했나? 기능이 너무 눈에 안 띄는 건 아닐까? 둘 다 만족시킬 수 있는 대안은 없을까? 계획하고 있는 기능인데 좀 더 앞당겨야 할까? 등등. 내가 만든 제품이 누군가에게 쓰인다는 게 이런 느낌이구나 싶다.&lt;/p&gt;
-&lt;p&gt;숙제를 한아름 떠 안았지만 싫지는 않다. 무관심보다는 낫지 않은가. 이런 경험을 할 수 있는 기회를 가졌음에 감사하다. 개선할 여지가 있다는 것은 발전할 가능성이 있다는 의미다. 또 치열하게 고민하고 뛰어야 하겠지. 더 나은 스마트에디터3를 위해서.&lt;/p&gt;
-&lt;p&gt;불철주야 고생하는 동료들에게 항상 감사하다는 이야기를 전하며 두서없는 글을 마친다.&lt;/p&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
-&lt;p&gt;* 워드프레스 에디터와 스마트에디터3의 사용성을 비교하기 위해서, 제가 네이버 블로그에 스마트에디터3로 작성한  글을 옮겨왔습니다. 원글은 아래 링크에서 보실 수 있습니다.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://blog.naver.com/jukrang/220538947082&quot; target=&quot;_blank&quot;&gt;스마트에디터3 오픈에 즈음하여&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
-</description>
-            <pubDate>Sat, 14 Nov 2015 16:23:07 +0900</pubDate>
-            <link>http://localhost:4000/development/1672</link>
-            <guid isPermaLink="true">http://localhost:4000/development/1672</guid>
-            
-            <category>smarteditor3</category>
-            
-            <category>생각</category>
-            
-            <category>스마트에디터3</category>
             
             
             <category>개발 이야기</category>
