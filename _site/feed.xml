@@ -3,11 +3,40 @@
     <channel>
         <title>Huns.me</title>
         <description>김코딩 님이 잘하고 싶어서 만든 블로그</description>
-        <link>https://coderk.github.io/</link>
-        <atom:link href="https://coderk.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Tue, 15 Feb 2022 10:16:12 +0900</pubDate>
-        <lastBuildDate>Tue, 15 Feb 2022 10:16:12 +0900</lastBuildDate>
+        <link>http://localhost:4000/</link>
+        <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
+        <pubDate>Tue, 08 Mar 2022 09:56:08 +0900</pubDate>
+        <lastBuildDate>Tue, 08 Mar 2022 09:56:08 +0900</lastBuildDate>
         <generator>Jekyll v3.8.6</generator>
+        
+        <item>
+            <title>(리뷰)룬샷 - 전쟁, 질병, 불황의 위기를 승리로 이끄는 설계의 힘</title>
+            <description>&lt;p&gt;&lt;img src=&quot;/assets/images/new/2022-03-08-background.jpeg&quot; /&gt;
+&lt;em&gt;&lt;a href=&quot;https://book.naver.com/bookdb/book_detail.nhn?bid=16339452&quot;&gt;룬샷(전쟁, 질병, 불황의 위기를 승리로 이끄는 설계의 힘) - 흐름출판&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;룬샷은 잠재력을 가졌음에도 사람들이 그 가치를 무시하고 홀대하는 프로젝트를 뜻한다. 저자가 룬샷을 아기에 비유하여 설명하는 부분이 퍽 와닿았다. 아기는 때 묻지 않은 순수한 존재로서 엄청난 가능성을 품고 있지만, 보채기도 심하고 예측할 수 없다. 밤에는 우리를 잠 못 들게 한다. 아기는 어른의 보호를 받지 못하면 사회의 일원이 될 수 없다. 가진 가치와 상관없이 조롱의 대상인 룬샷도 누군가의 보호를 받아야만 빛을 볼 수 있다.&lt;/p&gt;
+
+&lt;p&gt;우리가 혁신이라고 이야기하는 것들의 초기 모습은 대게 룬샷이다. 혁신을 만드는 아이디어는 급진적일 때가 많고, 등장하는 시점에는 그것이 무엇이 될지 알기 어렵다. 혁신인 것과 아닌 것을 결과로 구분할 수밖에 없다. 룬샷은 애초에 회의론으로 가득한 마구간 안에서 태어날 운명을 가졌다.&lt;/p&gt;
+
+&lt;p&gt;이 책은 룬샷을 잘 보호하고 육성하여 혁신을 이뤄낸 사례와 룬샷을 육성하지 못하고 실패한 사례를 나열하며 룬샷의 가치를 조명한다. 그렇다면 우리는 모두 룬샷을 따라야 하는가? 그럴 리가. 뭐든 지나치면 좋지 않다는 건 진리에 가까운 말일지도. 저자는 룬샷을 찾는 데에만 지나치게 몰두한 나머지 조직을 구렁텅이로 밀어 넣은 사례를 보여주며 ‘균형’을 잡는다.&lt;/p&gt;
+
+&lt;p&gt;룬샷을 보호하고 육성할 수 있는 환경을 잘 설계하되 지나침의 함정에 빠지지 말라는, 어디에서 본듯한 진부한 결론이 이 책의 주제다. 그럼에도 물리학자 출신인 저자가 물리 이론에 빗대어 풀어가는 경영학은 전개가 되게 신선했다. 공동체 규모가 커지면서 혁신이 발생하기 어려운 이유를 방정식으로 풀어낼 때는 지독하다는 생각도 들었다.&lt;/p&gt;
+
+&lt;p&gt;다만 저자와 나의 지식수준 차가 큰 건 어쩔 수 없는지, 낯선 용어가 자주 등장해서 완독하기가 쉽지 않았다. 주장의 근거로 많은 사례를 펼쳐놓는데, 등장 인물의 이름마저 낯설다 보니 진도가 안 나가더라. 앞의 맥락이 잘 생각이 나질 않아서 같은 페이지를 여러 번 읽기를 반복하느라 이 책을 3주나 잡고 있었네?&lt;/p&gt;
+
+&lt;p&gt;대단한 통찰을 보았지만, 선뜻 다시 읽을 용기가 나지는 않는, 그런 책인 걸로.&lt;/p&gt;
+
+</description>
+            <pubDate>Tue, 08 Mar 2022 00:00:00 +0900</pubDate>
+            <link>http://localhost:4000/posts/2022-03-08-40-룬샷</link>
+            <guid isPermaLink="true">http://localhost:4000/posts/2022-03-08-40-룬샷</guid>
+            
+            <category>책리뷰</category>
+            
+            
+            <category>책리뷰</category>
+            
+        </item>
         
         <item>
             <title>(리뷰)팀 토폴로지 -  빠른 업무 플로우를 만드는 조직 설계</title>
@@ -34,8 +63,8 @@
 &lt;p&gt;그런데 번역이 너무 아쉽다. 번역만 아니면 인생 도서에 올릴 책인데. 문장을 여러번 곱씹어야 겨우 저자의 의도를 이해할 수 있더라. 나중에 번역을 개선한 개선판이 나와주면 좋겠다.&lt;/p&gt;
 </description>
             <pubDate>Mon, 14 Feb 2022 00:00:00 +0900</pubDate>
-            <link>https://coderk.github.io/posts/2022-02-14-39-팀토폴로지</link>
-            <guid isPermaLink="true">https://coderk.github.io/posts/2022-02-14-39-팀토폴로지</guid>
+            <link>http://localhost:4000/posts/2022-02-14-39-팀토폴로지</link>
+            <guid isPermaLink="true">http://localhost:4000/posts/2022-02-14-39-팀토폴로지</guid>
             
             <category>책리뷰</category>
             
@@ -77,8 +106,8 @@
 
 </description>
             <pubDate>Sat, 29 Jan 2022 00:00:00 +0900</pubDate>
-            <link>https://coderk.github.io/posts/2022-01-29-38</link>
-            <guid isPermaLink="true">https://coderk.github.io/posts/2022-01-29-38</guid>
+            <link>http://localhost:4000/posts/2022-01-29-38</link>
+            <guid isPermaLink="true">http://localhost:4000/posts/2022-01-29-38</guid>
             
             <category>단상</category>
             
@@ -100,8 +129,8 @@
 &lt;p&gt;올해는 꼭 가족과 함께 할 수 있는 소소한 취미를 찾고 싶다. 인생이 짧다고 생각했는데, 나이를 먹을수록 더 짧게 느껴진다. 문득 일을 뺀 내 삶이 참 재미없다는 생각이 들었다. 가족이 생기면서 훨씬 나아졌지만 그래도 삶은 지루하다. 생각해 보면 제대로 된 취미 하나 없네? 올해는 꼭 해도해도 질리지 않는 소소한 취미를 찾아서, 줘도줘도 아깝지 않은 가족과 함께 즐기고 싶다.&lt;/p&gt;
 </description>
             <pubDate>Mon, 10 Jan 2022 00:00:00 +0900</pubDate>
-            <link>https://coderk.github.io/posts/2022-01-10-37</link>
-            <guid isPermaLink="true">https://coderk.github.io/posts/2022-01-10-37</guid>
+            <link>http://localhost:4000/posts/2022-01-10-37</link>
+            <guid isPermaLink="true">http://localhost:4000/posts/2022-01-10-37</guid>
             
             <category>단상</category>
             
@@ -175,8 +204,8 @@
 &lt;p&gt;1번은 열심히 공부하는 하는 걸로. 2번과 3번은 평소에 고민하고 있었는데 마침 기회가 닿아 동료와 따로 논의하는 자리를 만들기로 했다. 하나씩 부러뜨려 보자.&lt;/p&gt;
 </description>
             <pubDate>Wed, 06 May 2020 00:00:00 +0900</pubDate>
-            <link>https://coderk.github.io/posts/2020-05-06-36</link>
-            <guid isPermaLink="true">https://coderk.github.io/posts/2020-05-06-36</guid>
+            <link>http://localhost:4000/posts/2020-05-06-36</link>
+            <guid isPermaLink="true">http://localhost:4000/posts/2020-05-06-36</guid>
             
             <category>리팩터링</category>
             
@@ -879,8 +908,8 @@
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 </description>
             <pubDate>Wed, 08 Jan 2020 00:00:00 +0900</pubDate>
-            <link>https://coderk.github.io/posts/2020-01-09-35</link>
-            <guid isPermaLink="true">https://coderk.github.io/posts/2020-01-09-35</guid>
+            <link>http://localhost:4000/posts/2020-01-09-35</link>
+            <guid isPermaLink="true">http://localhost:4000/posts/2020-01-09-35</guid>
             
             <category>Test</category>
             
@@ -1279,8 +1308,8 @@ on: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;pull_request]
 &lt;p&gt;Repository, GitHub Actions, GitHub Packages 까지. GitHub이 착실하게 자신의 영역을 넓히고 있다. GitHub DevOps를 볼 날이 얼마 남지 않았다.&lt;/p&gt;
 </description>
             <pubDate>Tue, 17 Dec 2019 00:00:00 +0900</pubDate>
-            <link>https://coderk.github.io/posts/2019-12-17-34</link>
-            <guid isPermaLink="true">https://coderk.github.io/posts/2019-12-17-34</guid>
+            <link>http://localhost:4000/posts/2019-12-17-34</link>
+            <guid isPermaLink="true">http://localhost:4000/posts/2019-12-17-34</guid>
             
             <category>GitHub</category>
             
@@ -1330,8 +1359,8 @@ on: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;pull_request]
 &lt;p&gt;그래야 빠르게 의사결정을 할 수 있습니다.&lt;/p&gt;
 </description>
             <pubDate>Thu, 05 Dec 2019 00:00:00 +0900</pubDate>
-            <link>https://coderk.github.io/posts/2019-12-05-33</link>
-            <guid isPermaLink="true">https://coderk.github.io/posts/2019-12-05-33</guid>
+            <link>http://localhost:4000/posts/2019-12-05-33</link>
+            <guid isPermaLink="true">http://localhost:4000/posts/2019-12-05-33</guid>
             
             <category>조직운영</category>
             
@@ -1428,8 +1457,8 @@ on: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;pull_request]
 &lt;p&gt;신뢰가 쌓여서 팀원 모두가 팀 안에서 소속감과 안정감을 느꼈으면 좋겠다.&lt;/p&gt;
 </description>
             <pubDate>Sun, 10 Nov 2019 00:00:00 +0900</pubDate>
-            <link>https://coderk.github.io/posts/2019-11-10-32</link>
-            <guid isPermaLink="true">https://coderk.github.io/posts/2019-11-10-32</guid>
+            <link>http://localhost:4000/posts/2019-11-10-32</link>
+            <guid isPermaLink="true">http://localhost:4000/posts/2019-11-10-32</guid>
             
             <category>조직운영</category>
             
@@ -1475,8 +1504,8 @@ on: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;pull_request]
 &lt;p&gt;설계의 촉을 예민하게 세워야 한다. 촉을 세우려면 설계를 알아야 하고 엔지니어링을 알아야 한다. 아는 만큼 본다. 알아야 촉이 생기고, 퇴로를 만들고, 기회를 잡을 수 있다.&lt;/p&gt;
 </description>
             <pubDate>Thu, 26 Sep 2019 00:00:00 +0900</pubDate>
-            <link>https://coderk.github.io/posts/2019-09-26-overengineering-vs-underengineering</link>
-            <guid isPermaLink="true">https://coderk.github.io/posts/2019-09-26-overengineering-vs-underengineering</guid>
+            <link>http://localhost:4000/posts/2019-09-26-overengineering-vs-underengineering</link>
+            <guid isPermaLink="true">http://localhost:4000/posts/2019-09-26-overengineering-vs-underengineering</guid>
             
             <category>개발</category>
             
@@ -1531,8 +1560,8 @@ on: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;pull_request]
 
 </description>
             <pubDate>Thu, 19 Sep 2019 00:00:00 +0900</pubDate>
-            <link>https://coderk.github.io/posts/2019-09-19-why-is-it-difficult-to-understand-the-importance-of-archictecture</link>
-            <guid isPermaLink="true">https://coderk.github.io/posts/2019-09-19-why-is-it-difficult-to-understand-the-importance-of-archictecture</guid>
+            <link>http://localhost:4000/posts/2019-09-19-why-is-it-difficult-to-understand-the-importance-of-archictecture</link>
+            <guid isPermaLink="true">http://localhost:4000/posts/2019-09-19-why-is-it-difficult-to-understand-the-importance-of-archictecture</guid>
             
             <category>개발</category>
             
@@ -1607,8 +1636,8 @@ on: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;pull_request]
 &lt;p&gt;&lt;!-- wp:preformatted --&gt;&lt;!-- /wp:preformatted --&gt;		&lt;/p&gt;
 </description>
             <pubDate>Fri, 09 Aug 2019 11:29:41 +0900</pubDate>
-            <link>https://coderk.github.io/development/2306</link>
-            <guid isPermaLink="true">https://coderk.github.io/development/2306</guid>
+            <link>http://localhost:4000/development/2306</link>
+            <guid isPermaLink="true">http://localhost:4000/development/2306</guid>
             
             <category>304</category>
             
@@ -1765,8 +1794,8 @@ on: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;pull_request]
 &lt;p&gt;&lt;!-- /wp:paragraph --&gt;		&lt;/p&gt;
 </description>
             <pubDate>Sat, 11 May 2019 14:42:00 +0900</pubDate>
-            <link>https://coderk.github.io/development/2297</link>
-            <guid isPermaLink="true">https://coderk.github.io/development/2297</guid>
+            <link>http://localhost:4000/development/2297</link>
+            <guid isPermaLink="true">http://localhost:4000/development/2297</guid>
             
             
             <category>개발 이야기</category>
@@ -1963,8 +1992,8 @@ on: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;pull_request]
 &lt;/div&gt;
 </description>
             <pubDate>Wed, 06 Mar 2019 21:43:13 +0900</pubDate>
-            <link>https://coderk.github.io/development/2281</link>
-            <guid isPermaLink="true">https://coderk.github.io/development/2281</guid>
+            <link>http://localhost:4000/development/2281</link>
+            <guid isPermaLink="true">http://localhost:4000/development/2281</guid>
             
             <category>개발자</category>
             
@@ -2516,8 +2545,8 @@ on: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;pull_request]
 &lt;p&gt;&amp;nbsp;		&lt;/p&gt;
 </description>
             <pubDate>Thu, 08 Nov 2018 19:04:40 +0900</pubDate>
-            <link>https://coderk.github.io/development/2265</link>
-            <guid isPermaLink="true">https://coderk.github.io/development/2265</guid>
+            <link>http://localhost:4000/development/2265</link>
+            <guid isPermaLink="true">http://localhost:4000/development/2265</guid>
             
             <category>optimization</category>
             
@@ -2567,8 +2596,8 @@ on: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;pull_request]
 &lt;p&gt;&lt;span style=&quot;font-size: 12pt;&quot;&gt;​&lt;/span&gt;&lt;span style=&quot;font-size: 12pt;&quot;&gt;...(이하 생략)&lt;/span&gt;&lt;/p&gt;
 </description>
             <pubDate>Fri, 31 Aug 2018 10:12:42 +0900</pubDate>
-            <link>https://coderk.github.io/development/2252</link>
-            <guid isPermaLink="true">https://coderk.github.io/development/2252</guid>
+            <link>http://localhost:4000/development/2252</link>
+            <guid isPermaLink="true">http://localhost:4000/development/2252</guid>
             
             <category>book</category>
             
@@ -2648,8 +2677,8 @@ on: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;pull_request]
 &lt;p&gt;&amp;nbsp;		&lt;/p&gt;
 </description>
             <pubDate>Sun, 05 Feb 2017 12:16:31 +0900</pubDate>
-            <link>https://coderk.github.io/development/2206</link>
-            <guid isPermaLink="true">https://coderk.github.io/development/2206</guid>
+            <link>http://localhost:4000/development/2206</link>
+            <guid isPermaLink="true">http://localhost:4000/development/2206</guid>
             
             <category>TDD</category>
             
@@ -2682,8 +2711,8 @@ on: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;pull_request]
 &lt;/div&gt;
 </description>
             <pubDate>Fri, 27 Jan 2017 00:53:16 +0900</pubDate>
-            <link>https://coderk.github.io/development/2183</link>
-            <guid isPermaLink="true">https://coderk.github.io/development/2183</guid>
+            <link>http://localhost:4000/development/2183</link>
+            <guid isPermaLink="true">http://localhost:4000/development/2183</guid>
             
             <category>개발자</category>
             
@@ -2714,8 +2743,8 @@ on: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;pull_request]
 &lt;p&gt;&amp;nbsp;		&lt;/p&gt;
 </description>
             <pubDate>Thu, 29 Dec 2016 22:28:52 +0900</pubDate>
-            <link>https://coderk.github.io/development/2159</link>
-            <guid isPermaLink="true">https://coderk.github.io/development/2159</guid>
+            <link>http://localhost:4000/development/2159</link>
+            <guid isPermaLink="true">http://localhost:4000/development/2159</guid>
             
             
             <category>개발 이야기</category>
@@ -2946,8 +2975,8 @@ on: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;pull_request]
 &lt;p&gt;&amp;nbsp;		&lt;/p&gt;
 </description>
             <pubDate>Fri, 09 Sep 2016 13:26:01 +0900</pubDate>
-            <link>https://coderk.github.io/development/2051</link>
-            <guid isPermaLink="true">https://coderk.github.io/development/2051</guid>
+            <link>http://localhost:4000/development/2051</link>
+            <guid isPermaLink="true">http://localhost:4000/development/2051</guid>
             
             <category>rx</category>
             
@@ -2973,8 +3002,8 @@ on: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;pull_request]
 &lt;p&gt;&lt;iframe width=&quot;500&quot; height=&quot;510&quot; style=&quot;border: none; overflow: hidden;&quot; src=&quot;https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Ffupfin.geek%2Fposts%2F353216358400687&amp;amp;width=500&quot; scrolling=&quot;no&quot; frameborder=&quot;0&quot; allowtransparency=&quot;true&quot;&gt;&lt;/iframe&gt;		&lt;/p&gt;
 </description>
             <pubDate>Mon, 22 Aug 2016 13:09:10 +0900</pubDate>
-            <link>https://coderk.github.io/development/2011</link>
-            <guid isPermaLink="true">https://coderk.github.io/development/2011</guid>
+            <link>http://localhost:4000/development/2011</link>
+            <guid isPermaLink="true">http://localhost:4000/development/2011</guid>
             
             <category>react</category>
             
@@ -2998,8 +3027,8 @@ on: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;pull_request]
 &lt;p&gt;그래서 그런 걸까. 또다시 궁금해졌다. 나는 지금 어디쯤 와 있는 걸까. 어디까지 갈 수 있을까.		&lt;/p&gt;
 </description>
             <pubDate>Sat, 13 Aug 2016 11:45:34 +0900</pubDate>
-            <link>https://coderk.github.io/development/1999</link>
-            <guid isPermaLink="true">https://coderk.github.io/development/1999</guid>
+            <link>http://localhost:4000/development/1999</link>
+            <guid isPermaLink="true">http://localhost:4000/development/1999</guid>
             
             <category>단상</category>
             
@@ -4146,8 +4175,8 @@ on: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;pull_request]
 &lt;p&gt;이 글은 제 &lt;a href=&quot;http://m.post.naver.com/viewer/postView.nhn?volumeNo=4575578&amp;amp;memberNo=1377642&quot;&gt;포스트&lt;/a&gt;와 &lt;a href=&quot;http://blog.naver.com/jukrang/220751641825&quot;&gt;블로그&lt;/a&gt;에서도 보실 수 있습니다.		&lt;/p&gt;
 </description>
             <pubDate>Fri, 01 Jul 2016 22:05:29 +0900</pubDate>
-            <link>https://coderk.github.io/development/1953</link>
-            <guid isPermaLink="true">https://coderk.github.io/development/1953</guid>
+            <link>http://localhost:4000/development/1953</link>
+            <guid isPermaLink="true">http://localhost:4000/development/1953</guid>
             
             <category>Javascript</category>
             
@@ -4364,8 +4393,8 @@ on: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;pull_request]
 &lt;/div&gt;
 </description>
             <pubDate>Sat, 30 Apr 2016 10:29:37 +0900</pubDate>
-            <link>https://coderk.github.io/development/1865</link>
-            <guid isPermaLink="true">https://coderk.github.io/development/1865</guid>
+            <link>http://localhost:4000/development/1865</link>
+            <guid isPermaLink="true">http://localhost:4000/development/1865</guid>
             
             <category>nightwatch.js</category>
             
@@ -4422,8 +4451,8 @@ on: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;pull_request]
 &lt;div class=&quot;se_component se_paragraph default&quot;&gt;&lt;/div&gt;
 </description>
             <pubDate>Sat, 09 Apr 2016 10:06:05 +0900</pubDate>
-            <link>https://coderk.github.io/development/1851</link>
-            <guid isPermaLink="true">https://coderk.github.io/development/1851</guid>
+            <link>http://localhost:4000/development/1851</link>
+            <guid isPermaLink="true">http://localhost:4000/development/1851</guid>
             
             <category>사색</category>
             
@@ -4452,8 +4481,8 @@ on: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;pull_request]
 &amp;nbsp;		&lt;/p&gt;
 </description>
             <pubDate>Fri, 18 Mar 2016 13:44:25 +0900</pubDate>
-            <link>https://coderk.github.io/development/1839</link>
-            <guid isPermaLink="true">https://coderk.github.io/development/1839</guid>
+            <link>http://localhost:4000/development/1839</link>
+            <guid isPermaLink="true">http://localhost:4000/development/1839</guid>
             
             <category>babel6</category>
             
@@ -4513,8 +4542,8 @@ on: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;pull_request]
 &amp;nbsp;		&lt;/p&gt;
 </description>
             <pubDate>Wed, 24 Feb 2016 17:39:43 +0900</pubDate>
-            <link>https://coderk.github.io/development/1802</link>
-            <guid isPermaLink="true">https://coderk.github.io/development/1802</guid>
+            <link>http://localhost:4000/development/1802</link>
+            <guid isPermaLink="true">http://localhost:4000/development/1802</guid>
             
             <category>react</category>
             
@@ -4535,8 +4564,8 @@ on: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;pull_request]
 &lt;p class=&quot;p1&quot;&gt;&lt;span class=&quot;s1&quot;&gt;개발자에게 균형 감각이 중요하다는 사실을 항상 잊지 말자.&lt;/span&gt;&lt;/p&gt;
 </description>
             <pubDate>Fri, 19 Feb 2016 13:24:21 +0900</pubDate>
-            <link>https://coderk.github.io/development/1775</link>
-            <guid isPermaLink="true">https://coderk.github.io/development/1775</guid>
+            <link>http://localhost:4000/development/1775</link>
+            <guid isPermaLink="true">http://localhost:4000/development/1775</guid>
             
             <category>react</category>
             
@@ -4568,8 +4597,8 @@ on: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;pull_request]
 &lt;p class=&quot;p1&quot;&gt;
 </description>
             <pubDate>Sun, 14 Feb 2016 18:41:05 +0900</pubDate>
-            <link>https://coderk.github.io/development/1765</link>
-            <guid isPermaLink="true">https://coderk.github.io/development/1765</guid>
+            <link>http://localhost:4000/development/1765</link>
+            <guid isPermaLink="true">http://localhost:4000/development/1765</guid>
             
             <category>babel6</category>
             
@@ -4613,8 +4642,8 @@ on: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;pull_request]
 &lt;p&gt;&amp;nbsp;		&lt;/p&gt;
 </description>
             <pubDate>Fri, 04 Dec 2015 23:54:40 +0900</pubDate>
-            <link>https://coderk.github.io/development/1745</link>
-            <guid isPermaLink="true">https://coderk.github.io/development/1745</guid>
+            <link>http://localhost:4000/development/1745</link>
+            <guid isPermaLink="true">http://localhost:4000/development/1745</guid>
             
             <category>facebook</category>
             
@@ -4623,48 +4652,6 @@ on: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;pull_request]
             <category>react</category>
             
             <category>발표자료</category>
-            
-            
-            <category>개발 이야기</category>
-            
-        </item>
-        
-        <item>
-            <title>&quot;소프트웨어 장인&quot; 중 인상 깊었던 내용 발췌</title>
-            <description>&lt;p&gt;최근에 &quot;소프트웨어 장인&quot;이라는 책을 읽었다. 요즘 환경이 왜 개발자에게 프로페셔널리즘을 요구하는지, 어떻게 하면 프로페셔널한 개발자가 될 수 있는지를 이야기하는 책이다. 단정하는 듯한 어투가 좀 거칠지만, 평소 내 철학에 비춰 볼 때 대체적으로 공감하는 내용이 많아서 재미있게 읽었다.&lt;/p&gt;
-&lt;p&gt;&lt;img class=&quot;aligncenter wp-image-1718&quot; src=&quot;/assets/images/legacy/software-master-title-image.png&quot; /&gt;&lt;/p&gt;
-&lt;p&gt;책 곳곳에 흥미로운 내용이 많았는데 그 중에 인상 깊었던 대목을 몇 개만 추렸다. 테스트에 고민이 많은 요즘이라 주로 테스트와 관련있는 내용이다.&lt;/p&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
-&lt;p&gt;A.&lt;/p&gt;
-&lt;p&gt;우리는 전혀 프로답지 못했다. 한번도 ‘아니오’라고 말하지 않았기 때문이다.&lt;/p&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
-&lt;div&gt;
-&lt;p&gt;B.&lt;/p&gt;
-&lt;p&gt;이러한 압박 속에서 여유있게 테스트 코드를 작성할 사람은 아무도 없다. 매우 작은 팀이었음에도 코드는 엉망이었고 수정을 살짝만 해도 정말 고통스러운 상황이 벌어졌다. 테스트를 한번 하려면 모든 것을 수동으로 다시 돌려보아야 하기에 대단히 어려웠다.&lt;/p&gt;
-&lt;/div&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
-&lt;p&gt;C.&lt;/p&gt;
-&lt;p&gt;너무 바쁜 : 너무 바빠서 뭔가를 할 시간이 전혀 없는 사람들이다. 어떤 일의 장기적인 비용을 보지 못하고 근시안적인 판단을 한다. 무언가 일을 올바르게 할 시간은 없지만 똑같은 일을 계속해서 반복할 시간은 있다. 이들에게 있어서 TDD 같은 실행 관례는 시간이 너무 오래 걸리고, 별도로 시간을 내야만 하는 일이다. 하지만 전체 시스템을 매번 수동으로 테스트하고 문제를 분석하고 버그를 수정하는 시간은 보지 못한다. 특히 시스템이 망가질까 두려워 큰 규모의 개선은 엄두도 못 낸다는 사실이 얼마나 큰 비용인지 알지 못한다. 이들의 눈에 보이는 것은 너무 바빠서 일하는 방식을 바꿀 시간이 없다는 것뿐이다. - 262쪽&lt;/p&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
-&lt;p&gt;D.&lt;/p&gt;
-&lt;p&gt;고객은 개발자에게 높은 품질의 소프트웨어, 훌륭한 솔루션을 기대한다. TDD, 페어 프로그래밍, 연속된 통합 등의 실행 관례들은 모두 그러한 것들을 달성하도록 돕기 위함이다. 누군가에게 물어볼 것 없이 그냥 실행하면 된다. 공식적인 작업 항목에 ‘단위 테스트 코드 작성’이라고 올릴 필요도 없다. 단위 테스트가 되지 않았다면 그 어떤 작업이건 간에 완료되었다고 말할 수 없다. 작업을 구현과 테스트로 나누어서는 안 된다. 한 시간은 서비스 클래스를 구현하고 다른 한 시간은 테스트를 작성하더라도 둘은 서로 독립된 작업이 아니다. 두 시간 분량의 한 가지 작업일 뿐이다. 서비스 클래스의 구현 작업 하나다. 테스트는 형태에 상관없이 한 코딩 작업의 요소일 뿐 별개의 작업이 아니다. - 274쪽&lt;/p&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
-&lt;p&gt;&amp;nbsp;		&lt;/p&gt;
-</description>
-            <pubDate>Wed, 02 Dec 2015 14:16:06 +0900</pubDate>
-            <link>https://coderk.github.io/development/1717</link>
-            <guid isPermaLink="true">https://coderk.github.io/development/1717</guid>
-            
-            <category>단상</category>
-            
-            <category>리뷰</category>
-            
-            <category>발췌</category>
-            
-            <category>장인</category>
             
             
             <category>개발 이야기</category>
