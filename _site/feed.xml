@@ -5,9 +5,54 @@
         <description>김코딩 님이 잘하고 싶어서 만든 블로그</description>
         <link>http://localhost:4000/</link>
         <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Tue, 08 Mar 2022 09:56:08 +0900</pubDate>
-        <lastBuildDate>Tue, 08 Mar 2022 09:56:08 +0900</lastBuildDate>
+        <pubDate>Wed, 30 Mar 2022 10:33:31 +0900</pubDate>
+        <lastBuildDate>Wed, 30 Mar 2022 10:33:31 +0900</lastBuildDate>
         <generator>Jekyll v3.8.6</generator>
+        
+        <item>
+            <title>함께 일한다는 느낌을 주기</title>
+            <description>&lt;p&gt;새로운 프로젝트를 꾸리면서 구성원이 “함께 일한다”는 느낌을 받을 수 있게 돕는 데에 에너지를 많이 쓰고 있다. 최근에 시도했고, 시도하고 있는 건 두 가지. “잘 했어요”는 아니고 “해보고 있어요”의 의미.&lt;/p&gt;
+
+&lt;h1 id=&quot;멤버-모두가-참여하는-아키텍처-디자인-워크숍&quot;&gt;멤버 모두가 참여하는 아키텍처 디자인 워크숍&lt;/h1&gt;
+
+&lt;p&gt;아키텍처 디자인 워크숍은 김영재 님의 번역서인 &lt;a href=&quot;https://book.naver.com/bookdb/book_detail.nhn?bid=20568444&quot;&gt;‘개발자에서 아키텍트로’&lt;/a&gt; 라는 책에서 영감을 얻어서 만든 프로그램이다.&lt;/p&gt;
+
+&lt;p&gt;2주간 팀 멤버가 모두 참여해서, 비즈니스 목표, 프로젝트 환경, 요구사항, 해결해야 할 문제와 기대하는 수준을 확인하고, 문제를 해결하는 아키텍처를 함께 디자인했다. 나도 처음 해보는 거라 걱정이 많았는데 아키텍처의 태생이 그러하듯 “완벽해”라는 말은 할 수 없지만(그게 이 프로그램의 목표도 아니고), 팀이 일을 시작할 수 있는 수준의 충분한 합의를 만들었다는 걸로 만족스럽다.&lt;/p&gt;
+
+&lt;p&gt;사실 멤버 모두가 참여하는 이런 회의 방식은 효율이 좋지 않다. 각자의 지식수준이 달라서 모두가 같은 수준으로 시스템을 이해하고 의견을 제시하기는 애초에 어렵다. 미팅에 참여하는 인원이 많으면 덩달아 커뮤니케이션 비용도 높아진다. 그럼에도 모두가 소중하게 여겨야 할 큰 합의는, 같이 결정하는 게 효과적이라고 생각했다. 최소한 “우리가 같이 만들었다”라는 느낌은 주고 싶었다. 모르는 걸 같이 배울 수 있는 기회이기도 했고. 그래서 비효율을 감수했다. 멤버가 8명이라 부담이 조금 덜했던 건 다행. 인원이 더 많았다면 깊게 고민했을 거 같다.&lt;/p&gt;
+
+&lt;p&gt;아키텍처라는 건 구성원이 만든 합의인데, 일부가 밀실에서 규칙을 만들고 “이제 우리 모두 이걸 따르자!”라고 선언하는 방식은 합의가 제대로 지켜질 가능성을 낮춘다. 규칙의 의미를 이해하지 못하고 그저 따라가기에 급급하면 변화에 대응하기 어렵다. 규칙이 있다는 걸 몰라서 따를 수 없다면 그건 더 문제고.&lt;/p&gt;
+
+&lt;p&gt;규칙을 만드는 소수가 문제를 제대로 이해하고 있지 못할 가능성도 배제하기 어렵다. 아키텍처는 자신이 놓일 환경의 여러 요소에 영향을 받는다. 그렇다면 관련 지식을 가진 모두가 자신이 가진 지식의 조각을 함께 맞춰야 문제를 제대로 이해할 수 있지 않을까? 속도만 좇다가 엉뚱한 산에 올라가느니, 조금 느리더라도 목표를 함께, 잘 찾아가는 과정을 팀이 경험할 수 있는 계기를 만들어 주는 게 중요했다.&lt;/p&gt;
+
+&lt;p&gt;약간의 비효율이 존재하더라도 합의를 만든다는 본질에 충실하고 싶었는데, 동료의 진솔한 피드백은 다음 주에 1 대 1 스몰토크를 하면서 수집할 생각.&lt;/p&gt;
+
+&lt;h1 id=&quot;태스크-담당자와-짝꿍을-1명-이상-연결하기&quot;&gt;태스크 담당자와 짝꿍을 1명 이상 연결하기&lt;/h1&gt;
+
+&lt;p&gt;풀기 어려운 문제를 혼자 해결해야 할 때 느낄 수 있는 감정 중에 하나는 외로움인 것 같다. 나만 그런가?&lt;/p&gt;
+
+&lt;p&gt;앞으로 팀이 풀어야 할 문제는 지금까지 해보지 않은 프랙티스를 많이 도입해야 한다. 가보지 않은 길이라는 건, 그만큼 어렵다는 뜻이고, 주니어 비중이 높은 우리 팀 구성상 혼자 문제를 풀도록 놔두면 외로움이라는 감정과 싸우는 데에 소모하는 에너지가 클 수밖에 없다. 실제로 이런 이야기를 듣기도 했고.&lt;/p&gt;
+
+&lt;p&gt;역시나 약간의 비효율이 존재하더라도 혼자 문제를 잡고 끙끙하게 두지 않기로 했다. 일단 백로그를 리뷰하면서 각자 자신이 풀고 싶은 문제를 선택한다. 이때 개별 태스크의 담당자를 한 명으로 한정하지 않는다. 같은 문제를 풀고 싶은 사람이 자연스레 2명 또는 3명이 되는데, 가능한 모두가 기회를 갖는다. 물론 어디까지나 개인의 선택.&lt;/p&gt;
+
+&lt;p&gt;하지만 팀 여건상 담당자를 여러 명 배정할 수 없는 상황이 생기는데 이럴 때는 메인 담당자를 두고 다른 사람은 고민을 도와주는 짝꿍으로 티켓에 명시했다. 짝꿍의 역할은, “나도 이 문제에 관심이 있어. 도움이 필요하면 나한테 말해. 혹시 내 일이 빨리 끝나면 도와줄게” 정도일 것 같다.&lt;/p&gt;
+
+&lt;p&gt;잘 동작할지, 어떤 심리적 장벽이 또 작용할지, 엉망진창이 될지 솔직히 나도 잘 모르겠다. 잘 안 되면 그때 다른 길을 찾지 뭐, 이런 생각.&lt;/p&gt;
+
+&lt;p&gt;다만 이 프로젝트의 끝에 구성원 모두가 이런 생각을 할 수 있으면 참 좋겠고 그걸 돕는 게 내 역할이라고 생각 중.&lt;/p&gt;
+
+&lt;p&gt;“오, 우리가 이걸 했다고?”&lt;/p&gt;
+</description>
+            <pubDate>Mon, 28 Mar 2022 00:00:00 +0900</pubDate>
+            <link>http://localhost:4000/2022-03-30-41-함께 일한다는 느낌을 주기</link>
+            <guid isPermaLink="true">http://localhost:4000/2022-03-30-41-함께 일한다는 느낌을 주기</guid>
+            
+            <category>책리뷰</category>
+            
+            
+            <category>책리뷰</category>
+            
+        </item>
         
         <item>
             <title>(리뷰)룬샷 - 전쟁, 질병, 불황의 위기를 승리로 이끄는 설계의 힘</title>
@@ -4605,53 +4650,6 @@ on: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;pull_request]
             <category>es2015</category>
             
             <category>삽질기</category>
-            
-            
-            <category>개발 이야기</category>
-            
-        </item>
-        
-        <item>
-            <title>FBDG 첫 번째 미트업 발표자료 공유</title>
-            <description>&lt;p&gt;
-				지난 11월 30일에 강남 D2 스타트업 팩토리에서 Facebook의 오픈 소스 기술을 주제로 하는  &lt;a href=&quot;https://www.facebook.com/groups/reactist/&quot; target=&quot;_blank&quot;&gt;FBDG(Facebook Developer Group)&lt;/a&gt;의 첫 번째 미트업이 열렸다. 평일 저녁이었음에도 총 정원 100명에 약 80 ~ 90명이 참석한 걸 보면서 요즘 React의 인기가 상당하다는 것을 알 수 있었다.&lt;/p&gt;
-&lt;p&gt;세션은 총 네 개였는데 이 자리에서 나는 &quot;Facebook은 React를 왜 만들었을까?&quot;를 주제로 발표를 했다. React가 나오기 전까지 웹 프론트엔드가 발전해 온 과정을 돌아봄으로써 어떤 문제가 있었는지를 이해하고, 이 문제를 React가 어떤 방향으로 풀어나가는지를 설명하는 내용이었다.&lt;/p&gt;
-&lt;p&gt;FBDG를 만들고 활동하기 시작한 이유 중 하나가 &quot;배워서 남주고, 이로써 더 큰 가치를 만들자&quot;였기에 발표 내용을 동영상으로 촬영해 공유하고 싶었다. 하지만 촬영 장비를 구하지 못해서 애를 태우던 중 &lt;a href=&quot;http://webframeworks.kr/&quot; target=&quot;_blank&quot;&gt;WebFrameworks.kr&lt;/a&gt; 에서 극적으로 도움을 주셔서 KISA(한국인터넷진흥원)의 지원을 받아 동영상을 촬영할 수 있었다.&lt;/p&gt;
-&lt;p&gt;촬영한 동영상과 발표에 사용한 슬라이드는 아래에 링크로 공유했다. 첫 번째 세션을 제외한 나머지 세션은 아직 동영상은 아직 편집이 끝나지 않아 업로드를 하지 못했다. 달리나음이라는 닉네임으로 유명한 용욱 님이 고생해서 편집 중이다. 편집이 끝나는대로 페이스북 FBDG 그룹을 통해 공유하고 이 포스트에도 내용을 추가할 예정이다.&lt;/p&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
-&lt;h3&gt;Facebook은 React를 왜 만들었을까? - 김코딩&lt;/h3&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
-&lt;p&gt;&lt;iframe width=&quot;595&quot; height=&quot;485&quot; style=&quot;border: 1px solid #CCC; border-width: 1px; margin-bottom: 5px; max-width: 100%;&quot; src=&quot;//www.slideshare.net/slideshow/embed_code/key/lpgg4DisTpybcB&quot; frameborder=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; scrolling=&quot;no&quot; allowfullscreen=&quot;allowfullscreen&quot;&gt; &lt;/iframe&gt;&lt;/p&gt;
-&lt;div style=&quot;margin-bottom: 5px;&quot;&gt;&lt;strong&gt; &lt;a title=&quot;Facebook은 왜 React를 만들었을까? &quot; href=&quot;//www.slideshare.net/jeokrang/facebook-react-55649927&quot; target=&quot;_blank&quot;&gt;Facebook은 왜 React를 만들었을까? &lt;/a&gt; &lt;/strong&gt; from &lt;strong&gt;&lt;a href=&quot;//www.slideshare.net/jeokrang&quot; target=&quot;_blank&quot;&gt;Kim Hunmin&lt;/a&gt;&lt;/strong&gt;&lt;/div&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
-&lt;p&gt;&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/iAJCdfgYQtw&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;allowfullscreen&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
-&lt;h3&gt;역시 Redux - &lt;a class=&quot;profileLink&quot; href=&quot;https://www.facebook.com/leo.yu.kim&quot; data-hovercard=&quot;/ajax/hovercard/user.php?id=713043467&amp;amp;extragetparams=%7B%22directed_target_id%22%3A1633937060162928%7D&quot;&gt;Leonardo YongUk Kim&lt;/a&gt;&lt;/h3&gt;
-&lt;h3&gt;&lt;iframe width=&quot;595&quot; height=&quot;485&quot; style=&quot;border: 1px solid #CCC; border-width: 1px; margin-bottom: 5px; max-width: 100%;&quot; src=&quot;//www.slideshare.net/slideshow/embed_code/key/BxPeVMXZHwtPFK&quot; frameborder=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; scrolling=&quot;no&quot; allowfullscreen=&quot;allowfullscreen&quot;&gt; &lt;/iframe&gt;&lt;/h3&gt;
-&lt;div style=&quot;margin-bottom: 5px;&quot;&gt;&lt;strong&gt; &lt;a title=&quot;역시 Redux&quot; href=&quot;//www.slideshare.net/dalinaum/redux-55650128&quot; target=&quot;_blank&quot;&gt;역시 Redux&lt;/a&gt; &lt;/strong&gt; from &lt;strong&gt;&lt;a href=&quot;//www.slideshare.net/dalinaum&quot; target=&quot;_blank&quot;&gt;Leonardo YongUk Kim&lt;/a&gt;&lt;/strong&gt;&lt;/div&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
-&lt;h3&gt;다함께, FluxUtils 한 바퀴 - &lt;a class=&quot;profileLink&quot; href=&quot;https://www.facebook.com/coderifleman&quot; data-hovercard=&quot;/ajax/hovercard/user.php?id=100007964441178&amp;amp;extragetparams=%7B%22directed_target_id%22%3A1633937060162928%7D&quot;&gt;U-Yeong Ju&lt;/a&gt;&lt;/h3&gt;
-&lt;h3&gt;&lt;iframe width=&quot;595&quot; height=&quot;485&quot; style=&quot;border: 1px solid #CCC; border-width: 1px; margin-bottom: 5px; max-width: 100%;&quot; src=&quot;//www.slideshare.net/slideshow/embed_code/key/jV1qmKCHACQE6v&quot; frameborder=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; scrolling=&quot;no&quot; allowfullscreen=&quot;allowfullscreen&quot;&gt; &lt;/iframe&gt;&lt;/h3&gt;
-&lt;div style=&quot;margin-bottom: 5px;&quot;&gt;&lt;strong&gt; &lt;a title=&quot;다함께, FluxUtils 한바퀴!&quot; href=&quot;//www.slideshare.net/UyeongJu/fluxutils&quot; target=&quot;_blank&quot;&gt;다함께, FluxUtils 한바퀴!&lt;/a&gt; &lt;/strong&gt; from &lt;strong&gt;&lt;a href=&quot;//www.slideshare.net/UyeongJu&quot; target=&quot;_blank&quot;&gt;Uyeong Ju&lt;/a&gt;&lt;/strong&gt;&lt;/div&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
-&lt;h3&gt;React 사용 사례 + Redux - &lt;a class=&quot;profileLink&quot; href=&quot;https://www.facebook.com/ironhee95&quot; data-hovercard=&quot;/ajax/hovercard/user.php?id=100002318127370&amp;amp;extragetparams=%7B%22directed_target_id%22%3A1633937060162928%7D&quot;&gt;ChulHui Lee&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&quot;http://l.facebook.com/l.php?u=http%3A%2F%2Ffbdg.github.io%2Fironhee-2015-presentation%2F&amp;amp;h=XAQHwDlcdAQEqgeRusZ8la7y0Xz5UDgZoTTC_3bSwhDD36w&amp;amp;enc=AZO8qHnpcDNDbRX2JHYcFXQFEwsSK1B21b1mbmqEtSEVlDAAlldGqd10J4sAHuC7bWfQBTIJCksfmJZOBpk9zgwCGa3e48Z0oE9rBh7_tJ1g0hL0EeW6SdZ54gyN4vM2xt9UK3_aQronfdREy5vnM2MNNpgc_WOnst5Nhr_rQ5vbWii65FDnVqFwSIQk7SWQCrE&amp;amp;s=1&quot; target=&quot;_blank&quot; rel=&quot;nofollow&quot;&gt;http://fbdg.github.io/ironhee-2015-presentation/&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
-&lt;p&gt;&amp;nbsp;		&lt;/p&gt;
-</description>
-            <pubDate>Fri, 04 Dec 2015 23:54:40 +0900</pubDate>
-            <link>http://localhost:4000/development/1745</link>
-            <guid isPermaLink="true">http://localhost:4000/development/1745</guid>
-            
-            <category>facebook</category>
-            
-            <category>fbdg</category>
-            
-            <category>react</category>
-            
-            <category>발표자료</category>
             
             
             <category>개발 이야기</category>
