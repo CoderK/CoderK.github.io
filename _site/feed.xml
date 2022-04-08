@@ -5,9 +5,49 @@
         <description>김코딩 님이 잘하고 싶어서 만든 블로그</description>
         <link>http://localhost:4000/</link>
         <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Wed, 30 Mar 2022 10:33:31 +0900</pubDate>
-        <lastBuildDate>Wed, 30 Mar 2022 10:33:31 +0900</lastBuildDate>
+        <pubDate>Fri, 08 Apr 2022 10:39:09 +0900</pubDate>
+        <lastBuildDate>Fri, 08 Apr 2022 10:39:09 +0900</lastBuildDate>
         <generator>Jekyll v3.8.6</generator>
+        
+        <item>
+            <title>회의를 줄이는 두 가지 시도</title>
+            <description>&lt;p&gt;팀 구성원이 짝을 지어 기술 리서치를 진행하면서 여러 건의 일을 병렬로 진행하고 있다. 리서치 결과를 건별로 공유하고 논의하는 자리가 만들어지다보니 자연스레 회의가 많아졌다. 프로토콜을 만들어가는 프로젝트 초반이라 회의가 많은 건 어쩌면 ‘당연’한 일인 듯 싶다. 그럼에도 우리가 효과적으로 회의를 ‘제어’할 수 있다면 줄인 비용을 다른 곳에 쓸 수 있지 않을까? 이 상황을 팀이 회고하고 두 가지 방향으로 개선을 해보기로 했다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;동시에 진행하는 태스크의 갯수를 제한하자.&lt;/li&gt;
+  &lt;li&gt;회의시간을 30분으로 제한하자.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;1-동시에-진행하는-태스크의-갯수를-제한하자&quot;&gt;1. 동시에 진행하는 태스크의 갯수를 제한하자.&lt;/h2&gt;
+
+&lt;p&gt;칸반처럼 동시에 진행하는 태스크의 갯수를 제한해 보기로 했다. 팀 안의 커뮤니케이션 관계를 그대로 유지한 채, 병렬로 진행하는 일의 수를 늘리면 그 일과 직접적인 상관이 없는 사람도 부하를 받기 마련이다. 커뮤니케이션 관계가 그대로니까. 해야 할 코드 리뷰의 양이 늘어나거나, 참여해야 할 논의가 더 많아지거나, 갑자기 이슈를 같이 들여다봐야 할 일이 생기거나. 다른 사람의 일 같지만, 관계를 완전히 차단하지 않는 이상 ‘남의 일’이 아닌 셈이다.&lt;/p&gt;
+
+&lt;p&gt;회의가 많다는 건 어쩌면 팀이 감당하기 어려운 수준의 부하를 받고 있다는 신호일지도. 동시에 진행하는 태스크의 갯수를 조금 줄이고 우리에게 일어나는 변화를 관찰하기로 했다.&lt;/p&gt;
+
+&lt;h2 id=&quot;2-회의시간을-30분으로-제한하자&quot;&gt;2. 회의시간을 30분으로 제한하자.&lt;/h2&gt;
+
+&lt;p&gt;30분 이상 시간을 소비하는 회의를 무조건 잡지 말라는 건 아니고 일종의 상자 안에서 생각하기. 회의 시간을 30분으로 제한하고, 회의를 주최하는 사람은 30분 안에 미팅을 끝낼 수 있도록 회의를 ‘설계’하기로 했다. 제약을 두고 제약 안에서 잘할 수 있는 궁리를 같이 해보자는 취지다.&lt;/p&gt;
+
+&lt;p&gt;‘사전 회의록 공유하기’가 내 기대 이상으로 자리를 잘 잡아가고 있지만, 마치 누가 정한 표준이라도 있는 것처럼, 모든 회의를 1시간씩, 같은 포맷으로 잡는 관성은 그대로다. 그래서 잔잔한 호수에 돌을 하나 던졌다.&lt;/p&gt;
+
+&lt;p&gt;.&lt;/p&gt;
+
+&lt;p&gt;.&lt;/p&gt;
+
+&lt;p&gt;.&lt;/p&gt;
+
+&lt;p&gt;🙏  이제 돌을 던졌으니 어떤 변화가 생기는지 어디 한 번 봅시다.&lt;/p&gt;
+</description>
+            <pubDate>Fri, 08 Apr 2022 00:00:00 +0900</pubDate>
+            <link>http://localhost:4000/2022-04-08-42-회의를 줄이는 두 가지 시도</link>
+            <guid isPermaLink="true">http://localhost:4000/2022-04-08-42-회의를 줄이는 두 가지 시도</guid>
+            
+            <category>책리뷰</category>
+            
+            
+            <category>책리뷰</category>
+            
+        </item>
         
         <item>
             <title>함께 일한다는 느낌을 주기</title>
@@ -4615,41 +4655,6 @@ on: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;pull_request]
             <category>react</category>
             
             <category>개발일기</category>
-            
-            
-            <category>개발 이야기</category>
-            
-        </item>
-        
-        <item>
-            <title>IE10에서 클래스 상속 코드를 Babel 6로 트랜스파일시 오작동하는 현상</title>
-            <description>&lt;div&gt;
-&lt;p class=&quot;p1&quot;&gt;&lt;span class=&quot;s1&quot;&gt;지금 하고 있는 프로젝트는 ES2015스펙을 사용하기 위해서 Babel 6로 코드를 트랜스파일하고 있다. 프로젝트를 진행하던 중 IE 10 이하 버전에서 자식 인스턴스를 생성할 때 부모의 생성자를 호출하지 않는 현상을 발견했는데, &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;원인을 추적해보니 익스플로러 10 이하 버전이 __proto__ 속성을 지원하지 않는 게 문제였다. &lt;/span&gt;&lt;/p&gt;
-&lt;p class=&quot;p1&quot;&gt;&lt;span class=&quot;s1&quot;&gt;Babel 6는 객체의 __proto__ 프로퍼티를 이용해서 ES2015의 Classes 상속을 구현하고 있는데,  익스플로러 10 이하 버전이 이를 지원하지 않다보니 부모 생성자를 호출하지 못한다. &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;찾아보니 이미 공식 사이트에 나와있는 내용이더라.&lt;/span&gt;&lt;/p&gt;
-&lt;p class=&quot;p1&quot;&gt;
-&lt;p class=&quot;p3&quot;&gt;&lt;span class=&quot;s2&quot;&gt;&lt;a href=&quot;https://babeljs.algolia.com/docs/advanced/caveats/&quot;&gt;https://babeljs.algolia.com/docs/advanced/caveats/  &lt;/a&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;p class=&quot;p1&quot;&gt;
-&lt;p class=&quot;p1&quot;&gt;&lt;span class=&quot;s1&quot;&gt;해결책도 다 나와있다. Babel 측은 loose 모드를 이용하는 걸로 이 문제를 우회하라고 안내하고 있다. loose 모드는 ES2015에 본래 스펙에서 규정하고 있는 처리 메커니즘에 근접한 코드가 아닌, 하위 호환성에 초점을 둔 좀 더 단순한 코드를 산출한다.&lt;/span&gt;&lt;/p&gt;
-&lt;p class=&quot;p1&quot;&gt;&lt;span class=&quot;s1&quot;&gt;아래 링크를 타고 들어가보면 트랜스파일한 결과물이 어떻게 다른지 확인할 수 있다.&lt;/span&gt;&lt;/p&gt;
-&lt;p class=&quot;p1&quot;&gt;
-&lt;p class=&quot;p3&quot;&gt;&lt;span class=&quot;s2&quot;&gt;&lt;a href=&quot;http://www.2ality.com/2015/12/babel6-loose-mode.html&quot;&gt;http://www.2ality.com/2015/12/babel6-loose-mode.html&lt;/a&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;p class=&quot;p1&quot;&gt;
-&lt;p class=&quot;p1&quot;&gt;&lt;span class=&quot;s1&quot;&gt;이런 종류의 이슈를 만날 때마다 내 자신에게 하는 이야기를 또 해야겠다.&lt;/span&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p class=&quot;p1&quot;&gt;&lt;span class=&quot;s1&quot;&gt;문서 좀 잘 읽자잉~?&lt;/span&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/div&gt;
-&lt;p class=&quot;p1&quot;&gt;
-</description>
-            <pubDate>Sun, 14 Feb 2016 18:41:05 +0900</pubDate>
-            <link>http://localhost:4000/development/1765</link>
-            <guid isPermaLink="true">http://localhost:4000/development/1765</guid>
-            
-            <category>babel6</category>
-            
-            <category>es2015</category>
-            
-            <category>삽질기</category>
             
             
             <category>개발 이야기</category>
