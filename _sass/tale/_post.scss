@@ -8,13 +8,17 @@
   h5,
   h6 {
     width: $contents-width;
+
+    @media (max-width: 480px) {
+      padding: 0 25px
+    }
   }
 
   ul,
   ol {
-    padding: 1rem 0 2rem 1.2rem;
+    padding: 1rem 0 2rem 3rem;
     display: block;
-    width: 85%;
+    width: 100%;
     margin: 0 auto;
   }
 
@@ -81,6 +85,10 @@
     margin: 1rem auto;
     text-align: center;
     font-weight: 400;
+
+    @media (max-width: 480px) {
+      padding: 0 25px
+    }
   }
 
   &-line {
@@ -95,14 +103,24 @@
     word-break: break-word;
     width: $contents-width;
 
+    @media (max-width: 600px) {
+      padding: 0 25px
+    }
+
     &.image-wrapper {
       width: $container-width;
+      padding: 0
     }
   }
 
   & > table {
     margin: 2rem auto;
-    width: 85%;
+    width: $contents-width;
+
+    @media (max-width: 600px) {
+      width: 90%
+    }
+
     text-align: center;
 
     th {
