@@ -4,8 +4,8 @@
   "description": "KimCoding's tech blog",
   "main": "index.js",
   "scripts": {
-    "start": "bundle exec jekyll serve",
-    "build": "bundle exec jekyll build"
+    "start": "JEKYLL_ENV=production bundle exec jekyll serve",
+    "build": "JEKYLL_ENV=production bundle exec jekyll build"
   },
   "author": "CoderK",
   "license": "ISC"
