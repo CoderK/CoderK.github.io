@@ -30,7 +30,11 @@
     position: relative;
     width: 100%;
     margin: 2rem auto;
-    padding: 1.5rem 0;
+    padding: 1.5rem 1.5rem;
+
+    @media (max-width: 480px) {
+      padding: 1.5rem 0;
+    }
 
     p:last-child {
       margin-bottom: 0;
