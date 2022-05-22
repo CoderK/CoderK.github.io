@@ -94,7 +94,7 @@
 <p>경험을 내 안에 썩혀두기가 아까워서 팀에 공유할 목적으로 삽질기를 작성했다. 외부의 누군가에게도 도움이 될 것 같아 원문을 조금 다듬어서 블로그로 옮긴다. 의식의 흐름을 따라 쓴 글이라 두서가 없으니, 찰떡같이 읽어주시길.</p>
 <h1>1.Tree Shaking이란?</h1>
 <p>Tree Shaking은 직역하면 <strong>나무 흔들기 </strong>정도로 표현할 수 있다. Webpack이 JS 모듈을 번들링할 때 사용하지 않는 코드를 제거하는 최적화 과정을 말한다. 나무를 흔들면 잎이 떨어지듯이 사용하지 않는 코드를 털어낸다는 뜻이다. 개념에 이름을 붙일 때 은유를 이용하는 걸 좋아한다. 메타포!<br>
-​<br>
+ <br>
 원래 이 용어를 처음 최적화 개념에 사용한 건 rollup.js지만 Webpack 4가 대단히 영리한 최적화 빌드를 보여주면서 주목받는 사이 rollup.js는 잊힌 느낌이다.</p>
 <p>인터넷에 떠도는 예제와 달리 현실의 설정은 매우 복잡하다. 95개의 패키지를 가지고 있는 Monorepo니 복잡할 수밖에. 그래서 그런지 아무리 설정을 바꿔봐도 최종 번들 파일의 사이즈가 좀처럼 줄어들지를 않았다. 제대로 이해하고 써야겠다는 생각에 <a href="https://github.com/CoderK/tree-shaking-with-side-effect-test">예제 코드</a>를 만들어서 테스트를 하기로 했다.</p>
 <figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr>
@@ -494,12 +494,12 @@
 </tr></tbody></table></code></pre></figure>
 
 <p>그런데 있다. Tree Shaking이 동작하지 않았다. 왜?</p>
-<p>​한참 삽질을 하던 중, Webpack의 공식 문서를 읽어보고서야 범인을 알 수 있었다. 범인은 sideEffects.</p>
+<p> 한참 삽질을 하던 중, Webpack의 공식 문서를 읽어보고서야 범인을 알 수 있었다. 범인은 sideEffects.</p>
 <p><a href="https://webpack.js.org/configuration/optimization/#optimization-sideeffects">https://webpack.js.org/configuration/optimization/#optimization-sideeffects</a></p>
 <p><span style="font-size: 10pt;">(Webpack 최적화 옵션의 sideEffects와는 다릅니다.)</span></p>
 <p>Tree Shaking을 수행하면 사용하지 않는 코드가 탈락된다. 이로 인해 사이드 이펙트가 발생할 수 있는데, 코드를 직접 평가하고 실행해보지 않는 이상 Webpack이 사이드 이펙트 발생 여부를 알 수는 없다. 그래서 Webpack이 찾은 대안이 sideEffects다.</p>
 <p>직접 코드를 평가하고 실행하는 대신에, Webpack은 외부 패키지의 package.json에 있는 sideEffects 설정을 보고 사이드 이펙트 존재 여부를 판단하다. 사이드 발생 여부에 대한 판단 책임을 코드 작성자에게 넘긴 셈이다. 만든 사람이 제일 잘 알테니깐.<br>
-​<br>
+ <br>
 이 옵션을 명시하지 않으면 Tree Shaking 시에 사이드 이펙트가 발생할 수 있다고 판단하여 해당 패키지를 Tree Shaking의 대상에서 제외한다. 따라서 package.json에 sideEffects 프로퍼티를 false로 명시해야만 Three Shaking을 적용받을 수 있다.</p>
 <p>위에서 설치한 lodash의 package.json을 확인하자.</p>
 
@@ -702,7 +702,7 @@
     </main>
     <footer>
   <span>
-    © <time datetime="2022-05-22 21:43:19 +0900">2022</time> KimCoding. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+    © <time datetime="2022-05-22 21:48:34 +0900">2022</time> KimCoding. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
   </span>
 </footer>
 
