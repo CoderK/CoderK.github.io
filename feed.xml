@@ -5,8 +5,8 @@
         <description>김코딩 님이 잘하고 싶어서 만든 블로그</description>
         <link>http://localhost:4000/</link>
         <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Sun, 22 May 2022 21:52:56 +0900</pubDate>
-        <lastBuildDate>Sun, 22 May 2022 21:52:56 +0900</lastBuildDate>
+        <pubDate>Sun, 22 May 2022 21:55:58 +0900</pubDate>
+        <lastBuildDate>Sun, 22 May 2022 21:55:58 +0900</lastBuildDate>
         <generator>Jekyll v3.8.6</generator>
         
         <item>
