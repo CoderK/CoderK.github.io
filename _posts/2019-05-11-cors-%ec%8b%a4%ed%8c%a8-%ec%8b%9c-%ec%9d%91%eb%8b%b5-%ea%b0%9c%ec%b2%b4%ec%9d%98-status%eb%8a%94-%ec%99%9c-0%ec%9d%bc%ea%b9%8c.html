@@ -99,7 +99,7 @@ fetch(myRequest)
 <p><cite>https://fetch.spec.whatwg.org/#concept-request-mode</cite></p></blockquote>
 <p><!-- /wp:quote --></p>
 <p><!-- wp:paragraph --></p>
-<p>​XHR이든, Fetch API이든, 우리가 흔히 AJAX라고 부르는 요청은, cors를 기본 mode로 갖는다. </p>
+<p> XHR이든, Fetch API이든, 우리가 흔히 AJAX라고 부르는 요청은, cors를 기본 mode로 갖는다. </p>
 <p><!-- /wp:paragraph --></p>
 <p><!-- wp:paragraph --></p>
 <p>이에 반해 이미지나 CSS와 같은 리소스를 가져오는 요청, 즉 클라이언트의 코드 레벨이 아닌 하부 시스템에 의해 네트워크 요청이 만들어지는 경우(link, script, img, audio 등…)에 요청 개체는 no-cors를 기본값으로 갖는다. 다만, crossorigin 속성을 부여하면 mode는 cors가 된다.</p>
@@ -113,7 +113,7 @@ fetch(myRequest)
 <p><!-- /wp:paragraph --></p>
 <p><!-- wp:quote {"align":"left"} --></p>
 <blockquote style="text-align:left" class="wp-block-quote"><p>Requests can be initiated in a variety of ways, and the mode for a request depends on the particular means by which it was initiated.</p>
-<p>​For example, when a Request object is created using the Request.Request constructor, the value of the mode property for that Request is set to cors</p>
+<p> For example, when a Request object is created using the Request.Request constructor, the value of the mode property for that Request is set to cors</p>
 <p>However, for requests created other than by the Request.Request constructor, no-cors is typically used as the mode; for example, for embedded resources where the request is initiated from markup, unless the crossorigin attribute is present, the request is in most cases made using the no-cors mode — that is, for the &lt;link> or &lt;script> elements (except when used with modules), or &lt;img>, &lt;audio>, &lt;video>, &lt;object>, &lt;embed>, or &lt;iframe>elements.</p>
 <p><cite>https://developer.mozilla.org/en-US/docs/Web/API/Request/mode#Default_mode</cite></p></blockquote>
 <p><!-- /wp:quote --></p>

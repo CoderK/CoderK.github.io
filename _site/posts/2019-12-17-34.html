@@ -102,10 +102,8 @@
 
 <p>정확하게, GitHub PR의 머지 브랜치를 참조하는 방법을 Bamboo가 지원하지 않는다. Bamboo는 Atlassian 제품(Bitbucket 같은)과 궁합이 잘 맞는 대신, GitHub에 대한 지원은 빈약하다. GitHub을 이용한다면 Bamboo에서 Pull Request 이벤트를 받아서 베이스 브랜치를 기준으로만 빌드를 할 수 있다. GitHub를 모른 척 할 수 있는 패기에 감탄 :(</p>
 
-<p>​
-어쨌든 나는 살아야겠으니 대안을 찾자.</p>
+<p>어쨌든 나는 살아야겠으니 대안을 찾자.</p>
 
-<p>​</p>
 <h1 id="01-대안을-찾아서">01. 대안을 찾아서…</h1>
 
 <p>Jenkins라는 대안이 있지만 직접 설치를 해야 하는 게 부담이다. Bamboo에, 모든 프로젝트의 배포 플랜을 모으는 게 회사 정책이라 CI 서버를 양쪽에 두면 혼란할 것 같다. 손 안대고 코를 풀고 싶다. 방법이 없을까?</p>
@@ -189,8 +187,8 @@ Self-Hosted Runner를 이용하면 직접 가상 머신을 임대해서 GitHub A
 
 <p>Workflow 파일은 .github/workflows 디렉터리에 위치한다. 화면에 보이는 것처럼 GitHub의 Actions 탭에서 직접 작성할 수 있다. 로컬에서 소스 코드처럼 작성하고 GitHub 원격 저장소로 Push를 할 수도 있다.</p>
 
-<p>Action을 npm 패키지처럼 Marketplace에  배포를 하면 우측의 <a href="https://github.com/marketplace">GitHub Marketplace</a>에 노출되어 다른 사용자와 공유할 수 있다. 물론 다른 사람이 작성한 Action을 이용하는 것도 가능.
-​</p>
+<p>Action을 npm 패키지처럼 Marketplace에  배포를 하면 우측의 <a href="https://github.com/marketplace">GitHub Marketplace</a>에 노출되어 다른 사용자와 공유할 수 있다. 물론 다른 사람이 작성한 Action을 이용하는 것도 가능.</p>
+
 <h1 id="05-pull-request--test-실행하기">05. Pull Request → Test 실행하기</h1>
 
 <p>Node.js Workflow를 선택하면 아래의 yml이 만들어진다.</p>
@@ -351,8 +349,8 @@ on: <span class="o">[</span>pull_request]
 
 <p><a href="https://help.github.com/en/actions/automating-your-workflow-with-github-actions">Automating your workflow with GitHub Actions</a></p>
 
-<p>그것마저도 귀찮은 누군가를 위해서 내가 위에서 작성한 워크 플로우를 단계별로 간단히 살펴본다.
-​</p>
+<p>그것마저도 귀찮은 누군가를 위해서 내가 위에서 작성한 워크 플로우를 단계별로 간단히 살펴본다.</p>
+
 <h3 id="1-워크-플로우-이름">1) 워크 플로우 이름</h3>
 
 <figure class="highlight"><pre><code class="language-shell" data-lang="shell"><table class="rouge-table"><tbody><tr>
@@ -386,8 +384,8 @@ on: <span class="o">[</span>pull_request]
 </pre></td>
 </tr></tbody></table></code></pre></figure>
 
-<p><a href="https://help.github.com/en/actions/automating-your-workflow-with-github-actions/events-that-trigger-workflows">Events that trigger workflows</a>
-​</p>
+<p><a href="https://help.github.com/en/actions/automating-your-workflow-with-github-actions/events-that-trigger-workflows">Events that trigger workflows</a></p>
+
 <h3 id="3-머지-브랜치-체크아웃">3) 머지 브랜치 체크아웃</h3>
 
 <figure class="highlight"><pre><code class="language-shell" data-lang="shell"><table class="rouge-table"><tbody><tr>
@@ -412,8 +410,8 @@ on: <span class="o">[</span>pull_request]
 
 <p><a href="https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-a-javascript-action">Creating a JavaScript action</a></p>
 
-<p>또는 직접 <a href="https://github.com/marketplace?type=actions">Marketplace에</a> 올라온 Action의 코드(예, <a href="https://github.com/ziishaned/jest-reporter-action">jest-reporter-action</a>)를 살펴보는 것도 좋다.
-​</p>
+<p>또는 직접 <a href="https://github.com/marketplace?type=actions">Marketplace에</a> 올라온 Action의 코드(예, <a href="https://github.com/ziishaned/jest-reporter-action">jest-reporter-action</a>)를 살펴보는 것도 좋다.</p>
+
 <h3 id="4-nodejs-환경-설정">4) Node.js 환경 설정</h3>
 
 <figure class="highlight"><pre><code class="language-shell" data-lang="shell"><table class="rouge-table"><tbody><tr>
@@ -433,8 +431,8 @@ on: <span class="o">[</span>pull_request]
 
 <p>이후 Workflow를 실행할 Node.js 환경을 설정한다. 사설 npm 저장소를 이용하는 경우에 registry-url을 옵션으로 설정해야 한다. https://npm.pkg.github.com은 GitHub Packages Registry를 가리킨다.</p>
 
-<p><code class="highlighter-rouge">${{ ... }}</code>은 Runner를 실행하는 <a href="https://help.github.com/en/actions/automating-your-workflow-with-github-actions/contexts-and-expression-syntax-for-github-actions#contexts">문맥(Contexts)</a>에 대한 정보나 <a href="https://help.github.com/en/actions/automating-your-workflow-with-github-actions/using-environment-variables">환경 변수(Environment Variables)</a>를 참조할 때 이용하는 표현식이다.
-​</p>
+<p><code class="highlighter-rouge">${{ ... }}</code>은 Runner를 실행하는 <a href="https://help.github.com/en/actions/automating-your-workflow-with-github-actions/contexts-and-expression-syntax-for-github-actions#contexts">문맥(Contexts)</a>에 대한 정보나 <a href="https://help.github.com/en/actions/automating-your-workflow-with-github-actions/using-environment-variables">환경 변수(Environment Variables)</a>를 참조할 때 이용하는 표현식이다.</p>
+
 <h3 id="5-ssh-agent-설정">5) SSH Agent 설정</h3>
 
 <figure class="highlight"><pre><code class="language-shell" data-lang="shell"><table class="rouge-table"><tbody><tr>
@@ -452,10 +450,10 @@ on: <span class="o">[</span>pull_request]
 
 <p>Private 저장소를 이용한다면 SSH 비밀키를 설정해야 한다. <a href="https://github.com/marketplace/actions/webfactory-ssh-agent">webfactory/ssh-agent@v0.1.1</a>는 SSH Agent에 비밀키를 설정하는 걸 돕는다. 보안에 예민한 접근 제한키나 토큰과 같은 정보는 직접 워크 플로우 파일에 작성하기가 찜찜하다. 그래서 GitHub는 Secrets라는 기능을 제공한다.</p>
 
-<p>​이 기능은 <u>저장소 &gt; Settings &gt; Secrets</u>에서 이용할 수 있다.</p>
+<p>이 기능은 <u>저장소 &gt; Settings &gt; Secrets</u>에서 이용할 수 있다.</p>
 
-<p>Secrets에 환경 변수를 등록하면 GitHub는 이를 암호화해서 들고 있다가, 런타임에 secrets의 프로퍼티로 제공한다. 참고로 Secrets에 입력한 값은 자동으로 암호화(Encrypted)가 된다. 토큰을 Secrets에 등록할 때는 암호화하지 않은 버전을 등록해야 한다는 걸 주의하자.
-​</p>
+<p>Secrets에 환경 변수를 등록하면 GitHub는 이를 암호화해서 들고 있다가, 런타임에 secrets의 프로퍼티로 제공한다. 참고로 Secrets에 입력한 값은 자동으로 암호화(Encrypted)가 된다. 토큰을 Secrets에 등록할 때는 암호화하지 않은 버전을 등록해야 한다는 걸 주의하자.</p>
+
 <h3 id="6-패키지-설치">6) 패키지 설치</h3>
 
 <figure class="highlight"><pre><code class="language-shell" data-lang="shell"><table class="rouge-table"><tbody><tr>
@@ -473,8 +471,8 @@ on: <span class="o">[</span>pull_request]
 </pre></td>
 </tr></tbody></table></code></pre></figure>
 
-<p>run은 CLI 명령어를 실행할 때 사용한다. env를 이용해 Runner에 환경 변수를 설정할 수 있다. 사설 npm 저장소를 이용하기에 인증 토큰을 NODE_AUTH_TOKEN 환경 변수에 설정했다.
-​</p>
+<p>run은 CLI 명령어를 실행할 때 사용한다. env를 이용해 Runner에 환경 변수를 설정할 수 있다. 사설 npm 저장소를 이용하기에 인증 토큰을 NODE_AUTH_TOKEN 환경 변수에 설정했다.</p>
+
 <h3 id="7-빌드-테스트">7) 빌드, 테스트</h3>
 
 <figure class="highlight"><pre><code class="language-shell" data-lang="shell"><table class="rouge-table"><tbody><tr>
@@ -501,7 +499,7 @@ on: <span class="o">[</span>pull_request]
 </pre></td>
 <td class="code"><pre>- name: Run build and tests
   run: yarn build <span class="o">&amp;&amp;</span> yarn run <span class="nb">test</span>:ci
-​
+ 
 </pre></td>
 </tr></tbody></table></code></pre></figure>
 
@@ -546,7 +544,7 @@ on: <span class="o">[</span>pull_request]
     </main>
     <footer>
   <span>
-    © <time datetime="2022-05-22 21:43:19 +0900">2022</time> KimCoding. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+    © <time datetime="2022-05-22 21:48:34 +0900">2022</time> KimCoding. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
   </span>
 </footer>
 
