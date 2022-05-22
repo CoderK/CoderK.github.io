@@ -1,6 +1,12 @@
 .catalogue {
   margin: 0 auto;
   width: $contents-width;
+
+  @media (max-width: 480px) {
+    padding: 0 25px;
+  }
+
+
   &-item {
     border-bottom: 1px solid $grey-2;
     color: $default-color;

@@ -17,7 +17,6 @@ footer,
   box-shadow: 0 2px 2px -2px $shadow-color;
   overflow: auto;
   margin: 0 auto;
-  width: $contents-width;
 
   &-container {
     margin: 1rem auto;
@@ -98,6 +97,10 @@ footer {
 #disqus_thread {
   width: $contents-width;
   margin: 0 auto;
+
+  @media (max-width: 480px) {
+    padding: 0 25px;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
