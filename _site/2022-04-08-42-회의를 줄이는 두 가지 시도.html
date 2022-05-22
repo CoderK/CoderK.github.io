@@ -119,26 +119,39 @@
 
 </div>
 
-<div id="disqus_thread"></div>
+<div id="comment-section"></div>
+
 <script>
-  var disqus_config = function () {
-    this.page.url = location.href;
-    this.page.identifier = location.href;
-  };
-  (function() {
-    var d = document, s = d.createElement('script');
-    s.src = 'https://huns-me-1.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', +new Date());
-    (d.head || d.body).appendChild(s);
-  })();
+  function setupComment(mode) {
+    const commentScript = document.createElement('script');
+    commentScript.src = 'https://utteranc.es/client.js';
+    commentScript.setAttribute('repo', "CoderK/CoderK.github.io");
+    commentScript.setAttribute('issue-term', 'pathname');
+    commentScript.setAttribute('theme', `github-${mode}`);
+    commentScript.setAttribute('crossorigin', 'anonymous');
+    commentScript.setAttribute('async', '');
+
+    const sectionElement = document.querySelector("#comment-section");
+    sectionElement.innerHTML = '';
+    sectionElement.appendChild(commentScript);
+  }
+
+  setupComment(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+  if (window.matchMedia) {
+    window
+        .matchMedia('(prefers-color-scheme: dark)')
+        .addEventListener('change', (event) => {
+          setupComment(event.matches ? 'dark' : 'light');
+        });
+  }
+
 </script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-</noscript>
 
     </main>
     <footer>
   <span>
-    © <time datetime="2022-05-22 18:06:41 +0900">2022</time> KimCoding. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+    © <time datetime="2022-05-22 21:43:19 +0900">2022</time> KimCoding. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
   </span>
 </footer>
 
