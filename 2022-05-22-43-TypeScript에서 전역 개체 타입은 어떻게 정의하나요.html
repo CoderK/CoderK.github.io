@@ -29,13 +29,13 @@
 <meta property="og:locale" content="en_US">
 <meta name="description" content="팀 구성원이 짝을 지어 기술 리서치를 진행하면서 여러 건의 일을 병렬로 진행하고 있다. 리서치 결과를 건별로 공유하고 논의하는 자리가 만들어지다보니 자연스레 회의가 많아졌다. 프로토콜을 만들어가는 프로젝트 초반이라 회의가 많은 건 어쩌면 ‘당연’한 일인 듯 싶다. 그럼에도 우리가 효과적으로 회의를 ‘제어’할 수 있다면 줄인 비용을 다른 곳에 쓸 수 있지 않을까? 이 상황을 팀이 회고하고 두 가지 방향으로 개선을 해보기로 했다.">
 <meta property="og:description" content="팀 구성원이 짝을 지어 기술 리서치를 진행하면서 여러 건의 일을 병렬로 진행하고 있다. 리서치 결과를 건별로 공유하고 논의하는 자리가 만들어지다보니 자연스레 회의가 많아졌다. 프로토콜을 만들어가는 프로젝트 초반이라 회의가 많은 건 어쩌면 ‘당연’한 일인 듯 싶다. 그럼에도 우리가 효과적으로 회의를 ‘제어’할 수 있다면 줄인 비용을 다른 곳에 쓸 수 있지 않을까? 이 상황을 팀이 회고하고 두 가지 방향으로 개선을 해보기로 했다.">
-<link rel="canonical" href="http://localhost:4000/2022-05-22-43-TypeScript%EC%97%90%EC%84%9C%20%EC%A0%84%EC%97%AD%20%EA%B0%9C%EC%B2%B4%20%ED%83%80%EC%9E%85%EC%9D%80%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%A0%95%EC%9D%98%ED%95%98%EB%82%98%EC%9A%94">
-<meta property="og:url" content="http://localhost:4000/2022-05-22-43-TypeScript%EC%97%90%EC%84%9C%20%EC%A0%84%EC%97%AD%20%EA%B0%9C%EC%B2%B4%20%ED%83%80%EC%9E%85%EC%9D%80%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%A0%95%EC%9D%98%ED%95%98%EB%82%98%EC%9A%94">
+<link rel="canonical" href="https://huns.me/2022-05-22-43-TypeScript%EC%97%90%EC%84%9C%20%EC%A0%84%EC%97%AD%20%EA%B0%9C%EC%B2%B4%20%ED%83%80%EC%9E%85%EC%9D%80%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%A0%95%EC%9D%98%ED%95%98%EB%82%98%EC%9A%94">
+<meta property="og:url" content="https://huns.me/2022-05-22-43-TypeScript%EC%97%90%EC%84%9C%20%EC%A0%84%EC%97%AD%20%EA%B0%9C%EC%B2%B4%20%ED%83%80%EC%9E%85%EC%9D%80%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%A0%95%EC%9D%98%ED%95%98%EB%82%98%EC%9A%94">
 <meta property="og:site_name" content="Huns.me">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2022-05-22T00:00:00+09:00">
 <script type="application/ld+json">
-{"description":"팀 구성원이 짝을 지어 기술 리서치를 진행하면서 여러 건의 일을 병렬로 진행하고 있다. 리서치 결과를 건별로 공유하고 논의하는 자리가 만들어지다보니 자연스레 회의가 많아졌다. 프로토콜을 만들어가는 프로젝트 초반이라 회의가 많은 건 어쩌면 ‘당연’한 일인 듯 싶다. 그럼에도 우리가 효과적으로 회의를 ‘제어’할 수 있다면 줄인 비용을 다른 곳에 쓸 수 있지 않을까? 이 상황을 팀이 회고하고 두 가지 방향으로 개선을 해보기로 했다.","dateModified":"2022-05-22T00:00:00+09:00","datePublished":"2022-05-22T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2022-05-22-43-TypeScript%EC%97%90%EC%84%9C%20%EC%A0%84%EC%97%AD%20%EA%B0%9C%EC%B2%B4%20%ED%83%80%EC%9E%85%EC%9D%80%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%A0%95%EC%9D%98%ED%95%98%EB%82%98%EC%9A%94"},"url":"http://localhost:4000/2022-05-22-43-TypeScript%EC%97%90%EC%84%9C%20%EC%A0%84%EC%97%AD%20%EA%B0%9C%EC%B2%B4%20%ED%83%80%EC%9E%85%EC%9D%80%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%A0%95%EC%9D%98%ED%95%98%EB%82%98%EC%9A%94","headline":"TypeScript에서 전역 개체 타입은 어떻게 정의하나요?","@context":"http://schema.org"}</script>
+{"description":"팀 구성원이 짝을 지어 기술 리서치를 진행하면서 여러 건의 일을 병렬로 진행하고 있다. 리서치 결과를 건별로 공유하고 논의하는 자리가 만들어지다보니 자연스레 회의가 많아졌다. 프로토콜을 만들어가는 프로젝트 초반이라 회의가 많은 건 어쩌면 ‘당연’한 일인 듯 싶다. 그럼에도 우리가 효과적으로 회의를 ‘제어’할 수 있다면 줄인 비용을 다른 곳에 쓸 수 있지 않을까? 이 상황을 팀이 회고하고 두 가지 방향으로 개선을 해보기로 했다.","dateModified":"2022-05-22T00:00:00+09:00","datePublished":"2022-05-22T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://huns.me/2022-05-22-43-TypeScript%EC%97%90%EC%84%9C%20%EC%A0%84%EC%97%AD%20%EA%B0%9C%EC%B2%B4%20%ED%83%80%EC%9E%85%EC%9D%80%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%A0%95%EC%9D%98%ED%95%98%EB%82%98%EC%9A%94"},"url":"https://huns.me/2022-05-22-43-TypeScript%EC%97%90%EC%84%9C%20%EC%A0%84%EC%97%AD%20%EA%B0%9C%EC%B2%B4%20%ED%83%80%EC%9E%85%EC%9D%80%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%A0%95%EC%9D%98%ED%95%98%EB%82%98%EC%9A%94","headline":"TypeScript에서 전역 개체 타입은 어떻게 정의하나요?","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -49,7 +49,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/legacy/apple-touch-icon.png">
 
   <!-- RSS -->
-  <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Huns.me">
+  <link type="application/atom+xml" rel="alternate" href="https://huns.me/feed.xml" title="Huns.me">
 
   <!-- Google Analytics-->
   <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -271,7 +271,7 @@
     </main>
     <footer>
   <span>
-    © <time datetime="2022-05-23 07:42:10 +0900">2022</time> KimCoding. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+    © <time datetime="2022-05-23 08:19:55 +0900">2022</time> KimCoding. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
   </span>
 </footer>
 
