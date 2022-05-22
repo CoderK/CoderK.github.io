@@ -119,39 +119,13 @@
 
 </div>
 
-<div id="comment-section"></div>
-
-<script>
-  function setupComment(mode) {
-    const commentScript = document.createElement('script');
-    commentScript.src = 'https://utteranc.es/client.js';
-    commentScript.setAttribute('repo', "CoderK/CoderK.github.io");
-    commentScript.setAttribute('issue-term', 'url');
-    commentScript.setAttribute('theme', `github-${mode}`);
-    commentScript.setAttribute('crossorigin', 'anonymous');
-    commentScript.setAttribute('async', '');
-
-    const sectionElement = document.querySelector("#comment-section");
-    sectionElement.innerHTML = '';
-    sectionElement.appendChild(commentScript);
-  }
-
-  setupComment(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-
-  if (window.matchMedia) {
-    window
-        .matchMedia('(prefers-color-scheme: dark)')
-        .addEventListener('change', (event) => {
-          setupComment(event.matches ? 'dark' : 'light');
-        });
-  }
-
+<script src="https://utteranc.es/client.js" repo="CoderK/CoderK.github.io" issue-term="pathname" theme="preferred-color-scheme" crossorigin="anonymous" async>
 </script>
 
     </main>
     <footer>
   <span>
-    © <time datetime="2022-05-22 22:12:01 +0900">2022</time> KimCoding. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+    © <time datetime="2022-05-22 22:24:21 +0900">2022</time> KimCoding. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
   </span>
 </footer>
 
