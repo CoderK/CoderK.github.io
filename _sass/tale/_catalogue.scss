@@ -31,13 +31,6 @@
     font-weight: 500;
     margin: .5rem 0;
   }
-
-  &-line {
-    @include transition(all .3s ease-out);
-    border-top: .2rem solid $default-shade;
-    display: block;
-    width: 2rem;
-  }
 }
 
 @media (prefers-color-scheme: dark) {
