@@ -5,8 +5,8 @@
         <description>김코딩 님이 잘하고 싶어서 만든 블로그</description>
         <link>https://huns.me/</link>
         <atom:link href="https://huns.me/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Mon, 23 May 2022 08:19:55 +0900</pubDate>
-        <lastBuildDate>Mon, 23 May 2022 08:19:55 +0900</lastBuildDate>
+        <pubDate>Sun, 29 May 2022 22:28:48 +0900</pubDate>
+        <lastBuildDate>Sun, 29 May 2022 22:28:48 +0900</lastBuildDate>
         <generator>Jekyll v3.8.6</generator>
         
         <item>
@@ -404,6 +404,230 @@
             
             
             <category>단상</category>
+            
+        </item>
+        
+        <item>
+            <title>API Gateway + AWS Lambda에서 바이너리를 반환하면 왜 CORS 에러가 발생하죠?</title>
+            <description>&lt;p&gt;지난 주에는, Handlerbar 템플릿을 PDF 바이너리로 변환하여 내려주는 간단한 서버 API를 만들었다. 운영 비용을 줄일 생각으로 Serverless 프레임워크(이하 Serverless)로 개발을 해서 AWS Lambda 환경에 배포를 했다. Serverless는 여러 서버리스 인프라 프로바이더를 하나의 인터페이스로 추상화 한 API를 제공하는 프레임워크다. 몇 가지 간단한 설정을 하고 구현 로직을 만들어서 제공하면 빌드, 배포를 모두 알아서 해준다.&lt;/p&gt;
+
+&lt;p&gt;오래 전에 동료가 Serverless를 이용해서 구현한 다른 기능이 잘 돌아가고 있고 빨리 문제를 해결하고 싶었던터라 크게 고민하지 않고 기존 코드를 참고해서 구현을 했다. 레거시랑 Getting Started 정도만 읽어보고 금방 코드를 만들어서 배포할 수 있었다.&lt;/p&gt;
+
+&lt;p&gt;하지만 이런 도구는 내부 원리를 잘 모르면 사용 중에 문제가 생겼을 때 문제를 해결하기가 쉽지 않다. 특히나 AWS 의 클라우드 인프라는 컴포넌트를 다양하게 조합할 수 있다보니, 각 인프라의 동작 방식을 잘 모르면 문제가 생겼을때 미로에 빠지기 쉽다. 이번에 겪은 문제도 그랬다.&lt;/p&gt;
+
+&lt;p&gt;빠르게 만들어서 API를 배포했지만, 클라이언트가 API를 호출하면 브라우저에서 CORS 에러가 발생했다. CORS 설정 가이드를 다시 한 번 확인하고, 설정을 하고, 테스트 하기를 수차례. 해결이 되지 않았다.&lt;/p&gt;
+
+&lt;p&gt;잘 안 풀릴 때는 침착하게 공식 문서를 읽어보는 게 문제를 더 빨리 해결하는 길이라는 걸 경험으로 터득했다. 결국 가이드 문서를 정독해서 내부 구현 원리를 이해하고 나서야 원인을 특정할 수 있었다. 이번에는 경험치가 빨리 동작해서 다행이었다.&lt;/p&gt;
+
+&lt;p&gt;이 글은 Serverless를 이용해 구현한 바이너리 반환 API를 AWS의 API Gateway + AWS Lambda 환경에 배포한 후에 발생한 CORS 에러의 원인을 추적하고 해결한 과정을 기록한다.&lt;/p&gt;
+
+&lt;h2 id=&quot;-현상은-이렇습니다&quot;&gt;😠 현상은 이렇습니다.&lt;/h2&gt;
+
+&lt;p&gt;Lambda에 배포한 코드는 대충 이런 모습이다. 이 함수는 컨트롤러의 역할을 하며, 모든 로직은 toPdfFromHtml 안에 들어있다.&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;template&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;JSON&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;pdf&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;toPdfFromHtml&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;template&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;stampImageHref&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;stampImageHref&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;''&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;APIGatewayProxyResult&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;statusCode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;headers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;Access-Control-Allow-Origin&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;Content-Type&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;application/pdf; charset=utf-8&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;Content-Length&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;byteLength&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pdf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+    &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;Content-Disposition&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;`attachment; filename=&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;encodeURI&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;template&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;.pdf&quot;`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// NOTE:&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// https://stackoverflow.com/questions/45348580/aws-lambda-fails-to-return-pdf-file&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;pdf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Serverless는 이 코드를 빌드하여 Lambda에 배포하고 API Gateway에 연결된 이런 엔드포인트를 만들어 준다.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;https://&amp;lt;rest_api_id&amp;gt;-&amp;lt;vpc_endpoint_id&amp;gt;.execute-api.&amp;lt;aws_region&amp;gt;.amazonaws.com
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;이제 클라이언트에서 이 API를 호출하면 끝! … 이라고 생각을 했지만, 테스트 과정에서 CORS 에러가 발생했다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/new/44-1.png&quot; alt=&quot;CORS 에러가 발생하고 있음을 보여주는 네트워크 탭&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;누구든 CORS 에러를 만나면 가장 먼저 CORS 설정을 살펴보지 않을까.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.serverless.com/blog/cors-api-gateway-survival-guide&quot;&gt;Your CORS and API Gateway survival guide&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;나 역시 CORS 설정을 잘못 했나 싶어서 위의 가이드를 다시 보면서 코드를 수정하고 테스트를 했지만 해결을 할 수 없었다. 그렇게 쉽게 문제를 풀었다면 이 글을 쓰지 않았겠지. 삽질이 기운이 스멀스멀 피어오른다.&lt;/p&gt;
+
+&lt;h2 id=&quot;-cloudfront는-왜&quot;&gt;🤔 CloudFront는 왜…?&lt;/h2&gt;
+
+&lt;p&gt;해결이 안 되자 조급해지는 마음을 잠시 가다듬고 네트워크 탭을 뚫어져라 쳐다보며 단서를 수집했다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/new/44-2.png&quot; alt=&quot;Lambda 함수에서 'Access-Control-Allow-Origin': '*'를 응답 헤더에 반환했는데 CORS 에러 로그를 보면 이 헤더가 없음을 보여주는 네트워크 탭 상세보기 화면&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;어라, Lambda 함수에서 ‘Access-Control-Allow-Origin’: ‘*‘를 응답 헤더에 반환했는데 CORS 에러 로그를 보면 이 헤더가 없다. 어디로 간걸까? 그러고보니 에러 메시지의 출처가 CloudFront네!?&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;x-amzn-errortype: InternalServerErrorException
+x-cache: Error from cloudfront
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;내가 배포한 Serverless 구성이 “API Gateway → Lambda”라고 생각했는데, CloudFront는 어디에서 나타난걸까. Serverless가 만들어 준 인프라 구조를 내가 잘 모르고 있다는 걸 깨달았다. 대충 알아서 해주겠거니…하는 생각에 코드만 보고 문서를 안 읽었다. AWS 문서를 하나씩 읽어보기 시작했다. 머지 않아 힌트를 찾았다.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-endpoint-types.html&quot;&gt;AWS는 API Gateway로 3가지 유형의 Endpoint&lt;/a&gt;를 제공하는데 이 중에 Edge-optimized API Endpoints가 Serverless의 기본 값이었다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Edge-optimized API endpoints&lt;/li&gt;
+  &lt;li&gt;Regional API endpoints&lt;/li&gt;
+  &lt;li&gt;Private API endpoints&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Edge-optimized API Endpoints는 URL을 CloudFront에 연결한다. 이름에서 최적화 삘이 난다. Serverless의 설정 타입을 보면 endpointType 프로퍼티의 유니온 타입을 이렇게 정의하고 있다.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;endpointType?: 'regional' | 'edge' | 'private' | undefined
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;딱딱 맞는다. Serverless 가이드 문서 역시, 기본 값은 edge라고 명시한다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;By default, the Serverless Framework deploys your REST API using the EDGE endpoint configuration. If you would like to use the REGIONAL or PRIVATE configuration, set the endpointType parameter in your provider block.&lt;/p&gt;
+
+  &lt;p&gt;&lt;cite&gt;https://www.serverless.com/framework/docs/providers/aws/events/apigateway#configuring-endpoint-types&lt;/cite&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;내가 착각을 했다. “API Gateway → Lambda”가 아니라 “CloudFront → API Gateway → Lambda” 구조였다.&lt;/p&gt;
+
+&lt;p&gt;가설을 세웠다. CloudFront가 요청을 릴레이 하는 과정에서 API Gateway에서 에러가 발생하자 자신이 대신 에러 응답을 반환했다. 이 과정에서 Lambda가 반환한 cors 헤더를 유실했고, 브라우저는 cors 헤더가 없으니 에러를 발생시켰다.&lt;/p&gt;
+
+&lt;p&gt;그렇다면 CloudFront 뒤에 숨어 음모를 꾸미는 녀석은 누굴까?&lt;/p&gt;
+
+&lt;h2 id=&quot;진짜-범인은&quot;&gt;진짜 범인은…!&lt;/h2&gt;
+
+&lt;p&gt;Lambda 함수에서 출력하는 로그는 CloudWatch에 남는다. 로그를 뒤졌다. 로그는 Lambda가 무죄라는 걸 증명했다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/new/44-3.png&quot; alt=&quot;CloutWatch에 남은 람다 로그&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이제 남은 건 API Gateway. 심증은 가나 물증이 없다. 원인을 특정할 수 없어서 Lambda가 반환하는 응답 개체의 프로퍼티를 하나씩 제거하면서 변화가 생기는지 관찰했다. 어라, body에 빈 문자열을 주면 CORS 에러가 발생하지 않는다. 그렇지.&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;template&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;JSON&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;pdf&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;toPdfFromHtml&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;template&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;stampImageHref&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;stampImageHref&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;''&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;APIGatewayProxyResult&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;statusCode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;headers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;Access-Control-Allow-Origin&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;Content-Type&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;application/pdf; charset=utf-8&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;Content-Length&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;byteLength&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pdf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+    &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;Content-Disposition&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;`attachment; filename=&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;encodeURI&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;template&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;.pdf&quot;`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;''&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Lambda와 API Gateway 사이에서 범인의 냄새를 맡았다.&lt;/p&gt;
+
+&lt;p&gt;위의 코드에서 pdf는 바이너리 버퍼 타입이다. 바이너리를 반환하는 게 문제일까? Lambda에서 바이너리를 반환할 수 없는 건가? 구글링을 하다가 공식 문서를 보고서야 바이너리 타입은 base64로 인코딩을 해야한다는 걸 깨달았다. 아뿔싸!&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://docs.aws.amazon.com/ko_kr/apigateway/latest/developerguide/api-gateway-payload-encodings.html&quot;&gt;REST API에 대한 이진 미디어 유형 작업&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;API Gateway에서 API 요청과 응답은 텍스트 또는 이진 페이로드를 포함합니다. 텍스트 페이로드는 UTF-8 인코딩 형식의 JSON 문자열입니다. 이진 페이로드는 텍스트 페이로드를 제외한 페이로드입니다. 예를 들어 JPEG 파일, GZip 파일, XML 파일 등이 이진 페이로드가 될 수 있습니다. 이진 미디어를 지원하는 데 필요한 API 구성은 API가 프록시 통합을 사용하는지 아니면 비 프록시 통합을 사용하는지에 따라 달라집니다.&lt;/p&gt;
+
+  &lt;p&gt;&lt;cite&gt;https://docs.aws.amazon.com/ko_kr/apigateway/latest/developerguide/api-gateway-payload-encodings.html&lt;/cite&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;바이너리를 base64로 인코딩 해야 하는 이유는 API Gateway의 콘텐츠 유형 변환 규칙 때문이다. 이 내용 역시, 아래의 가이드 문서에 잘 나와 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://docs.aws.amazon.com/ko_kr/apigateway/latest/developerguide/api-gateway-payload-encodings-workflow.html&quot;&gt;API Gateway의 콘텐츠 유형 변환&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;문서를 보면 변환 규칙을 이런 식으로 테이블로 정의해서 안내하고 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/new/44-4.png&quot; alt=&quot;콘텐츠 유형 변환 테이블 스크린샷&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;API Gateway는 HTTP Payload(Body), Content-type, binaryMediaTypes, contentHandling 설정을 참고해서 런타임에 HTTP Body의 인코딩 타입을 결정한다.&lt;/p&gt;
+
+&lt;h2 id=&quot;그래서-해결은&quot;&gt;그래서 해결은?&lt;/h2&gt;
+
+&lt;p&gt;앞에서 언급한 내용을 종합하면, API Gateway로 들어오고 나가는 HTTP Body는 텍스트나 바이너리를 가질 수 있는데, 이 때 개발자는 개발을 할 때 다음 세 가지 제약을 따라야 한다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;텍스트는 UTF-8로 인코딩 한 JSON 문자열이어야 한다.&lt;/li&gt;
+  &lt;li&gt;바이너리는 base64로 인코딩 한 값이어야 한다.&lt;/li&gt;
+  &lt;li&gt;바이너리로 취급할 콘텐츠 유형을 binaryMediaTypes에 명시해야 한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;모두 세 군데를 수정하는 걸로 문제를 해결할 수 있었다.&lt;/p&gt;
+
+&lt;p&gt;1) 응답에 base64로 인코딩한 body를 추가하고, isBase64Encoded 속성을 true로 설정해서 API Gateway에게 이 사실을 알려준다.&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;APIGatewayProxyResult&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;na&quot;&gt;statusCode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+	&lt;span class=&quot;na&quot;&gt;headers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;Access-Control-Allow-Origin&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;Content-Type&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;application/pdf; charset=utf-8&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;Content-Length&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;encodedPdf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;Content-Disposition&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;`attachment; filename=&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;encodeURI&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;template&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;.pdf&quot;`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+	&lt;span class=&quot;c1&quot;&gt;// NOTE:&lt;/span&gt;
+	&lt;span class=&quot;c1&quot;&gt;// https://stackoverflow.com/questions/45348580/aws-lambda-fails-to-return-pdf-file&lt;/span&gt;
+	&lt;span class=&quot;na&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;encodedPdf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;isBase64Encoded&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;2) serverless.ts의 apiGateway 설정에 binaryMediaTypes 설정을 추가한다.&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;provider&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;apiGateway&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;binaryMediaTypes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;application/pdf&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;3) HTTP Request를 요청할 때 Content-type 헤더를 바이너리 타입으로 설정(나의 경우 application/json)한다.&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;headers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;content-type&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;application/json&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;그러면 응답 콘텐츠 유형 변환 테이블에서 아래에 셀렉트 하여 표시한 조건이 동작하고,&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/new/44-5.png&quot; alt=&quot;콘텐츠 유형 변환 테이블에서 이진 데이터, 이진수 형식, 일치하는 미디어 유형이 있는 세트, 정의되지 않음, 이진 데이터 항목이 하이라이팅 되어 있음&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;통합 응답 페이로드: application/pdf → 이진 데이터&lt;/li&gt;
+  &lt;li&gt;요청 Accept 헤더: application/pdf → 이진수 형식&lt;/li&gt;
+  &lt;li&gt;binaryMediaTypes: application/pdf → 일치하는 미디어 유형이 있는 세트&lt;/li&gt;
+  &lt;li&gt;contentHandling: 정의되지 않음&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;네트워크 요청에 성공해서 200 응답을 받고,&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/new/44-6.png&quot; alt=&quot;요청이 성공해서 200 응답을 받았음을 보여주는 네트워크 상세보기 화면&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;API Gateway가 보낸 예쁜(?) PDF 바이너리를 받을 수 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/new/44-7.png&quot; alt=&quot;API Gateway의 응답으로 받은 바이너리&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이때 Request의 Accept를 지정하지 않으면 아래 조건에 걸려서 Base64로 인코딩한 문자열을 반환해버리는데 이 또한 정해진 콘텐츠 유형 변환 규칙을 적용받기 때문이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/new/44-8.png&quot; alt=&quot;콘텐츠 유형 반환 테이블에서 Base64로 인코딩된 문자열을 반환하는 조건 하이라이팅&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;API Gateway가 기대한 결과를 돌려주지 않는다면 이 테이블을 참고해서 설정을 잘 했는지 확인할 수 있다.&lt;/p&gt;
+</description>
+            <pubDate>Tue, 20 Jul 2021 00:00:00 +0900</pubDate>
+            <link>https://huns.me/2021-07-20-44</link>
+            <guid isPermaLink="true">https://huns.me/2021-07-20-44</guid>
+            
+            <category>aws, apigateway, lambda, cors, serverless</category>
+            
+            
+            <category>development</category>
             
         </item>
         
@@ -4759,61 +4983,6 @@ on: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;pull_request]
             <category>__proto__</category>
             
             <category>이슈</category>
-            
-            
-            <category>개발 이야기</category>
-            
-        </item>
-        
-        <item>
-            <title>React-lite 걷어낸 이야기</title>
-            <description>&lt;p&gt;
-				React-lite는 웹 브라우저 환경에서 React를 실행하는 데 필요없는 코드를 제거해서 경량화 한 버전의 React다. React v.0.14.4까지(2016.01 기준) 지원하고 간편하게 설정하고 제거할 수 있어  회사에서 하고 있던 프로젝트에 간단하게 적용을 테스트해봤다. 효과는 놀라운데 react-lite를 적용한 제품 코드를 Webpack으로 빌드했더니 사이즈가 무려 반으로 줄었다.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;인라인 소스맵 + no 최적화 : 2M -&gt; 1M&lt;/li&gt;
-&lt;li&gt;webpack 최적화 : 400kb -&gt; 200kb&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;React addons를 지원하지 않아서 ReactTestUtils를 사용할 수 없다는 단점이 있지만 WebPack을 이용하면 동적으로 설정을 넣고 빼기가 쉬워서 테스트 환경에서는 정식 React를 사용하고, 빌드만  React-lite를 이용하게 설정할 수 있었다. 아래의 설정을 webpack.conf.js에 추가하고 테스트 환경에서는 제거하는 방식이다.&lt;/p&gt;
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;nx&quot;&gt;resolve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nl&quot;&gt;alias&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;react&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;react-lite&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;react-dom&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;react-lite&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-&lt;p&gt;신나서 바로 도입을 결정했다. 이 때가 정식 QA 들어가기 전이었기 때문에 시기상으로도 적절했다. 하지만 슬프게도 한 2주 정도 사용하다가 몇 가지 이슈 때문에 다시 오리지널 React로 회귀했다.&lt;/p&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
-&lt;h2&gt;이벤트 이슈&lt;/h2&gt;
-&lt;p&gt;react-lite가 document.body에 걸려있는 기본 이벤트 실행을 막아버려서 발행 레이어를 닫는 이벤트를 받을 수가 없다. 개발자한테 물어봤더니 React에서 크로스브라우징 이벤트를 처리하는 코드의 양이 많아서 경량화를 위해서 제거하는 대신 사이드 이펙트가 없도록 React 외부로 나가는 이벤트를 막았다고 한다. 이는 React를 다른 UI 라이브러리와 혼용해서 사용할 경우 심각한 문제를 만들 수 있다.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/Lucifier129/react-lite/issues/27&quot;&gt;https://github.com/Lucifier129/react-lite/issues/27&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/Lucifier129/react-lite/issues/25&quot;&gt;https://github.com/Lucifier129/react-lite/issues/25&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;이슈 제기를 했고, 지금은 새로운 버전이 나오면서 이 문제는 해결이 되었다.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://github.com/Lucifier129/react-lite/issues/27&quot;&gt;https://github.com/Lucifier129/react-lite/issues/27&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
-&lt;h2&gt;IE 11 렌더링 오류&lt;/h2&gt;
-&lt;p&gt;IE 11에서 간혹 컴포넌트 렌더링 여부를 판단하는 규칙이 React와 달라서 렌더링 해야하는 상황인데도 라이프 사이클 메서드를 호출하지 않고 지나쳐버리는 경우가 있다. React-lite를 걷어내게 만든 결정적인 이유다. 분명히 컴포넌트를 다시 렌더링해야하는 상황인데 생략해버린다. render는 호출하지만 diff 로직을 제대로 못타는 거 같다고 추정만할 뿐 정확한 이유를 찾지 못했다. shouldComponentUpdate로 오버라이딩해보고, forceUpdate도 호출해보고 별 짓을 다 해봤지만 우회할 방법을 찾지 못했다.&lt;/p&gt;
-&lt;p&gt;프로젝트 일정이 빠듯한 상황에서 내부 코드를 빠삭하게 이해하고 있지 않은 이상 정확한 원인을 찾기가 힘들다고 판단해서 결국 회귀를 결정했다. 200kb가 아쉽지만 스트레스받고 시간 버리느니 그냥 포기하고, 파일 사이즈가 성능에 영향을 미칠정도 수준이면 차라리 webpack의 chunk를 이용해서 파일을 분리할 생각이다.&lt;/p&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
-&lt;h2&gt;버전 관리 이슈&lt;/h2&gt;
-&lt;p&gt;이벤트 이슈를 확인하다가 react-lite가 React의 일부 코드를 단순히 제거한 게 아니라, 코드의 많은 부분을 수정한 버전이라는 걸 알았다. 새로운 버전의 React가 나와도 바로 적용할 수 없다. 결국 향후 버전 관리에 문제가 생길 가능성이 높다.&lt;/p&gt;
-&lt;p&gt;&amp;nbsp;&lt;br /&gt;
-&amp;nbsp;		&lt;/p&gt;
-</description>
-            <pubDate>Wed, 24 Feb 2016 17:39:43 +0900</pubDate>
-            <link>https://huns.me/development/1802</link>
-            <guid isPermaLink="true">https://huns.me/development/1802</guid>
-            
-            <category>react</category>
-            
-            <category>react-lite</category>
             
             
             <category>개발 이야기</category>
