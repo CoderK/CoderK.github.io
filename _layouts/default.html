@@ -23,5 +23,27 @@
         });
       })();
     </script>
+
+    <script>
+      // 코드 블록 복사 버튼.
+      (function () {
+        if (!navigator.clipboard) return;
+        document.querySelectorAll('.highlight').forEach(function (block) {
+          var code = block.querySelector('code') || block.querySelector('pre');
+          if (!code) return;
+          var btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'code-copy';
+          btn.textContent = 'Copy';
+          btn.addEventListener('click', function () {
+            navigator.clipboard.writeText(code.innerText).then(function () {
+              btn.textContent = 'Copied';
+              setTimeout(function () { btn.textContent = 'Copy'; }, 1500);
+            });
+          });
+          block.appendChild(btn);
+        });
+      })();
+    </script>
   </body>
 </html>

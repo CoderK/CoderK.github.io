@@ -28,6 +28,7 @@ pre code {
   line-height: 1.4;
   margin: 0 0 1rem;
   padding: 0.5rem 1rem;
+  position: relative;
 
   pre {
     margin-bottom: 0;
@@ -43,5 +44,32 @@ pre code {
     -moz-user-select: none;
     user-select: none;
   }
+}
+
+.code-copy {
+  background: transparent;
+  border: 1px solid currentColor;
+  border-radius: 3px;
+  color: $default-tint;
+  cursor: pointer;
+  font-family: $sans-serif-secondary;
+  font-size: 0.75rem;
+  line-height: 1;
+  opacity: 0;
+  padding: 0.25rem 0.5rem;
+  position: absolute;
+  right: 0.4rem;
+  top: 0.4rem;
+  @include transition(opacity .15s ease-out);
+
+  &:hover,
+  &:focus {
+    opacity: 1;
+  }
+}
+
+.highlight:hover .code-copy,
+.code-copy:focus {
+  opacity: 0.85;
 }
 
