@@ -45,17 +45,3 @@
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  .pagination {
-    border-top: .5px solid $dark-default-tint;
-
-    span {
-      color: $dark-default-shade;
-    }
-
-    .top {
-      @include transition(all .3s ease-out);
-      color: $dark-default-color;
-    }
-  }
-}

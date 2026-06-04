@@ -17,11 +17,42 @@
     box-shadow: 0 2px 2px -2px $dark-shadow-color;
 
     &-title {
-      color: $dark-default-color;
+      // 다크 배경에서는 한 톤 더 밝게 (#e2e2e2)
+      color: $dark-default-bold;
     }
 
     a {
+      // 메뉴 링크도 더 또렷이
+      color: $dark-default-bold;
+    }
+
+    li {
+      // 라이트는 0.6이 자연스럽지만 다크에서는 같은 opacity가
+      // 가독성을 떨어뜨린다. 0.85로 올리고 hover 시 1.
+      opacity: 0.85;
+    }
+  }
+
+  .catalogue {
+    &-item {
       color: $dark-default-color;
+      // $dark-default-tint(#383838)는 너무 어두워 카드 경계가
+      // 안 보였다. 한 톤 밝은 값으로.
+      border-bottom: 1px solid #4a4a4a;
+    }
+
+    &-title {
+      color: $dark-default-bold;
+    }
+
+    &-line {
+      border-top: .2rem solid $dark-default-bold;
+    }
+
+    &-time {
+      // secondary 정보라 본문보다 옅게. $dark-default-tint(#383838)는
+      // 너무 어두워 다크 배경에서 안 보였다.
+      color: #9a9a9a;
     }
   }
 
@@ -67,6 +98,38 @@
   code {
     background-color: $dark-black-1;
     color: $code-color;
+  }
+
+  .pagination {
+    border-top: .5px solid #4a4a4a;
+
+    span {
+      color: $dark-default-bold;
+    }
+
+    .top {
+      color: $dark-default-color;
+    }
+
+    .arrow {
+      // 라이트의 $default-color(#555)는 다크 배경에서 거의 안 보였다.
+      color: $dark-default-color;
+    }
+  }
+
+  // 본문 상단 메타("Written by ... on ...")와 이미지 캡션
+  .post {
+    &-info {
+      color: $dark-default-color;
+    }
+
+    img + em {
+      color: #9a9a9a;
+    }
+
+    cite {
+      color: #b0b0b0;
+    }
   }
 }
 
