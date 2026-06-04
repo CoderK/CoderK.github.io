@@ -1,0 +1,57 @@
+// 다크/라이트 토글 버튼.
+//
+// nav ul의 마지막 li로 들어간다. 데스크톱에서는 메뉴 우측에 함께
+// 정렬되고, 모바일에서는 가운데 정렬된 메뉴 줄에 자연스럽게 이어진다.
+// 토글은 <html data-theme="light|dark">를 변경한다. data-theme이
+// 없으면 시스템 prefers-color-scheme을 따른다.
+
+.nav .nav-toggle {
+  opacity: 1;
+  padding: 0 0 0 0;
+  vertical-align: middle;
+}
+
+.theme-toggle {
+  background: transparent;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  color: $default-color;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  line-height: 1;
+  padding: 0.3rem 0.55rem;
+  opacity: 0.6;
+  @include transition(opacity .2s ease-out, color .2s ease-out);
+
+  &:hover,
+  &:focus {
+    opacity: 1;
+  }
+}
+
+// 라이트 상태: 달(다크로 전환) 아이콘
+.theme-toggle__icon--moon { display: inline; }
+.theme-toggle__icon--sun  { display: none; }
+
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme="light"]) {
+    .theme-toggle__icon--moon { display: none; }
+    .theme-toggle__icon--sun  { display: inline; }
+    .theme-toggle { color: $dark-default-color; }
+  }
+}
+
+html[data-theme="dark"] {
+  .theme-toggle__icon--moon { display: none; }
+  .theme-toggle__icon--sun  { display: inline; }
+  .theme-toggle { color: $dark-default-color; }
+}
+
+html[data-theme="light"] {
+  .theme-toggle__icon--moon { display: inline; }
+  .theme-toggle__icon--sun  { display: none; }
+  .theme-toggle { color: $default-color; }
+}

@@ -6,6 +6,12 @@
     <ul>
       <li><a href="{{ site.baseurl }}/">Posts</a></li>
       <li><a href="{{ '/about' | prepend: site.baseurl }}">About</a></li>
+      <li class="nav-toggle">
+        <button type="button" class="theme-toggle" aria-label="다크/라이트 모드 전환" data-theme-toggle>
+          <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true">🌙</span>
+          <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true">☀️</span>
+        </button>
+      </li>
     </ul>
   </div>
 </nav>

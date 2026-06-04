@@ -1,0 +1,81 @@
+// 다크 모드 룰을 한 곳에 모은다.
+//
+// 활성화 조건은 둘 중 하나다.
+// - 시스템이 다크이고 사용자가 라이트를 강제하지 않은 경우
+// - 사용자가 명시적으로 다크를 선택한 경우
+//
+// 토글은 _includes/head.html의 인라인 스크립트와 토글 버튼이
+// <html data-theme="...">를 변경하여 동작한다.
+
+@mixin dark-mode-rules {
+  body {
+    background-color: $dark-black-1;
+    color: $dark-default-color;
+  }
+
+  .nav {
+    box-shadow: 0 2px 2px -2px $dark-shadow-color;
+
+    &-title {
+      color: $dark-default-color;
+    }
+
+    a {
+      color: $dark-default-color;
+    }
+  }
+
+  footer span {
+    color: $dark-default-shade;
+  }
+
+  .post {
+    h1, h2, h3, h4, h5, h6 {
+      color: $dark-default-bold;
+      font-weight: 500;
+    }
+
+    p {
+      color: $dark-default-color;
+    }
+
+    blockquote {
+      background-color: #333333;
+    }
+
+    blockquote:before {
+      color: $dark-default-shade;
+    }
+
+    &-title {
+      color: $dark-default-shade;
+    }
+
+    &-line {
+      border-top: 0.4rem solid $dark-default-shade;
+    }
+
+    hr {
+      border: 1px solid $dark-default-tint;
+    }
+  }
+
+  .highlight {
+    background-color: $dark-black-2;
+  }
+
+  code {
+    background-color: $dark-black-1;
+    color: $code-color;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme="light"]) {
+    @include dark-mode-rules;
+  }
+}
+
+html[data-theme="dark"] {
+  @include dark-mode-rules;
+}

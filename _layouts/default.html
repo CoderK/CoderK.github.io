@@ -7,5 +7,21 @@
       {{ content }}
     </main>
     {% include footer.html %}
+
+    <script>
+      // 토글 버튼: 현재 effective theme의 반대를 저장하고 적용한다.
+      (function () {
+        var btn = document.querySelector('[data-theme-toggle]');
+        if (!btn) return;
+        var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var effective = current || (prefersDark ? 'dark' : 'light');
+          var next = effective === 'dark' ? 'light' : 'dark';
+          document.documentElement.setAttribute('data-theme', next);
+          try { localStorage.setItem('theme', next); } catch (e) {}
+        });
+      })();
+    </script>
   </body>
 </html>
