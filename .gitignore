@@ -6,6 +6,7 @@ _site/
 .bundle/
 vendor/
 tmp
+private/
 
 
 ### npm ###
