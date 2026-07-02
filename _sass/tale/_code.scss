@@ -1,3 +1,5 @@
+@use 'variables' as *;
+
 pre,
 code {
   font-family: $monospaced;
@@ -72,4 +74,3 @@ pre code {
 .code-copy:focus {
   opacity: 0.85;
 }
-

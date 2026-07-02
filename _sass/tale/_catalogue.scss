@@ -1,3 +1,5 @@
+@use 'variables' as *;
+
 .catalogue {
   margin: 0 auto;
   width: $contents-width;
@@ -38,4 +40,3 @@
     margin: .5rem 0;
   }
 }
-
